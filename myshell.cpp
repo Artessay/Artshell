@@ -49,5 +49,7 @@ int main(int argc, char *argv[], char **env)
     delete view;
     delete model;
 
+    puts("Bye~");
+
     return 0;
 }
