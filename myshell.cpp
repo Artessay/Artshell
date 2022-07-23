@@ -49,7 +49,9 @@ int main(int argc, char *argv[], char **env)
     delete view;
     delete model;
 
-    puts("Bye~");
+    
+    // 末尾输出判断程序是否正常结束，仅在调试时使用
+    // puts("Bye~");
 
     return 0;
 }
