@@ -17,12 +17,12 @@
 #include "myshell.h"
 
 #include <string.h>
-#include <string>
-#include <iostream>
+#include <exception>
 
 extern "C" 
 {
     #include "lexer.h"
+    int yy_lexer(int *argc, char ***argv);
 }
 
 // 获取系统环境变量
@@ -61,22 +61,28 @@ extern "C"
 void InputCommand(char *input, const int len) 
 {
     // 初始化输入缓冲器与相关变量
+    char ch;
     int i = 0;
-    char ch = getchar();
     memset(input, 0, len);
 
     // 循环读入字符
-    while (ch != ';' && ch != '\n')
+    do
     {
-        if (ch == '\\') //  如果读到换行输入\命令就跳过继续
+        ch = getchar();
+
+        if (ch == '\\') // 如果读到换行输入\命令就跳过继续
         {
             ch = getchar(); // 将随后的换行符读入
             continue;
         }
+
+        if (ch == ';')  // 将；视为换行符，便于lexer和parser处理
+        {
+            ch = '\n';
+        }
             
         input[i++] = ch;
-        ch = getchar();
-    }
+    } while (ch != '\n');
 
     #ifdef _DEBUG_
     printf("input: %s", input);
@@ -89,37 +95,66 @@ int main(int argc, char *argv[], char **env)
     Console *model = new Console();
     if (model == nullptr)
     {
-        std::cerr << "Out of Space for Console model" << std::endl;
+        fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), "Out of Space for Console model");
         return 1;
     }
 
     Display *view = new Display(model);
+    if (view == nullptr)
+    {
+        fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), "Out of Space for Display view");
+        return 1;
+    }
 
     try
     {
         while (1)
         {
-            view->render(); // 显示提示符
+            // 显示提示符
+            view->render();
 
+            // 从输入读入命令
             char input[BUFFER_SIZE];
             InputCommand(input, BUFFER_SIZE);
+
+            
+
+            // 从输入中创建buffer
+            YY_BUFFER_STATE bp = yy_scan_string(input);
+            if (bp == nullptr)
+            {
+                throw "Failed to create yy buffer state.";
+            }
+
+            yy_switch_to_buffer(bp);
 
             int argument_counter = 0;
             char **argument_vector = nullptr;
 
-            yy_lexer(argument_counter, argument_vector);
+            yy_lexer(&argument_counter, &argument_vector);
+            
+            #ifdef _DEBUG_
+            printf("argc: %d\n", argument_counter);
+            for (int i = 0; i < argument_counter; ++i)
+            {
+                printf("%s ", argument_vector[i]);
+            }
+            putchar('\n');
+            #endif
+
+            if (strcmp(input, "exit\n") == 0)
+                break;
         }
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
     }
     
     
     delete view;
     delete model;
 
-    
     // 末尾输出判断程序是否正常结束，仅在调试时使用
     // puts("Bye~");
 

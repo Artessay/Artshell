@@ -18,7 +18,7 @@ lib$(LIB).a: $(OBJS)
 	gcc -I$(INC) -MMD -c $<
 
 lexer.c: lexer.l
-	lex  --outfile=./lexer.c lexer.l
+	lex --header-file=../inc/lexer.h --outfile=./lexer.c lexer.l
 
 clean:
 	rm $(OBJS) $(DEPS)
