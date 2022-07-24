@@ -14,18 +14,29 @@
 
 #include "Console.h"
 
+#include <string>
+
 class Display
 {
 private:
-    Console *console_;
+
+    Console* console_;
+
+    std::string buffer_;
+
 public:
     Display(Console* console);
+    
     virtual ~Display();
 
     /**
      * @brief 命令行提示符显示模块
      */
     void render();
+
+    void message(const char * msg);
+
+    void show() const;
 };
 
 #endif

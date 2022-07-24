@@ -1,9 +1,9 @@
 /**
  * @file Console.cpp
- * @author your name (you@domain.com)
+ * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 
  * @version 0.1
- * @date 2022-07-21
+ * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -11,6 +11,7 @@
 
 #include "Console.h"
 
+#include <assert.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -18,6 +19,17 @@
 #include <exception>
 
 Console::Console(/* args */)
+{
+    [[__attribute_maybe_unused__]] int ret;
+    ret = init();       // 初始化
+    assert(ret == 0);   // 判断初始化是否成功
+}
+
+Console::~Console()
+{
+}
+
+int Console::init()
 {
     try
     {
@@ -49,20 +61,8 @@ Console::Console(/* args */)
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
+        return 1;
     }
-
-    /*
-    
-    */
-}
-
-Console::~Console()
-{
-}
-
-int Console::init()
-{
-    
     
     return 0;
 }

@@ -12,50 +12,12 @@
  * 
  */
 
-#define _DEBUG_
+// #define _DEBUG_
 
 #include "myshell.h"
 
 #include <string.h>
 #include <exception>
-
-extern "C" 
-{
-    #include "lexer.h"
-    int yy_lexer(int *argc, char ***argv);
-}
-
-// 获取系统环境变量
-// void env(char **environment)
-// {
-//     // 输入输出重定向
-//     if (output == 1)
-//     {
-//         fp = fopen(outputFile, "w");
-//     }
-//     else if (append == 1)
-//     {
-//         fp = fopen(outputFile, "a");
-//     }
-    
-//     //if ouput or append then fprintf
-//     if (output == 1 || append == 1)
-//     {
-//         while(*environment)
-//         {
-//             fprintf(fp,"%s\n", *environment++);
-//         }
-//         fclose(fp);
-//     }
-//     //otherwise just print to screen
-//     else
-//     {
-//         while(*environment)
-//         {
-//             printf("%s\n", *environment++);
-//         }
-//     }  
-// }
 
 /** @brief 命令行输入控制 */
 void InputCommand(char *input, const int len) 
@@ -91,18 +53,30 @@ void InputCommand(char *input, const int len)
 
 int main(int argc, char *argv[], char **env)
 {
+    // 开头输出判断程序是否正常开始，仅在调试时使用
     // puts("Welcome to MyShell ! \n");
-    Console *model = new Console();
+
+    // 创建模型
+    Console *model = new Console;
     if (model == nullptr)
     {
         fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), "Out of Space for Console model");
         return 1;
     }
 
+    // 创建视图
     Display *view = new Display(model);
     if (view == nullptr)
     {
         fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), "Out of Space for Display view");
+        return 1;
+    }
+
+    // 创建控制
+    Executor *controller = new Executor(model, view);
+    if (controller == nullptr)
+    {
+        fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), "Out of Space for Executor controller");
         return 1;
     }
 
@@ -117,8 +91,6 @@ int main(int argc, char *argv[], char **env)
             char input[BUFFER_SIZE];
             InputCommand(input, BUFFER_SIZE);
 
-            
-
             // 从输入中创建buffer
             YY_BUFFER_STATE bp = yy_scan_string(input);
             if (bp == nullptr)
@@ -128,9 +100,9 @@ int main(int argc, char *argv[], char **env)
 
             yy_switch_to_buffer(bp);
 
+            // 进行分词解析处理
             int argument_counter = 0;
             char **argument_vector = nullptr;
-
             yy_lexer(&argument_counter, &argument_vector);
             
             #ifdef _DEBUG_
@@ -142,8 +114,10 @@ int main(int argc, char *argv[], char **env)
             putchar('\n');
             #endif
 
-            if (strcmp(input, "exit\n") == 0)
-                break;
+            // 执行命令
+            controller->execute(argument_counter, argument_vector, env);
+
+            view->show();   // 显示输出信息
         }
     }
     catch(const std::exception& e)
@@ -151,9 +125,10 @@ int main(int argc, char *argv[], char **env)
         fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
     }
     
-    
-    delete view;
+    // 回收内存，MVC模型
     delete model;
+    delete view;
+    delete controller; 
 
     // 末尾输出判断程序是否正常结束，仅在调试时使用
     // puts("Bye~");

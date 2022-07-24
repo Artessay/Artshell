@@ -1,9 +1,9 @@
 /**
  * @file Console.h
- * @author your name (you@domain.com)
+ * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 
  * @version 0.1
- * @date 2022-07-21
+ * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
  * 

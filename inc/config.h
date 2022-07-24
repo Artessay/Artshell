@@ -3,7 +3,7 @@
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 
  * @version 0.1
- * @date 2022-07-21
+ * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -13,5 +13,12 @@
 #define _CONFIG_H_
 
 static constexpr int BUFFER_SIZE = 1024;
+
+enum sh_err_t
+{
+    SH_SUCCESS = 0,
+    SH_FAILED,
+    SH_EXIT,
+};
 
 #endif

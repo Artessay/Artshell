@@ -1,9 +1,9 @@
 /**
  * @file Display.cpp
- * @author your name (you@domain.com)
+ * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 
  * @version 0.1
- * @date 2022-07-21
+ * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -38,5 +38,22 @@ void Display::render()
     if (ret == -1)
     {
         throw "Error when writing from buffer";
+    }
+
+    buffer_ = "";
+}
+
+void Display::message(const char * msg)
+{
+    buffer_ += std::string(msg);
+}
+
+void Display::show() const
+{
+    ssize_t ret;
+    ret = write(console_->output_file_descriptor, buffer_.c_str(), buffer_.length());
+    if (ret == -1)
+    {
+        throw "Error when showing buffer in Display";
     }
 }
