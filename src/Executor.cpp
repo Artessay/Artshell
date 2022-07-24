@@ -84,61 +84,61 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
 
 sh_err_t Executor::execute_cd(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "cd") && "unexpected node type");
+    assert(strcmp(argv[0], "cd")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_pwd(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "pwd") && "unexpected node type");
+    assert(strcmp(argv[0], "pwd")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_time(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "time") && "unexpected node type");
+    assert(strcmp(argv[0], "time")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_clr(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "clr") && "unexpected node type");
+    assert(strcmp(argv[0], "clr")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_dir(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "dir") && "unexpected node type");
+    assert(strcmp(argv[0], "dir")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_set(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "set") && "unexpected node type");
+    assert(strcmp(argv[0], "set")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_echo(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "echo") && "unexpected node type");
+    assert(strcmp(argv[0], "echo")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_help(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "help") && "unexpected node type");
+    assert(strcmp(argv[0], "help")==0 && "unexpected node type");
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_exit(const int argc, char * const argv[]) const
 {
-    assert(strcmp(argv[0], "exit") && "unexpected node type");
+    assert(strcmp(argv[0], "exit")==0 && "unexpected node type");
     return SH_EXIT;
 }
 
 sh_err_t Executor::execute_env(const int argc, char * const argv[], char * const env[]) const
 {
-    assert(strcmp(argv[0], "env") && "unexpected node type");
+    assert(strcmp(argv[0], "env")==0 && "unexpected node type");
     
     // 输入输出重定向
     // if (output == 1)

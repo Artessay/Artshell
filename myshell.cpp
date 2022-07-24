@@ -115,8 +115,25 @@ int main(int argc, char *argv[], char **env)
             #endif
 
             // 执行命令
-            controller->execute(argument_counter, argument_vector, env);
-
+            try
+            {
+                sh_err_t err = controller->execute(argument_counter, argument_vector, env);
+                
+                // 根据返回状态判断
+                if (err == SH_EXIT)
+                {
+                    break;
+                }
+                else if (err != SH_SUCCESS)
+                {
+                    throw err;
+                }
+            }
+            catch(const std::exception& e)
+            {
+                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
+            }
+            
             view->show();   // 显示输出信息
         }
     }

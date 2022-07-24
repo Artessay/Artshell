@@ -21,10 +21,15 @@ lib$(LIBS).a:
 
 .cpp.o:
 	$(CC) $(CFLAG) -c -o $@ $<
-	
+
+debug: lib$(LIBS).a
+	-rm $(OBJS) $(DEPS) $(RUN)
+	$(CC) $(CFLAG) -D_DEBUG_ -c -o myshell.o myshell.cpp
+	$(CC) $(CFLAG) $(OBJS) -l$(LIBS) -o myshell
+
 clean:
-	rm $(OBJS) $(DEPS) $(RUN)
+	-rm $(OBJS) $(DEPS) $(RUN)
 
 cleanall:
-	rm $(OBJS) $(DEPS) $(RUN) $(LIB)\lib$(LIBS).a
+	-rm $(OBJS) $(DEPS) $(RUN) $(LIB)/lib$(LIBS).a
 	make clean -C $(SRC)
