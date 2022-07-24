@@ -1,5 +1,5 @@
 CC = g++
-OBJS = Console.o Display.o lexer.o
+OBJS = Console.o Display.o Executor.o lexer.o
 INC = ../inc
 OUT = ../lib
 CFLAG = -I$(INC) -O3 -Wall -MMD
@@ -18,7 +18,7 @@ lib$(LIB).a: $(OBJS)
 	gcc -I$(INC) -MMD -c $<
 
 lexer.c: lexer.l
-	lex --header-file=../inc/lexer.h --outfile=./lexer.c lexer.l
+	lex --header-file=../inc/lexer.h --outfile=./lexer.c -w lexer.l
 
 clean:
 	rm $(OBJS) $(DEPS)

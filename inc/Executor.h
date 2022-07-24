@@ -24,26 +24,26 @@ private:
 
     Display *display_;  /** @see 显示器 */
     
-    sh_err_t execute_cd(const int argc, const char *argv[]) const;
+    sh_err_t execute_cd(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_pwd(const int argc, const char *argv[]) const;
+    sh_err_t execute_pwd(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_time(const int argc, const char *argv[]) const;
+    sh_err_t execute_time(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_clr(const int argc, const char *argv[]) const;
+    sh_err_t execute_clr(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_dir(const int argc, const char *argv[]) const;
+    sh_err_t execute_dir(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_set(const int argc, const char *argv[]) const;
+    sh_err_t execute_set(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_echo(const int argc, const char *argv[]) const;
+    sh_err_t execute_echo(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_help(const int argc, const char *argv[]) const;
+    sh_err_t execute_help(const int argc, char * const argv[]) const;
 
-    sh_err_t execute_exit(const int argc, const char *argv[]) const;
+    sh_err_t execute_exit(const int argc, char * const argv[]) const;
 
     /** 获取系统环境变量 */
-    sh_err_t execute_env(const int argc, const char *argv[], const char *env[]) const;
+    sh_err_t execute_env(const int argc, char * const argv[], char * const env[]) const;
 
 public:
     Executor(Console *model, Display *view);
@@ -62,7 +62,7 @@ public:
      * @date 2022-07-04
      * @copyright Copyright (c) 2022
      */
-    sh_err_t execute(const int argc, const char *argv[], const char *env[]) const;
+    sh_err_t execute(const int argc, char * const argv[], char * const env[]) const;
 
     
 };

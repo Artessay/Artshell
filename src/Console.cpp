@@ -20,7 +20,7 @@
 
 Console::Console(/* args */)
 {
-    [[__attribute_maybe_unused__]] int ret;
+    [[maybe_unused]] int ret;
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
 }
@@ -34,7 +34,8 @@ int Console::init()
     try
     {
         // 获取用户名称
-        strncpy(user_name, getenv("USER"), BUFFER_SIZE);
+        memset(user_name, 0, BUFFER_SIZE);
+        strncpy(user_name, getenv("USER"), BUFFER_SIZE-1);
         if (user_name == NULL)
         {
             throw "Environment Variable 'USER' does not exist"; //"当前系统中不存在环境变量USER";
