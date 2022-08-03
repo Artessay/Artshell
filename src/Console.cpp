@@ -43,7 +43,7 @@ int Console::init()
 
         // 获取主机名称
         int ret;
-        ret = gethostname(host_name, BUFFER_SIZE);
+        ret = gethostname(host_name, BUFFER_SIZE-1);
         if (ret != 0)
         {
             throw "Error when getting host name";
@@ -57,7 +57,10 @@ int Console::init()
             throw "Error when getting current working dictionary";
         }
 
-        
+        // 获取主目录
+        memset(home, 0, BUFFER_SIZE);
+        strncpy(home, getenv("HOME"), BUFFER_SIZE-1);
+
     }
     catch(const std::exception& e)
     {

@@ -128,13 +128,14 @@ int main(int argc, char *argv[], char **env)
                 {
                     throw err;
                 }
+
+                view->show();   // 显示输出信息
             }
             catch(const std::exception& e)
             {
                 fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
             }
             
-            view->show();   // 显示输出信息
         }
     }
     catch(const std::exception& e)

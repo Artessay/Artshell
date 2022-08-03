@@ -25,6 +25,8 @@ private:
     char user_name[BUFFER_SIZE];                    // 用户名称
     char host_name[BUFFER_SIZE];                    // 主机名称
     char current_working_dictionary[BUFFER_SIZE];   // 当前工作目录
+
+    char home[BUFFER_SIZE];                         // 主目录
     
     int input_file_descriptor;                      // 输入文件描述符
     int output_file_descriptor;                     // 输出文件描述符
@@ -36,6 +38,7 @@ public:
     int init();
 
     friend class Display;
+    friend class Executor;
 };
 
 #endif
