@@ -16,9 +16,34 @@
 #include <assert.h>
 
 /*定义所有SHELL支持的命令合集*/
-const std::pair<const char *, sh_err_t (*)(const int argc, char * const argv[], char * const env[])> Executor::FunctionArray[] = 
+// const std::pair<const char *, sh_err_t (Executor::*)(const int argc, char * const argv[], char * const env[]) const> Executor::FunctionArray[] = 
+// {
+//     std::make_pair("cd",    execute_cd  ),
+//     std::make_pair("pwd",   execute_pwd ),
+//     std::make_pair("time",  execute_time),
+//     std::make_pair("clr",   execute_clr ),
+//     std::make_pair("dir",   execute_dir ),
+//     std::make_pair("set",   execute_set ),
+//     std::make_pair("echo",  execute_echo),
+//     std::make_pair("help",  execute_help),
+//     std::make_pair("exit",  execute_exit),
+//     std::make_pair("date",  execute_date),
+//     std::make_pair("env",   execute_env ),
+//     std::make_pair("who",   execute_who ),
+// };
+
+/*定义映射*/
+// const std::map<const char *, sh_err_t (Executor::*)(const int argc, char * const argv[], char * const env[]) const> Executor::FunctionMap(
+//     FunctionArray, FunctionArray + sizeof(FunctionArray)/sizeof(FunctionArray[0])
+// );
+
+Executor::Executor(Console *model, Display *view)
+: console_(model), display_(view)
 {
-    std::make_pair("cd",    execute_cd  ),
+    assert(console_ != nullptr);
+    assert(display_ != nullptr);
+
+    FunctionMap.insert(std::make_pair("cd",    execute_cd  ));
     std::make_pair("pwd",   execute_pwd ),
     std::make_pair("time",  execute_time),
     std::make_pair("clr",   execute_clr ),
@@ -29,18 +54,8 @@ const std::pair<const char *, sh_err_t (*)(const int argc, char * const argv[], 
     std::make_pair("exit",  execute_exit),
     std::make_pair("date",  execute_date),
     std::make_pair("env",   execute_env ),
-    std::make_pair("who",   execute_who ),
-};
+    std::make_pair("who",   execute_who )
 
-const std::map<const char *, sh_err_t (*)(const int argc, char * const argv[], char * const env[])> Executor::FunctionMap(
-    FunctionArray, FunctionArray + sizeof(FunctionArray)/sizeof(FunctionArray[0])
-);
-
-Executor::Executor(Console *model, Display *view)
-: console_(model), display_(view)
-{
-    assert(console_ != nullptr);
-    assert(display_ != nullptr);
     return;
 }
 
@@ -140,8 +155,10 @@ sh_err_t Executor::execute_cd(const int argc, char * const argv[], char * const 
     }
 
     // 重新设置控制台环境与系统环境变量
-    getcwd(console_->current_working_dictionary, BUFFER_SIZE);
-    setenv("PWD", console_->current_working_dictionary, 1);
+    if (getcwd(console_->current_working_dictionary, BUFFER_SIZE) != nullptr )
+        setenv("PWD", console_->current_working_dictionary, 1);
+    else
+        throw "get cwd error";
 
     return SH_SUCCESS;
 }
