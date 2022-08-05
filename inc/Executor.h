@@ -17,6 +17,7 @@
 #include "Display.h"
 
 #include <map>
+#include <vector>
 
 class Executor
 {
@@ -35,6 +36,7 @@ private:
     /** 显示当前日期 */
     sh_err_t execute_time(const int argc, char * const argv[], char * const env[]) const;
 
+    /** 清屏 */
     sh_err_t execute_clr(const int argc, char * const argv[], char * const env[]) const;
 
     sh_err_t execute_dir(const int argc, char * const argv[], char * const env[]) const;
@@ -51,15 +53,24 @@ private:
     /** 显示当前日期 */
     sh_err_t execute_date(const int argc, char * const argv[], char * const env[]) const;
 
+    /** 清屏 */
+    sh_err_t execute_clear(const int argc, char * const argv[], char * const env[]) const;
+
     /** 获取系统环境变量 */
     sh_err_t execute_env(const int argc, char * const argv[], char * const env[]) const;
 
     /** 获取当前登入用户信息 */
     sh_err_t execute_who(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 创建新目录 */
+    sh_err_t execute_mkdir(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 移除空目录 */
+    sh_err_t execute_rmdir(const int argc, char * const argv[], char * const env[]) const;
     
     /** 从命令到对应函数的映射，采用红黑树的STL实现 */
-    sh_err_t (Executor::* FunctionArray[])(const int argc, char * const argv[], char * const env[]) = 
-    {
+    // std::vector<sh_err_t (Executor::* )(const int argc, char * const argv[], char * const env[])> FunctionArray =
+    // {
     //     {"cd",    execute_cd  },
     //     {"pwd",   execute_pwd },
     //     {"time",  execute_time},
@@ -84,7 +95,7 @@ private:
     //     // std::make_pair("date",  execute_date),
     //     // std::make_pair("env",   execute_env ),
     //     // std::make_pair("who",   execute_who )
-    };
+    // };
 
 public:
     Executor(Console *model, Display *view);

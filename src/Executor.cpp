@@ -15,6 +15,9 @@
 #include <string.h>
 #include <assert.h>
 
+#include <sys/stat.h>
+#include <sys/types.h>
+
 /*定义所有SHELL支持的命令合集*/
 // const std::pair<const char *, sh_err_t (Executor::*)(const int argc, char * const argv[], char * const env[]) const> Executor::FunctionArray[] = 
 // {
@@ -43,19 +46,6 @@ Executor::Executor(Console *model, Display *view)
     assert(console_ != nullptr);
     assert(display_ != nullptr);
 
-    FunctionMap.insert(std::make_pair("cd",    execute_cd  ));
-    std::make_pair("pwd",   execute_pwd ),
-    std::make_pair("time",  execute_time),
-    std::make_pair("clr",   execute_clr ),
-    std::make_pair("dir",   execute_dir ),
-    std::make_pair("set",   execute_set ),
-    std::make_pair("echo",  execute_echo),
-    std::make_pair("help",  execute_help),
-    std::make_pair("exit",  execute_exit),
-    std::make_pair("date",  execute_date),
-    std::make_pair("env",   execute_env ),
-    std::make_pair("who",   execute_who )
-
     return;
 }
 
@@ -65,9 +55,9 @@ Executor::~Executor()
 
 sh_err_t Executor::execute(const int argc, char * const argv[], char * const env[]) const
 {
-    if (argc == 0 && argv == nullptr)
+    if (argc == 0)
         return SH_SUCCESS;  // 没有输入命令则无需处理
-    else if (argc == 0 || argv == nullptr || argv[0] == nullptr)
+    else if (argv == nullptr || argv[0] == nullptr)
     {
         assert(false);
         return SH_FAILED;   // 解析可能产生了错误
@@ -123,9 +113,8 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     {
         return execute_who(argc, argv, env);
     }
-    
 
-    return SH_SUCCESS;
+    return SH_ARGS; // 未识别的命令
 }
 
 sh_err_t Executor::execute_cd(const int argc, char * const argv[], char * const env[]) const
@@ -183,7 +172,8 @@ sh_err_t Executor::execute_clr(const int argc, char * const argv[], char * const
 {
     assert(strcmp(argv[0], "clr")==0 && "unexpected node type");
     
-    return SH_SUCCESS;
+    // 相当于clear命令，从兼容性的角度出发，这里选择调用env命令以兼容Linux用户需求以及后续开发
+    return execute_clear(argc, argv, env);
 }
 
 sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const env[]) const
@@ -220,14 +210,64 @@ sh_err_t Executor::execute_exit(const int argc, char * const argv[], char * cons
 
 sh_err_t Executor::execute_date(const int argc, char * const argv[], char * const env[]) const
 {
-    assert(strcmp(argv[0], "date")==0 && "unexpected node type");
+    // assert(strcmp(argv[0], "date")==0 && "unexpected node type");
+
+    //获取当前时间
+    time_t t = time(NULL);
+    struct tm *ptr = localtime(&t);
+
+    //生成返回信息
+    // char weekday[16], month[16];
+    char date[256];
+    // strftime(weekday, 16, "%A", ptr);
+    // strftime(month, 16, "%B", ptr);
+    strftime(date, 256, "%c", ptr);
+
+    // char buffer[BUFFER_SIZE];
+    // snprintf(buffer, BUFFER_SIZE, "%s %s %s\n", weekday, month, date);
+
+    // display_->message(buffer);
+    display_->message(date);
+    display_->message("\n");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_clear(const int argc, char * const argv[], char * const env[]) const
+{
+    // 为了能够处理其他命令的引用，此处需要修改命令参数
+    [[maybe_unused]] const char *op = const_cast<char *>(argv[0]);
+    op = "clear";
+    
+    pid_t pid = getpid(); // 获取当前进程id
+    if ((pid = fork()) < 0)
+    { 
+        /* 错误处理 */
+        throw "Fork Error, 错误终止";
+    }
+    else if (pid == 0)
+    {
+        /* 子进程 */
+        setenv("parent", getenv("myshell"), 1);  // 设置调用子进程的父进程
+        int status_code = execvp("clear", argv); // 在子进程之中执行
+        
+        if (status_code == -1)
+        {
+            throw "Execv Error, terminated incorrectly";
+        }
+    }
+    else
+    {
+        /* 父进程 */
+        /** @todo 处理后台尚未结束的进程 */
+    }
 
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_env(const int argc, char * const argv[], char * const env[]) const
 {
-    assert(strcmp(argv[0], "env")==0 && "unexpected node type");
+    // assert(strcmp(argv[0], "env")==0 && "unexpected node type");
     
     while(*env)
     {
@@ -245,4 +285,29 @@ sh_err_t Executor::execute_who(const int argc, char * const argv[], char * const
     display_->message(console_->user_name);
     display_->message("\n");
     return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_mkdir(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "mkdir")==0 && "unexpected node type");
+    
+    const char * path = argv[1];
+    if (mkdir(path, S_IRWXU) == 0)
+        return SH_SUCCESS;
+    else
+    {
+        throw errno;
+    }
+}
+
+sh_err_t Executor::execute_rmdir(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "rmdir")==0 && "unexpected node type");
+
+    if (rmdir(argv[1]) == 0)
+        return SH_SUCCESS;
+    else
+    {
+        throw errno;
+    }
 }
