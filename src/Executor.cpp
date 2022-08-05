@@ -40,7 +40,7 @@
 //     FunctionArray, FunctionArray + sizeof(FunctionArray)/sizeof(FunctionArray[0])
 // );
 
-void Argument_Display(int argc, char*argv[]);
+
 
 Executor::Executor(Console *model, Display *view)
 : console_(model), display_(view)
@@ -120,7 +120,35 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         return execute_who(argc, argv, env);
     }
 
-    return SH_UNDEFINED; // 未识别的命令
+    // 其他的命令行输入被解释为程序调用，
+    // shell 创建并执行这个程序，并作为自己的子进程
+    pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
+    if ((pid = fork()) < 0)
+    { 
+        /* 错误处理 */
+        throw "Fork Error, 错误终止";
+    }
+    else if (pid == 0)
+    {
+        /* 子进程 */  
+        setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
+        int status_code = execvp(argv[0], argv);        // 在子进程之中执行
+
+        if (status_code == -1)
+        {
+            throw "Execv Error, terminated incorrectly";
+        }
+
+        return SH_UNDEFINED; // 未识别的命令
+    }
+    else
+    {
+        /* 父进程 */
+        // display_->render();
+        return SH_SUCCESS;
+    }
+
+    return SH_FAILED;
 }
 
 sh_err_t Executor::execute_cd(const int argc, char * const argv[], char * const env[]) const
@@ -249,39 +277,38 @@ sh_err_t Executor::execute_clear(const int argc, char * const argv[], char * con
     op = NULL;
     
     // 清屏主过程
-    if (fork() == 0)
-    {
-        
+    pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
+    if ((pid = fork()) < 0)
+    { 
+        /* 错误处理 */
+        throw "Fork Error, 错误终止";
     }
-    // pid_t pid = getpid(); // 获取当前进程id
-    // if ((pid = fork()) < 0)
-    // { 
-    //     /* 错误处理 */
-    //     throw "Fork Error, 错误终止";
-    // }
-    // else if (pid == 0)
-    // {
-    //     /* 子进程 */    
-    //     puts("child process");
-    //     Argument_Display(argc, const_cast<char **>(argv));
+    else if (pid == 0)
+    {
+        /* 子进程 */  
+        #ifdef _DEBUG_  
+        puts("child process");
+        Argument_Display(argc, const_cast<char **>(argv));
+        #endif
 
-    //     setenv("parent", getenv("myshell"), 1);  // 设置调用子进程的父进程
-    //     int status_code = execvp("clear", argv); // 在子进程之中执行
+        // setenv("parent", getenv("shell"), 1);  // 设置调用子进程的父进程
+        int status_code = execvp("clear", argv); // 在子进程之中执行
         
-    //     #ifdef _DEBUG_
-    //     printf("这一行永远不会出现, 除非exec出现了问题\n");
-    //     #endif
+        #ifdef _DEBUG_
+        printf("这一行永远不会出现, 除非exec出现了问题\n");
+        #endif
 
-    //     if (status_code == -1)
-    //     {
-    //         throw "Execv Error, terminated incorrectly";
-    //     }
-    // }
-    // else
-    // {
-    //     /* 父进程 */
-    //     /** @todo 处理后台尚未结束的进程 */
-    // }
+        if (status_code == -1)
+        {
+            throw "Execv Error, terminated incorrectly";
+        }
+    }
+    else
+    {
+        /* 父进程 */
+        /** @todo 处理后台尚未结束的进程 */
+        display_->render();
+    }
 
     return SH_SUCCESS;
 }

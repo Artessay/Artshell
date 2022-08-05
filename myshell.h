@@ -24,6 +24,7 @@ extern "C"
 }
 
 #include "config.h"
+#include "common.h"
 #include "Console.h"
 #include "Display.h"
 #include "Executor.h"

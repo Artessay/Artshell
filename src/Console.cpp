@@ -61,6 +61,10 @@ int Console::init()
         memset(home, 0, BUFFER_SIZE);
         strncpy(home, getenv("HOME"), BUFFER_SIZE-1);
 
+        // 设置shell环境变量
+        strncpy(shell_path_env, current_working_dictionary, BUFFER_SIZE);
+        strncat(shell_path_env, "/myshell", BUFFER_SIZE);
+        setenv("shell", shell_path_env, 1);
     }
     catch(const std::exception& e)
     {
