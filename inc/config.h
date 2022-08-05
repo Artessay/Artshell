@@ -18,6 +18,7 @@ enum sh_err_t
 {
     SH_SUCCESS = 0,
     SH_FAILED,
+    SH_UNDEFINED,
     SH_ARGS,
     SH_EXIT,
 };

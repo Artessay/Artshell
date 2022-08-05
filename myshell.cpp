@@ -51,6 +51,33 @@ void InputCommand(char *input, const int len)
     #endif
 }
 
+const char * Shell_Error_Message(sh_err_t err)
+{
+    switch (err)
+    {
+        case SH_FAILED:
+            return "Shell Failed. 错误";
+        case SH_UNDEFINED:
+            return "Undifined command. 未定义的命令";
+        case SH_ARGS:
+            return "Argument error. 参数错误";
+        
+        default:
+            return "Unknown error. 未知错误";
+    }
+}
+
+void Argument_Display(int argc, char*argv[])
+{
+    printf("argc: %d\n", argc);
+    for (int i = 0; i < argc; ++i)
+    {
+        printf("%s ", argv[i]);
+    }
+    putchar('\n');
+    return;
+}
+
 int main(int argc, char *argv[], char **env)
 {
     // 开头输出判断程序是否正常开始，仅在调试时使用
@@ -106,12 +133,7 @@ int main(int argc, char *argv[], char **env)
             yy_lexer(&argument_counter, &argument_vector);
             
             #ifdef _DEBUG_
-            printf("argc: %d\n", argument_counter);
-            for (int i = 0; i < argument_counter; ++i)
-            {
-                printf("%s ", argument_vector[i]);
-            }
-            putchar('\n');
+            Argument_Display(argument_counter, argument_vector);
             #endif
 
             // 执行命令
@@ -135,7 +157,18 @@ int main(int argc, char *argv[], char **env)
             {
                 fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
             }
-            
+            catch(const sh_err_t e)
+            {
+                fprintf(stderr, "\e[1;31m[ERROR]\e[0m MyShell: %s\n", Shell_Error_Message(e));
+            }
+            catch(const char * message)
+            {
+                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), message);
+            }
+            catch(...)
+            {
+                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s\n", strerror(errno));
+            }
         }
     }
     catch(const std::exception& e)
