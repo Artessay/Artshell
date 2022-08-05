@@ -15,6 +15,7 @@
 #include <string.h>
 #include <assert.h>
 
+#include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -115,15 +116,11 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     {
         return execute_env(argc, argv, env);
     }
-    else if (strcmp(op, "who") == 0)
-    {
-        return execute_who(argc, argv, env);
-    }
 
     // 其他的命令行输入被解释为程序调用，
     // shell 创建并执行这个程序，并作为自己的子进程
     pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
-    if ((pid = fork()) < 0)
+    if ((pid = vfork()) < 0)
     { 
         /* 错误处理 */
         throw "Fork Error, 错误终止";
@@ -144,7 +141,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     else
     {
         /* 父进程 */
-        // display_->render();
+        wait(NULL); // 等待子进程结束后再继续执行，保证执行顺序不混乱
         return SH_SUCCESS;
     }
 
@@ -213,6 +210,7 @@ sh_err_t Executor::execute_clr(const int argc, char * const argv[], char * const
 sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "dir")==0 && "unexpected node type");
+    
     return SH_SUCCESS;
 }
 
@@ -269,46 +267,7 @@ sh_err_t Executor::execute_date(const int argc, char * const argv[], char * cons
 
 sh_err_t Executor::execute_clear(const int argc, char * const argv[], char * const env[]) const
 {
-    // 为了能够处理其他命令的引用，此处需要修改命令参数
-    [[maybe_unused]] const char *op;
-    op = const_cast<char *>(argv[0]);
-    op = "clear";
-    op = const_cast<char *>(argv[argc]);
-    op = NULL;
-    
-    // 清屏主过程
-    pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
-    if ((pid = fork()) < 0)
-    { 
-        /* 错误处理 */
-        throw "Fork Error, 错误终止";
-    }
-    else if (pid == 0)
-    {
-        /* 子进程 */  
-        #ifdef _DEBUG_  
-        puts("child process");
-        Argument_Display(argc, const_cast<char **>(argv));
-        #endif
-
-        // setenv("parent", getenv("shell"), 1);  // 设置调用子进程的父进程
-        int status_code = execvp("clear", argv); // 在子进程之中执行
-        
-        #ifdef _DEBUG_
-        printf("这一行永远不会出现, 除非exec出现了问题\n");
-        #endif
-
-        if (status_code == -1)
-        {
-            throw "Execv Error, terminated incorrectly";
-        }
-    }
-    else
-    {
-        /* 父进程 */
-        /** @todo 处理后台尚未结束的进程 */
-        display_->render();
-    }
+    display_->message("\x1b[H\x1b[2J");    // 输出清屏控制 \x1b[H\x1b[2J
 
     return SH_SUCCESS;
 }
