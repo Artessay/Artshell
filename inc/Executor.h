@@ -19,6 +19,8 @@
 #include <map>
 #include <vector>
 
+static constexpr int FunctionNumber = 32;
+
 class Executor
 {
 private:
@@ -69,33 +71,9 @@ private:
     sh_err_t execute_rmdir(const int argc, char * const argv[], char * const env[]) const;
     
     /** 从命令到对应函数的映射，采用红黑树的STL实现 */
-    // std::vector<sh_err_t (Executor::* )(const int argc, char * const argv[], char * const env[])> FunctionArray =
-    // {
-    //     {"cd",    execute_cd  },
-    //     {"pwd",   execute_pwd },
-    //     {"time",  execute_time},
-    //     {"clr",   execute_clr },
-    //     {"dir",   execute_dir },
-    //     {"set",   execute_set },
-    //     {"echo",  execute_echo},
-    //     {"help",  execute_help},
-    //     {"exit",  execute_exit},
-    //     {"date",  execute_date},
-    //     {"env",   execute_env },
-    //     {"who",   execute_who }
-    //     // std::make_pair("cd",    execute_cd  ),
-    //     // std::make_pair("pwd",   execute_pwd ),
-    //     // std::make_pair("time",  execute_time),
-    //     // std::make_pair("clr",   execute_clr ),
-    //     // std::make_pair("dir",   execute_dir ),
-    //     // std::make_pair("set",   execute_set ),
-    //     // std::make_pair("echo",  execute_echo),
-    //     // std::make_pair("help",  execute_help),
-    //     // std::make_pair("exit",  execute_exit),
-    //     // std::make_pair("date",  execute_date),
-    //     // std::make_pair("env",   execute_env ),
-    //     // std::make_pair("who",   execute_who )
-    // };
+
+    typedef sh_err_t (Executor::*MemFuncPtr)(const int argc, char * const argv[], char * const env[]) const;
+    MemFuncPtr FunctionArray[FunctionNumber];
 
 public:
     Executor(Console *model, Display *view);

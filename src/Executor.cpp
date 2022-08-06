@@ -42,13 +42,18 @@
 //     FunctionArray, FunctionArray + sizeof(FunctionArray)/sizeof(FunctionArray[0])
 // );
 
-
+// typedef sh_err_t* (Executor::*MemFuncPtr)(const int argc, char * const argv[], char * const env[]); // readability
+// MemFuncPtr mfs[] = { &Executor::execute_cd }; // declaring and initializing the array
+// B* bptr1 = (pointerToA->*mfs[0])(); // call A::foo() through pointer to A
+// B* bptr2 = (instanceOfA.*mfs[0])(); // call A::foo() through instance of A
 
 Executor::Executor(Console *model, Display *view)
 : console_(model), display_(view)
 {
     assert(console_ != nullptr);
     assert(display_ != nullptr);
+
+    FunctionArray[0] = &Executor::execute_cd;
 
     return;
 }
