@@ -356,13 +356,14 @@ sh_err_t Executor::execute_echo(const int argc, char * const argv[], char * cons
         display_->message(argv[i]);
     }
     display_->message("\n");
-    
+
     return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_help(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "help")==0 && "unexpected node type");
+
     return SH_SUCCESS;
 }
 
@@ -406,8 +407,6 @@ sh_err_t Executor::execute_clear(const int argc, char * const argv[], char * con
 
 sh_err_t Executor::execute_env(const int argc, char * const argv[], char * const env[]) const
 {
-    // assert(strcmp(argv[0], "env")==0 && "unexpected node type");
-    
     while(*env)
     {
         char buffer[BUFFER_SIZE];
