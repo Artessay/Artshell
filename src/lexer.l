@@ -4,7 +4,7 @@
     int _argcounter = 0;					// 参数个数
 %}
 
-WORD	[a-zA-Z0-9\/\.-]+
+WORD	[a-zA-Z0-9\/\.-~]+
 STRINGLITERAL \"(\\.|[^\\"])*\"
 SPECIAL	[()><|&*]
 

@@ -12,6 +12,7 @@
 #include "Executor.h"
 
 #include <unistd.h>
+#include <dirent.h>
 #include <string.h>
 #include <assert.h>
 
@@ -152,15 +153,29 @@ sh_err_t Executor::execute_cd(const int argc, char * const argv[], char * const 
 {
     assert(strcmp(argv[0], "cd")==0 && "unexpected node type");
 
-    char *path = nullptr;
+    const char *path = nullptr;
+    std::string real_path;
     if (argc == 1)
     {
-        path = console_->home;  // 默认无参数时打开主目录
+        // 默认无参数时为主目录
+        path = console_->home;
     }
     else if (argc == 2)
     {
-        // 对于~目录需要特殊判断
-        path = strcmp(argv[1], "~") ? argv[1] : console_->home;
+        real_path = argv[1];
+        
+        #ifdef _DEBUG_
+        printf("char: %c %d\n", real_path[0], (real_path[0] == '~'));
+        #endif
+        if (real_path[0] == '~') // 对于~目录需要特殊判断
+        {
+            // 将~替换为主目录
+            real_path.replace(0, 1, console_->home);
+        }
+        path = real_path.c_str();
+        #ifdef _DEBUG_
+        printf("Argv: %s\nHome: %s\nPath: %s\n", argv[1], console_->home, path);
+        #endif
     }
     else
     {
@@ -168,6 +183,7 @@ sh_err_t Executor::execute_cd(const int argc, char * const argv[], char * const 
     }
 
     // 更改目录
+    puts(path);
     int ret = chdir(path);
     if (ret != 0)   // 打开目录异常
     {
@@ -211,6 +227,98 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
 {
     assert(strcmp(argv[0], "dir")==0 && "unexpected node type");
     
+    const char *path = nullptr;
+    if (argc == 1)
+    {
+        // 默认无参数时为当前目录
+        path = console_->current_working_dictionary;
+    }
+    else if (argc == 2)
+    {
+        std::string real_path = argv[1];
+        if (real_path[0] == '~') // 对于~目录需要特殊判断
+        {
+            // 将~替换为主目录
+            real_path.replace(0, 1, console_->home);
+        }
+        path = real_path.c_str();
+    }
+    else
+    {
+        return SH_ARGS; // 参数错误
+    }
+    
+    int ret;                // 用于接受返回值
+    DIR *direction_pointer; // 目录指针
+    if ((direction_pointer = opendir(path)) == NULL)
+    {
+        throw ((std::string)"dir: 无法打开路径 " + (std::string)path);
+    }
+
+    // 临时将进程目录调整为指定目录
+    ret = chdir(path);
+    if (ret != 0)   // 打开目录异常
+    {
+        throw ((std::string)"dir: 无法打开路径 " + (std::string)path);
+    }
+
+    struct dirent *entry;   // 目录内容
+    while ((entry = readdir(direction_pointer)) != NULL)
+    {
+        struct stat stat_buffer;    // 存储stat结构
+        lstat(entry->d_name, &stat_buffer); // 根据文件名获得文件stat结构
+
+        char buffer[BUFFER_SIZE];
+        if (S_ISDIR(stat_buffer.st_mode))   // 检测该数据项是否是一个目录
+        {
+            // 数据项是一个目录
+
+            if (strcmp(".", entry->d_name) == 0 ||
+                strcmp("..", entry->d_name) == 0)
+            {
+                // 如果是.或者..目录，则不显示
+                continue;
+            }
+
+            // 目录用蓝色显示
+            snprintf(buffer, BUFFER_SIZE, "\033[34m%s\033[0m ", entry->d_name);
+            display_->message(buffer);
+        }
+        else
+        {
+            // 普通文件
+            switch (entry->d_type)
+            {
+                case DT_UNKNOWN:    // 未知文件用红色
+                    snprintf(buffer, BUFFER_SIZE, "\033[31m%s\033[0m ", entry->d_name);
+                    break;
+                
+                case DT_REG:        // 普通文件用白色
+                    snprintf(buffer, BUFFER_SIZE, "\033[37m%s\033[0m ", entry->d_name);
+                    break;
+
+                default:            // 其他文件用绿色
+                    snprintf(buffer, BUFFER_SIZE, "\033[32m%s\033[0m ", entry->d_name);
+                    break;
+            }
+            display_->message(buffer);
+        }
+    }
+    display_->message("\n");
+
+    // 结束时将目录更改回当前目录
+    ret = chdir(console_->current_working_dictionary);
+    if (ret != 0)   // 打开目录异常
+    {
+        throw ((std::string)"dir: 无法打开路径 " + (std::string)path);
+    }
+
+    ret = closedir(direction_pointer);
+    if (ret == -1)  // 关闭目录流异常
+    {
+        throw "dir: 关闭目录流异常";
+    }
+
     return SH_SUCCESS;
 }
 
