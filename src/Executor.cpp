@@ -20,32 +20,12 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-/*定义所有SHELL支持的命令合集*/
-// const std::pair<const char *, sh_err_t (Executor::*)(const int argc, char * const argv[], char * const env[]) const> Executor::FunctionArray[] = 
-// {
-//     std::make_pair("cd",    execute_cd  ),
-//     std::make_pair("pwd",   execute_pwd ),
-//     std::make_pair("time",  execute_time),
-//     std::make_pair("clr",   execute_clr ),
-//     std::make_pair("dir",   execute_dir ),
-//     std::make_pair("set",   execute_set ),
-//     std::make_pair("echo",  execute_echo),
-//     std::make_pair("help",  execute_help),
-//     std::make_pair("exit",  execute_exit),
-//     std::make_pair("date",  execute_date),
-//     std::make_pair("env",   execute_env ),
-//     std::make_pair("who",   execute_who ),
-// };
-
-/*定义映射*/
-// const std::map<const char *, sh_err_t (Executor::*)(const int argc, char * const argv[], char * const env[]) const> Executor::FunctionMap(
-//     FunctionArray, FunctionArray + sizeof(FunctionArray)/sizeof(FunctionArray[0])
-// );
-
-// typedef sh_err_t* (Executor::*MemFuncPtr)(const int argc, char * const argv[], char * const env[]); // readability
-// MemFuncPtr mfs[] = { &Executor::execute_cd }; // declaring and initializing the array
-// B* bptr1 = (pointerToA->*mfs[0])(); // call A::foo() through pointer to A
-// B* bptr2 = (instanceOfA.*mfs[0])(); // call A::foo() through instance of A
+/** 定义命令字符串数组 */
+static const char* OperandArray[] = 
+{
+    "bg", "cd", "clr", "dir", "echo", "exec", "exit", "fg",
+    "help", "jobs", "myshell", "pwd", "set", "test", "time", "umask"
+};
 
 Executor::Executor(Console *model, Display *view)
 : console_(model), display_(view)
@@ -53,7 +33,26 @@ Executor::Executor(Console *model, Display *view)
     assert(console_ != nullptr);
     assert(display_ != nullptr);
 
-    FunctionArray[0] = &Executor::execute_cd;
+    /** 定义函数指针数组 */
+    int i = 0;
+
+    FunctionArray[i] = &Executor::execute_bg;       ++i;
+    FunctionArray[i] = &Executor::execute_cd;       ++i;
+    FunctionArray[i] = &Executor::execute_clr;      ++i;
+    FunctionArray[i] = &Executor::execute_dir;      ++i;
+    FunctionArray[i] = &Executor::execute_echo;     ++i;
+    FunctionArray[i] = &Executor::execute_exec;     ++i;
+    FunctionArray[i] = &Executor::execute_exit;     ++i;
+    FunctionArray[i] = &Executor::execute_fg;       ++i;
+
+    FunctionArray[i] = &Executor::execute_help;     ++i;
+    FunctionArray[i] = &Executor::execute_jobs;     ++i;
+    FunctionArray[i] = &Executor::execute_myshell;  ++i;
+    FunctionArray[i] = &Executor::execute_pwd;      ++i;
+    FunctionArray[i] = &Executor::execute_set;      ++i;
+    FunctionArray[i] = &Executor::execute_test;     ++i;
+    FunctionArray[i] = &Executor::execute_time;     ++i;
+    FunctionArray[i] = &Executor::execute_umask;    ++i;
 
     return;
 }

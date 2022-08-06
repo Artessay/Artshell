@@ -41,12 +41,16 @@ private:
     /** 清屏 */
     sh_err_t execute_clr(const int argc, char * const argv[], char * const env[]) const;
 
+    /* 列出目录内容 */
     sh_err_t execute_dir(const int argc, char * const argv[], char * const env[]) const;
 
+    /* 列出所有环境变量 */
     sh_err_t execute_set(const int argc, char * const argv[], char * const env[]) const;
 
+    /* 回声 */
     sh_err_t execute_echo(const int argc, char * const argv[], char * const env[]) const;
 
+    /* 显示帮助手册 */
     sh_err_t execute_help(const int argc, char * const argv[], char * const env[]) const;
 
     /** 退出shell */
@@ -69,10 +73,33 @@ private:
 
     /** 移除空目录 */
     sh_err_t execute_rmdir(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 将被挂起的作业转到后台 */
+    sh_err_t execute_bg(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 将后台作业转到前台 */
+    sh_err_t execute_fg(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 显示所有作业 */
+    sh_err_t execute_jobs(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 执行命令替换当前进程 */
+    sh_err_t execute_exec(const int argc, char * const argv[], char * const env[]) const;
+   
+    /** 检测命令执行结构 */
+    sh_err_t execute_test(const int argc, char * const argv[], char * const env[]) const;
+
+    /** 设置掩码 */
+    sh_err_t execute_umask(const int argc, char * const argv[], char * const env[]) const;
+
+        /** myshell */
+    sh_err_t execute_myshell(const int argc, char * const argv[], char * const env[]) const;
     
     /** 从命令到对应函数的映射，采用红黑树的STL实现 */
 
+    /** 定义函数指针类型 */
     typedef sh_err_t (Executor::*MemFuncPtr)(const int argc, char * const argv[], char * const env[]) const;
+    /** 创建函数指针数组 */
     MemFuncPtr FunctionArray[FunctionNumber];
 
 public:
