@@ -105,6 +105,8 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     {
         return execute_exit(argc, argv, env);
     }
+#ifdef _DEBUG_
+    // 以下命令不要求实现，不能保证稳定，仅供练习使用
     else if (strcmp(op, "date") == 0)
     {
         return execute_date(argc, argv, env);
@@ -117,6 +119,19 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     {
         return execute_env(argc, argv, env);
     }
+    else if (strcmp(op, "who") == 0)
+    {
+        return execute_who(argc, argv, env);
+    }
+    else if (strcmp(op, "mkdir") == 0)
+    {
+        return execute_mkdir(argc, argv, env);
+    }
+    else if (strcmp(op, "rmdir") == 0)
+    {
+        return execute_rmdir(argc, argv, env);
+    }
+#endif
 
     // 其他的命令行输入被解释为程序调用，
     // shell 创建并执行这个程序，并作为自己的子进程
@@ -331,6 +346,17 @@ sh_err_t Executor::execute_set(const int argc, char * const argv[], char * const
 sh_err_t Executor::execute_echo(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "echo")==0 && "unexpected node type");
+
+    for (int i = 1; i < argc; ++i)
+    {
+        // 多个空格和制表符被缩减为一个空格
+        if (i > 1)
+            display_->message(" ");
+
+        display_->message(argv[i]);
+    }
+    display_->message("\n");
+    
     return SH_SUCCESS;
 }
 
