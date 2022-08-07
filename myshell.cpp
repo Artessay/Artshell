@@ -19,38 +19,6 @@
 #include <string.h>
 #include <exception>
 
-/** @brief 命令行输入控制 */
-void InputCommand(char *input, const int len) 
-{
-    // 初始化输入缓冲器与相关变量
-    char ch;
-    int i = 0;
-    memset(input, 0, len);
-
-    // 循环读入字符
-    do
-    {
-        ch = getchar();
-
-        if (ch == '\\') // 如果读到换行输入\命令就跳过继续
-        {
-            ch = getchar(); // 将随后的换行符读入
-            continue;
-        }
-
-        if (ch == ';')  // 将；视为换行符，便于lexer和parser处理
-        {
-            ch = '\n';
-        }
-            
-        input[i++] = ch;
-    } while (ch != '\n');
-
-    #ifdef _DEBUG_
-    printf("input: %s", input);
-    #endif
-}
-
 const char * Shell_Error_Message(sh_err_t err)
 {
     switch (err)
@@ -105,7 +73,7 @@ int main(int argc, char *argv[], char **env)
 
             // 从输入读入命令
             char input[BUFFER_SIZE];
-            InputCommand(input, BUFFER_SIZE);
+            view->InputCommand(input, BUFFER_SIZE);
 
             // 从输入中创建buffer
             YY_BUFFER_STATE bp = yy_scan_string(input);

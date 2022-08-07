@@ -9,6 +9,7 @@
  * 
  */
 
+#include "common.h"
 #include "Executor.h"
 
 #include <unistd.h>
@@ -73,45 +74,11 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     
     const char *op = argv[0];
 
-    if (strcmp(op, "cd") == 0)
-    {
-        return execute_cd(argc, argv, env);
-    }
-    else if (strcmp(op, "pwd") == 0)
-    {
-        return execute_pwd(argc, argv, env);
-    }
-    else if (strcmp(op, "time") == 0)
-    {
-        return execute_time(argc, argv, env);
-    }
-    else if (strcmp(op, "clr") == 0)
-    {
-        return execute_clr(argc, argv, env);
-    }
-    else if (strcmp(op, "dir") == 0)
-    {
-        return execute_dir(argc, argv, env);
-    }
-    else if (strcmp(op, "set") == 0)
-    {
-        return execute_set(argc, argv, env);
-    }
-    else if (strcmp(op, "echo") == 0)
-    {
-        return execute_echo(argc, argv, env);
-    }
-    else if (strcmp(op, "help") == 0)
-    {
-        return execute_help(argc, argv, env);
-    }
-    else if (strcmp(op, "exit") == 0)
-    {
-        return execute_exit(argc, argv, env);
-    }
 #ifdef _DEBUG_
-    // 以下命令不要求实现，不能保证稳定，仅供练习使用
-    else if (strcmp(op, "date") == 0)
+    Argument_Display(argc, argv);
+    
+    // 以下命令不要求实现，仅供练习使用
+    if (strcmp(op, "date") == 0)
     {
         return execute_date(argc, argv, env);
     }
@@ -137,6 +104,18 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     }
 #endif
 
+    int index = Binary_Search(0, sizeof(OperandArray)/sizeof(OperandArray[0]), op, OperandArray, strcmp);
+#ifdef _DEBUG_
+    printf("index: %d op: %s\n", index, OperandArray[index>=0?index:0]);
+#endif
+
+    if (index >= 0 && index < FunctionNumber)
+    {
+        MemFuncPtr FunctionPointer = FunctionArray[index];  // 找到对应的函数指针
+        return (*this.*FunctionPointer)(argc, argv, env);   // 执行内部函数
+    }
+    
+
     // 其他的命令行输入被解释为程序调用，
     // shell 创建并执行这个程序，并作为自己的子进程
     pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
@@ -153,7 +132,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
 
         if (status_code == -1)
         {
-            throw "Execv Error, terminated incorrectly";
+            throw "Execvp Error, terminated incorrectly";
         }
 
         return SH_UNDEFINED; // 未识别的命令
@@ -440,6 +419,8 @@ sh_err_t Executor::execute_mkdir(const int argc, char * const argv[], char * con
     {
         throw errno;
     }
+
+    return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_rmdir(const int argc, char * const argv[], char * const env[]) const
@@ -452,4 +433,66 @@ sh_err_t Executor::execute_rmdir(const int argc, char * const argv[], char * con
     {
         throw errno;
     }
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_bg(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "bg")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "fg")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_exec(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "exec")==0 && "unexpected node type");
+
+    // 只有一个参数时不做处理
+    if (argc == 1)
+        return SH_SUCCESS;
+
+    int status_code = execvp(argv[1], argv+1);        // 在子进程之中执行
+
+    if (status_code == -1)
+    {
+        throw "Execvp Error, terminated incorrectly";
+    }
+
+    return SH_UNDEFINED; // 未识别的命令
+}
+
+sh_err_t Executor::execute_test(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "test")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_umask(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "umask")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
+}
+
+sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * const env[]) const
+{
+    assert(strcmp(argv[0], "myshell")==0 && "unexpected node type");
+
+    return SH_SUCCESS;
 }

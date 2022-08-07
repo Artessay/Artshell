@@ -19,7 +19,7 @@
 #include <map>
 #include <vector>
 
-static constexpr int FunctionNumber = 32;
+static constexpr int FunctionNumber = 16;
 
 class Executor
 {
@@ -101,6 +101,8 @@ private:
     typedef sh_err_t (Executor::*MemFuncPtr)(const int argc, char * const argv[], char * const env[]) const;
     /** 创建函数指针数组 */
     MemFuncPtr FunctionArray[FunctionNumber];
+
+    
 
 public:
     Executor(Console *model, Display *view);

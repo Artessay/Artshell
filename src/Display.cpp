@@ -23,6 +23,37 @@ Display::~Display()
 {
 }
 
+void Display::InputCommand(char *input, const int len) 
+{
+    // 初始化输入缓冲器与相关变量
+    char ch;
+    int i = 0;
+    memset(input, 0, len);
+
+    // 循环读入字符
+    do
+    {
+        ch = getchar();
+
+        if (ch == '\\') // 如果读到换行输入\命令就跳过继续
+        {
+            ch = getchar(); // 将随后的换行符读入
+            continue;
+        }
+
+        if (ch == ';')  // 将；视为换行符，便于lexer和parser处理
+        {
+            ch = '\n';
+        }
+            
+        input[i++] = ch;
+    } while (ch != '\n');
+
+    #ifdef _DEBUG_
+    printf("input: %s", input);
+    #endif
+}
+
 void Display::render()
 {
     char buffer[BUFFER_SIZE];

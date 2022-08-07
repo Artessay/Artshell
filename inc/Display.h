@@ -29,9 +29,10 @@ public:
     
     virtual ~Display();
 
-    /**
-     * @brief 命令行提示符显示模块
-     */
+    /** @brief 命令行输入控制 */
+    void InputCommand(char *input, const int len);
+
+    /** @brief 命令行提示符显示模块 */
     void render();
 
     void message(const char * msg);

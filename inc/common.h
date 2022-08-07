@@ -1,7 +1,7 @@
 /**
  * @file common.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
- * @brief 
+ * @brief 共享函数库
  * @version 0.1
  * @date 2022-07-15
  * 
@@ -24,6 +24,41 @@
  * @date 2022-08-15
  * @copyright Copyright (c) 2022
  */
-void Argument_Display(int argc, char*argv[]);
+void Argument_Display(const int argc, char* const argv[]);
+
+/**
+ * @brief 二分搜索查找，查询范围为[l, r)
+ * 
+ * @tparam T 
+ * @tparam Tp 
+ * @param lelt 查找左区间，包含
+ * @param right 查找右区间，不包含
+ * @param val 查找变量
+ * @param array 搜索数组
+ * @param cmp 比较方法
+ * @return int 返回对应元素下标，若没有找到则返回-1
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-17
+ * @copyright Copyright (c) 2022
+ */
+template<typename T>
+int Binary_Search(int left, int right, T val, T array[], int cmp(T a, T b))
+{
+    while (left < right)
+    {
+        int mid = (left + right) >> 1;
+        int compare_result = cmp(val, array[mid]);
+        if (compare_result == 0)
+            return mid;
+        else if (compare_result > 0)
+            left = mid + 1;
+        else
+            right = mid;
+    }
+
+    return -1;
+}
+
 
 #endif

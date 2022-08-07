@@ -373,16 +373,16 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    4,    5,    1,    1,    6,    1,    6,
-        6,    6,    1,    1,    1,    7,    7,    7,    7,    7,
-        7,    7,    7,    7,    7,    7,    7,    7,    7,    8,
-        7,    8,    7,    7,    7,    7,    7,    7,    7,    7,
+        6,    6,    1,    1,    7,    7,    7,    7,    7,    7,
+        7,    7,    7,    7,    7,    7,    7,    1,    1,    6,
+        1,    6,    1,    1,    7,    7,    7,    7,    7,    7,
         7,    7,    7,    7,    7,    7,    7,    7,    7,    7,
         7,    7,    7,    7,    7,    7,    7,    7,    7,    7,
-        7,    9,    7,    7,    7,    7,    7,    7,    7,    7,
+        1,    8,    1,    1,    1,    1,    7,    7,    7,    7,
 
         7,    7,    7,    7,    7,    7,    7,    7,    7,    7,
         7,    7,    7,    7,    7,    7,    7,    7,    7,    7,
-        7,    7,    7,    8,    7,    7,    1,    1,    1,    1,
+        7,    7,    1,    6,    1,    7,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -399,37 +399,35 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[10] =
+static const YY_CHAR yy_meta[9] =
     {   0,
-        1,    1,    2,    1,    1,    1,    3,    3,    3
+        1,    1,    2,    1,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[21] =
+static const flex_int16_t yy_base[20] =
     {   0,
-        0,    0,   17,   28,   12,   28,    6,    0,   28,    0,
-       11,   12,   28,    9,    0,    0,   28,   21,   24,    8
+        0,    0,   21,   22,   15,   22,    5,    0,   22,    9,
+       13,   10,   22,    9,    0,    4,   22,   18,    9
     } ;
 
-static const flex_int16_t yy_def[21] =
+static const flex_int16_t yy_def[20] =
     {   0,
-       17,    1,   17,   17,   17,   17,   18,   19,   17,   20,
-       17,   18,   17,   18,   19,   20,    0,   17,   17,   17
+       17,    1,   17,   17,   17,   17,   18,   19,   17,   17,
+       17,   18,   17,   18,   19,   17,    0,   17,   17
     } ;
 
-static const flex_int16_t yy_nxt[38] =
+static const flex_int16_t yy_nxt[31] =
     {   0,
-        4,    5,    6,    7,    8,    9,   10,   10,   10,   13,
-       16,   17,   11,   11,   14,   13,   17,   17,   17,   17,
-       14,   12,   12,   12,   15,   17,   15,    3,   17,   17,
-       17,   17,   17,   17,   17,   17,   17
+        4,    5,    6,    7,    8,    9,   10,    4,   13,   15,
+       16,   17,   14,   13,   11,   16,   11,   14,   12,   12,
+       17,    3,   17,   17,   17,   17,   17,   17,   17,   17
     } ;
 
-static const flex_int16_t yy_chk[38] =
+static const flex_int16_t yy_chk[31] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    7,
-       20,   14,   11,    5,    7,   12,    3,    0,    0,    0,
-       12,   18,   18,   18,   19,    0,   19,   17,   17,   17,
-       17,   17,   17,   17,   17,   17,   17
+        1,    1,    1,    1,    1,    1,    1,    1,    7,   19,
+       16,   14,    7,   12,   11,   10,    5,   12,   18,   18,
+        3,   17,   17,   17,   17,   17,   17,   17,   17,   17
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -451,8 +449,8 @@ char *yytext;
     #define MAX_ARGUMENT_NUMBER 128
     char *_argvector[MAX_ARGUMENT_NUMBER];	// 解析参数
     int _argcounter = 0;					// 参数个数
-#line 455 "./lexer.c"
-#line 456 "./lexer.c"
+#line 453 "./lexer.c"
+#line 454 "./lexer.c"
 
 #define INITIAL 0
 
@@ -675,7 +673,7 @@ YY_DECL
 	_argcounter = 0; 
 	_argvector[0] = NULL; 
 
-#line 679 "./lexer.c"
+#line 677 "./lexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -708,7 +706,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 28 );
+		while ( yy_base[yy_current_state] != 22 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -774,7 +772,7 @@ YY_RULE_SETUP
 #line 36 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 778 "./lexer.c"
+#line 776 "./lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
