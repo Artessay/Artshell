@@ -12,6 +12,8 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
+#include <string>
+
 /**
  * @brief 命令参数打印
  * 首行显示传入参数个数
@@ -60,5 +62,16 @@ int Binary_Search(int left, int right, T val, T array[], int cmp(T a, T b))
     return -1;
 }
 
+/**
+ * @brief 去掉字符串两端空格
+ * 
+ * @param s 需要去除空格的字符串
+ * @return std::string& 去除完空格的字符串
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-17
+ * @copyright Copyright (c) 2022
+ */
+std::string& String_Trim(std::string &s);
 
 #endif

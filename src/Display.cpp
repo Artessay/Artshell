@@ -37,7 +37,13 @@ int Display::InputCommand(char *input, const int len)
         if (state == 0)
         {
             // 读到了EOF，结束
-            return 0;
+            if (i == 0) // 如果此时缓冲器中什么内容也没有
+                return 0;   // 直接返回
+            else    // 这是文本未加入换行的最后一行
+            {
+                input[i++] = '\n';  // 手动加入换行
+                return i;           // 将最后一行命令处理完毕
+            }
         }
         else if (state == -1)
         {
@@ -70,7 +76,7 @@ int Display::InputCommand(char *input, const int len)
     printf("input: %s", input);
     #endif
 
-    return len;
+    return i;
 }
 
 void Display::render()

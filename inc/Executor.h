@@ -16,9 +16,6 @@
 #include "Console.h"
 #include "Display.h"
 
-#include <map>
-#include <vector>
-
 static constexpr int FunctionNumber = 16;
 
 class Executor

@@ -13,6 +13,9 @@
 #include "myshell.h"
 #include "Executor.h"
 
+#include <vector>
+#include <sstream>
+
 #include <fcntl.h>
 #include <assert.h>
 #include <dirent.h>
@@ -496,6 +499,7 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
 {
     assert(strcmp(argv[0], "myshell")==0 && "unexpected node type");
 
+    std::vector<std::string> FileList;
     if (argc == 1)
     {
         /*如果shell 被调用时没有使用参数，
@@ -513,58 +517,78 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
             if (len == 0)
                 return SH_EXIT; // EOF
 
+            #ifdef _DEBUG_
+            printf("len: %d\n", len);
+            #endif
             input[len-1] = '\0'; // 去掉末尾的\n
 
-            const char *delim = " "; // 以空格分隔
             int& argc_ = const_cast<int&>(argc);        // 引用
-            char **argv_ = const_cast<char **>(argv);   // 指针
-            char *save_ptr;
-            if ((argv_[argc] = strtok_r(input, delim, &save_ptr)) == NULL)
-                continue;
-            
-            // 分词
-            while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL) ;
-            
-            // #ifdef _DEBUG_
+            // char **argv_ = const_cast<char **>(argv);   // 指针
+
+            std::istringstream line(input); // 字符串流
+            std::string word;               // 分割出的字符串
+
+            while (std::getline(line, word, ' '))
+            {
+                word = String_Trim(word);   // 裁剪
+                if (word == "")
+                    continue;
+                
+                ++argc_;
+                FileList.emplace_back(word);  // 需要深拷贝
+            }
+
+            if (argc == 1)
+                continue;   // 未能读到有效输入
+
+            #ifdef _DEBUG_
             Argument_Display(argc, argv);   // 调试
-            // #endif
+            #endif
 
             break;
         }
+    }
+    else
+    {
+        for (int i = 1; i < argc; ++i) // 顺序执行
+            FileList.push_back(argv[i]);    // 将参数加入向量列表
     }
 
     assert(argc > 1);   // 判断
 
     int input_fd = console_->input_file_descriptor; // 存储当前控制台的输入fd
-    for (int i = 1; i < argc; ++i) // 顺序执行
+    for (std::string File : FileList)
     {
         try
         {
-            int fd = open(argv[i], O_RDONLY);   // 打开文件
+            int fd = open(File.c_str(), O_RDONLY);   // 打开文件
             if (fd < 0) // 打开错误处理
             {
-                std::string msg = "\e[1;31m[ERROR]\e[0m";
-                msg = msg + "open" + ": (" + argv[i] + ") " + strerror(errno);
-                throw msg.c_str();
+                throw std::exception();
             }
 
+            #ifdef _DEBUG_
+            fprintf(stdout, "FD: %d Input: %d Output: %d\n", fd, console_->input_file_descriptor, console_->output_file_descriptor);
+            #endif
+
             console_->input_file_descriptor = fd;   // 更改输入
+            
             // 执行循环
             SHELL::shell_loop(console_, display_, const_cast<Executor *>(this), const_cast<char **>(env));
 
             int state_code = close(fd); // 关闭文件
             if (state_code != 0)    // 关闭错误处理
             {
-                std::string msg = "\e[1;31m[ERROR]\e[0m";
-                msg = msg + "close" + ": (" + argv[i] + ") " + strerror(errno);
-                throw msg.c_str();
+                throw std::exception();
             }
         }
-        catch(const char * msg)
+        catch(...)
         {
-            display_->message(msg);
+            puts("every thing");
+            std::string msg = "\e[1;31m[ERROR]\e[0m";
+            msg = msg + "myshell" + ": (" + File + ") " + strerror(errno) + "\n";
+            display_->message(msg.c_str());
         }
-        
         
     }
 

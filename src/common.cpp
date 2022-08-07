@@ -23,3 +23,15 @@ void Argument_Display(const int argc, char* const argv[])
     putchar('\n');
     return;
 }
+
+std::string& String_Trim(std::string &s) 
+{
+    if (s.empty()) // 如果s为空
+    {
+        return s;   // 则不必处理
+    }
+ 
+    s.erase(0,s.find_first_not_of(" "));    // 去除字符串前的空格
+    s.erase(s.find_last_not_of(" ") + 1);   // 去除字符串后的空格
+    return s;
+}
