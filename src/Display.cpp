@@ -33,7 +33,17 @@ void Display::InputCommand(char *input, const int len)
     // 循环读入字符
     do
     {
-        read(console_->input_file_descriptor, &ch, 1);
+        ssize_t state = read(console_->input_file_descriptor, &ch, 1);
+        if (state == 0)
+        {
+            // 读到了EOF，结束
+            exit(0);
+        }
+        else if (state == -1)
+        {
+            throw "Read Input Error";
+        }
+        
 
         if (ch == '\\') // 如果读到换行输入\命令就跳过继续
         {
@@ -83,7 +93,7 @@ void Display::render()
 
 void Display::prompt() const
 {
-    if (write(console_->output_file_descriptor, ">", 1) == -1)
+    if (write(console_->output_file_descriptor, "> ", 2) == -1)
     {
         throw std::exception();
     }

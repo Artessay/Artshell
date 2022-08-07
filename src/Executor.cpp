@@ -517,9 +517,12 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
             if ((argv_[argc] = strtok_r(input, delim, &save_ptr)) == NULL)
                 continue;
             
-            while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL)
-                ;
-            --argc_; // 将最后一个多加的argc减去
+            // 分词
+            while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL) ;
+            // --argc_; // 不必将最后一个多加的argc减去的， 因为strtok_r返回的是剩余指针
+            #ifdef _DEBUG_
+            printf("shell argc: %d\n", argc);
+            #endif
             break;
         }
     }
