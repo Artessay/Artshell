@@ -510,7 +510,7 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
                 continue;
             input[len-1] = '\0'; // 去掉末尾的\n
 
-            char *delim = " "; // 以空格分隔
+            const char *delim = " "; // 以空格分隔
             int& argc_ = const_cast<int&>(argc);        // 引用
             char **argv_ = const_cast<char **>(argv);   // 指针
             char *save_ptr;
