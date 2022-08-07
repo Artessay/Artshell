@@ -533,9 +533,9 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
 
     assert(argc > 1);   // 判断
 
-    for (int i = 1; i <= argc; ++i) // 顺序执行
+    for (int i = 1; i < argc; ++i) // 顺序执行
     {
-        ;
+        open();
     }
 
     return SH_SUCCESS;

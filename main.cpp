@@ -1,5 +1,7 @@
 #include "myshell.h"
 
+#include <string.h>
+
 int main(int argc, char *argv[], char **env)
 {
     // 开头输出判断程序是否正常开始，仅在调试时使用

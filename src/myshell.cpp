@@ -14,97 +14,112 @@
 
 // #define _DEBUG_
 
+extern "C" 
+{
+    #include "lexer.h"
+    int yy_lexer(int *argc, char ***argv);
+}
+
 #include "myshell.h"
+#include "common.h"
 
 #include <exception>
 
-const char * shell_error_message(sh_err_t err)
+namespace _SHELL_
 {
-    switch (err)
+    const char * shell_error_message(sh_err_t err)
     {
-        case SH_FAILED:
-            return "Shell Failed. 错误";
-        case SH_UNDEFINED:
-            return "Undifined command. 未定义的命令";
-        case SH_ARGS:
-            return "Argument error. 参数错误";
-        
-        default:
-            return "Unknown error. 未知错误";
-    }
-}
-
-int shell_loop(Console* model, Display* view, Executor* controller, char *env[])
-{
-    try
-    {
-        while (1)
+        switch (err)
         {
-            // 显示提示符
-            view->render();
-
-            // 从输入读入命令
-            char input[BUFFER_SIZE];
-            view->InputCommand(input, BUFFER_SIZE);
-
-            // 从输入中创建buffer
-            YY_BUFFER_STATE bp = yy_scan_string(input);
-            if (bp == nullptr)
-            {
-                throw "Failed to create yy buffer state.";
-            }
-
-            yy_switch_to_buffer(bp);
-
-            // 进行分词解析处理
-            int argument_counter = 0;
-            char **argument_vector = nullptr;
-            yy_lexer(&argument_counter, &argument_vector);
+            case SH_FAILED:
+                return "Shell Failed. 错误";
+            case SH_UNDEFINED:
+                return "Undifined command. 未定义的命令";
+            case SH_ARGS:
+                return "Argument error. 参数错误";
             
-            #ifdef _DEBUG_
-            Argument_Display(argument_counter, argument_vector);
-            #endif
-
-            // 执行命令
-            try
-            {
-                sh_err_t err = controller->execute(argument_counter, argument_vector, env);
-                
-                // 根据返回状态判断
-                if (err == SH_EXIT)
-                {
-                    break;
-                }
-                else if (err != SH_SUCCESS)
-                {
-                    throw err;
-                }
-
-                view->show();   // 显示输出信息
-            }
-            catch(const std::exception& e)
-            {
-                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
-            }
-            catch(const sh_err_t e)
-            {
-                fprintf(stderr, "\e[1;31m[ERROR]\e[0m MyShell: %s\n", shell_error_message(e));
-            }
-            catch(const char * message)
-            {
-                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), message);
-            }
-            catch(...)
-            {
-                fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s\n", strerror(errno));
-            }
+            default:
+                return "Unknown error. 未知错误";
         }
     }
-    catch(const std::exception& e)
+
+    int shell_loop(Console* model, Display* view, Executor* controller, char *env[])
     {
-        fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
-    };
+        try
+        {
+            while (1)
+            {
+                // 显示提示符
+                view->render();
 
-    return 0;
+                // 从输入读入命令
+                char input[BUFFER_SIZE];
+                int len = view->InputCommand(input, BUFFER_SIZE);
+                
+                if (len == 0)   // 输入完毕
+                    return 0;
+                else if (len < 0)   // 输入异常
+                    continue;
+
+                // 从输入中创建buffer
+                YY_BUFFER_STATE bp = yy_scan_string(input);
+                if (bp == nullptr)
+                {
+                    throw "Failed to create yy buffer state.";
+                }
+
+                yy_switch_to_buffer(bp);
+
+                // 进行分词解析处理
+                int argument_counter = 0;
+                char **argument_vector = nullptr;
+                yy_lexer(&argument_counter, &argument_vector);
+                
+                #ifdef _DEBUG_
+                Argument_Display(argument_counter, argument_vector);
+                #endif
+
+                // 执行命令
+                try
+                {
+                    sh_err_t err = controller->execute(argument_counter, argument_vector, env);
+                    
+                    // 根据返回状态判断
+                    if (err == SH_EXIT)
+                    {
+                        break;
+                    }
+                    else if (err != SH_SUCCESS)
+                    {
+                        throw err;
+                    }
+
+                    view->show();   // 显示输出信息
+                }
+                catch(const std::exception& e)
+                {
+                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
+                }
+                catch(const sh_err_t e)
+                {
+                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m MyShell: %s\n", shell_error_message(e));
+                }
+                catch(const char * message)
+                {
+                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), message);
+                }
+                catch(...)
+                {
+                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s\n", strerror(errno));
+                }
+            }
+        }
+        catch(const std::exception& e)
+        {
+            fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
+        };
+
+        return 0;
+    }
+
 }
-

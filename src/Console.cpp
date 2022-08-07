@@ -26,6 +26,7 @@ Console::Console(/* args */)
 
     input_file_descriptor = STDIN_FILENO;
     output_file_descriptor = STDOUT_FILENO;
+    error_file_descriptor = STDERR_FILENO;
 }
 
 Console::~Console()

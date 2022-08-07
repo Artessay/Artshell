@@ -36,13 +36,18 @@ private:
     // 文件描述符
     int input_file_descriptor;                      // 输入文件描述符
     int output_file_descriptor;                     // 输出文件描述符
-    
+    int error_file_descriptor;                      // 错误文件描述符
+
 public:
     Console(/* args */);
 
     virtual ~Console();
 
     int init();
+
+    int GetInputFD() const  { return input_file_descriptor; }
+    int GetOutputFD() const { return output_file_descriptor; }
+    int GetErrorFD() const  { return error_file_descriptor; }
 
     friend class Display;
     friend class Executor;
