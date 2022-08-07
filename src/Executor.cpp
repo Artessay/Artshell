@@ -419,13 +419,14 @@ sh_err_t Executor::execute_mkdir(const int argc, char * const argv[], char * con
     
     const char * path = argv[1];
     if (mkdir(path, S_IRWXU) == 0)
+    {
         return SH_SUCCESS;
+    }
     else
     {
-        throw errno;
+        return SH_FAILED;
     }
 
-    return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_rmdir(const int argc, char * const argv[], char * const env[]) const
@@ -433,13 +434,13 @@ sh_err_t Executor::execute_rmdir(const int argc, char * const argv[], char * con
     assert(strcmp(argv[0], "rmdir")==0 && "unexpected node type");
 
     if (rmdir(argv[1]) == 0)
+    {
         return SH_SUCCESS;
+    }
     else
     {
-        throw errno;
+        return SH_FAILED;
     }
-
-    return SH_SUCCESS;
 }
 
 sh_err_t Executor::execute_bg(const int argc, char * const argv[], char * const env[]) const
