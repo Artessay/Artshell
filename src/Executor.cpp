@@ -76,7 +76,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
 
 #ifdef _DEBUG_
     Argument_Display(argc, argv);
-    
+
     // 以下命令不要求实现，仅供练习使用
     if (strcmp(op, "date") == 0)
     {
@@ -493,6 +493,43 @@ sh_err_t Executor::execute_umask(const int argc, char * const argv[], char * con
 sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "myshell")==0 && "unexpected node type");
+
+    if (argc == 1)
+    {
+        /*如果shell 被调用时没有使用参数，
+        它会在屏幕上显示提示符请求用户输入*/
+        while (1)   // 循环直到用户有输入
+        {
+            display_->prompt();
+
+            char input[BUFFER_SIZE];
+            display_->InputCommand(input, BUFFER_SIZE);
+
+            int len = strlen(input);
+            if (len == 1)
+                continue;
+            input[len-1] = '\0'; // 去掉末尾的\n
+
+            char *delim = " "; // 以空格分隔
+            int& argc_ = const_cast<int&>(argc);        // 引用
+            char **argv_ = const_cast<char **>(argv);   // 指针
+            char *save_ptr;
+            if ((argv_[argc] = strtok_r(input, delim, &save_ptr)) == NULL)
+                continue;
+            
+            while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL)
+                ;
+            --argc_; // 将最后一个多加的argc减去
+            break;
+        }
+    }
+
+    assert(argc > 1);   // 判断
+
+    for (int i = 1; i <= argc; ++i) // 顺序执行
+    {
+        ;
+    }
 
     return SH_SUCCESS;
 }

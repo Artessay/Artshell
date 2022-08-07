@@ -29,4 +29,10 @@ extern "C"
 #include "Display.h"
 #include "Executor.h"
 
+namespace _SHELL_
+{
+    
+} // namespace _SHELL_
+
+
 #endif

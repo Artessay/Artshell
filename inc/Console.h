@@ -36,6 +36,7 @@ private:
     // 文件描述符
     int input_file_descriptor;                      // 输入文件描述符
     int output_file_descriptor;                     // 输出文件描述符
+    
 public:
     Console(/* args */);
 

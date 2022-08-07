@@ -35,8 +35,13 @@ public:
     /** @brief 命令行提示符显示模块 */
     void render();
 
+    /** @brief 继续输入提示 */
+    void prompt() const;
+
+    /** @brief 打印信息msg与显示器 */
     void message(const char * msg);
 
+    /** @brief 将所有打印信息统一显示在终端 */
     void show() const;
 };
 

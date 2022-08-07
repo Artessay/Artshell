@@ -23,6 +23,9 @@ Console::Console(/* args */)
     [[maybe_unused]] int ret;
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
+
+    input_file_descriptor = STDIN_FILENO;
+    output_file_descriptor = STDOUT_FILENO;
 }
 
 Console::~Console()

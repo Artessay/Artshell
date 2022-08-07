@@ -33,7 +33,7 @@ void Display::InputCommand(char *input, const int len)
     // 循环读入字符
     do
     {
-        ch = getchar();
+        read(console_->input_file_descriptor, &ch, 1);
 
         if (ch == '\\') // 如果读到换行输入\命令就跳过继续
         {
@@ -47,6 +47,13 @@ void Display::InputCommand(char *input, const int len)
         }
             
         input[i++] = ch;
+
+        if (i == len)   // 达到最大长度了
+        {
+            buffer_ = "\e[1;31mERROR\e[0m input compand exceeds maximum length. 输入命令的长度超过了允许的最大长度";
+            memset(input, 0, len);  // 清空缓冲区输入
+            break;
+        }
     } while (ch != '\n');
 
     #ifdef _DEBUG_
@@ -72,6 +79,14 @@ void Display::render()
     }
 
     buffer_ = "";
+}
+
+void Display::prompt() const
+{
+    if (write(console_->output_file_descriptor, ">", 1) == -1)
+    {
+        throw std::exception();
+    }
 }
 
 void Display::message(const char * msg)
