@@ -1,7 +1,8 @@
 # Artshell
 
 MyShell, version 1.0.0-release (x86_64-pc-linux-gnu)
-These shell commands are defined internally.
+
+MyShell内部指令列表：
 
 1)	bg <job> ——将被挂起的作业<job>转到后台。如果没有<job>参数，则默认将当前进程放到后台运行。
 
@@ -33,8 +34,4 @@ These shell commands are defined internally.
 
 15)	umask <mask> ——设定新创建文件或目录的访问特权。如果没有<mask>参数，则显示当前设置的掩码。
 
-其他的命令行输入被解释为程序调用
-
-
-
-，<mask>是位的掩码，用八进制表示。掩码位为1表示新创建的文件相应的访问特权应该被关闭
+更多详细信息请参见[用户手册](./doc/用户手册.md)
