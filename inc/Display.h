@@ -29,8 +29,12 @@ public:
     
     virtual ~Display();
 
-    /** @brief 命令行输入控制 */
-    void InputCommand(char *input, const int len);
+    /** 
+     * @brief 命令行输入控制
+     * @return 正数表示正常退出，返回读入的字符数；
+     * 返回0表示读到EOF，返回负数表示出现错误
+     */
+    int InputCommand(char *input, const int len);
 
     /** @brief 命令行提示符显示模块 */
     void render();

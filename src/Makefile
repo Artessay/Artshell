@@ -1,5 +1,5 @@
 CC = g++
-OBJS = common.o Console.o Display.o Executor.o lexer.o
+OBJS = common.o Console.o Display.o Executor.o lexer.o myshell.o
 INC = ../inc
 OUT = ../lib
 CFLAG = -I$(INC) -O3 -Wall -MMD

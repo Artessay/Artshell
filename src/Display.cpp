@@ -23,7 +23,7 @@ Display::~Display()
 {
 }
 
-void Display::InputCommand(char *input, const int len) 
+int Display::InputCommand(char *input, const int len) 
 {
     // 初始化输入缓冲器与相关变量
     char ch;
@@ -37,7 +37,7 @@ void Display::InputCommand(char *input, const int len)
         if (state == 0)
         {
             // 读到了EOF，结束
-            exit(0);
+            return 0;
         }
         else if (state == -1)
         {
@@ -62,13 +62,15 @@ void Display::InputCommand(char *input, const int len)
         {
             buffer_ = "\e[1;31mERROR\e[0m input compand exceeds maximum length. 输入命令的长度超过了允许的最大长度";
             memset(input, 0, len);  // 清空缓冲区输入
-            break;
+            return -1;
         }
     } while (ch != '\n');
 
     #ifdef _DEBUG_
     printf("input: %s", input);
     #endif
+
+    return len;
 }
 
 void Display::render()

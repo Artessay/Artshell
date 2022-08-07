@@ -6,7 +6,7 @@ INC = ./inc
 SRC = ./src
 LIB = ./lib
 CFLAG = -I$(INC) -L$(LIB) -O3 -Wall -MMD
-OBJS = myshell.o
+OBJS = main.o
 LIBS = myshell
 DEPS = $(OBJS:.o=.d)
 RUN = myshell
@@ -21,10 +21,11 @@ lib$(LIBS).a:
 
 .cpp.o:
 	$(CC) $(CFLAG) -c -o $@ $<
+	-rm $(DEPS)
 
 debug: lib$(LIBS).a
 	-rm $(OBJS) $(DEPS) $(RUN)
-	$(CC) $(CFLAG) -D_DEBUG_ -c -o myshell.o myshell.cpp
+	$(CC) $(CFLAG) -D_DEBUG_ -c -o main.o main.cpp
 	$(CC) $(CFLAG) $(OBJS) -l$(LIBS) -o myshell
 
 clean:

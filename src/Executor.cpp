@@ -502,12 +502,15 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
         {
             display_->prompt();
 
+            int len;
             char input[BUFFER_SIZE];
-            display_->InputCommand(input, BUFFER_SIZE);
+            len = display_->InputCommand(input, BUFFER_SIZE);
+            
+            if (len == 1 || len < 0)
+                continue;   // 非有效输入
+            if (len == 0)
+                return SH_EXIT; // EOF
 
-            int len = strlen(input);
-            if (len == 1)
-                continue;
             input[len-1] = '\0'; // 去掉末尾的\n
 
             const char *delim = " "; // 以空格分隔
@@ -519,10 +522,11 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
             
             // 分词
             while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL) ;
-            // --argc_; // 不必将最后一个多加的argc减去的， 因为strtok_r返回的是剩余指针
+            
             #ifdef _DEBUG_
-            printf("shell argc: %d\n", argc);
+            printf("shell argc: %d\n", argc);   // 调试
             #endif
+
             break;
         }
     }

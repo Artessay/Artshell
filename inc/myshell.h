@@ -31,7 +31,10 @@ extern "C"
 
 namespace _SHELL_
 {
-    
+    const char * shell_error_message(sh_err_t err);
+
+    int shell_loop(Console* model, Display* view, Executor* controller, char *env[]);
+
 } // namespace _SHELL_
 
 
