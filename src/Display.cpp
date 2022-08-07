@@ -75,7 +75,14 @@ int Display::InputCommand(char *input, const int len)
 
 void Display::render()
 {
-    char buffer[BUFFER_SIZE];
+    buffer_ = "";   // 每轮循环前将输出缓冲区清空
+
+    // 如果不是从标准输入中输入或是不是将内容输出到标准输出的话，
+    if (console_->input_file_descriptor != STDIN_FILENO ||
+        console_->output_file_descriptor != STDOUT_FILENO)
+        return; // 就不需要打印提示符
+
+    char buffer[BUFFER_SIZE];   // 打印缓冲区
     int sret = snprintf(buffer, BUFFER_SIZE, "\e[1;32m%s@%s\e[0m:\e[1;34m%s\e[0m> ", \
         console_->user_name, console_->host_name, console_->current_working_dictionary);
     if (sret == -1)
@@ -90,7 +97,7 @@ void Display::render()
         throw "Error when writing from buffer";
     }
 
-    buffer_ = "";
+    return;
 }
 
 void Display::prompt() const

@@ -17,18 +17,25 @@
 #ifndef _MYSHELL_H_
 #define _MYSHELL_H_
 
+/* 配置文件 */
 #include "config.h"
-#include "Console.h"
-#include "Display.h"
-#include "Executor.h"
 
-namespace _SHELL_
+/* 类的声明 */
+class Console;
+class Display;
+class Executor;
+
+namespace SHELL
 {
-    const char * shell_error_message(sh_err_t err);
+    /** @brief 启动shell */
+    int shell_setup(int argc, char *argv[], char *env[]);
 
+    /** @brief 进入shell循环 */
     int shell_loop(Console* model, Display* view, Executor* controller, char *env[]);
 
-} // namespace _SHELL_
+    /** @brief 根据错误类型给出错误信息 */
+    const char * shell_error_message(sh_err_t err);
+} // namespace SHELL
 
 
 #endif

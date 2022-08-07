@@ -10,15 +10,17 @@
  */
 
 #include "common.h"
+#include "myshell.h"
 #include "Executor.h"
 
-#include <unistd.h>
+#include <fcntl.h>
+#include <assert.h>
 #include <dirent.h>
 #include <string.h>
-#include <assert.h>
+#include <unistd.h>
 
-#include <sys/wait.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <sys/types.h>
 
 /** 定义命令字符串数组 */
@@ -523,9 +525,9 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
             // 分词
             while ((argv_[++argc_] = strtok_r(NULL, delim, &save_ptr)) != NULL) ;
             
-            #ifdef _DEBUG_
-            printf("shell argc: %d\n", argc);   // 调试
-            #endif
+            // #ifdef _DEBUG_
+            Argument_Display(argc, argv);   // 调试
+            // #endif
 
             break;
         }
@@ -533,10 +535,40 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
 
     assert(argc > 1);   // 判断
 
+    int input_fd = console_->input_file_descriptor; // 存储当前控制台的输入fd
     for (int i = 1; i < argc; ++i) // 顺序执行
     {
-        open();
+        try
+        {
+            int fd = open(argv[i], O_RDONLY);   // 打开文件
+            if (fd < 0) // 打开错误处理
+            {
+                std::string msg = "\e[1;31m[ERROR]\e[0m";
+                msg = msg + "open" + ": (" + argv[i] + ") " + strerror(errno);
+                throw msg.c_str();
+            }
+
+            console_->input_file_descriptor = fd;   // 更改输入
+            // 执行循环
+            SHELL::shell_loop(console_, display_, const_cast<Executor *>(this), const_cast<char **>(env));
+
+            int state_code = close(fd); // 关闭文件
+            if (state_code != 0)    // 关闭错误处理
+            {
+                std::string msg = "\e[1;31m[ERROR]\e[0m";
+                msg = msg + "close" + ": (" + argv[i] + ") " + strerror(errno);
+                throw msg.c_str();
+            }
+        }
+        catch(const char * msg)
+        {
+            display_->message(msg);
+        }
+        
+        
     }
+
+    console_->input_file_descriptor = input_fd; // 恢复控制台的input fd
 
     return SH_SUCCESS;
 }
