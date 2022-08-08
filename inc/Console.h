@@ -33,12 +33,15 @@ private:
     
     // 环境变量
     char shell_path_env[BUFFER_SIZE];               // shell的完整路径
-    // char parent_path_env[BUFFER_SIZE];              // 执行程序的父进程
     
     // 文件描述符
     int input_file_descriptor;                      // 输入文件描述符
     int output_file_descriptor;                     // 输出文件描述符
     int error_file_descriptor;                      // 错误文件描述符
+
+    int input_std_fd;                               // 标准输入备份
+    int output_std_fd;                              // 标准输出备份                              
+    int error_std_fd;                               // 标准错误备份
 
     bool redirect_input;                             // 输入重定向状态
     bool redirect_output;                            // 输出重定向状态
@@ -72,6 +75,10 @@ public:
     bool GetInputRedirect() const  { return redirect_input ; }
     bool GetOutputRedirect() const { return redirect_output; }
     bool GetErrorRedirect() const  { return redirect_error ; }
+
+    int GetSTDIN()  const { return input_std_fd;  }
+    int GetSTDOUT() const { return output_std_fd; }
+    int GetSTDERR() const { return error_std_fd;  }
 
     void SetMask(mode_t _mask) { umask_ = _mask; }
     mode_t GetMask() const { return umask_; }

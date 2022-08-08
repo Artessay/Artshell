@@ -23,16 +23,6 @@ Console::Console(/* args */)
     [[maybe_unused]] int ret;
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
-
-    // 设置默认文件描述符
-    input_file_descriptor = STDIN_FILENO;
-    output_file_descriptor = STDOUT_FILENO;
-    error_file_descriptor = STDERR_FILENO;
-
-    // 设置重定向状态
-    redirect_input = false;
-    redirect_output = false;
-    redirect_error = false;
 }
 
 Console::~Console()
@@ -78,6 +68,21 @@ int Console::init()
 
         umask_ = umask(022);  // 获取默认掩码
         umask(umask_); // 改回原来掩码
+        
+        // 设置默认文件描述符
+        input_file_descriptor = STDIN_FILENO;
+        output_file_descriptor = STDOUT_FILENO;
+        error_file_descriptor = STDERR_FILENO;
+
+        // 设置重定向状态
+        redirect_input = false;
+        redirect_output = false;
+        redirect_error = false;
+
+        // 备份STD IO
+        input_std_fd = dup(STDIN_FILENO);
+        output_std_fd = dup(STDOUT_FILENO);
+        error_std_fd = dup(STDERR_FILENO);
     }
     catch(const std::exception& e)
     {

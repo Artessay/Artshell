@@ -92,8 +92,9 @@ namespace SHELL
         {
             std::string arg(argv[index]);    // 使用string类处理
             
-            /* 重定向处理 */
+            /** 重定向处理 */
             
+            /** 标准输入重定向 */
             if (arg == "<" || arg == "0<")
             {
                 if (index + 1 == argc)  // 重定向符号是最后一个输入
@@ -110,10 +111,11 @@ namespace SHELL
                 int fd = open(input_file, O_RDONLY);
                 if (fd < 0)
                     throw std::exception();
-                
-                
+                                
                 model->SetInputFD(fd);
                 model->SetInputRedirect();
+
+                dup2(fd, STDIN_FILENO); // 重定向标准输入至fd
 
                 for (int jump = index + 2; jump < argc; ++jump)
                     argv[jump-2] = argv[jump];
@@ -121,6 +123,7 @@ namespace SHELL
                 argv[argc] = NULL;
             }
 
+            /** 标准输出重定向 */
             if (arg == ">" || arg == "1>")
             {
                 if (index + 1 == argc)  // 重定向符号是最后一个输入
@@ -141,15 +144,50 @@ namespace SHELL
                 model->SetOutputFD(fd);
                 model->SetOutputRedirect();
 
+                dup2(fd, STDOUT_FILENO); // 重定向标准输出至fd
+                    
                 for (int jump = index + 2; jump < argc; ++jump)
                     argv[jump-2] = argv[jump];
                 argc = argc - 2;
                 argv[argc] = NULL;
             }
 
+            /** 标准错误输出重定向 */
+            if (arg == "2>")
+            {
+                if (index + 1 == argc)  // 重定向符号是最后一个输入
+                {
+                    throw "语法解析错误";
+                }
+
+                if (model->GetErrorRedirect())      // 如果已经设置了重定向状态了
+                {
+                    throw "多重重定向错误";
+                }
+
+                const char * output_file = argv[index + 1];
+                int fd = open(output_file, O_WRONLY | O_TRUNC | O_CREAT, 0777&(~model->GetMask()));
+                if (fd < 0)
+                    throw std::exception();                
+                
+                model->SetErrorFD(fd);
+                model->SetErrorRedirect();
+
+                dup2(fd, STDERR_FILENO); // 重定向标准错误输出至fd
+
+                for (int jump = index + 2; jump < argc; ++jump)
+                    argv[jump-2] = argv[jump];
+                argc = argc - 2;
+                argv[argc] = NULL;
+            }
+
+            /** 追加 */
             if (arg == ">>" || arg == "1>>")
             {
+                /* 词法解析时应该识别<和>符号的闭包 */
+                #ifdef _DEBUG_
                 Argument_Display(argc, argv);
+                #endif
                 
                 if (index + 1 == argc)  // 重定向符号是最后一个输入
                 {
@@ -168,6 +206,8 @@ namespace SHELL
                 
                 model->SetOutputFD(fd);
                 model->SetOutputRedirect();
+
+                dup2(fd, STDOUT_FILENO); // 重定向标准输出至fd
 
                 for (int jump = index + 2; jump < argc; ++jump)
                     argv[jump-2] = argv[jump];
@@ -220,6 +260,7 @@ namespace SHELL
 
                 int input_fd = model->GetInputFD();     // 记录下原始输入
                 int output_fd = model->GetOutputFD();   // 记录下原始输出
+                int error_fd = model->GetErrorFD();     // 记录下原始错误输出
 
                 // 执行命令
                 try
@@ -265,7 +306,8 @@ namespace SHELL
                     if (state_code != 0)                         // 关闭错误处理
                         throw std::exception();
 
-                    model->SetInputFD(input_fd);  // 恢复输出
+                    dup2(model->GetSTDIN(), STDIN_FILENO);
+                    model->SetInputFD(input_fd);  // 恢复输入
                     model->ResetInputRedirect();    // 恢复状态
                 }
 
@@ -275,8 +317,20 @@ namespace SHELL
                     if (state_code != 0)                          // 关闭错误处理
                         throw std::exception();
 
+                    dup2(model->GetSTDOUT(), STDOUT_FILENO);
                     model->SetOutputFD(output_fd);  // 恢复输出
                     model->ResetOutputRedirect();    // 恢复状态
+                }
+
+                if (model->GetErrorRedirect())    // 如果发生了错误输出重定向
+                {
+                    int state_code = close(model->GetErrorFD()); // 关闭文件
+                    if (state_code != 0)                          // 关闭错误处理
+                        throw std::exception();
+
+                    dup2(model->GetSTDERR(), STDERR_FILENO);
+                    model->SetErrorFD(error_fd);  // 恢复错误输出
+                    model->ResetErrorRedirect();    // 恢复状态
                 }
 
                 yylex_destroy();
