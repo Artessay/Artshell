@@ -24,9 +24,15 @@ Console::Console(/* args */)
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
 
+    // 设置默认文件描述符
     input_file_descriptor = STDIN_FILENO;
     output_file_descriptor = STDOUT_FILENO;
     error_file_descriptor = STDERR_FILENO;
+
+    // 设置重定向状态
+    redirect_input = false;
+    redirect_output = false;
+    redirect_error = false;
 }
 
 Console::~Console()
@@ -69,6 +75,9 @@ int Console::init()
         strncpy(shell_path_env, current_working_dictionary, BUFFER_SIZE);
         strncat(shell_path_env, "/myshell", BUFFER_SIZE);
         setenv("shell", shell_path_env, 1);
+
+        umask_ = umask(022);  // 获取默认掩码
+        umask(umask_); // 改回原来掩码
     }
     catch(const std::exception& e)
     {

@@ -76,6 +76,37 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         assert(false);
         return SH_FAILED;   // 解析可能产生了错误
     }
+
+    int& argc_ = const_cast<int&>(argc);
+    if (strcmp(argv[argc - 1], "&") == 0)    // 后台挂起
+    {
+        --argc_;
+
+        pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
+        if ((pid = fork()) < 0)
+        { 
+            /* 错误处理 */
+            throw "Fork Error, 错误终止";
+        }
+        else if (pid == 0)
+        {
+            /* 子进程 */  
+            setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
+            int status_code = execvp(argv[0], argv);        // 在子进程之中执行
+
+            if (status_code == -1)
+            {
+                throw "Execvp Error, terminated incorrectly";
+            }
+
+            return SH_UNDEFINED; // 未识别的命令
+        }
+        else
+        {
+            /* 父进程 */
+            return SH_SUCCESS;
+        }
+    }
     
     const char *op = argv[0];
 
@@ -283,7 +314,13 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
 
             // 目录用蓝色显示
             snprintf(buffer, BUFFER_SIZE, "\033[34m%s\033[0m  ", entry->d_name);
-            display_->message(buffer);
+            if (console_->redirect_output == false) 
+                display_->message(buffer);
+            else
+            {
+                display_->message(entry->d_name);
+                display_->message("  ");
+            }
         }
         else
         {
@@ -302,7 +339,13 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
                     snprintf(buffer, BUFFER_SIZE, "\033[32m%s\033[0m  ", entry->d_name);
                     break;
             }
-            display_->message(buffer);
+            if (console_->redirect_output == false) 
+                display_->message(buffer);
+            else
+            {
+                display_->message(entry->d_name);
+                display_->message("  ");
+            }
         }
     }
     display_->message("\n");
@@ -492,6 +535,27 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
 sh_err_t Executor::execute_umask(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "umask")==0 && "unexpected node type");
+
+    if (argc == 1)
+    {
+        // 没有参数，显示当前掩码
+        char buffer[16];
+        snprintf(buffer, 16, "%04o\n", console_->umask_);   // 以八进制显示，0补齐
+        display_->message(buffer);
+    }
+    else if (argc == 2) // 有一个输入的参数
+    {
+        // 使用函数模板实现进制转换
+        console_->umask_ = String_to_Number<mode_t>(argv[1]);
+        #ifdef _DEBUG_
+        printf("mask: %04o\n", console_->umask_);
+        #endif
+        umask(console_->umask_);
+    }
+    else
+    {
+        return SH_ARGS; // 参数错误
+    }
 
     return SH_SUCCESS;
 }

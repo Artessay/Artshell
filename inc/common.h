@@ -13,6 +13,7 @@
 #define _COMMON_H_
 
 #include <string>
+#include <sstream>
 
 /**
  * @brief 命令参数打印
@@ -73,5 +74,25 @@ int Binary_Search(int left, int right, T val, T array[], int cmp(T a, T b))
  * @copyright Copyright (c) 2022
  */
 std::string& String_Trim(std::string &s);
+
+/**
+ * @brief 将字符串转换成任意类型变量
+ * 
+ * @tparam Type 返回类型
+ * @param str 提取的字符串
+ * @return Type 转化后的类型变量
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-18
+ * @copyright Copyright (c) 2022
+ */
+template <class Type>
+Type String_to_Number(const std::string& str)
+{
+    std::istringstream iss(str);
+    Type num;
+    iss >> num;
+    return num;    
+}
 
 #endif
