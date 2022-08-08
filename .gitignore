@@ -6,6 +6,10 @@ ref
 *.sh
 *.txt
 
+# lex
+lexer.h
+lexer.c
+
 # Prerequisites
 *.d
 
