@@ -22,15 +22,13 @@ extern "C"
 
 #include "myshell.h"
 #include "common.h"
+#include "Parser.h"
 #include "Console.h"
 #include "Display.h"
 #include "Executor.h"
 
-#include <fcntl.h>
 #include <exception>
 
-/** @brief 根据错误类型给出错误信息 */
-static const char * shell_error_message(sh_err_t err);
 
 namespace SHELL
 {
@@ -108,83 +106,15 @@ namespace SHELL
 
                 if (argument_counter == 0)
                     continue;
+                
+                int& argc = argument_counter;
+                char **argv = argument_vector;
+                bool state = Parser::shell_pipe(model, view, controller, argc, argv, env);
 
-                int input_fd = model->GetInputFD();     // 记录下原始输入
-                int output_fd = model->GetOutputFD();   // 记录下原始输出
-                int error_fd = model->GetErrorFD();     // 记录下原始错误输出
+                yylex_destroy();    // 释放词法分析器占用的空间，防止内存泄露
 
-                // 执行命令
-                try
-                {
-                    // Parser 语法分析
-                    Display::shell_parser(model, view, controller, argument_counter, argument_vector, env);
-
-                    // 执行命令
-                    sh_err_t err = controller->execute(argument_counter, argument_vector, env);
-                    
-                    // 根据返回状态判断
-                    if (err == SH_EXIT)
-                    {
-                        break;
-                    }
-                    else if (err != SH_SUCCESS)
-                    {
-                        throw err;
-                    }
-
-                    view->show();   // 显示输出信息
-                }
-                catch(const std::exception& e)
-                {
-                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
-                }
-                catch(const sh_err_t e)
-                {
-                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m MyShell: %s\n", shell_error_message(e));
-                }
-                catch(const char * message)
-                {
-                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), message);
-                }
-                catch(...)
-                {
-                    fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s\n", strerror(errno));
-                }
-
-                if (model->GetInputRedirect())    // 如果发生了输入重定向
-                {
-                    int state_code = close(model->GetInputFD()); // 关闭文件
-                    if (state_code != 0)                         // 关闭错误处理
-                        throw std::exception();
-
-                    dup2(model->GetSTDIN(), STDIN_FILENO);
-                    model->SetInputFD(input_fd);  // 恢复输入
-                    model->ResetInputRedirect();    // 恢复状态
-                }
-
-                if (model->GetOutputRedirect())    // 如果发生了输出重定向
-                {
-                    int state_code = close(model->GetOutputFD()); // 关闭文件
-                    if (state_code != 0)                          // 关闭错误处理
-                        throw std::exception();
-
-                    dup2(model->GetSTDOUT(), STDOUT_FILENO);
-                    model->SetOutputFD(output_fd);  // 恢复输出
-                    model->ResetOutputRedirect();    // 恢复状态
-                }
-
-                if (model->GetErrorRedirect())    // 如果发生了错误输出重定向
-                {
-                    int state_code = close(model->GetErrorFD()); // 关闭文件
-                    if (state_code != 0)                          // 关闭错误处理
-                        throw std::exception();
-
-                    dup2(model->GetSTDERR(), STDERR_FILENO);
-                    model->SetErrorFD(error_fd);  // 恢复错误输出
-                    model->ResetErrorRedirect();    // 恢复状态
-                }
-
-                yylex_destroy();
+                if (state == false)
+                    break;
             }
         }
         catch(const std::exception& e)
@@ -195,21 +125,4 @@ namespace SHELL
         return 0;
     }
 
-}
-
-/** @brief 根据错误类型给出错误信息 */
-static const char * shell_error_message(sh_err_t err)
-{
-    switch (err)
-    {
-        case SH_FAILED:
-            return "Shell Failed. 错误";
-        case SH_UNDEFINED:
-            return "Undifined command. 未定义的命令";
-        case SH_ARGS:
-            return "Argument error. 参数错误";
-        
-        default:
-            return "Unknown error. 未知错误";
-    }
 }
