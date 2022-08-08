@@ -12,7 +12,8 @@
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
 
-#include "Console.h"
+class Console;
+class Executor;
 
 #include <string>
 
@@ -35,6 +36,8 @@ public:
      * 返回0表示读到EOF，返回负数表示出现错误
      */
     int InputCommand(char *input, const int len);
+
+    static int shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[]);
 
     /** @brief 命令行提示符显示模块 */
     void render();

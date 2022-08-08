@@ -33,8 +33,6 @@ namespace SHELL
     /** @brief 进入shell循环 */
     int shell_loop(Console* model, Display* view, Executor* controller, char *env[]);
 
-    /** @brief 根据错误类型给出错误信息 */
-    const char * shell_error_message(sh_err_t err);
 } // namespace SHELL
 
 

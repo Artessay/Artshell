@@ -29,24 +29,11 @@ extern "C"
 #include <fcntl.h>
 #include <exception>
 
+/** @brief 根据错误类型给出错误信息 */
+static const char * shell_error_message(sh_err_t err);
+
 namespace SHELL
 {
-    const char * shell_error_message(sh_err_t err)
-    {
-        switch (err)
-        {
-            case SH_FAILED:
-                return "Shell Failed. 错误";
-            case SH_UNDEFINED:
-                return "Undifined command. 未定义的命令";
-            case SH_ARGS:
-                return "Argument error. 参数错误";
-            
-            default:
-                return "Unknown error. 未知错误";
-        }
-    }
-
     int shell_setup(int argc, char *argv[], char *env[])
     {
         // 创建模型
@@ -79,142 +66,6 @@ namespace SHELL
         delete model;
         delete view;
         delete controller;
-
-        return 0;
-    }
-
-    int shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
-    {
-        if (argc == 0)
-            return 0;   // 无参，不需处理
-        
-        for (int index = argc-1; index >= 0; --index)
-        {
-            std::string arg(argv[index]);    // 使用string类处理
-            
-            /** 重定向处理 */
-            
-            /** 标准输入重定向 */
-            if (arg == "<" || arg == "0<")
-            {
-                if (index + 1 == argc)  // 重定向符号是最后一个输入
-                {
-                    throw "语法解析错误";
-                }
-
-                if (model->GetInputRedirect())      // 如果已经设置了重定向状态了
-                {
-                    throw "多重重定向错误";
-                }
-
-                const char * input_file = argv[index + 1];
-                int fd = open(input_file, O_RDONLY);
-                if (fd < 0)
-                    throw std::exception();
-                                
-                model->SetInputFD(fd);
-                model->SetInputRedirect();
-
-                dup2(fd, STDIN_FILENO); // 重定向标准输入至fd
-
-                for (int jump = index + 2; jump < argc; ++jump)
-                    argv[jump-2] = argv[jump];
-                argc = argc - 2;
-                argv[argc] = NULL;
-            }
-
-            /** 标准输出重定向 */
-            if (arg == ">" || arg == "1>")
-            {
-                if (index + 1 == argc)  // 重定向符号是最后一个输入
-                {
-                    throw "语法解析错误";
-                }
-
-                if (model->GetOutputRedirect())      // 如果已经设置了重定向状态了
-                {
-                    throw "多重重定向错误";
-                }
-
-                const char * output_file = argv[index + 1];
-                int fd = open(output_file, O_WRONLY | O_TRUNC | O_CREAT, 0777&(~model->GetMask()));
-                if (fd < 0)
-                    throw std::exception();                
-                
-                model->SetOutputFD(fd);
-                model->SetOutputRedirect();
-
-                dup2(fd, STDOUT_FILENO); // 重定向标准输出至fd
-                    
-                for (int jump = index + 2; jump < argc; ++jump)
-                    argv[jump-2] = argv[jump];
-                argc = argc - 2;
-                argv[argc] = NULL;
-            }
-
-            /** 标准错误输出重定向 */
-            if (arg == "2>")
-            {
-                if (index + 1 == argc)  // 重定向符号是最后一个输入
-                {
-                    throw "语法解析错误";
-                }
-
-                if (model->GetErrorRedirect())      // 如果已经设置了重定向状态了
-                {
-                    throw "多重重定向错误";
-                }
-
-                const char * output_file = argv[index + 1];
-                int fd = open(output_file, O_WRONLY | O_TRUNC | O_CREAT, 0777&(~model->GetMask()));
-                if (fd < 0)
-                    throw std::exception();                
-                
-                model->SetErrorFD(fd);
-                model->SetErrorRedirect();
-
-                dup2(fd, STDERR_FILENO); // 重定向标准错误输出至fd
-
-                for (int jump = index + 2; jump < argc; ++jump)
-                    argv[jump-2] = argv[jump];
-                argc = argc - 2;
-                argv[argc] = NULL;
-            }
-
-            /** 追加 */
-            if (arg == ">>" || arg == "1>>")
-            {
-                /* 词法解析时应该识别<和>符号的闭包 */
-                #ifdef _DEBUG_
-                Argument_Display(argc, argv);
-                #endif
-                
-                if (index + 1 == argc)  // 重定向符号是最后一个输入
-                {
-                    throw "语法解析错误";
-                }
-
-                if (model->GetOutputRedirect())      // 如果已经设置了重定向状态了
-                {
-                    throw "多重重定向错误";
-                }
-
-                const char * output_file = argv[index + 1];
-                int fd = open(output_file, O_WRONLY | O_APPEND | O_CREAT, 0777&(~model->GetMask()));
-                if (fd < 0)
-                    throw std::exception();                
-                
-                model->SetOutputFD(fd);
-                model->SetOutputRedirect();
-
-                dup2(fd, STDOUT_FILENO); // 重定向标准输出至fd
-
-                for (int jump = index + 2; jump < argc; ++jump)
-                    argv[jump-2] = argv[jump];
-                argc = argc - 2;
-                argv[argc] = NULL;
-            }
-        }
 
         return 0;
     }
@@ -266,7 +117,7 @@ namespace SHELL
                 try
                 {
                     // Parser 语法分析
-                    shell_parser(model, view, controller, argument_counter, argument_vector, env);
+                    Display::shell_parser(model, view, controller, argument_counter, argument_vector, env);
 
                     // 执行命令
                     sh_err_t err = controller->execute(argument_counter, argument_vector, env);
@@ -344,4 +195,21 @@ namespace SHELL
         return 0;
     }
 
+}
+
+/** @brief 根据错误类型给出错误信息 */
+static const char * shell_error_message(sh_err_t err)
+{
+    switch (err)
+    {
+        case SH_FAILED:
+            return "Shell Failed. 错误";
+        case SH_UNDEFINED:
+            return "Undifined command. 未定义的命令";
+        case SH_ARGS:
+            return "Argument error. 参数错误";
+        
+        default:
+            return "Unknown error. 未知错误";
+    }
 }

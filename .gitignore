@@ -3,8 +3,8 @@
 
 # Software Test
 ref
-*test*
-*output*
+*.sh
+*.txt
 
 # Prerequisites
 *.d
