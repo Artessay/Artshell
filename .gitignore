@@ -1,6 +1,10 @@
 # Visual Studio Code
 .vscode
+
+# Software Test
 ref
+test*
+output*
 
 # Prerequisites
 *.d
