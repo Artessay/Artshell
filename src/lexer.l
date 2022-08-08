@@ -6,13 +6,14 @@
 
 WORD	[a-zA-Z0-9\/\.\-~]+
 STRINGLITERAL \"(\\.|[^\\"])*\"
-SPECIAL	[()><|&*]
+REDIRCT [0-9><]+
+SPECIAL	[()|&*]
 
 %%
 	_argcounter = 0; 
 	_argvector[0] = NULL; 
 
-{WORD}|{SPECIAL}|{STRINGLITERAL} {
+{WORD}|{SPECIAL}|{REDIRCT}|{STRINGLITERAL} {
 	if(_argcounter < MAX_ARGUMENT_NUMBER-1) 
 	{
 	    _argvector[_argcounter++] = (char *)strdup(yytext);

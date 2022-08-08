@@ -92,6 +92,8 @@ namespace SHELL
         {
             std::string arg(argv[index]);    // 使用string类处理
             
+            /* 重定向处理 */
+            
             if (arg == "<" || arg == "0<")
             {
                 if (index + 1 == argc)  // 重定向符号是最后一个输入
@@ -160,7 +162,7 @@ namespace SHELL
                 }
 
                 const char * output_file = argv[index + 1];
-                int fd = open(output_file, O_WRONLY | O_APPEND | O_CREAT, 0777^model->GetMask());
+                int fd = open(output_file, O_WRONLY | O_APPEND | O_CREAT, 0777&(~model->GetMask()));
                 if (fd < 0)
                     throw std::exception();                
                 
