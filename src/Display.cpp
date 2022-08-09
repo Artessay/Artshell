@@ -98,8 +98,26 @@ void Display::render()
         return;
     }
 
+    int sret = 0;
+    const size_t len = strlen(console_->home);
+    if (strlen(console_->current_working_dictionary) >= len)
+    {
+        size_t i = 0; 
+        while (i < len)
+        {
+            if (console_->current_working_dictionary[i] != console_->home[i])
+                break;
+            ++i;
+        }
+        if (i == len)
+            sret = i;
+    }
+    
     char buffer[BUFFER_SIZE];   // 打印缓冲区
-    int sret = snprintf(buffer, BUFFER_SIZE, "\e[1;32m%s@%s\e[0m:\e[1;34m%s\e[0m> ", \
+    sret = sret 
+        ? snprintf(buffer, BUFFER_SIZE, "\e[1;32m%s@%s\e[0m:\e[1;34m~%s\e[0m> ", \
+        console_->user_name, console_->host_name, console_->current_working_dictionary+sret)
+        : snprintf(buffer, BUFFER_SIZE, "\e[1;32m%s@%s\e[0m:\e[1;34m%s\e[0m> ", \
         console_->user_name, console_->host_name, console_->current_working_dictionary);
     if (sret == -1)
     {

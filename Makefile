@@ -21,7 +21,6 @@ lib$(LIBS).a:
 
 .cpp.o:
 	$(CC) $(CFLAG) -c -o $@ $<
-	-rm $(DEPS)
 
 debug: lib$(LIBS).a
 	-rm $(OBJS) $(DEPS) $(RUN)
