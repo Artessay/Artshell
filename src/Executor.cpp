@@ -529,6 +529,13 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "test")==0 && "unexpected node type");
 
+    if (argc == 1)  // 没有需要判断的命令
+        return SH_SUCCESS;
+    else if (argc == 2) // 单目运算
+    {
+        
+    }
+
     return SH_SUCCESS;
 }
 

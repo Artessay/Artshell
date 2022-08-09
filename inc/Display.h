@@ -23,6 +23,9 @@ private:
 
     Console* console_;
 
+    bool perform;   // 是否显示提示符的标志
+
+protected:
     std::string buffer_;
 
 public:

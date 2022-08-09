@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 Display::Display(Console* console)
-: console_(console)
+: console_(console), perform(true), buffer_("")
 {
 }
 
@@ -63,6 +63,7 @@ int Display::InputCommand(char *input, const int len)
         if (ch == ';')  // 将；视为换行符，便于lexer和parser处理
         {
             ch = '\n';
+            perform = false;
         }
             
         input[i++] = ch;
@@ -90,6 +91,12 @@ void Display::render()
     if (console_->input_file_descriptor != STDIN_FILENO ||
         console_->output_file_descriptor != STDOUT_FILENO)
         return; // 就不需要打印提示符
+    
+    if (!perform)
+    {
+        perform = true;
+        return;
+    }
 
     char buffer[BUFFER_SIZE];   // 打印缓冲区
     int sret = snprintf(buffer, BUFFER_SIZE, "\e[1;32m%s@%s\e[0m:\e[1;34m%s\e[0m> ", \
