@@ -50,7 +50,7 @@ public:
      */
     virtual ~Parser() = 0;  // 抽象类，纯虚函数
 
-    static int shell_pipe(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[]);
+    static bool shell_pipe(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[]);
 
     static int shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[]);
 };

@@ -9,6 +9,7 @@
  * 
  */
 
+#include "common.h"
 #include "Parser.h"
 #include "Console.h"
 #include "Display.h"
@@ -22,29 +23,36 @@
 /** @brief 根据错误类型给出错误信息 */
 static const char * shell_error_message(sh_err_t err);
 
-int Parser::shell_pipe(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
+bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
 {
     int count = 0;
-    char **args = argv;
+    char *args[MAX_ARGUMENT_NUMBER];
+    bool state = false; /** @var 检测是否有exit命令 */
 
     int i = 0;
     do
     {
         if (strcmp(argv[i], "|") != 0)   // 不是管道符
         {
+            args[count] = argv[i];
             count++;
         }
         else
         {
-            shell_execute(model, view, controller, count, args, env);
+            args[count] = NULL; // 命令结束
+            state |= shell_execute(model, view, controller, count, args, env);
+            
             count = 0;
-            args = argv + i + 1;
         }
 
         ++i;
     } while (i < argc);
 
-    return 0;
+    /* 最后一条命令也要执行 */
+    args[count] = NULL; // 命令结束
+    state |= shell_execute(model, view, controller, count, args, env);
+
+    return state;
 }
 
 int Parser::shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
@@ -185,6 +193,8 @@ int Parser::shell_parser(Console *model, Display* view, Executor* controller, in
 
 bool Parser::shell_execute(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
 {
+    // Argument_Display(argc, argv);
+
     int input_fd = model->GetInputFD();     // 记录下原始输入
     int output_fd = model->GetOutputFD();   // 记录下原始输出
     int error_fd = model->GetErrorFD();     // 记录下原始错误输出
@@ -201,14 +211,12 @@ bool Parser::shell_execute(Console *model, Display* view, Executor* controller, 
         // 根据返回状态判断
         if (err == SH_EXIT)
         {
-            return false;
+            return true;
         }
         else if (err != SH_SUCCESS)
         {
             throw err;
         }
-
-        view->show();   // 显示输出信息
     }
     catch(const std::exception& e)
     {
@@ -260,7 +268,7 @@ bool Parser::shell_execute(Console *model, Display* view, Executor* controller, 
         model->ResetErrorRedirect();    // 恢复状态
     }
 
-    return true;
+    return false;
 }
 
 /** @brief 根据错误类型给出错误信息 */

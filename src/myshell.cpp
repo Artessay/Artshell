@@ -107,13 +107,13 @@ namespace SHELL
                 if (argument_counter == 0)
                     continue;
                 
-                int& argc = argument_counter;
-                char **argv = argument_vector;
-                bool state = Parser::shell_pipe(model, view, controller, argc, argv, env);
+                bool exit_state = Parser::shell_pipe(model, view, controller, argument_counter, argument_vector, env);
+
+                view->show();   // 显示输出信息
 
                 yylex_destroy();    // 释放词法分析器占用的空间，防止内存泄露
 
-                if (state == false)
+                if (exit_state == true)
                     break;
             }
         }

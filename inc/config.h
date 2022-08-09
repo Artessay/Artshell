@@ -13,6 +13,7 @@
 #define _CONFIG_H_
 
 static constexpr int BUFFER_SIZE = 1024;
+static constexpr int MAX_ARGUMENT_NUMBER = 128;
 
 enum sh_err_t
 {
