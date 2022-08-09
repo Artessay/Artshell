@@ -438,6 +438,10 @@ sh_err_t Executor::execute_clear(const int argc, char * const argv[], char * con
 
 sh_err_t Executor::execute_env(const int argc, char * const argv[], char * const env[]) const
 {
+    extern char **environ; //env variables
+    char ***update_env = const_cast<char ***>(&env);
+    *update_env = environ;
+
     while(*env)
     {
         char buffer[BUFFER_SIZE];
@@ -533,7 +537,7 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
         return SH_SUCCESS;
     else if (argc == 2) // 单目运算
     {
-        
+
     }
 
     return SH_SUCCESS;
@@ -554,8 +558,17 @@ sh_err_t Executor::execute_umask(const int argc, char * const argv[], char * con
     {
         // 使用函数模板实现进制转换
         console_->umask_ = String_to_Number<mode_t>(argv[1]);
+        
+        if (argv[1][0] == '0')
+        {
+            if (strlen(argv[1]) >= 2 && argv[1][1] == 'x')  // 十六进制
+                console_->umask_ = Hexadecimal_to_Decimal(console_->umask_);
+            else                                            // 八进制
+                console_->umask_ = Octal_to_Decimal(console_->umask_);
+        }
+        
         #ifdef _DEBUG_
-        printf("mask: %04o\n", console_->umask_);
+        printf("mask: %04u %04o\n", console_->umask_, console_->umask_);
         #endif
         umask(console_->umask_);
     }

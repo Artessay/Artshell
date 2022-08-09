@@ -12,6 +12,7 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
+#include <cmath>
 #include <string>
 #include <sstream>
 
@@ -95,16 +96,118 @@ Type String_to_Number(const std::string& str)
     return num;    
 }
 
+/** 比较取小 */
 template <typename T>
 inline T Min(const T& a, const T& b)
 {
     return a < b ? a : b;
 }
 
+/** 比较取大 */
 template <typename T>
 inline T Max(const T& a, const T& b)
 {
     return a > b ? a : b;
 }
+
+/**
+ * @brief 八进制转十进制
+ * 
+ * @tparam T 
+ * @param octalNumber 八进制数
+ * @return T 十进制数
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-19
+ * @copyright Copyright (c) 2022
+ */
+template <typename T>
+T Octal_to_Decimal(T octalNumber)
+{
+    T decimalNumber = 0, i = 0, remainderNumber;
+    while (octalNumber != 0)
+    {
+        remainderNumber = octalNumber % 10; // 余数
+        octalNumber /= 10;                  // 退位
+        decimalNumber += remainderNumber * pow(8, i);   // 幂乘
+        ++i;
+    }
+    return decimalNumber;
+}
+
+/**
+ * @brief 十进制转八进制
+ * 
+ * @tparam T 
+ * @param decimalNumber 十进制数
+ * @return T 八进制数
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-19
+ * @copyright Copyright (c) 2022
+ */
+template <typename T>
+T Decimal_to_Octal(T decimalNumber)
+{
+    T remainderNumber, i = 1, octalNumber = 0;
+    while (decimalNumber != 0)
+    {
+        remainderNumber = decimalNumber % 8; // 余数
+        decimalNumber /= 8;                  // 退位
+        octalNumber += remainderNumber * i;  // 幂乘
+        i *= 10;
+    }
+    return octalNumber;
+} 
+
+/**
+ * @brief 十六进制转十进制
+ * 
+ * @tparam T 
+ * @param hexadecimalNumber 十六进制数
+ * @return T 十进制数
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-19
+ * @copyright Copyright (c) 2022
+ */
+template <typename T>
+T Hexadecimal_to_Decimal(T hexadecimalNumber)
+{
+    T decimalNumber = 0, i = 0, remainderNumber;
+    while (hexadecimalNumber != 0)
+    {
+        remainderNumber = hexadecimalNumber % 10; // 余数
+        hexadecimalNumber /= 10;                  // 退位
+        decimalNumber += remainderNumber * pow(16, i);  // 幂乘
+        ++i;
+    }
+    return decimalNumber;
+}
+
+/**
+ * @brief 十进制转十六进制
+ * 
+ * @tparam T 
+ * @param decimalNumber 十进制数
+ * @return T 十六进制数
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-19
+ * @copyright Copyright (c) 2022
+ */
+template <typename T>
+T Decimal_to_Hexadecimal(T decimalNumber)
+{
+    T remainderNumber, i = 1, hexadecimalNumber = 0;
+    while (decimalNumber != 0)
+    {
+        remainderNumber = decimalNumber % 16; // 余数
+        decimalNumber /= 16;                  // 退位
+        hexadecimalNumber += remainderNumber * i;  // 幂乘
+        i *= 10;
+    }
+    return hexadecimalNumber;
+} 
 
 #endif
