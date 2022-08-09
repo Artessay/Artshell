@@ -10,6 +10,7 @@
  */
 
 #include "common.h"
+#include "String.h"
 #include "myshell.h"
 #include "Executor.h"
 
@@ -327,11 +328,11 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
             // 普通文件
             switch (entry->d_type)
             {
-                case DT_UNKNOWN:    // 未知文件用红色
+                case DT_UNKNOWN:    //   // 目录文件未知文件用红色
                     snprintf(buffer, BUFFER_SIZE, "\033[31m%s\033[0m  ", entry->d_name);
                     break;
                 
-                case DT_REG:        // 普通文件用白色
+                case DT_REG:        //   // 目录文件普通文件用白色
                     snprintf(buffer, BUFFER_SIZE, "\033[37m%s\033[0m  ", entry->d_name);
                     break;
 
@@ -557,11 +558,74 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "test")==0 && "unexpected node type");
 
-    if (argc == 1)  // 没有需要判断的命令
-        return SH_SUCCESS;
+    bool ret;
+    if (argc == 1)  // 空字符串，false
+    {
+        ret = false;
+    } 
     else if (argc == 2) // 单目运算
     {
-        //
+        ret = true;
+    }
+    else if (argc == 3) // 双目运算
+    {
+        // 文件测试 与 部分字符串测试
+        struct stat file_stat;
+        if (lstat(argv[2], &file_stat) < 0)
+        {
+            throw "lstat error";
+        }
+
+        // 对文件测试参数进行判断
+        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
+        {
+            case String_Hash("-f"):  // 普通文件
+                ret = S_ISREG(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-d"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-r"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-s"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-t"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-w"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-x"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-b"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-c"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-e"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            case String_Hash("-L"):  // 目录文件
+                ret = S_ISDIR(file_stat.st_mode);
+                break;
+            
+            default:
+                break;
+        }
     }
 
     return SH_SUCCESS;
