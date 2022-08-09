@@ -395,6 +395,30 @@ sh_err_t Executor::execute_help(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "help")==0 && "unexpected node type");
 
+    FILE* fp = fopen("README.md", "r");
+    if (fp == nullptr)
+    {
+        return SH_FAILED;
+    }
+
+    char buffer[BUFFER_SIZE*2];
+    if (fgets(buffer, BUFFER_SIZE, fp) == nullptr)
+        return SH_FAILED;    // 忽略首行
+
+    size_t size = fread(buffer, 1, BUFFER_SIZE*2, fp);
+    if (size < 0)
+    {
+        return SH_FAILED;
+    }
+
+    if (fclose(fp) == -1)
+    {
+        throw std::exception();
+    }
+
+    display_->message(buffer);
+    display_->message("\n");
+
     return SH_SUCCESS;
 }
 
@@ -537,7 +561,7 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
         return SH_SUCCESS;
     else if (argc == 2) // 单目运算
     {
-
+        //
     }
 
     return SH_SUCCESS;
