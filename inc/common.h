@@ -210,4 +210,48 @@ T Decimal_to_Hexadecimal(T decimalNumber)
     return hexadecimalNumber;
 } 
 
+/**
+ * @brief timespec时间比较
+ * 
+ * @param time1 时间1
+ * @param time2 时间2
+ * @return true 如果time1的时间晚于time2的时间
+ * @return false 如果time1的时间不晚于time2的时间
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-20
+ * @copyright Copyright (c) 2022
+ */
+inline bool test_timespec_newer(struct timespec& time1, struct timespec& time2)
+{
+    if (time1.tv_sec > time2.tv_sec)    // 先比较秒
+        return true;
+    else if (time1.tv_sec < time2.tv_sec)
+        return false;
+    else
+        return time1.tv_nsec > time2.tv_nsec;   // 再比较纳秒
+}
+
+/**
+ * @brief timespec时间比较
+ * 
+ * @param time1 时间1
+ * @param time2 时间2
+ * @return true 如果time1的时间早于time2的时间
+ * @return false 如果time1的时间不早于time2的时间
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-20
+ * @copyright Copyright (c) 2022
+ */
+inline bool test_timespec_older(struct timespec& time1, struct timespec& time2)
+{
+    if (time1.tv_sec < time2.tv_sec)    // 先比较秒
+        return true;
+    else if (time1.tv_sec > time2.tv_sec)
+        return false;
+    else
+        return time1.tv_nsec < time2.tv_nsec;   // 再比较纳秒
+}
+
 #endif

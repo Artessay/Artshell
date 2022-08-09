@@ -10,7 +10,6 @@
  */
 
 #include "common.h"
-#include "String.h"
 #include "myshell.h"
 #include "Executor.h"
 
@@ -26,6 +25,9 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+
+/** 测试终端联系 */
+static inline bool test_tty(const char * file_name);
 
 /** 定义命令字符串数组 */
 static const char* OperandArray[] = 
@@ -328,16 +330,19 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
             // 普通文件
             switch (entry->d_type)
             {
-                case DT_UNKNOWN:    //   // 目录文件未知文件用红色
+                case DT_UNKNOWN:    // 目录文件未知文件用红色
                     snprintf(buffer, BUFFER_SIZE, "\033[31m%s\033[0m  ", entry->d_name);
                     break;
                 
-                case DT_REG:        //   // 目录文件普通文件用白色
-                    snprintf(buffer, BUFFER_SIZE, "\033[37m%s\033[0m  ", entry->d_name);
+                case DT_REG:        // 目录文件普通文件用白色
+                    if (access(entry->d_name, X_OK))    // 可执行文件除外，用绿色
+                        snprintf(buffer, BUFFER_SIZE, "\033[32m%s\033[0m  ", entry->d_name);
+                    else
+                        snprintf(buffer, BUFFER_SIZE, "\033[37m%s\033[0m  ", entry->d_name);
                     break;
 
-                default:            // 其他文件用绿色
-                    snprintf(buffer, BUFFER_SIZE, "\033[32m%s\033[0m  ", entry->d_name);
+                default:            // 其他文件用青色
+                    snprintf(buffer, BUFFER_SIZE, "\033[36m%s\033[0m  ", entry->d_name);
                     break;
             }
             if (console_->redirect_output == false) 
@@ -558,7 +563,7 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "test")==0 && "unexpected node type");
 
-    bool ret;
+    bool ret = false;
     if (argc == 1)  // 空字符串，false
     {
         ret = false;
@@ -567,65 +572,22 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
     {
         ret = true;
     }
-    else if (argc == 3) // 双目运算
+    else if (argc == 3 || argc == 4) // 双目运算
     {
         // 文件测试 与 部分字符串测试
-        struct stat file_stat;
-        if (lstat(argv[2], &file_stat) < 0)
-        {
-            throw "lstat error";
-        }
+        ret = Executor::test_file_state(argc, argv);
+    }
+    else
+    {
+        return SH_ARGS;
+    }
 
-        // 对文件测试参数进行判断
-        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
-        {
-            case String_Hash("-f"):  // 普通文件
-                ret = S_ISREG(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-d"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-r"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-s"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-t"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-w"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-x"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-b"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-c"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-e"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            case String_Hash("-L"):  // 目录文件
-                ret = S_ISDIR(file_stat.st_mode);
-                break;
-            
-            default:
-                break;
-        }
+    if (console_->GetOutputRedirect() == false) // 如果是在终端显示就产生正误提示
+    {
+        if (ret)
+            display_->message("true\n");
+        else
+            display_->message("false\n");
     }
 
     return SH_SUCCESS;
@@ -768,4 +730,126 @@ sh_err_t Executor::execute_myshell(const int argc, char * const argv[], char * c
     console_->input_file_descriptor = input_fd; // 恢复控制台的input fd
 
     return SH_SUCCESS;
+}
+
+static inline bool test_tty(const char * file_name)
+{
+    try
+    {
+        int fd = open(file_name, S_IREAD);  // 打开文件获取文件描述符
+        bool tty = isatty(fd);              // 判断是否为终端
+        close(fd);                          // 关闭文件
+        return tty;
+    }
+    catch(...)
+    {
+        return false;                       // 如果有任何中断则返回false
+    }
+}
+
+bool Executor::test_file_state(const int argc, const char * const argv[])
+{
+    assert(argc == 3 || argc == 4);
+
+    if (argc == 3)
+    {
+        struct stat file_stat;
+
+        if (lstat(argv[2], &file_stat) < 0) // 文件不存在
+        {
+            return false;   // 不存在一定是false
+        }
+
+        // 对文件测试参数进行判断
+        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
+        {
+            /* 存在性判断 */
+            case String_Hash("-e"):  // 存在判断
+                return true;
+            
+            /* 文件类型判断 */
+            case String_Hash("-f"):  // 普通文件
+                return S_ISREG(file_stat.st_mode);
+            
+            case String_Hash("-d"):  // 目录文件
+                return S_ISDIR(file_stat.st_mode);
+            
+            case String_Hash("-c"):  // 字符特殊文件
+                return S_ISCHR(file_stat.st_mode);
+            
+            case String_Hash("-b"):  // 块特殊文件
+                return S_ISBLK(file_stat.st_mode);
+            
+            case String_Hash("-p"):  // 管道文件
+                return S_ISFIFO(file_stat.st_mode);
+            
+            case String_Hash("-L"):  // 符号链接文件
+                return S_ISLNK(file_stat.st_mode);
+            
+            case String_Hash("-S"):  // 套接字文件
+                return S_ISSOCK(file_stat.st_mode);
+            
+            /* 文件权限判断 */
+            case String_Hash("-r"):  // 只读文件
+                return access(argv[1], R_OK);
+            
+            case String_Hash("-w"):  // 可写文件
+                return access(argv[1], W_OK);
+            
+            case String_Hash("-x"):  // 可执行文件
+                return access(argv[1], X_OK);
+
+            case String_Hash("-O"):  // 所有者文件
+                return file_stat.st_uid == getuid();
+            
+            case String_Hash("-G"):  // 组 文件
+                return file_stat.st_gid == getgid();
+            
+            /* 文件属性判断 */
+            case String_Hash("-u"):  // 用户位属性SUID
+                return S_ISUID & file_stat.st_mode;
+            
+            case String_Hash("-g"):  // 组位属性GUID
+                return S_ISGID & file_stat.st_mode;
+            
+            case String_Hash("-k"):  // Sticky bit属性
+                return S_ISVTX & file_stat.st_mode;
+            
+            case String_Hash("-s"):  // 文件长度非0
+                return file_stat.st_size > 0;
+            
+            case String_Hash("-t"):  // 文件描述符联系终端
+                return test_tty(argv[2]);
+            
+            /* 其他情况返回错误 */
+            default:
+                return false;
+        }
+    }
+    else
+    {
+        struct stat file_stat1, file_stat2;
+
+        if (lstat(argv[1], &file_stat1) < 0) // 文件不存在
+        {
+            return false;   // 不存在一定是false
+        }
+        if (lstat(argv[3], &file_stat2) < 0) // 文件不存在
+        {
+            return false;   // 不存在一定是false
+        }
+
+        // 对文件测试参数进行判断
+        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
+        {
+            case String_Hash("-nt"):    // 判断file1是否比file2新
+                return test_timespec_newer(file_stat1.st_mtim, file_stat2.st_mtim);
+            
+            case String_Hash("-ot"):    // 判断file1是否比file2旧
+                return test_timespec_older(file_stat1.st_mtim, file_stat2.st_mtim);
+            
+            default:
+                return false;
+        }
+    }
 }

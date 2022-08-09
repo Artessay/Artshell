@@ -99,7 +99,7 @@ class Executor
         /** 创建函数指针数组 */
         MemFuncPtr FunctionArray[FunctionNumber];
 
-        
+        static bool test_file_state(const int argc, const char * const argv[]);
 
     public:
         Executor(Console *model, Display *view);
