@@ -109,7 +109,7 @@ namespace SHELL
                 
                 bool exit_state = Parser::shell_pipe(model, view, controller, argument_counter, argument_vector, env);
 
-                view->show();   // 显示输出信息
+                // view->show();   // 显示输出信息
 
                 yylex_destroy();    // 释放词法分析器占用的空间，防止内存泄露
 
@@ -117,10 +117,18 @@ namespace SHELL
                     break;
             }
         }
+        catch(const char * message)
+        {
+            fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), message);
+        }
         catch(const std::exception& e)
         {
             fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s: %s\n", strerror(errno), e.what());
-        };
+        }
+        catch(...)
+        {
+            fprintf(stderr, "\e[1;31m[ERROR]\e[0m %s\n", strerror(errno));
+        }
 
         return 0;
     }

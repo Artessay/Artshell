@@ -48,6 +48,9 @@ public:
 
     /** @brief 将所有打印信息统一显示在终端 */
     void show() const;
+
+    /** @brief 清空缓冲区 */
+    void clear() { buffer_ = ""; }
 };
 
 #endif

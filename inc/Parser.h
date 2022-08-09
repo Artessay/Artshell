@@ -19,6 +19,8 @@ class Executor;
 class Parser
 {
 private:
+    enum {SUCCESS = 0, EXIT = 1};
+
     /**
      * @brief 执行shell
      * 

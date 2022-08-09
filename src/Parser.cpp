@@ -28,6 +28,10 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
     int count = 0;
     char *args[MAX_ARGUMENT_NUMBER];
 
+    int input_fd = model->GetInputFD();     // 记录下原始输入
+    int output_fd = model->GetOutputFD();   // 记录下原始输出
+    int error_fd = model->GetErrorFD();     // 记录下原始错误输出
+
     int i = 0;
     do
     {
@@ -39,9 +43,51 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
         else
         {
             args[count] = NULL; // 命令结束
-            shell_execute(model, view, controller, count, args, env);
-            
-            count = 0;
+
+            int channel[2]; 
+            // channel[0] : read
+            // channel[1] : write
+            if (pipe(channel) == -1)
+                throw "Pipe Error, 错误终止";
+
+            pid_t pid = fork(); // 分裂进程
+            if (pid < 0)
+            { 
+                /* 错误处理 */
+                throw "Fork Error, 错误终止";
+            }
+            else if (pid == 0)
+            {
+                /* 子进程 */  
+                setenv("parent", getenv("shell"), 1);  // 设置调用子进程的父进程
+                close(channel[0]);  // 关闭读进程
+                int fd = channel[1];
+
+                model->SetOutputFD(fd);
+                model->SetOutputRedirect();
+
+                dup2(fd, STDOUT_FILENO); // 重定向标准输出至channel[1]
+
+                shell_execute(model, view, controller, count, args, env);
+                
+                /* 在shell execute里包含了重定向后文件的关闭等操作，此处可以不必再次关闭 */
+
+                return EXIT;
+            }
+            else
+            {
+                /* 父进程 */
+                close(channel[1]);
+                int fd = channel[0];
+
+                model->SetInputFD(fd);
+                model->SetInputRedirect();
+
+                dup2(fd, STDIN_FILENO); // 重定向标准输入至fd
+
+                count = 0;
+            }
+
         }
 
         ++i;
@@ -49,7 +95,43 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
 
     /* 最后一条命令也要执行 */
     args[count] = NULL; // 命令结束
-    return shell_execute(model, view, controller, count, args, env);
+    bool exit_state = shell_execute(model, view, controller, count, args, env);
+
+    /* 无论重定向如何发生，最后将其还原为本来的状态 */
+    if (model->GetInputRedirect())    // 如果发生了输入重定向
+    {
+        int state_code = close(model->GetInputFD()); // 关闭文件
+        if (state_code != 0)                         // 关闭错误处理
+            throw std::exception();
+
+        dup2(model->GetSTDIN(), STDIN_FILENO);
+        model->SetInputFD(input_fd);  // 恢复输入
+        model->ResetInputRedirect();    // 恢复状态
+    }
+
+    if (model->GetOutputRedirect())    // 如果发生了输出重定向
+    {
+        int state_code = close(model->GetOutputFD()); // 关闭文件
+        if (state_code != 0)                          // 关闭错误处理
+            throw std::exception();
+
+        dup2(model->GetSTDOUT(), STDOUT_FILENO);
+        model->SetOutputFD(output_fd);  // 恢复输出
+        model->ResetOutputRedirect();    // 恢复状态
+    }
+
+    if (model->GetErrorRedirect())    // 如果发生了错误输出重定向
+    {
+        int state_code = close(model->GetErrorFD()); // 关闭文件
+        if (state_code != 0)                          // 关闭错误处理
+            throw std::exception();
+
+        dup2(model->GetSTDERR(), STDERR_FILENO);
+        model->SetErrorFD(error_fd);  // 恢复错误输出
+        model->ResetErrorRedirect();    // 恢复状态
+    }
+
+    return exit_state;
 }
 
 int Parser::shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
@@ -214,6 +296,9 @@ bool Parser::shell_execute(Console *model, Display* view, Executor* controller, 
         {
             throw err;
         }
+
+        view->show();      // 显示输出信息
+        view->clear();     // 清空结果
     }
     catch(const std::exception& e)
     {
