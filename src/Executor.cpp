@@ -570,16 +570,27 @@ sh_err_t Executor::execute_test(const int argc, char * const argv[], char * cons
     } 
     else if (argc == 2) // 单目运算
     {
-        ret = true;
+        if (strcmp(argv[1], "!") == 0 || strcmp(argv[1], "-z") == 0)
+            ret = true;
+        else
+            ret = false;
     }
-    else if (argc == 3 || argc == 4) // 双目运算
+    else 
     {
-        // 文件测试 与 部分字符串测试
-        ret = Executor::test_file_state(argc, argv);
-    }
-    else
-    {
-        return SH_ARGS;
+        if (strcmp(argv[1], "!"))   // 第二个参数不是！
+        {
+            if (argc == 3 || argc == 4) // 双目运算
+            {
+                // 文件测试 与 部分字符串测试
+                ret = Executor::test_file_state(argc, argv)
+                    | Executor::test_number_compare(argc, argv)
+                    | Executor::test_string_compare(argc, argv);
+            }
+            else
+            {
+                return SH_ARGS;
+            }
+        }
     }
 
     if (console_->GetOutputRedirect() == false) // 如果是在终端显示就产生正误提示
@@ -840,13 +851,99 @@ bool Executor::test_file_state(const int argc, const char * const argv[])
         }
 
         // 对文件测试参数进行判断
-        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
+        switch (String_Hash(argv[2]))   // 为了形式上的优雅，使用switch语句
         {
             case String_Hash("-nt"):    // 判断file1是否比file2新
                 return test_timespec_newer(file_stat1.st_mtim, file_stat2.st_mtim);
             
             case String_Hash("-ot"):    // 判断file1是否比file2旧
                 return test_timespec_older(file_stat1.st_mtim, file_stat2.st_mtim);
+            
+            case String_Hash("-ef"):    // 判断file1与file2是否为同一个文件
+                return file_stat1.st_ino == file_stat2.st_ino;
+            
+            default:                    /* 其他情况返回错误 */
+                return false;
+        }
+    }
+}
+
+bool Executor::test_number_compare(const int argc, const char * const argv[])
+{
+    if (argc != 4)
+        return false;
+
+    
+    int number1 = String_to_Number<int>(argv[1]);
+    int number2 = String_to_Number<int>(argv[2]);
+
+    // 对整数测试参数进行判断
+    switch (String_Hash(argv[2]))   // 为了形式上的优雅，使用switch语句
+    {
+        case String_Hash("-eq"):
+        case String_Hash("=="):     // 判断number1是否与number2相等
+            return number1 == number2;
+        
+        case String_Hash("-ne"):
+        case String_Hash("!="):     // 判断number1是否与number2不相等
+            return number1 != number2;
+        
+        case String_Hash("-ge"):
+        case String_Hash(">="):     // 判断number1是否大于等于number2
+            return number1 >= number2;
+        
+        case String_Hash("-gt"):
+        case String_Hash(">"):      // 判断number1是否大于number2
+            return number1 > number2;
+        
+        case String_Hash("-le"):
+        case String_Hash("<="):     // 判断number1是否小于等于number2
+            return number1 <= number2;
+        
+        case String_Hash("-lt"):
+        case String_Hash("<"):      // 判断number1是否小于number2
+            return number1 < number2;
+        
+        default:                    /* 其他情况返回错误 */
+            return false;
+    }
+    
+}
+
+bool Executor::test_string_compare(const int argc, const char * const argv[])
+{
+    assert(argc == 3 || argc == 4);
+
+    if (argc == 3)
+    {
+        // 对字符串测试参数进行判断
+        switch (String_Hash(argv[1]))   // 为了形式上的优雅，使用switch语句
+        {
+            /* 存在性判断 */
+            case String_Hash("-n"):  // 存在判断
+                return true;
+                        
+            /* 其他情况返回错误 */
+            default:
+                return false;
+        }
+    }
+    else
+    {
+        // 对字符串测试参数进行判断
+        switch (String_Hash(argv[2]))   // 为了形式上的优雅，使用switch语句
+        {
+            case String_Hash("="):     // 判断string1是否与string2相等
+                return !strcmp(argv[1], argv[3]);
+            
+            case String_Hash("!="):     // 判断string1是否与string2不相等
+                return strcmp(argv[1], argv[3]);
+            
+            case String_Hash("\\>"):      // 判断string1是否大于string2
+                return strcmp(argv[1], argv[3]) > 0;
+            
+            case String_Hash("\\<"):      // 判断string1是否小于string2
+                return strcmp(argv[1], argv[3]) < 0;
             
             default:
                 return false;

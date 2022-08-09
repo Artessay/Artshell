@@ -7,7 +7,7 @@
 WORD	[a-zA-Z0-9\/\.\-~]+
 STRINGLITERAL \"(\\.|[^\\"])*\"
 REDIRCT [0-9><]+
-SPECIAL	[()|&*]
+SPECIAL	[()|&*!]
 
 %%
 	_argcounter = 0; 

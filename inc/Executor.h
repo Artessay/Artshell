@@ -25,6 +25,8 @@ class Executor
         Console *console_;  /** @see 控制台 */
 
         Display *display_;  /** @see 显示器 */
+    
+    protected:
         
         /** 更改目录 */
         sh_err_t execute_cd(const int argc, char * const argv[], char * const env[]) const;
@@ -99,7 +101,12 @@ class Executor
         /** 创建函数指针数组 */
         MemFuncPtr FunctionArray[FunctionNumber];
 
+        /** 文件测试 */
         static bool test_file_state(const int argc, const char * const argv[]);
+        /** 文件测试 */
+        static bool test_number_compare(const int argc, const char * const argv[]);
+        /** 文件测试 */
+        static bool test_string_compare(const int argc, const char * const argv[]);
 
     public:
         Executor(Console *model, Display *view);
