@@ -19,6 +19,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <exception>
+#include <sys/wait.h>
 
 /** @brief 根据错误类型给出错误信息 */
 static const char * shell_error_message(sh_err_t err);
@@ -30,7 +31,6 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
 
     int input_fd = model->GetInputFD();     // 记录下原始输入
     int output_fd = model->GetOutputFD();   // 记录下原始输出
-    int error_fd = model->GetErrorFD();     // 记录下原始错误输出
 
     int i = 0;
     do
@@ -49,6 +49,10 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
             // channel[1] : write
             if (pipe(channel) == -1)
                 throw "Pipe Error, 错误终止";
+            
+            #ifdef _DEBUG_
+            printf("channel: read %d write %d\n", channel[0], channel[1]);
+            #endif
 
             pid_t pid = fork(); // 分裂进程
             if (pid < 0)
@@ -77,6 +81,8 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
             else
             {
                 /* 父进程 */
+                wait(NULL); // 为保持逻辑，需要等子进程输出之后再继续
+                
                 close(channel[1]);
                 int fd = channel[0];
 
@@ -93,42 +99,31 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
         ++i;
     } while (i < argc);
 
+    #ifdef _DEBUG_
+    printf("Parent Process\n");
+    #endif
     /* 最后一条命令也要执行 */
     args[count] = NULL; // 命令结束
     bool exit_state = shell_execute(model, view, controller, count, args, env);
 
-    /* 无论重定向如何发生，最后将其还原为本来的状态 */
-    if (model->GetInputRedirect())    // 如果发生了输入重定向
-    {
-        int state_code = close(model->GetInputFD()); // 关闭文件
-        if (state_code != 0)                         // 关闭错误处理
-            throw std::exception();
+    #ifdef _DEBUG_
+    printf("pipe: Input %d Output %d Error %d\n", model->GetInputFD(), model->GetOutputFD(), model->GetErrorFD());
+    #endif
 
-        dup2(model->GetSTDIN(), STDIN_FILENO);
+    /* 无论重定向如何发生，最后将其还原为本来的状态
+       可能执行时已关闭文件，但未正确设置原始状态 */
+    if (model->GetInputFD() != input_fd)    // 如果发生了输入重定向且未关闭
+    {
+        // dup2(model->GetSTDIN(), STDIN_FILENO);
         model->SetInputFD(input_fd);  // 恢复输入
-        model->ResetInputRedirect();    // 恢复状态
+        // model->ResetInputRedirect();    // 恢复状态
     }
 
-    if (model->GetOutputRedirect())    // 如果发生了输出重定向
+    if (model->GetOutputFD() != output_fd)    // 如果发生了输出重定向
     {
-        int state_code = close(model->GetOutputFD()); // 关闭文件
-        if (state_code != 0)                          // 关闭错误处理
-            throw std::exception();
-
-        dup2(model->GetSTDOUT(), STDOUT_FILENO);
+        // dup2(model->GetSTDOUT(), STDOUT_FILENO);
         model->SetOutputFD(output_fd);  // 恢复输出
-        model->ResetOutputRedirect();    // 恢复状态
-    }
-
-    if (model->GetErrorRedirect())    // 如果发生了错误输出重定向
-    {
-        int state_code = close(model->GetErrorFD()); // 关闭文件
-        if (state_code != 0)                          // 关闭错误处理
-            throw std::exception();
-
-        dup2(model->GetSTDERR(), STDERR_FILENO);
-        model->SetErrorFD(error_fd);  // 恢复错误输出
-        model->ResetErrorRedirect();    // 恢复状态
+        // model->ResetOutputRedirect();    // 恢复状态
     }
 
     return exit_state;
