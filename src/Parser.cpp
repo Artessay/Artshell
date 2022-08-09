@@ -27,7 +27,6 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
 {
     int count = 0;
     char *args[MAX_ARGUMENT_NUMBER];
-    bool state = false; /** @var 检测是否有exit命令 */
 
     int i = 0;
     do
@@ -40,7 +39,7 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
         else
         {
             args[count] = NULL; // 命令结束
-            state |= shell_execute(model, view, controller, count, args, env);
+            shell_execute(model, view, controller, count, args, env);
             
             count = 0;
         }
@@ -50,9 +49,7 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
 
     /* 最后一条命令也要执行 */
     args[count] = NULL; // 命令结束
-    state |= shell_execute(model, view, controller, count, args, env);
-
-    return state;
+    return shell_execute(model, view, controller, count, args, env);
 }
 
 int Parser::shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])

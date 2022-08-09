@@ -77,8 +77,6 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         return SH_FAILED;   // 解析可能产生了错误
     }
 
-    Argument_Display(argc, argv);
-
     int& argc_ = const_cast<int&>(argc);
     if (strcmp(argv[argc - 1], "&") == 0)    // 后台挂起
     {
