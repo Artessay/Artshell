@@ -69,38 +69,58 @@ class Console
         /* 打印进程列表 */
         void ConsoleJobList() const;
 
+        /* 打印已完成的进程列表 */
+        void ConsoleJobListDone();
+
+        unsigned int AddJob(int pid, job_state state, int argc, char *argv[]);
+
+        void RemoveJob();
+
         /* 设置文件描述符 */
         void SetInputFD(int _fd)  { input_file_descriptor = _fd; }
+        /* 设置文件描述符 */
         void SetOutputFD(int _fd) { output_file_descriptor = _fd; }
+        /* 设置文件描述符 */
         void SetErrorFD(int _fd)  { error_file_descriptor = _fd; }
 
         /* 获取文件描述符 */
         int GetInputFD() const  { return input_file_descriptor; }
+        /* 获取文件描述符 */
         int GetOutputFD() const { return output_file_descriptor; }
+        /* 获取文件描述符 */
         int GetErrorFD() const  { return error_file_descriptor; }
 
         /* 设置重定向状态 */
         void SetInputRedirect()  { redirect_input = true; }
+        /* 设置重定向状态 */
         void SetOutputRedirect() { redirect_output = true; }
+        /* 设置重定向状态 */
         void SetErrorRedirect()  { redirect_error = true; }
 
         /* 重置重定向状态 */
         void ResetInputRedirect()  { redirect_input = false; }
+        /* 重置重定向状态 */
         void ResetOutputRedirect() { redirect_output = false; }
+        /* 重置重定向状态 */
         void ResetErrorRedirect()  { redirect_error = false; }
 
         /* 获取重定向状态 */
         bool GetInputRedirect() const  { return redirect_input ; }
+        /* 获取重定向状态 */
         bool GetOutputRedirect() const { return redirect_output; }
+        /* 获取重定向状态 */
         bool GetErrorRedirect() const  { return redirect_error ; }
 
         /* 获取标注输入、输出、错误输出 */
         int GetSTDIN()  const { return input_std_fd;  }
+        /* 获取标注输入、输出、错误输出 */
         int GetSTDOUT() const { return output_std_fd; }
+        /* 获取标注输入、输出、错误输出 */
         int GetSTDERR() const { return error_std_fd;  }
 
-        /* 设置与获取掩码 */
+        /* 设置掩码 */
         void SetMask(mode_t _mask) { umask_ = _mask; }
+        /* 获取掩码 */
         mode_t GetMask() const { return umask_; }
 
         friend class Display;

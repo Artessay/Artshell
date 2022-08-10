@@ -85,6 +85,8 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     if (strcmp(argv[argc - 1], "&") == 0)    // 后台挂起
     {
         --argc_;
+        if (argc == 0)  // 参数错误
+            return SH_ARGS;
 
         pid_t pid;
         if ((pid = fork()) < 0)
@@ -96,8 +98,18 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         {
             /* 子进程 */  
             setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
-            
-            return SH_SUCCESS;
+
+            #ifdef _DEBUG_
+            printf("child pid: %d\n", console_->process_id);
+            #endif
+
+            // setpgid(0, 0);
+
+            // 执行命令
+            shell_function(argc, argv, env);
+
+            // 执行完成时退出
+            return SH_EXIT;
         }
         else
         {
@@ -106,7 +118,18 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             printf("parent pid: %d\n", pid);
             #endif
 
-            shell_function(argc, argv, env);
+            // 添加进程列表
+            char **&argv_ = const_cast<char **&>(argv);
+            argv_[argc] = NULL;
+            unsigned int jobid = console_->AddJob(pid, Running, argc_, argv_);
+            console_->process_id = pid;
+            
+            // 打印当前进程
+            char buffer[32];
+            snprintf(buffer, 32, "[%u] %d\n", jobid, pid);
+            if (write(console_->output_std_fd, buffer, strlen(buffer)));
+
+            
 
             return SH_SUCCESS;
         }
@@ -544,6 +567,8 @@ sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const 
 sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
+
+    console_->ConsoleJobList();
 
     return SH_SUCCESS;
 }

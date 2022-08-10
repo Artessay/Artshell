@@ -106,3 +106,14 @@ void Console::ConsoleJobList() const
     /* 输出应显示在屏幕上，无论如何重定向。 */
     process_manager.PrintJobList(output_std_fd);
 }
+
+void Console::ConsoleJobListDone()
+{
+    /* 输出应显示在屏幕上，无论如何重定向。 */
+    process_manager.PrintJobListDone(output_std_fd);
+}
+
+unsigned int Console::AddJob(int pid, job_state state, int argc, char *argv[])
+{
+    return process_manager.JobInsert(pid, state, argc, argv);
+}

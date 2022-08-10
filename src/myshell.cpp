@@ -105,7 +105,7 @@ namespace SHELL
                 #endif
 
                 /* 输出完成的进程，即使是空指令也应如此。 */
-                model->ConsoleJobList();
+                model->ConsoleJobListDone();
 
                 if (argument_counter == 0)
                     continue;
