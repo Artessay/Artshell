@@ -34,8 +34,8 @@ template <class T>
 class BinaryHeap : public Heap<T>
 {
     public:
-        BinaryHeap(int heap_capacity = HeapBlockSize)
-        : Heap(), capacity_(heap_capacity)
+        BinaryHeap(size_t heap_capacity = HeapBlockSize)
+        : Heap<T>(), capacity_(heap_capacity)
         {
             assert(heap_capacity > 0);
 
@@ -44,8 +44,8 @@ class BinaryHeap : public Heap<T>
                 throw OutOfMemory();
         }
 
-        BinaryHeap(T data[], int size, int heap_capacity = HeapBlockSize)
-        : Heap(), capacity_(heap_capacity)
+        BinaryHeap(T data[], int size, size_t heap_capacity = HeapBlockSize)
+        : Heap<T>(), capacity_(heap_capacity)
         {
             node = new T[(size>heap_capacity?size:heap_capacity) + 1];  // 分配内存
             if (node == NULL)               // 异常处理
@@ -54,7 +54,7 @@ class BinaryHeap : public Heap<T>
             size_ = size;
             for (int i = 1; i <= size; ++i) // 数组拷贝
                 node[i] = data[i-1];
-            build();                        // 建堆
+            build_heap();                        // 建堆
         }
 
         virtual ~BinaryHeap()
@@ -62,7 +62,7 @@ class BinaryHeap : public Heap<T>
             delete [] node;
         }
 
-        void build(T data[], int size)
+        virtual void build(T data[], int size)
         {
             while (capacity_ < size)
                 AllocMoreSpace();
@@ -89,7 +89,7 @@ class BinaryHeap : public Heap<T>
             }
         }
 
-        void insert(T value)
+        virtual void insert(T value)
         {
             if (size_ + 2 >= capacity_)
             {
@@ -102,15 +102,14 @@ class BinaryHeap : public Heap<T>
             node[p] = value; //insert the node in right place
         }
 
-        T top() const
+        virtual T top() const
         {
-            if (size_ > 0)
-                return node[1];
-            else
+            if (size_ == 0)
                 throw ExtractEmptyHeap();
+            return node[1];
         }
 
-        T extract()
+        virtual T extract()
         {
             if (size_ == 0)   //if the heap is null
                 throw ExtractEmptyHeap();    //then return -1
@@ -126,7 +125,7 @@ class BinaryHeap : public Heap<T>
                 if (child != size_ && node[child+1] < node[child])
                     ++child;
                 
-                if (last.dis>node[child].dis)
+                if (last >node[child])
                     node[p]=node[child];
                 else
                     break;
@@ -136,7 +135,7 @@ class BinaryHeap : public Heap<T>
             return top;
         }
 
-    private:
+    protected:
         T *node;
 
         class ExtractEmptyHeap : public std::exception {};
@@ -157,7 +156,8 @@ class BinaryHeap : public Heap<T>
             node = std::move(newNode);
         }
 
-        void build()
+    private:
+        void build_heap()
         {
             for (int i = (size_>>1); i>0; --i)    //从 n/2 开始
             {

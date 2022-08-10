@@ -15,11 +15,20 @@
 #include <assert.h>
 #include <stddef.h>
 
+/**
+ * @brief 抽象堆
+ * 
+ * @tparam T 
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-08-10
+ * @copyright Copyright (c) 2022
+ */
 template <class T>
 class Heap
 {
     public:
-        Heap();
+        Heap() : size_(0) {};
         virtual ~Heap() = 0;
         
         size_t size() const { return size_; }

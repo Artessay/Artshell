@@ -28,6 +28,9 @@ class Executor
     
     protected:
         
+        /** 选择执行函数并执行 */
+        sh_err_t shell_function(const int argc, char * const argv[], char * const env[]) const;
+        
         /** 更改目录 */
         sh_err_t execute_cd(const int argc, char * const argv[], char * const env[]) const;
 

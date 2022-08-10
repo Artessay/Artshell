@@ -12,6 +12,7 @@
 #ifndef _CONSOLE_H_
 #define _CONSOLE_H_
 
+#include "Heap.h"
 #include "config.h"
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -35,12 +36,23 @@ class Console
         char shell_path_env[BUFFER_SIZE];               // shell的完整路径
 
         // 进程控制
+        enum job_state                                  // 进程状态
+        {
+            Running,                                    // 正在运行
+            Stopped,                                    // 停止运行
+            Done,                                       // 完成运行
+            Terminated                                  // 终止运行
+        };
         struct job_unit
         {
             unsigned int id;                            // 进程列表id
-            pid_t job_pid;                              // 进程列表pid
+            pid_t pid;                                  // 进程列表pid
+            job_state state;                            // 进程列表状态
+            int argc;                                   // 进程列表参数
+            char **argv;                                // 进程列表参数
         };
 
+        Heap<unsigned int> *job_heap;                   // 工作id分配堆
         struct job_unit jobs [MAX_PROCESS_NUMBER];      // 进程列表
         
         // 文件描述符

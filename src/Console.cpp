@@ -10,6 +10,7 @@
  */
 
 #include "Console.h"
+#include "BinaryHeap.h"
 
 #include <assert.h>
 #include <string.h>
@@ -23,10 +24,17 @@ Console::Console(/* args */)
     [[maybe_unused]] int ret;
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
+
+    unsigned int job_id[MAX_PROCESS_NUMBER];
+    for (unsigned int *id = job_id-1, i = 1; i <= MAX_ARGUMENT_NUMBER; ++i)
+        id[i] = i;
+    job_heap = new BinaryHeap<unsigned int>(job_id, MAX_PROCESS_NUMBER);
+    printf("heap: %u\n", job_heap->top());
 }
 
 Console::~Console()
 {
+    delete job_heap;
 }
 
 int Console::init()

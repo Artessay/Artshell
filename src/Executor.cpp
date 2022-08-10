@@ -80,12 +80,13 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         return SH_FAILED;   // 解析可能产生了错误
     }
 
+    /* 挂起命令处理 */
     int& argc_ = const_cast<int&>(argc);
     if (strcmp(argv[argc - 1], "&") == 0)    // 后台挂起
     {
         --argc_;
 
-        pid_t pid = getpid(); // 获取当前进程id，用于处理父进程行为
+        pid_t pid;
         if ((pid = fork()) < 0)
         { 
             /* 错误处理 */
@@ -95,22 +96,22 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         {
             /* 子进程 */  
             setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
-            int status_code = execvp(argv[0], argv);        // 在子进程之中执行
-
-            if (status_code == -1)
-            {
-                throw "Execvp Error, terminated incorrectly";
-            }
-
-            return SH_UNDEFINED; // 未识别的命令
+            printf("child pid: %d\n", pid);
+            return SH_SUCCESS;
         }
         else
         {
             /* 父进程 */
+            printf("parent pid: %d\n", pid);
             return SH_SUCCESS;
         }
     }
     
+    return shell_function(argc, argv, env);
+}
+
+sh_err_t Executor::shell_function(const int argc, char * const argv[], char * const env[]) const
+{
     const char *op = argv[0];
 
 #ifdef _DEBUG_
@@ -143,12 +144,13 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
     }
 #endif
 
+    /** 二分查找匹配内部命令 */
     int index = Binary_Search(0, sizeof(OperandArray)/sizeof(OperandArray[0]), op, OperandArray, strcmp);
 #ifdef _DEBUG_
     printf("index: %d op: %s\n", index, OperandArray[index>=0?index:0]);
 #endif
 
-    if (index >= 0 && index < FunctionNumber)
+    if (index >= 0 && index < FunctionNumber)   // 找到了
     {
         MemFuncPtr FunctionPointer = FunctionArray[index];  // 找到对应的函数指针
         return (*this.*FunctionPointer)(argc, argv, env);   // 执行内部函数
