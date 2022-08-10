@@ -104,6 +104,10 @@ namespace SHELL
                 Argument_Display(argument_counter, argument_vector);
                 #endif
 
+                /* 输出完成的进程，即使是空指令也应如此。 */
+                /* 输出应显示在屏幕上，无论如何重定向。 */
+                ///@todo paragraph describing what is to be done
+
                 if (argument_counter == 0)
                     continue;
                 
