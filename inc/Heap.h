@@ -12,22 +12,43 @@
 #ifndef _HEAP_H_
 #define _HEAP_H_
 
+#include <assert.h>
+#include <stddef.h>
+
 template <class T>
 class Heap
 {
     public:
         Heap();
         virtual ~Heap() = 0;
+        
+        size_t size() const { return size_; }
 
-        virtual void build(T data[], int size);
-        virtual void insert(T value);
-        virtual T top() const;
-        virtual T extract();
-        int size() const;
+        virtual void build(T data[], int size)
+        {
+            assert(false && "build not implemented.");
+        }
+
+        virtual void insert(T value)
+        {
+            assert(false && "insert not implemented.");
+        }
+
+        virtual T top() const
+        {
+            assert(false && "top not implemented.");
+            return nullptr;
+        }
+        
+        virtual T extract()
+        {
+            assert(false && "extract not implemented.");
+            return nullptr;
+        }
     
     protected:
-        int size_;      // 当前容量
-        int capacity_;  // 最大容量
+        size_t size_;      // 当前容量
+        size_t capacity_;  // 最大容量
 };
 
 

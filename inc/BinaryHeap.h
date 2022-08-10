@@ -13,15 +13,25 @@
 #define _BINARY_HEAP_H_
 
 #include "Heap.h"
+#include <assert.h>
 
-static constexpr int HeapBlockSize = 1024;  // 默认堆大小
-static constexpr int INF = -0x7f7f7f7f;     // 
+static constexpr size_t HeapBlockSize = 1024;   // 默认堆大小
 
-template <typename T>
+template <class T>
+static constexpr T INF = -0x7f7f7f7f;         // 负无穷
+
+template <class T>
 class BinaryHeap : public Heap<T>
 {
     public:
-        BinaryHeap(int heap_capacity = HeapBlockSize);
+        BinaryHeap(int heap_capacity = HeapBlockSize)
+        {
+            assert(heap_capacity > 0);
+
+            node = new T[heap_capacity+1];
+            node[0] = -INF;
+        }
+
         BinaryHeap(T data[], int size);
         virtual ~BinaryHeap();
 
