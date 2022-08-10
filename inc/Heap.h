@@ -29,14 +29,22 @@ class Heap
 {
     public:
         Heap() : size_(0) {};
-        virtual ~Heap() = 0;
+
+        /**
+         * @brief Destroy the Heap object
+         * Heap的析构函数。由于我们的链接库是静态库，因此无法将析构函数定义成纯虚函数。
+         * 如果使用动态链接库的话则能够较好的实现多态，这里暂且将其定义为空函数以便链接。
+         * 
+         * @version 0.1
+         * @author 邱日宏 (3200105842@zju.edu.cn)
+         * @date 2022-08-10
+         * @copyright Copyright (c) 2022
+         */
+        virtual ~Heap() {};
         
         size_t size() const { return size_; }
 
-        virtual void build(T data[], int size)
-        {
-            assert(false && "build not implemented.");
-        }
+        virtual void build(T data[], size_t size) = 0;
 
         virtual void insert(T value)
         {
@@ -57,7 +65,6 @@ class Heap
     
     protected:
         size_t size_;      // 当前容量
-        size_t capacity_;  // 最大容量
 };
 
 

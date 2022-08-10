@@ -33,6 +33,10 @@ static constexpr size_t HeapBlockSize = 1024;   // 默认堆大小
 template <class T>
 class BinaryHeap : public Heap<T>
 {
+    // 由于父类是模板类，因此子类在使用时必须使用using引入命名空间，
+    // 或者用this指针实现多态，这样才能正确构造父类的模板类函数
+    using Heap<T>::size_;   
+
     public:
         BinaryHeap(size_t heap_capacity = HeapBlockSize)
         : Heap<T>(), capacity_(heap_capacity)
@@ -44,7 +48,7 @@ class BinaryHeap : public Heap<T>
                 throw OutOfMemory();
         }
 
-        BinaryHeap(T data[], int size, size_t heap_capacity = HeapBlockSize)
+        BinaryHeap(T data[], size_t size, size_t heap_capacity = HeapBlockSize)
         : Heap<T>(), capacity_(heap_capacity)
         {
             node = new T[(size>heap_capacity?size:heap_capacity) + 1];  // 分配内存
@@ -52,8 +56,9 @@ class BinaryHeap : public Heap<T>
                 throw OutOfMemory();
 
             size_ = size;
-            for (int i = 1; i <= size; ++i) // 数组拷贝
+            for (size_t i = 1; i <= size; ++i) // 数组拷贝
                 node[i] = data[i-1];
+            
             build_heap();                        // 建堆
         }
 
@@ -62,17 +67,17 @@ class BinaryHeap : public Heap<T>
             delete [] node;
         }
 
-        virtual void build(T data[], int size)
+        virtual void build(T data[], size_t size)
         {
             while (capacity_ < size)
                 AllocMoreSpace();
             size_ = size;
-            for (int i = 0; i < size; ++i)
+            for (size_t i = 0; i < size; ++i)
                 node[i+1] = data[i];
             
-            for (int i = (size_>>1); i>0; --i)    //从 n/2 开始
+            for (size_t i = (size_>>1); i>0; --i)    //从 n/2 开始
             {
-                int p, child;
+                size_t p, child;
                 T X = node[i];
                 for (p = i; (p<<1) <= size_; p = child) //percolate down
                 {
@@ -97,7 +102,7 @@ class BinaryHeap : public Heap<T>
             }
 
             int p;
-            for (p = ++size; node[p>>1] > value && p > 1; p = p>>1)    //percolate up
+            for (p = ++size_; node[p>>1] > value && p > 1; p = p>>1)    //percolate up
                 node[p] = node[p>>1];   //avoid the use of swap
             node[p] = value; //insert the node in right place
         }
@@ -136,7 +141,8 @@ class BinaryHeap : public Heap<T>
         }
 
     protected:
-        T *node;
+        size_t capacity_;  // 最大容量
+        T *node;           // 数据
 
         class ExtractEmptyHeap : public std::exception {};
         class OutOfMemory : public std::exception {};
@@ -159,9 +165,9 @@ class BinaryHeap : public Heap<T>
     private:
         void build_heap()
         {
-            for (int i = (size_>>1); i>0; --i)    //从 n/2 开始
+            for (size_t i = (size_>>1); i>0; --i)    //从 n/2 开始
             {
-                int p, child;
+                size_t p, child;
                 T X = node[i];
                 for (p = i; (p<<1) <= size_; p = child) //percolate down
                 {
@@ -178,6 +184,5 @@ class BinaryHeap : public Heap<T>
             }
         }
 };
-
 
 #endif

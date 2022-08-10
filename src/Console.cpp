@@ -26,10 +26,14 @@ Console::Console(/* args */)
     assert(ret == 0);   // 判断初始化是否成功
 
     unsigned int job_id[MAX_PROCESS_NUMBER];
-    for (unsigned int *id = job_id-1, i = 1; i <= MAX_ARGUMENT_NUMBER; ++i)
-        id[i] = i;
+    for (unsigned int i = 1; i <= MAX_PROCESS_NUMBER; ++i)
+        job_id[i-1] = i;        // 初始化工作进程id池
     job_heap = new BinaryHeap<unsigned int>(job_id, MAX_PROCESS_NUMBER);
-    printf("heap: %u\n", job_heap->top());
+    
+    #ifdef _DEBUG_
+    for (unsigned int i = 1; i <= MAX_PROCESS_NUMBER; ++i)
+        printf("heap: %u\n", job_heap->extract());
+    #endif
 }
 
 Console::~Console()
