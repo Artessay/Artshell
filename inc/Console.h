@@ -33,20 +33,32 @@ class Console
         
         // 环境变量
         char shell_path_env[BUFFER_SIZE];               // shell的完整路径
+
+        // 进程控制
+        struct job_unit
+        {
+            unsigned int id;                            // 进程列表id
+            pid_t job_pid;                              // 进程列表pid
+        };
+
+        struct job_unit jobs [MAX_PROCESS_NUMBER];      // 进程列表
         
         // 文件描述符
         int input_file_descriptor;                      // 输入文件描述符
         int output_file_descriptor;                     // 输出文件描述符
         int error_file_descriptor;                      // 错误文件描述符
 
+        // 标准输入、输出与错误输出
         int input_std_fd;                               // 标准输入备份
         int output_std_fd;                              // 标准输出备份                              
         int error_std_fd;                               // 标准错误备份
 
+        // 重定向标志
         bool redirect_input;                             // 输入重定向状态
         bool redirect_output;                            // 输出重定向状态
         bool redirect_error;                             // 错误重定向状态
 
+        // 掩码
         mode_t umask_;                                   // 文件掩码
 
     public:

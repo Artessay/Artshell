@@ -1,5 +1,5 @@
 CC = g++
-OBJS = common.o Console.o Display.o Executor.o lexer.o myshell.o Parser.o
+OBJS = BinaryHeap.o common.o Console.o Display.o Executor.o Heap.o lexer.o myshell.o Parser.o
 INC = ../inc
 OUT = ../lib
 CFLAG = -I$(INC) -O3 -Wall -MMD
@@ -15,7 +15,7 @@ lib$(LIB).a: $(OBJS)
 	$(CC) $(CFLAG) -c $<
 
 %.o: %.c
-	gcc -I$(INC) -w -MMD -c $<
+	gcc -I$(INC) -O2 -w -MMD -c $<
 
 lexer.c: lexer.l
 	lex --header-file=../inc/lexer.h --outfile=./lexer.c lexer.l

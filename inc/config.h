@@ -12,16 +12,17 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-static constexpr int BUFFER_SIZE = 1024;
-static constexpr int MAX_ARGUMENT_NUMBER = 128;
+static constexpr int BUFFER_SIZE = 1024;        // 缓冲区大小
+static constexpr int MAX_PROCESS_NUMBER = 1024; // 最大进程数量
+static constexpr int MAX_ARGUMENT_NUMBER = 128; // 最大参数数量
 
-enum sh_err_t
+enum sh_err_t   //  shell错误类型
 {
-    SH_SUCCESS = 0,
-    SH_FAILED,
-    SH_UNDEFINED,
-    SH_ARGS,
-    SH_EXIT,
+    SH_SUCCESS = 0, // 正常
+    SH_FAILED,      // 失败
+    SH_UNDEFINED,   // 未定义
+    SH_ARGS,        // 参数错误
+    SH_EXIT,        // 退出
 };
 
 constexpr unsigned int hash_prime = 33u;   // 相乘质数

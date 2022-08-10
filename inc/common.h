@@ -14,7 +14,11 @@
 
 #include <cmath>
 #include <string>
+#include <cassert>
 #include <sstream>
+
+// 错误判断与信息提示
+#define ASSERT(expr, message) assert((expr) && (message))
 
 /**
  * @brief 命令参数打印
