@@ -103,7 +103,10 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             printf("child pid: %d\n", console_->process_id);
             #endif
 
-            // setpgid(0, 0);
+            setpgid(0, 0);
+
+            char **&argv_ = const_cast<char **&>(argv);
+            argv_[argc] = NULL;
 
             // 执行命令
             shell_function(argc, argv, env);
@@ -365,7 +368,7 @@ sh_err_t Executor::execute_dir(const int argc, char * const argv[], char * const
                     break;
                 
                 case DT_REG:        // 目录文件普通文件用白色
-                    if (access(entry->d_name, X_OK))    // 可执行文件除外，用绿色
+                    if (access(entry->d_name, X_OK) == 0)    // 可执行文件除外，用绿色
                         snprintf(buffer, BUFFER_SIZE, "\033[32m%s\033[0m  ", entry->d_name);
                     else
                         snprintf(buffer, BUFFER_SIZE, "\033[37m%s\033[0m  ", entry->d_name);
@@ -568,6 +571,7 @@ sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
 
+    printf("print my job list\n");
     console_->ConsoleJobList();
 
     return SH_SUCCESS;

@@ -21,12 +21,16 @@ void job_unit::PrintJob(int output_fd)
     {
         case Running:                                    // 正在运行
             State_ = "Running";
+            break;
         case Stopped:                                    // 停止运行
             State_ = "Stopped";
+            break;
         case Done:                                       // 完成运行
             State_ = "Done";
+            break;
         case Terminated:                                 // 终止运行
             State_ = "Terminated";
+            break;
     }
 
     // 状态打印
@@ -84,15 +88,23 @@ void ProcessManager::PrintJobList(int output_fd) const
 
 void ProcessManager::PrintJobListDone(int output_fd)
 {
+    job_unit *pre_job = nullptr;
     for (auto job : jobs)
     {
+        if (pre_job != nullptr)     // 内存回收
+            this->JobRemove(pre_job);
+
         /* waitpid 在WNOHANG参数下 如果子进程已经结束，则返回子进程的pid；
         如果子进程还未结束，则返回0； 如果发生错误，则返回-1 */
         if(waitpid(job->pid, nullptr, WNOHANG) == job->pid) // 已经结束
         {
             job->state = Done;
             job->PrintJob();
-            this->JobRemove(job);
+            pre_job = job;
+        }
+        else
+        {
+            pre_job = nullptr;
         }
     }
 }
@@ -103,6 +115,7 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
     {
         unsigned int id = job_heap->extract();  // 从id池取出最小的id
         job_unit* newJob = new job_unit(id, pid, state, argc, argv);
+        newJob->PrintJob();
         jobs.emplace(newJob);   // 加入集合
         return id;
     }
