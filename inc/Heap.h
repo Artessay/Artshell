@@ -37,13 +37,13 @@ class Heap
         virtual T top() const
         {
             assert(false && "top not implemented.");
-            return nullptr;
+            return 0;
         }
         
         virtual T extract()
         {
             assert(false && "extract not implemented.");
-            return nullptr;
+            return 0;
         }
     
     protected:

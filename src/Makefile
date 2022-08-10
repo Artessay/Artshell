@@ -1,5 +1,5 @@
 CC = g++
-OBJS = BinaryHeap.o common.o Console.o Display.o Executor.o lexer.o myshell.o Parser.o
+OBJS = common.o Console.o Display.o Executor.o lexer.o myshell.o Parser.o
 INC = ../inc
 OUT = ../lib
 CFLAG = -I$(INC) -O3 -Wall -MMD
