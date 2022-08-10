@@ -15,6 +15,7 @@
 #include "Heap.h"
 #include "config.h"
 
+#include <set>
 #include <unistd.h>
 
 class ProcessManager
@@ -37,9 +38,35 @@ class ProcessManager
             int argc;                                   // 进程列表参数
             char **argv;                                // 进程列表参数
 
-            bool operator==(struct job_unit& that)
+            /* 为了使用集合，我们需要重载job unit的大小比较运算符 */
+            bool job_unit::operator== ( const job_unit& rhs ) const
             {
-                ///@todo paragraph describing what is to be done
+                return id == rhs.id;
+            }
+
+            bool job_unit::operator!= ( const job_unit& rhs ) const
+            {
+                return !(*this == rhs);
+            }
+
+            bool job_unit::operator< ( const job_unit& rhs ) const
+            {
+                return id < rhs.id;
+            }
+
+            bool job_unit::operator> ( const job_unit& rhs ) const
+            {
+                return rhs < *this;
+            }
+
+            bool job_unit::operator<= ( const job_unit& rhs ) const
+            {
+                return !(rhs < *this);
+            }
+
+            bool job_unit::operator>= ( const job_unit& rhs ) const
+            {
+                return !(*this < rhs);
             }
         };
 
