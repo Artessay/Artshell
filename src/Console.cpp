@@ -70,6 +70,7 @@ int Console::init()
         strncat(shell_path_env, "/myshell", BUFFER_SIZE);
         setenv("shell", shell_path_env, 1);
 
+        // 设置掩码
         umask_ = umask(022);  // 获取默认掩码
         umask(umask_); // 改回原来掩码
         
@@ -87,6 +88,9 @@ int Console::init()
         input_std_fd = dup(STDIN_FILENO);
         output_std_fd = dup(STDOUT_FILENO);
         error_std_fd = dup(STDERR_FILENO);
+
+        // 获取进程
+        process_id = getpid();
     }
     catch(const std::exception& e)
     {
@@ -95,4 +99,10 @@ int Console::init()
     }
     
     return 0;
+}
+
+void Console::ConsoleJobList() const
+{
+    /* 输出应显示在屏幕上，无论如何重定向。 */
+    process_manager.PrintJobList(output_std_fd);
 }

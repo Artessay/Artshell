@@ -96,13 +96,18 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         {
             /* 子进程 */  
             setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
-            printf("child pid: %d\n", pid);
+            
             return SH_SUCCESS;
         }
         else
         {
             /* 父进程 */
+            #ifdef _DEBUG_
             printf("parent pid: %d\n", pid);
+            #endif
+
+            shell_function(argc, argv, env);
+
             return SH_SUCCESS;
         }
     }

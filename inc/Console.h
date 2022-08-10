@@ -13,6 +13,8 @@
 #define _CONSOLE_H_
 
 #include "config.h"
+#include "ProcessManager.h"
+
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -35,7 +37,8 @@ class Console
         char shell_path_env[BUFFER_SIZE];               // shell的完整路径
 
         // 进程管理
-        ///@todo paragraph describing what is to be done
+        pid_t process_id;                               // 当前进程pid
+        ProcessManager process_manager;                 // 进程管理器
         
         // 文件描述符
         int input_file_descriptor;                      // 输入文件描述符
@@ -60,32 +63,43 @@ class Console
 
         virtual ~Console();
 
+        /* 初始化 */
         int init();
 
+        /* 打印进程列表 */
+        void ConsoleJobList() const;
+
+        /* 设置文件描述符 */
         void SetInputFD(int _fd)  { input_file_descriptor = _fd; }
         void SetOutputFD(int _fd) { output_file_descriptor = _fd; }
         void SetErrorFD(int _fd)  { error_file_descriptor = _fd; }
 
+        /* 获取文件描述符 */
         int GetInputFD() const  { return input_file_descriptor; }
         int GetOutputFD() const { return output_file_descriptor; }
         int GetErrorFD() const  { return error_file_descriptor; }
 
+        /* 设置重定向状态 */
         void SetInputRedirect()  { redirect_input = true; }
         void SetOutputRedirect() { redirect_output = true; }
         void SetErrorRedirect()  { redirect_error = true; }
 
+        /* 重置重定向状态 */
         void ResetInputRedirect()  { redirect_input = false; }
         void ResetOutputRedirect() { redirect_output = false; }
         void ResetErrorRedirect()  { redirect_error = false; }
 
+        /* 获取重定向状态 */
         bool GetInputRedirect() const  { return redirect_input ; }
         bool GetOutputRedirect() const { return redirect_output; }
         bool GetErrorRedirect() const  { return redirect_error ; }
 
+        /* 获取标注输入、输出、错误输出 */
         int GetSTDIN()  const { return input_std_fd;  }
         int GetSTDOUT() const { return output_std_fd; }
         int GetSTDERR() const { return error_std_fd;  }
 
+        /* 设置与获取掩码 */
         void SetMask(mode_t _mask) { umask_ = _mask; }
         mode_t GetMask() const { return umask_; }
 

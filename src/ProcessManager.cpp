@@ -1,3 +1,4 @@
+#include "config.h"
 #include "BinaryHeap.h"
 #include "ProcessManager.h"
 
@@ -17,4 +18,12 @@ ProcessManager::ProcessManager(/* args */)
 ProcessManager::~ProcessManager()
 {
     delete job_heap;
+}
+
+void ProcessManager::PrintJobList(int output_fd) const
+{
+    for (auto job : jobs)
+    {
+        job.PrintJob(output_fd);
+    }
 }
