@@ -115,7 +115,9 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
     {
         unsigned int id = job_heap->extract();  // 从id池取出最小的id
         job_unit* newJob = new job_unit(id, pid, state, argc, argv);
+        #ifdef _DEBUG_
         newJob->PrintJob();
+        #endif
         jobs.emplace(newJob);   // 加入集合
         return id;
     }

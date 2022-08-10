@@ -11,7 +11,10 @@
 
 #include "common.h"
 #include "myshell.h"
+#include "Console.h"
+#include "Display.h"
 #include "Executor.h"
+#include "ProcessManager.h"
 
 #include <vector>
 #include <sstream>

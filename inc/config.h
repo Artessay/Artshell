@@ -25,6 +25,14 @@ enum sh_err_t   //  shell错误类型
     SH_EXIT,        // 退出
 };
 
+enum job_state                                  // 进程状态
+{
+    Running,                                    // 正在运行
+    Stopped,                                    // 停止运行
+    Done,                                       // 完成运行
+    Terminated                                  // 终止运行
+};
+
 constexpr unsigned int hash_prime = 33u;   // 相乘质数
 constexpr unsigned int hash_basis = 5381u; // 偏移
 

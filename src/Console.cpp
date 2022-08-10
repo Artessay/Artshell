@@ -11,6 +11,7 @@
 
 #include "Console.h"
 #include "BinaryHeap.h"
+#include "ProcessManager.h"
 
 #include <assert.h>
 #include <string.h>
@@ -25,12 +26,14 @@ Console::Console(/* args */)
     ret = init();       // 初始化
     assert(ret == 0);   // 判断初始化是否成功
 
+    process_manager = new ProcessManager();
+
     return;
 }
 
 Console::~Console()
 {
-    return;
+    delete process_manager;
 }
 
 int Console::init()
@@ -104,16 +107,16 @@ int Console::init()
 void Console::ConsoleJobList() const
 {
     /* 输出应显示在屏幕上，无论如何重定向。 */
-    process_manager.PrintJobList(output_std_fd);
+    process_manager->PrintJobList(output_std_fd);
 }
 
 void Console::ConsoleJobListDone()
 {
     /* 输出应显示在屏幕上，无论如何重定向。 */
-    process_manager.PrintJobListDone(output_std_fd);
+    process_manager->PrintJobListDone(output_std_fd);
 }
 
 unsigned int Console::AddJob(int pid, job_state state, int argc, char *argv[])
 {
-    return process_manager.JobInsert(pid, state, argc, argv);
+    return process_manager->JobInsert(pid, state, argc, argv);
 }

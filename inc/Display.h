@@ -13,7 +13,6 @@
 #define _DISPLAY_H_
 
 class Console;
-class Executor;
 
 #include <string>
 

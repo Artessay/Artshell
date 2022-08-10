@@ -13,24 +13,25 @@
 #define _PROCESS_MANAGER_H_
 
 #include "Heap.h"
+#include "config.h"
 
 #include <set>
 #include <unistd.h>
-#include <stdio.h>
 
-enum job_state                                  // 进程状态
-{
-    Running,                                    // 正在运行
-    Stopped,                                    // 停止运行
-    Done,                                       // 完成运行
-    Terminated                                  // 终止运行
-};
+// 置于config.h头文件中，加快编译速度
+// enum job_state                                  // 进程状态
+// {
+//     Running,                                    // 正在运行
+//     Stopped,                                    // 停止运行
+//     Done,                                       // 完成运行
+//     Terminated                                  // 终止运行
+// };
 
 class job_unit
 {
     public:
         job_unit(unsigned int _id, int _pid, job_state _state, int _argc, char * _argv[])
-            : id(_id), pid(_pid), state(_state), argc(_argc), argv(_argv) { printf("state: %d %d\n",_state, state); this->PrintJob(); }
+            : id(_id), pid(_pid), state(_state), argc(_argc), argv(_argv) { }
 
         void PrintJob(int output_fd = STDOUT_FILENO);
         

@@ -13,10 +13,11 @@
 #define _CONSOLE_H_
 
 #include "config.h"
-#include "ProcessManager.h"
 
 #include <sys/stat.h>
 #include <sys/types.h>
+
+class ProcessManager;   // 为了加快编译速度，这里不引用头文件而只是声明
 
 /**
  * @brief 控制台
@@ -38,7 +39,7 @@ class Console
 
         // 进程管理
         pid_t process_id;                               // 当前进程pid
-        ProcessManager process_manager;                 // 进程管理器
+        ProcessManager* process_manager;                 // 进程管理器
         
         // 文件描述符
         int input_file_descriptor;                      // 输入文件描述符

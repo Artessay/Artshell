@@ -13,8 +13,9 @@
 #define _EXECUTOR_H_
 
 #include "config.h"
-#include "Console.h"
-#include "Display.h"
+
+class Console;
+class Display;
 
 static constexpr int FunctionNumber = 16;
 
