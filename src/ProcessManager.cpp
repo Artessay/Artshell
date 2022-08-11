@@ -108,11 +108,7 @@ void ProcessManager::PrintJobListDone(int output_fd)
         #ifdef _DEBUG_
         printf("id: %u pid: %d wait: %d stat: %d\n", job.id, job.pid, wait_pid, stat_loc);
         #endif
-        if (stat_loc != 0 && wait_pid < 0)
-        {
-            throw std::exception();
-        }
-        else if (stat_loc == 0 || wait_pid == job.pid) // 已经结束
+        if (wait_pid < 0 || wait_pid == job.pid) // 已经结束
         {
             job.state = Done;
             job.PrintJob();
@@ -161,15 +157,6 @@ void ProcessManager::JobRemove(std::set<job_unit>::iterator& job)
 
 int ProcessManager::FrontGround(unsigned int jobid)
 {
-    /*job_unit find_job(jobid, 0, Running, 0, nullptr);
-    auto front_job = jobs.find(find_job);
-    if (front_job == jobs.end())
-    {
-        return 0;
-    }
-
-    (*front_job).state = Running;*/
-
     for (auto job : jobs)
     {
         if (job.id == jobid)

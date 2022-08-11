@@ -109,10 +109,11 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             #endif
 
             setpgid(0, 0);
+            signal(SIGINT, SIG_DFL);
+            signal(SIGTSTP, SIG_DFL);
 
             char **&argv_ = const_cast<char **&>(argv);
             argv_[argc] = NULL;
-
             #ifdef _DEBUG_
             Argument_Display(argc, argv);
             #endif
