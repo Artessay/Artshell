@@ -104,6 +104,8 @@ namespace SHELL
                 Argument_Display(argument_counter, argument_vector);
                 #endif
 
+                model->ResetChildPid();
+
                 /* 输出完成的进程，即使是空指令也应如此。 */
                 model->ConsoleJobListDone();
 

@@ -101,6 +101,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
         {
             /* 子进程 */  
             setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
+            Console::child_process_id = getpid();
 
             #ifdef _DEBUG_
             printf("child pid: %d\n", console_->process_id);
@@ -238,7 +239,9 @@ sh_err_t Executor::shell_function(const int argc, char * const argv[], char * co
     else
     {
         /* 父进程 */
+        console_->child_process_id = pid;   // 设置子进程pid，用于Ctrl+Z信号处理
         wait(NULL); // 等待子进程结束后再继续执行，保证执行顺序不混乱
+        console_->child_process_id = -1;
         return SH_SUCCESS;
     }
 

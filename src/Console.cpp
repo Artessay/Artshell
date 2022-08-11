@@ -69,21 +69,43 @@ void SignalHandler(int signal_)
             if (write(STDOUT_FILENO, "\n", 1) < 0)
                 throw std::exception();
             
-            if (cp->process_id >= 0)
+            if (Console::child_process_id >= 0)
             {
-            //     setpgid(Console::child_process_id, 0);
-                kill(tcgetpgrp(STDOUT_FILENO), SIGTSTP);
+                setpgid(Console::child_process_id, 0);
+                kill(-Console::child_process_id, SIGTSTP);
             
-                unsigned int jobid = cp->AddJob(cp->process_id, Stopped, cp->argc, (char **)cp->argv);
+                unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, (char **)cp->argv);
                 
                 // 打印当前进程
-                char buffer[32];
-                snprintf(buffer, 32, "[%u] %d\n", jobid, cp->process_id);
+                char buffer[BUFFER_SIZE];
+                snprintf(buffer, BUFFER_SIZE-1, "[%u] %d\n", jobid, Console::child_process_id);
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
                     throw std::exception();
             
-                cp->process_manager->PrintJobList();
-            //     Console::child_process_id = -1;
+                snprintf(buffer, BUFFER_SIZE-1, "[%u]%c\tStopped\t\t\t\t\t", jobid, ' ');
+                if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
+                    throw std::exception();
+
+                // 参数打印
+                if (cp->argc > 0)
+                {
+                    // 确保行末无多余的空格
+                    if (write(cp->output_std_fd, cp->argv[0], strlen(cp->argv[0])) == -1)
+                        throw std::exception();
+                    for (int i = 1; i < cp->argc; ++i)
+                    {
+                        if (write(cp->output_std_fd, " ", 1) == -1)    // 打印空格
+                            throw std::exception();
+
+                        // 打印参数
+                        if (write(cp->output_std_fd, cp->argv[i], strlen(cp->argv[i])) == -1)
+                            throw std::exception();
+                    }
+                }
+                if (write(cp->output_std_fd, "\n", 1) == -1)
+                    throw std::exception();
+
+                Console::child_process_id = -1;
             }
             break;
         

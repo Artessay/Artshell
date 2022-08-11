@@ -93,6 +93,8 @@ class Console
 
         // void RemoveJob();
 
+        void ResetChildPid() { child_process_id = -1; }
+
         /* 设置文件描述符 */
         void SetInputFD(int _fd)  { input_file_descriptor = _fd; }
         /* 设置文件描述符 */
