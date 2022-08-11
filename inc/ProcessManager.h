@@ -113,7 +113,7 @@ class ProcessManager
          * @date 2022-07-21
          * @copyright Copyright (c) 2022
          */
-        void JobRemove(job_unit *& job);
+        void JobRemove(job_unit * job);
         void JobRemove(std::set<job_unit>::iterator& job);
 
         int FrontGround(unsigned int jobid);

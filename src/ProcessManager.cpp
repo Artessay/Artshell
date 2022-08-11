@@ -105,7 +105,9 @@ void ProcessManager::PrintJobListDone(int output_fd)
         /* waitpid 在WNOHANG参数下 如果子进程已经结束，则返回子进程的pid；
         如果子进程还未结束，则返回0； 如果发生错误，则返回-1 */
         int stat_loc, wait_pid = waitpid(job.pid, &stat_loc, WNOHANG);
+        #ifdef _DEBUG_
         printf("id: %u pid: %d wait: %d stat: %d\n", job.id, job.pid, wait_pid, stat_loc);
+        #endif
         if (stat_loc != 0 && wait_pid < 0)
         {
             throw std::exception();
@@ -141,7 +143,7 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
     }
 }
 
-void ProcessManager::JobRemove(job_unit *& job)
+void ProcessManager::JobRemove(job_unit * job)
 {
     job_heap->insert(job->id);  // 将id放回id池中
     jobs.erase(*job);            // 移出集合
@@ -180,12 +182,32 @@ int ProcessManager::FrontGround(unsigned int jobid)
             while(waitpid(Console::child_process_id, NULL, WNOHANG) == 0 && Console::child_process_id >= 0);
             Console::child_process_id = -1;
 
+            JobRemove(&job);
+
             return jobid;
         }
     }
 
-    return 0;
+    return -1;
 }
 
 
-int BackGround(unsigned int jobid);
+int ProcessManager::BackGround(unsigned int jobid)
+{
+    for (auto job : jobs)
+    {
+        if (job.id == jobid)
+        {
+            if (job.state == Running)
+                return 0;
+            
+            job.state = Running;
+
+            kill(job.pid, SIGCONT);
+            
+            return jobid;
+        }
+    }
+
+    return -1;
+}

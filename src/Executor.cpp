@@ -566,6 +566,25 @@ sh_err_t Executor::execute_bg(const int argc, char * const argv[], char * const 
 {
     assert(strcmp(argv[0], "bg")==0 && "unexpected node type");
 
+    if (argc == 1)
+        return SH_SUCCESS;
+    
+    unsigned int job_id = String_to_Number<unsigned int>(argv[1]);
+    int id = console_->process_manager->BackGround(job_id);
+    if (id == 0)
+    {
+        char buffer[BUFFER_SIZE];
+        snprintf(buffer, BUFFER_SIZE, "bg: job %u already in background\n", job_id);
+        display_->message(buffer);
+    }
+        
+    if (id == -1)
+    {
+        char buffer[BUFFER_SIZE];
+        snprintf(buffer, BUFFER_SIZE, "bg: %u : no such job\n", job_id);
+        display_->message(buffer);
+    }
+
     return SH_SUCCESS;
 }
 
@@ -578,8 +597,12 @@ sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const 
     
     unsigned int job_id = String_to_Number<unsigned int>(argv[1]);
     int id = console_->process_manager->FrontGround(job_id);
-    if (id == 0)
-        return SH_FAILED;
+    if (id == -1)
+    {
+        char buffer[BUFFER_SIZE];
+        snprintf(buffer, BUFFER_SIZE, "bg: %u : no such job\n", job_id);
+        display_->message(buffer);
+    }
 
     return SH_SUCCESS;
 }
