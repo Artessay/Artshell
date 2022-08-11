@@ -140,6 +140,6 @@ void ProcessManager::JobRemove(job_unit *& job)
 {
     job_heap->insert(job->id);  // 将id放回id池中
     jobs.erase(*job);            // 移出集合
-    delete job;
+    // delete job;  // 因为在set里面存放的不是指针了，在erase set的时候已经完成了析构
     return;
 }

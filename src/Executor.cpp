@@ -138,7 +138,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             
             // 打印当前进程
             char buffer[32];
-            snprintf(buffer, 32, "[%u] %d\n", jobid, pid);
+            snprintf(buffer, 32, "[%u] %d\n", jobid, child_pid);
             if (write(console_->output_std_fd, buffer, strlen(buffer)));
 
             
