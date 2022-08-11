@@ -158,6 +158,7 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
 
 void ProcessManager::JobRemove(job_unit * job)
 {
+    assert(job->id > 0);
     job_heap->insert(job->id);  // 将id放回id池中
     jobs.erase(*job);            // 移出集合
     // delete job;  // 因为在set里面存放的不是指针了，在erase set的时候已经完成了析构

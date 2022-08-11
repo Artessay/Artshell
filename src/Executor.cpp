@@ -167,6 +167,9 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
 sh_err_t Executor::shell_function(const int argc, char * const argv[], char * const env[]) const
 {
     const char *op = argv[0];
+    console_->argc = argc;
+    for (int i = 0; i < argc; ++i)
+        strncpy(console_->argv[i], argv[i], BUFFER_SIZE);
 
 #ifdef _DEBUG_
     Argument_Display(argc, argv);

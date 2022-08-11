@@ -28,6 +28,8 @@ Display::~Display()
 
 int Display::InputCommand(char *input, const int len) 
 {
+    tcsetpgrp(STDIN_FILENO, getpid());
+    
     // 初始化输入缓冲器与相关变量
     char ch;
     int i = 0;

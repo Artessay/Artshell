@@ -56,6 +56,10 @@ void SignalHandler(int signal_)
             #endif
             if (write(STDOUT_FILENO, "\n", 1) < 0)
                 throw std::exception();
+            // 当kill的pid < 0时  取|pid|发给对应进程组。
+            // kill(-getpid(), SIGINT);
+            
+            // 子进程的CTRL C重置了，由子进程处理中断
             break;
         
         case SIGTSTP:    // Ctrl Z 键盘中断
@@ -64,19 +68,22 @@ void SignalHandler(int signal_)
             #endif
             if (write(STDOUT_FILENO, "\n", 1) < 0)
                 throw std::exception();
-            if (Console::child_process_id >= 0)
+            
+            if (cp->process_id >= 0)
             {
-                setpgid(Console::child_process_id, 0);
-                kill(Console::child_process_id, SIGTSTP);
-                unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, 0, nullptr);
+            //     setpgid(Console::child_process_id, 0);
+                kill(tcgetpgrp(STDOUT_FILENO), SIGTSTP);
+            
+                unsigned int jobid = cp->AddJob(cp->process_id, Stopped, cp->argc, (char **)cp->argv);
                 
                 // 打印当前进程
                 char buffer[32];
-                snprintf(buffer, 32, "[%u] %d\n", jobid, Console::child_process_id);
+                snprintf(buffer, 32, "[%u] %d\n", jobid, cp->process_id);
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
                     throw std::exception();
-                
-                Console::child_process_id = -1;
+            
+                cp->process_manager->PrintJobList();
+            //     Console::child_process_id = -1;
             }
             break;
         
@@ -152,7 +159,7 @@ int Console::init()
         process_id = getpid();
         child_process_id = -1;  // 暂无子进程
 
-        signal(SIGINT, SignalHandler);  // Ctrl + C
+        // signal(SIGINT, SignalHandler);  // Ctrl + C
         signal(SIGTSTP, SignalHandler); // Ctrl + Z
         signal(SIGCHLD, SignalHandler); // 子进程结束时发送给父进程的信号
 
