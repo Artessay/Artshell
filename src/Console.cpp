@@ -51,15 +51,19 @@ void SignalHandler(int signal_)
     switch (signal_)
     {
         case SIGINT:    // Ctrl C 交互注意信号
+            #ifdef _DEBUG_
             printf("Ctrl + C\n");
-            // if (write(STDOUT_FILENO, "\n", 1) < 0)
-            //     throw std::exception();
+            #endif
+            if (write(STDOUT_FILENO, "\n", 1) < 0)
+                throw std::exception();
             break;
         
         case SIGTSTP:    // Ctrl Z 键盘中断
-            printf("Ctrl + C\n");
-            // if (write(STDOUT_FILENO, "\n", 1) < 0)
-            //     throw std::exception();
+            #ifdef _DEBUG_
+            printf("Ctrl + Z\n");
+            #endif
+            if (write(STDOUT_FILENO, "\n", 1) < 0)
+                throw std::exception();
             if (Console::child_process_id >= 0)
             {
                 setpgid(Console::child_process_id, 0);

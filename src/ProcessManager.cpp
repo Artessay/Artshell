@@ -103,10 +103,12 @@ void ProcessManager::PrintJobList(int output_fd) const
 void ProcessManager::PrintJobListDone(int output_fd)
 {
     job_unit *pre_job = nullptr;
-    puts("hi~");
+    
     for (auto job : jobs)
     {
+        #ifdef _DEBUG_
         printf("Id: %u pid: %d\n", job.id, job.pid);
+        #endif
         if (pre_job != nullptr)     // 内存回收
         {
             this->JobRemove(pre_job);

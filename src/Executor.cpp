@@ -624,9 +624,9 @@ sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const 
 sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
-puts("before job");
+
     console_->ConsoleJobList();
-puts("after job");
+
     return SH_SUCCESS;
 }
 
