@@ -285,6 +285,7 @@ bool Parser::shell_execute(Console *model, Display* view, Executor* controller, 
         // 根据返回状态判断
         if (err == SH_EXIT)
         {
+            view->show(); // 将退出信息显示
             return true;
         }
         else if (err != SH_SUCCESS)

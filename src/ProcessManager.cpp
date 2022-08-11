@@ -92,21 +92,29 @@ void ProcessManager::PrintJobListDone(int output_fd)
     for (auto job : jobs)
     {
         if (pre_job != nullptr)     // 内存回收
+        {
             this->JobRemove(pre_job);
+            pre_job = nullptr;
+        }
 
         /* waitpid 在WNOHANG参数下 如果子进程已经结束，则返回子进程的pid；
         如果子进程还未结束，则返回0； 如果发生错误，则返回-1 */
-        if(waitpid(job.pid, nullptr, WNOHANG) == job.pid) // 已经结束
+        int stat_loc, wait_pid = waitpid(job.pid, &stat_loc, WNOHANG);
+        printf("id: %u pid: %d wait: %d stat: %d\n", job.id, job.pid, wait_pid, stat_loc);
+        if (stat_loc != 0 && wait_pid < 0)
+        {
+            throw std::exception();
+        }
+        else if (stat_loc == 0 || wait_pid == job.pid) // 已经结束
         {
             job.state = Done;
             job.PrintJob();
             pre_job = &job;
         }
-        else
-        {
-            pre_job = nullptr;
-        }
     }
+
+    if (pre_job != nullptr)     // 内存回收
+        this->JobRemove(pre_job);
 }
 
 unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char *argv[])

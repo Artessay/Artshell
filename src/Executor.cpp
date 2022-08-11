@@ -113,6 +113,10 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             char **&argv_ = const_cast<char **&>(argv);
             argv_[argc] = NULL;
 
+            #ifdef _DEBUG_
+            Argument_Display(argc, argv);
+            #endif
+
             // 执行命令
             shell_function(argc, argv, env);
 
