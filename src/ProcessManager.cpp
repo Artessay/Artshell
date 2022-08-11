@@ -82,7 +82,7 @@ void ProcessManager::PrintJobList(int output_fd) const
 {
     for (auto job : jobs)
     {
-        job->PrintJob(output_fd);
+        job.PrintJob(output_fd);
     }
 }
 
@@ -96,11 +96,11 @@ void ProcessManager::PrintJobListDone(int output_fd)
 
         /* waitpid 在WNOHANG参数下 如果子进程已经结束，则返回子进程的pid；
         如果子进程还未结束，则返回0； 如果发生错误，则返回-1 */
-        if(waitpid(job->pid, nullptr, WNOHANG) == job->pid) // 已经结束
+        if(waitpid(job.pid, nullptr, WNOHANG) == job.pid) // 已经结束
         {
-            job->state = Done;
-            job->PrintJob();
-            pre_job = job;
+            job.state = Done;
+            job.PrintJob();
+            pre_job = &job;
         }
         else
         {
@@ -118,7 +118,7 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
         #ifdef _DEBUG_
         newJob->PrintJob();
         #endif
-        jobs.emplace(newJob);   // 加入集合
+        jobs.emplace(*newJob);   // 加入集合
         return id;
     }
     catch (std::exception& e)
@@ -131,7 +131,7 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
 void ProcessManager::JobRemove(job_unit *& job)
 {
     job_heap->insert(job->id);  // 将id放回id池中
-    jobs.erase(job);            // 移出集合
+    jobs.erase(*job);            // 移出集合
     delete job;
     return;
 }

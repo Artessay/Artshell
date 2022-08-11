@@ -92,6 +92,8 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             return SH_ARGS;
 
         pid_t pid;
+        pid_t child_pid = getpid(); // 子进程pid
+
         if ((pid = fork()) < 0)
         { 
             /* 错误处理 */
@@ -127,7 +129,7 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             // 添加进程列表
             char **&argv_ = const_cast<char **&>(argv);
             argv_[argc] = NULL;
-            unsigned int jobid = console_->AddJob(pid, Running, argc_, argv_);
+            unsigned int jobid = console_->AddJob(child_pid, Running, argc_, argv_);
             console_->process_id = pid;
             
             // 打印当前进程
@@ -574,7 +576,6 @@ sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * cons
 {
     assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
 
-    printf("print my job list\n");
     console_->ConsoleJobList();
 
     return SH_SUCCESS;

@@ -79,7 +79,7 @@ class ProcessManager
     private:
         // 进程控制
         Heap<unsigned int> *job_heap;                   // 工作id分配堆
-        std::set<class job_unit*> jobs;                 // 进程列表
+        std::set<class job_unit> jobs;                 // 进程列表
 
     public:
         ProcessManager(/* args */);

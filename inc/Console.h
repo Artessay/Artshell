@@ -73,9 +73,10 @@ class Console
         /* 打印已完成的进程列表 */
         void ConsoleJobListDone();
 
+        /* 添加进程 */
         unsigned int AddJob(int pid, job_state state, int argc, char *argv[]);
 
-        void RemoveJob();
+        // void RemoveJob();
 
         /* 设置文件描述符 */
         void SetInputFD(int _fd)  { input_file_descriptor = _fd; }
