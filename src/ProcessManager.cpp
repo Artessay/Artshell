@@ -1,4 +1,5 @@
 #include "config.h"
+#include "Console.h"
 #include "BinaryHeap.h"
 #include "ProcessManager.h"
 
@@ -10,11 +11,11 @@
 
 void job_unit::PrintJob(int output_fd)
 {
-    if (argc <= 0)  // 参数错误
-    {
-        assert(false && "argument error");
-        return;
-    }
+    // if (argc <= 0)  // 参数错误
+    // {
+    //     assert(false && "argument error");
+    //     return;
+    // }
 
     const char *State_;
     switch (state)  // 状态映射
@@ -42,19 +43,23 @@ void job_unit::PrintJob(int output_fd)
         throw std::exception();
 
     // 参数打印
-    write_state = write(output_fd, argv[0], strlen(argv[0])); // 确保行末无多余的空格
-    if (write_state == -1)
-        throw std::exception();
-    for (int i = 1; i < argc; ++i)
+    if (argc > 0)
     {
-        write_state = write(output_fd, " ", 1);   // 打印空格
+        write_state = write(output_fd, argv[0], strlen(argv[0])); // 确保行末无多余的空格
         if (write_state == -1)
             throw std::exception();
+        for (int i = 1; i < argc; ++i)
+        {
+            write_state = write(output_fd, " ", 1);   // 打印空格
+            if (write_state == -1)
+                throw std::exception();
 
-        write_state = write(output_fd, argv[i], strlen(argv[i])); // 打印参数
-        if (write_state == -1)
-            throw std::exception();
+            write_state = write(output_fd, argv[i], strlen(argv[i])); // 打印参数
+            if (write_state == -1)
+                throw std::exception();
+        }
     }
+    
     write_state = write(output_fd, "\n", 1);   // 打印换行符
     if (write_state == -1)
         throw std::exception();
@@ -143,3 +148,44 @@ void ProcessManager::JobRemove(job_unit *& job)
     // delete job;  // 因为在set里面存放的不是指针了，在erase set的时候已经完成了析构
     return;
 }
+
+void ProcessManager::JobRemove(std::set<job_unit>::iterator& job)
+{
+    job_heap->insert(job->id);  // 将id放回id池中
+    jobs.erase(*job);            // 移出集合
+    // delete job;  // 因为在set里面存放的不是指针了，在erase set的时候已经完成了析构
+    return;
+}
+
+int ProcessManager::FrontGround(unsigned int jobid)
+{
+    /*job_unit find_job(jobid, 0, Running, 0, nullptr);
+    auto front_job = jobs.find(find_job);
+    if (front_job == jobs.end())
+    {
+        return 0;
+    }
+
+    (*front_job).state = Running;*/
+
+    for (auto job : jobs)
+    {
+        if (job.id == jobid)
+        {
+            Console::child_process_id = job.pid;
+            setpgid(job.pid, getgid());
+            job.state = Running;
+
+            kill(job.pid, SIGCONT);
+            while(waitpid(Console::child_process_id, NULL, WNOHANG) == 0 && Console::child_process_id >= 0);
+            Console::child_process_id = -1;
+
+            return jobid;
+        }
+    }
+
+    return 0;
+}
+
+
+int BackGround(unsigned int jobid);

@@ -135,13 +135,13 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             argv_[argc] = NULL;
             unsigned int jobid = console_->AddJob(child_pid, Running, argc_, argv_);
             console_->process_id = pid;
+            console_->child_process_id = child_pid;
             
             // 打印当前进程
             char buffer[32];
             snprintf(buffer, 32, "[%u] %d\n", jobid, child_pid);
-            if (write(console_->output_std_fd, buffer, strlen(buffer)));
-
-            
+            if (write(console_->output_std_fd, buffer, strlen(buffer)) == -1)
+                throw std::exception();
 
             return SH_SUCCESS;
         }
@@ -572,6 +572,14 @@ sh_err_t Executor::execute_bg(const int argc, char * const argv[], char * const 
 sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "fg")==0 && "unexpected node type");
+
+    if (argc == 1)
+        return SH_SUCCESS;
+    
+    unsigned int job_id = String_to_Number<unsigned int>(argv[1]);
+    int id = console_->process_manager->FrontGround(job_id);
+    if (id == 0)
+        return SH_FAILED;
 
     return SH_SUCCESS;
 }

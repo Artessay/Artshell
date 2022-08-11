@@ -20,6 +20,17 @@
 class ProcessManager;   // 为了加快编译速度，这里不引用头文件而只是声明
 
 /**
+ * @brief 信号控制与处理
+ * 
+ * @param signal_ 
+ * @version 0.1
+ * @author 邱日宏 (3200105842@zju.edu.cn)
+ * @date 2022-07-21
+ * @copyright Copyright (c) 2022
+ */
+void SignalHandler(int signal_);
+
+/**
  * @brief 控制台
  * 存储必要的环境变量以及渲染用户前端所需要的数据
  * 
@@ -39,7 +50,8 @@ class Console
 
         // 进程管理
         pid_t process_id;                               // 当前进程pid
-        ProcessManager* process_manager;                 // 进程管理器
+        static pid_t child_process_id;                  // 子进程pid
+        ProcessManager* process_manager;                // 进程管理器
         
         // 文件描述符
         int input_file_descriptor;                      // 输入文件描述符
@@ -47,9 +59,9 @@ class Console
         int error_file_descriptor;                      // 错误文件描述符
 
         // 标准输入、输出与错误输出
-        int input_std_fd;                               // 标准输入备份
-        int output_std_fd;                              // 标准输出备份                              
-        int error_std_fd;                               // 标准错误备份
+        static int input_std_fd;                        // 标准输入备份
+        static int output_std_fd;                       // 标准输出备份                              
+        static int error_std_fd;                        // 标准错误备份
 
         // 重定向标志
         bool redirect_input;                             // 输入重定向状态
@@ -127,6 +139,8 @@ class Console
 
         friend class Display;
         friend class Executor;
+        friend class ProcessManager;
+        friend void SignalHandler(int);
 };
 
 #endif

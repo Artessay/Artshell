@@ -104,7 +104,20 @@ class ProcessManager
          */
         unsigned int JobInsert(int pid, job_state state, int argc, char *argv[]);
 
+        /**
+         * @brief 删除进程
+         * 
+         * @param job 
+         * @version 0.1
+         * @author 邱日宏 (3200105842@zju.edu.cn)
+         * @date 2022-07-21
+         * @copyright Copyright (c) 2022
+         */
         void JobRemove(job_unit *& job);
+        void JobRemove(std::set<job_unit>::iterator& job);
+
+        int FrontGround(unsigned int jobid);
+        int BackGround(unsigned int jobid);
 };
 
 #endif

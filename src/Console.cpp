@@ -14,11 +14,18 @@
 #include "ProcessManager.h"
 
 #include <assert.h>
+#include <signal.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
 #include <exception>
+
+int Console::input_std_fd;
+int Console::output_std_fd;
+int Console::error_std_fd;
+pid_t Console::child_process_id = -1;
+static Console* cp = nullptr;   // 为了能够在友元函数中引用控制台，在此处设置本地变量以利于信号处理
 
 Console::Console(/* args */)
 {
@@ -27,6 +34,7 @@ Console::Console(/* args */)
     assert(ret == 0);   // 判断初始化是否成功
 
     process_manager = new ProcessManager();
+    cp = this;
 
     return;
 }
@@ -34,6 +42,40 @@ Console::Console(/* args */)
 Console::~Console()
 {
     delete process_manager;
+}
+
+void SignalHandler(int signal_)
+{
+    switch (signal_)
+    {
+        case SIGINT:    // Ctrl C 交互注意信号
+            if (write(STDOUT_FILENO, "\n", 1) < 0)
+                throw std::exception();
+            break;
+        
+        case SIGTSTP:
+            if (write(STDOUT_FILENO, "\n", 1) < 0)
+                throw std::exception();
+            if (Console::child_process_id >= 0)
+            {
+                setpgid(Console::child_process_id, 0);
+                kill(Console::child_process_id, SIGTSTP);
+                unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, 0, nullptr);
+                
+                // 打印当前进程
+                char buffer[32];
+                snprintf(buffer, 32, "[%u] %d\n", jobid, Console::child_process_id);
+                if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
+                    throw std::exception();
+                
+                Console::child_process_id = -1;
+            }
+            break;
+        
+        default:
+            break;
+    }
+    
 }
 
 int Console::init()
@@ -94,6 +136,10 @@ int Console::init()
 
         // 获取进程
         process_id = getpid();
+        child_process_id = -1;  // 暂无子进程
+
+        signal(SIGINT, SignalHandler);
+        signal(SIGSTOP, SignalHandler);
     }
     catch(const std::exception& e)
     {
