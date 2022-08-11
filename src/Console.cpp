@@ -13,6 +13,8 @@
 #include "BinaryHeap.h"
 #include "ProcessManager.h"
 
+#include <pwd.h>
+#include <wait.h>
 #include <assert.h>
 #include <signal.h>
 #include <string.h>
@@ -49,13 +51,15 @@ void SignalHandler(int signal_)
     switch (signal_)
     {
         case SIGINT:    // Ctrl C 交互注意信号
-            if (write(STDOUT_FILENO, "\n", 1) < 0)
-                throw std::exception();
+            printf("Ctrl + C\n");
+            // if (write(STDOUT_FILENO, "\n", 1) < 0)
+            //     throw std::exception();
             break;
         
-        case SIGTSTP:
-            if (write(STDOUT_FILENO, "\n", 1) < 0)
-                throw std::exception();
+        case SIGTSTP:    // Ctrl Z 键盘中断
+            printf("Ctrl + C\n");
+            // if (write(STDOUT_FILENO, "\n", 1) < 0)
+            //     throw std::exception();
             if (Console::child_process_id >= 0)
             {
                 setpgid(Console::child_process_id, 0);
@@ -72,6 +76,11 @@ void SignalHandler(int signal_)
             }
             break;
         
+        case SIGCHLD:   // 子进程结束
+            // 父进程收到子进程退出命令后，回收子进程
+            // waitpid(-1, NULL, WNOHANG);
+            break;
+
         default:
             break;
     }
@@ -83,12 +92,13 @@ int Console::init()
     try
     {
         // 获取用户名称
-        memset(user_name, 0, BUFFER_SIZE);
-        strncpy(user_name, getenv("USER"), BUFFER_SIZE-1);
-        if (user_name == NULL)
+        struct passwd *pw = getpwuid(getuid());
+        if (pw == nullptr)
         {
-            throw "Environment Variable 'USER' does not exist"; //"当前系统中不存在环境变量USER";
+            throw "get user database entry error";
         }
+        memset(user_name, 0, BUFFER_SIZE);
+        strncpy(user_name, pw->pw_name, BUFFER_SIZE-1);
 
         // 获取主机名称
         int ret;
@@ -138,8 +148,13 @@ int Console::init()
         process_id = getpid();
         child_process_id = -1;  // 暂无子进程
 
-        signal(SIGINT, SignalHandler);
-        signal(SIGSTOP, SignalHandler);
+        signal(SIGINT, SignalHandler);  // Ctrl + C
+        signal(SIGTSTP, SignalHandler); // Ctrl + Z
+        signal(SIGCHLD, SignalHandler); // 子进程结束时发送给父进程的信号
+
+        // 屏幕shell从后台调用tcsetpcgrp时收到的信号
+        signal(SIGTTIN, SIG_IGN);   // 屏蔽SIGTTIN信号 
+        signal(SIGTTOU, SIG_IGN);   // 屏蔽SIGTTOU信号 
     }
     catch(const std::exception& e)
     {
@@ -152,8 +167,8 @@ int Console::init()
 
 void Console::ConsoleJobList() const
 {
-    /* 输出应显示在屏幕上，无论如何重定向。 */
-    process_manager->PrintJobList(output_std_fd);
+    /* 显示工作列表，以打印与重定向处。 */
+    process_manager->PrintJobList(STDOUT_FILENO);
 }
 
 void Console::ConsoleJobListDone()

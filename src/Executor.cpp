@@ -92,8 +92,6 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             return SH_ARGS;
 
         pid_t pid;
-        pid_t child_pid = getpid(); // 子进程pid
-
         if ((pid = fork()) < 0)
         { 
             /* 错误处理 */
@@ -109,8 +107,8 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             #endif
 
             setpgid(0, 0);
-            signal(SIGINT, SIG_DFL);
-            signal(SIGTSTP, SIG_DFL);
+            signal(SIGINT, SIG_DFL);    // 恢复Ctrl C信号
+            signal(SIGTSTP, SIG_DFL);   // 恢复Ctrl Z信号
 
             char **&argv_ = const_cast<char **&>(argv);
             argv_[argc] = NULL;
@@ -134,15 +132,30 @@ sh_err_t Executor::execute(const int argc, char * const argv[], char * const env
             // 添加进程列表
             char **&argv_ = const_cast<char **&>(argv);
             argv_[argc] = NULL;
-            unsigned int jobid = console_->AddJob(child_pid, Running, argc_, argv_);
-            console_->process_id = pid;
-            console_->child_process_id = child_pid;
+            unsigned int jobid = console_->AddJob(pid, Running, argc_, argv_);
+            // console_->process_id = getpid();    // 可以看到，这里的pid是没有改变的
+            console_->child_process_id = pid;
             
             // 打印当前进程
             char buffer[32];
-            snprintf(buffer, 32, "[%u] %d\n", jobid, child_pid);
+            snprintf(buffer, 32, "[%u] %d\n", jobid, pid);
             if (write(console_->output_std_fd, buffer, strlen(buffer)) == -1)
                 throw std::exception();
+            
+            // setpgid(pid, pid);
+
+            // // 将前端设置为子进程
+            // tcsetpgrp(STDIN_FILENO, pid);
+            // tcsetpgrp(STDOUT_FILENO, pid);
+            // tcsetpgrp(STDERR_FILENO, pid);
+            
+            // int status;
+            // waitpid(pid, &status, WNOHANG);
+
+            // // 将前端设置为父进程
+            // tcsetpgrp(STDIN_FILENO, getpid());
+            // tcsetpgrp(STDOUT_FILENO, getpid());
+            // tcsetpgrp(STDERR_FILENO, getgid());
 
             return SH_SUCCESS;
         }
@@ -597,7 +610,7 @@ sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const 
         return SH_SUCCESS;
     
     unsigned int job_id = String_to_Number<unsigned int>(argv[1]);
-    int id = console_->process_manager->FrontGround(job_id);
+    int id = console_->process_manager->ForeGround(job_id);
     if (id == -1)
     {
         char buffer[BUFFER_SIZE];
@@ -611,9 +624,9 @@ sh_err_t Executor::execute_fg(const int argc, char * const argv[], char * const 
 sh_err_t Executor::execute_jobs(const int argc, char * const argv[], char * const env[]) const
 {
     assert(strcmp(argv[0], "jobs")==0 && "unexpected node type");
-
+puts("before job");
     console_->ConsoleJobList();
-
+puts("after job");
     return SH_SUCCESS;
 }
 

@@ -9,6 +9,15 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
+job_unit::job_unit(unsigned int _id, int _pid, job_state _state, int _argc, char * _argv[])
+            : id(_id), pid(_pid), state(_state), argc(_argc)
+{
+    // argv 必须进行深拷贝，否则释放argv后将不再有，还会造成段错误
+    assert(argc < MAX_ARGUMENT_NUMBER);
+    for (int i = 0; i < argc; ++i)
+        strncpy(argv[i], _argv[i], BUFFER_SIZE);
+}
+
 void job_unit::PrintJob(int output_fd)
 {
     // if (argc <= 0)  // 参数错误
@@ -94,8 +103,10 @@ void ProcessManager::PrintJobList(int output_fd) const
 void ProcessManager::PrintJobListDone(int output_fd)
 {
     job_unit *pre_job = nullptr;
+    puts("hi~");
     for (auto job : jobs)
     {
+        printf("Id: %u pid: %d\n", job.id, job.pid);
         if (pre_job != nullptr)     // 内存回收
         {
             this->JobRemove(pre_job);
@@ -108,11 +119,15 @@ void ProcessManager::PrintJobListDone(int output_fd)
         #ifdef _DEBUG_
         printf("id: %u pid: %d wait: %d stat: %d\n", job.id, job.pid, wait_pid, stat_loc);
         #endif
-        if (wait_pid < 0 || wait_pid == job.pid) // 已经结束
+        if (wait_pid == job.pid) // 已经结束
         {
             job.state = Done;
             job.PrintJob();
             pre_job = &job;
+        }
+        else if (wait_pid < 0)  // 发生错误
+        {
+            throw std::exception();
         }
     }
 
@@ -155,7 +170,7 @@ void ProcessManager::JobRemove(std::set<job_unit>::iterator& job)
     return;
 }
 
-int ProcessManager::FrontGround(unsigned int jobid)
+int ProcessManager::ForeGround(unsigned int jobid)
 {
     for (auto job : jobs)
     {
@@ -163,6 +178,11 @@ int ProcessManager::FrontGround(unsigned int jobid)
         {
             Console::child_process_id = job.pid;
             setpgid(job.pid, getgid());
+
+            // 将前端设置为子进程
+            tcsetpgrp(STDIN_FILENO, job.pid);
+            tcsetpgrp(STDOUT_FILENO, job.pid);
+            tcsetpgrp(STDERR_FILENO, job.pid);
             job.state = Running;
 
             kill(job.pid, SIGCONT);

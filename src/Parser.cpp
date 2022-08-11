@@ -54,7 +54,7 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
             printf("channel: read %d write %d\n", channel[0], channel[1]);
             #endif
 
-            pid_t pid = fork(); // 分裂进程
+            pid_t pid = fork(); // 分裂进程，fork返回的是子进程的pid
             if (pid < 0)
             { 
                 /* 错误处理 */

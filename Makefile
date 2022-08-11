@@ -5,7 +5,7 @@ CC = g++
 INC = ./inc
 SRC = ./src
 LIB = ./lib
-CFLAG = -I$(INC) -L$(LIB) -O3 -Wall -MMD -g
+CFLAG = -I$(INC) -L$(LIB) -O3 -Wall -MMD
 OBJS = main.o
 LIBS = myshell
 DEPS = $(OBJS:.o=.d)

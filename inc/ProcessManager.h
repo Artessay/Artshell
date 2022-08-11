@@ -30,8 +30,9 @@
 class job_unit
 {
     public:
-        job_unit(unsigned int _id, int _pid, job_state _state, int _argc, char * _argv[])
-            : id(_id), pid(_pid), state(_state), argc(_argc), argv(_argv) { }
+        job_unit(unsigned int _id, int _pid, job_state _state, int _argc, char * _argv[]);
+
+        // ~job_unit();
 
         void PrintJob(int output_fd = STDOUT_FILENO);
         
@@ -71,7 +72,7 @@ class job_unit
         pid_t pid;                                  // 进程列表pid
         job_state state;                            // 进程列表状态
         int argc;                                   // 进程列表参数
-        char **argv;                                // 进程列表参数
+        char argv[MAX_ARGUMENT_NUMBER][BUFFER_SIZE];// 进程列表参数
 };
 
 class ProcessManager
@@ -116,7 +117,7 @@ class ProcessManager
         void JobRemove(job_unit * job);
         void JobRemove(std::set<job_unit>::iterator& job);
 
-        int FrontGround(unsigned int jobid);
+        int ForeGround(unsigned int jobid);
         int BackGround(unsigned int jobid);
 };
 
