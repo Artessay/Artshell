@@ -1,0 +1,198 @@
+\hypertarget{classjob__unit}{}\doxysection{job\+\_\+unit类 参考}
+\label{classjob__unit}\index{job\_unit@{job\_unit}}
+
+
+{\ttfamily \#include $<$Process\+Manager.\+h$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classjob__unit_aacc38b1925b21776d7af72be9998499a}{job\+\_\+unit}} (unsigned int \+\_\+id, int \+\_\+pid, \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\+\_\+state}} \+\_\+state, int \+\_\+argc, char $\ast$\+\_\+argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{classjob__unit_a78f5ab99ea4816004faf381068851a8f}{Print\+Job}} (int output\+\_\+fd=STDOUT\+\_\+\+FILENO)
+\item 
+bool \mbox{\hyperlink{classjob__unit_ad83956585b6200870cb5c0ce054866f6}{operator==}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}{operator!=}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}{operator$<$}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}{operator$>$}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}{operator$<$=}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}{operator$>$=}} (const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classjob__unit_a376668024dff325871b84fe74d0240ee}{id}}
+\item 
+pid\+\_\+t \mbox{\hyperlink{classjob__unit_aa3a4d672630617c695943d24fa36c296}{pid}}
+\item 
+\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\+\_\+state}} \mbox{\hyperlink{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}{state}}
+\item 
+int \mbox{\hyperlink{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}{argc}}
+\item 
+char \mbox{\hyperlink{classjob__unit_ac0479d1e80912a0997948b98a6047704}{argv}} \mbox{[}\mbox{\hyperlink{config_8h_a60fb43b57d214cc1d4aea17d0871a46f}{MAX\+\_\+\+ARGUMENT\+\_\+\+NUMBER}}\mbox{]}\mbox{[}\mbox{\hyperlink{config_8h_adf261954779e694ad997533c5da9ad5a}{BUFFER\+\_\+\+SIZE}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00030}{30}} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{classjob__unit_aacc38b1925b21776d7af72be9998499a}\label{classjob__unit_aacc38b1925b21776d7af72be9998499a}} 
+\index{job\_unit@{job\_unit}!job\_unit@{job\_unit}}
+\index{job\_unit@{job\_unit}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{job\_unit()}{job\_unit()}}
+{\footnotesize\ttfamily job\+\_\+unit\+::job\+\_\+unit (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+id,  }\item[{int}]{\+\_\+pid,  }\item[{\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\+\_\+state}}}]{\+\_\+state,  }\item[{int}]{\+\_\+argc,  }\item[{char $\ast$}]{\+\_\+argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8cpp_source}{Process\+Manager.\+cpp}} 第 \mbox{\hyperlink{_process_manager_8cpp_source_l00012}{12}} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}\label{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}} 
+\index{job\_unit@{job\_unit}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00045}{45}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}\label{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}} 
+\index{job\_unit@{job\_unit}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00050}{50}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}\label{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}} 
+\index{job\_unit@{job\_unit}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00060}{60}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_ad83956585b6200870cb5c0ce054866f6}\label{classjob__unit_ad83956585b6200870cb5c0ce054866f6}} 
+\index{job\_unit@{job\_unit}!operator==@{operator==}}
+\index{operator==@{operator==}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00040}{40}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}\label{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}} 
+\index{job\_unit@{job\_unit}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00055}{55}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}\label{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}} 
+\index{job\_unit@{job\_unit}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classjob__unit}{job\+\_\+unit}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00065}{65}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_a78f5ab99ea4816004faf381068851a8f}\label{classjob__unit_a78f5ab99ea4816004faf381068851a8f}} 
+\index{job\_unit@{job\_unit}!PrintJob@{PrintJob}}
+\index{PrintJob@{PrintJob}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{PrintJob()}{PrintJob()}}
+{\footnotesize\ttfamily void job\+\_\+unit\+::\+Print\+Job (\begin{DoxyParamCaption}\item[{int}]{output\+\_\+fd = {\ttfamily STDOUT\+\_\+FILENO} }\end{DoxyParamCaption})}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8cpp_source}{Process\+Manager.\+cpp}} 第 \mbox{\hyperlink{_process_manager_8cpp_source_l00021}{21}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classjob__unit_a78f5ab99ea4816004faf381068851a8f_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}\label{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}} 
+\index{job\_unit@{job\_unit}!argc@{argc}}
+\index{argc@{argc}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{argc}{argc}}
+{\footnotesize\ttfamily int job\+\_\+unit\+::argc}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00074}{74}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_ac0479d1e80912a0997948b98a6047704}\label{classjob__unit_ac0479d1e80912a0997948b98a6047704}} 
+\index{job\_unit@{job\_unit}!argv@{argv}}
+\index{argv@{argv}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{argv}{argv}}
+{\footnotesize\ttfamily char job\+\_\+unit\+::argv\mbox{[}\mbox{\hyperlink{config_8h_a60fb43b57d214cc1d4aea17d0871a46f}{MAX\+\_\+\+ARGUMENT\+\_\+\+NUMBER}}\mbox{]}\mbox{[}\mbox{\hyperlink{config_8h_adf261954779e694ad997533c5da9ad5a}{BUFFER\+\_\+\+SIZE}}\mbox{]}}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00075}{75}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_a376668024dff325871b84fe74d0240ee}\label{classjob__unit_a376668024dff325871b84fe74d0240ee}} 
+\index{job\_unit@{job\_unit}!id@{id}}
+\index{id@{id}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily unsigned int job\+\_\+unit\+::id}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00071}{71}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_aa3a4d672630617c695943d24fa36c296}\label{classjob__unit_aa3a4d672630617c695943d24fa36c296}} 
+\index{job\_unit@{job\_unit}!pid@{pid}}
+\index{pid@{pid}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{pid}{pid}}
+{\footnotesize\ttfamily pid\+\_\+t job\+\_\+unit\+::pid}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00072}{72}} 行定义.
+
+\mbox{\Hypertarget{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}\label{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}} 
+\index{job\_unit@{job\_unit}!state@{state}}
+\index{state@{state}!job\_unit@{job\_unit}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\+\_\+state}} job\+\_\+unit\+::state}
+
+
+
+在文件 \mbox{\hyperlink{_process_manager_8h_source}{Process\+Manager.\+h}} 第 \mbox{\hyperlink{_process_manager_8h_source_l00073}{73}} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_process_manager_8h}{Process\+Manager.\+h}}\item 
+src/\mbox{\hyperlink{_process_manager_8cpp}{Process\+Manager.\+cpp}}\end{DoxyCompactItemize}

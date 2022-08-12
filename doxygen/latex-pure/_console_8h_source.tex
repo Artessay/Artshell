@@ -1,0 +1,133 @@
+\doxysection{Console.\+h}
+\label{_console_8h_source}\index{inc/Console.h@{inc/Console.h}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#ifndef \_CONSOLE\_H\_}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#define \_CONSOLE\_H\_}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "{}config.h"{}}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <sys/stat.h>}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <sys/types.h>}}
+\DoxyCodeLine{00019 }
+\DoxyCodeLine{00020 \textcolor{keyword}{class }ProcessManager;   \textcolor{comment}{// 为了加快编译速度，这里不引用头文件而只是声明}}
+\DoxyCodeLine{00021 }
+\DoxyCodeLine{00031 \textcolor{keywordtype}{void} SignalHandler(\textcolor{keywordtype}{int} signal\_);}
+\DoxyCodeLine{00032 }
+\DoxyCodeLine{00038 \textcolor{keyword}{class }Console}
+\DoxyCodeLine{00039 \{}
+\DoxyCodeLine{00040     \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041         \textcolor{comment}{// 显示模块}}
+\DoxyCodeLine{00042         \textcolor{keywordtype}{char} user\_name[BUFFER\_SIZE];                    \textcolor{comment}{// 用户名称}}
+\DoxyCodeLine{00043         \textcolor{keywordtype}{char} host\_name[BUFFER\_SIZE];                    \textcolor{comment}{// 主机名称}}
+\DoxyCodeLine{00044         \textcolor{keywordtype}{char} current\_working\_dictionary[BUFFER\_SIZE];   \textcolor{comment}{// 当前工作目录}}
+\DoxyCodeLine{00045 }
+\DoxyCodeLine{00046         \textcolor{keywordtype}{char} home[BUFFER\_SIZE];                         \textcolor{comment}{// 主目录}}
+\DoxyCodeLine{00047         }
+\DoxyCodeLine{00048         \textcolor{comment}{// 环境变量}}
+\DoxyCodeLine{00049         \textcolor{keywordtype}{char} shell\_path\_env[BUFFER\_SIZE];               \textcolor{comment}{// shell的完整路径}}
+\DoxyCodeLine{00050 }
+\DoxyCodeLine{00051         \textcolor{comment}{// 进程管理}}
+\DoxyCodeLine{00052         pid\_t process\_id;                               \textcolor{comment}{// 当前进程pid}}
+\DoxyCodeLine{00053         \textcolor{keyword}{static} pid\_t child\_process\_id;                  \textcolor{comment}{// 子进程pid}}
+\DoxyCodeLine{00054         ProcessManager* process\_manager;                \textcolor{comment}{// 进程管理器}}
+\DoxyCodeLine{00055         }
+\DoxyCodeLine{00056         \textcolor{comment}{// 文件描述符}}
+\DoxyCodeLine{00057         \textcolor{keywordtype}{int} input\_file\_descriptor;                      \textcolor{comment}{// 输入文件描述符}}
+\DoxyCodeLine{00058         \textcolor{keywordtype}{int} output\_file\_descriptor;                     \textcolor{comment}{// 输出文件描述符}}
+\DoxyCodeLine{00059         \textcolor{keywordtype}{int} error\_file\_descriptor;                      \textcolor{comment}{// 错误文件描述符}}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061         \textcolor{comment}{// 标准输入、输出与错误输出}}
+\DoxyCodeLine{00062         \textcolor{keyword}{static} \textcolor{keywordtype}{int} input\_std\_fd;                        \textcolor{comment}{// 标准输入备份}}
+\DoxyCodeLine{00063         \textcolor{keyword}{static} \textcolor{keywordtype}{int} output\_std\_fd;                       \textcolor{comment}{// 标准输出备份                              }}
+\DoxyCodeLine{00064         \textcolor{keyword}{static} \textcolor{keywordtype}{int} error\_std\_fd;                        \textcolor{comment}{// 标准错误备份}}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066         \textcolor{comment}{// 重定向标志}}
+\DoxyCodeLine{00067         \textcolor{keywordtype}{bool} redirect\_input;                             \textcolor{comment}{// 输入重定向状态}}
+\DoxyCodeLine{00068         \textcolor{keywordtype}{bool} redirect\_output;                            \textcolor{comment}{// 输出重定向状态}}
+\DoxyCodeLine{00069         \textcolor{keywordtype}{bool} redirect\_error;                             \textcolor{comment}{// 错误重定向状态}}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071         \textcolor{comment}{// 掩码}}
+\DoxyCodeLine{00072         mode\_t umask\_;                                   \textcolor{comment}{// 文件掩码}}
+\DoxyCodeLine{00073 }
+\DoxyCodeLine{00074         \textcolor{keywordtype}{int} argc;                                        \textcolor{comment}{// 当前命令参数个数}}
+\DoxyCodeLine{00075         \textcolor{keywordtype}{char} argv[MAX\_ARGUMENT\_NUMBER][BUFFER\_SIZE];     \textcolor{comment}{// 当前命令参数列表}}
+\DoxyCodeLine{00076 }
+\DoxyCodeLine{00077     \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078         Console(\textcolor{comment}{/* args */});}
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080         \textcolor{keyword}{virtual} \string~Console();}
+\DoxyCodeLine{00081 }
+\DoxyCodeLine{00082         \textcolor{comment}{/* 初始化 */}}
+\DoxyCodeLine{00083         \textcolor{keywordtype}{int} init();}
+\DoxyCodeLine{00084 }
+\DoxyCodeLine{00085         \textcolor{comment}{/* 打印进程列表 */}}
+\DoxyCodeLine{00086         \textcolor{keywordtype}{void} ConsoleJobList() \textcolor{keyword}{const};}
+\DoxyCodeLine{00087 }
+\DoxyCodeLine{00088         \textcolor{comment}{/* 打印已完成的进程列表 */}}
+\DoxyCodeLine{00089         \textcolor{keywordtype}{void} ConsoleJobListDone();}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091         \textcolor{comment}{/* 添加进程 */}}
+\DoxyCodeLine{00092         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} AddJob(\textcolor{keywordtype}{int} pid, job\_state state, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]);}
+\DoxyCodeLine{00093 }
+\DoxyCodeLine{00094         \textcolor{comment}{// void RemoveJob();}}
+\DoxyCodeLine{00095 }
+\DoxyCodeLine{00096         \textcolor{keywordtype}{void} ResetChildPid() \{ child\_process\_id = -\/1; \}}
+\DoxyCodeLine{00097 }
+\DoxyCodeLine{00098         \textcolor{comment}{/* 设置文件描述符 */}}
+\DoxyCodeLine{00099         \textcolor{keywordtype}{void} SetInputFD(\textcolor{keywordtype}{int} \_fd)  \{ input\_file\_descriptor = \_fd; \}}
+\DoxyCodeLine{00100         \textcolor{comment}{/* 设置文件描述符 */}}
+\DoxyCodeLine{00101         \textcolor{keywordtype}{void} SetOutputFD(\textcolor{keywordtype}{int} \_fd) \{ output\_file\_descriptor = \_fd; \}}
+\DoxyCodeLine{00102         \textcolor{comment}{/* 设置文件描述符 */}}
+\DoxyCodeLine{00103         \textcolor{keywordtype}{void} SetErrorFD(\textcolor{keywordtype}{int} \_fd)  \{ error\_file\_descriptor = \_fd; \}}
+\DoxyCodeLine{00104 }
+\DoxyCodeLine{00105         \textcolor{comment}{/* 获取文件描述符 */}}
+\DoxyCodeLine{00106         \textcolor{keywordtype}{int} GetInputFD()\textcolor{keyword}{ const  }\{ \textcolor{keywordflow}{return} input\_file\_descriptor; \}}
+\DoxyCodeLine{00107         \textcolor{comment}{/* 获取文件描述符 */}}
+\DoxyCodeLine{00108         \textcolor{keywordtype}{int} GetOutputFD()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} output\_file\_descriptor; \}}
+\DoxyCodeLine{00109         \textcolor{comment}{/* 获取文件描述符 */}}
+\DoxyCodeLine{00110         \textcolor{keywordtype}{int} GetErrorFD()\textcolor{keyword}{ const  }\{ \textcolor{keywordflow}{return} error\_file\_descriptor; \}}
+\DoxyCodeLine{00111 }
+\DoxyCodeLine{00112         \textcolor{comment}{/* 设置重定向状态 */}}
+\DoxyCodeLine{00113         \textcolor{keywordtype}{void} SetInputRedirect()  \{ redirect\_input = \textcolor{keyword}{true}; \}}
+\DoxyCodeLine{00114         \textcolor{comment}{/* 设置重定向状态 */}}
+\DoxyCodeLine{00115         \textcolor{keywordtype}{void} SetOutputRedirect() \{ redirect\_output = \textcolor{keyword}{true}; \}}
+\DoxyCodeLine{00116         \textcolor{comment}{/* 设置重定向状态 */}}
+\DoxyCodeLine{00117         \textcolor{keywordtype}{void} SetErrorRedirect()  \{ redirect\_error = \textcolor{keyword}{true}; \}}
+\DoxyCodeLine{00118 }
+\DoxyCodeLine{00119         \textcolor{comment}{/* 重置重定向状态 */}}
+\DoxyCodeLine{00120         \textcolor{keywordtype}{void} ResetInputRedirect()  \{ redirect\_input = \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{00121         \textcolor{comment}{/* 重置重定向状态 */}}
+\DoxyCodeLine{00122         \textcolor{keywordtype}{void} ResetOutputRedirect() \{ redirect\_output = \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{00123         \textcolor{comment}{/* 重置重定向状态 */}}
+\DoxyCodeLine{00124         \textcolor{keywordtype}{void} ResetErrorRedirect()  \{ redirect\_error = \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{00125 }
+\DoxyCodeLine{00126         \textcolor{comment}{/* 获取重定向状态 */}}
+\DoxyCodeLine{00127         \textcolor{keywordtype}{bool} GetInputRedirect()\textcolor{keyword}{ const  }\{ \textcolor{keywordflow}{return} redirect\_input ; \}}
+\DoxyCodeLine{00128         \textcolor{comment}{/* 获取重定向状态 */}}
+\DoxyCodeLine{00129         \textcolor{keywordtype}{bool} GetOutputRedirect()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} redirect\_output; \}}
+\DoxyCodeLine{00130         \textcolor{comment}{/* 获取重定向状态 */}}
+\DoxyCodeLine{00131         \textcolor{keywordtype}{bool} GetErrorRedirect()\textcolor{keyword}{ const  }\{ \textcolor{keywordflow}{return} redirect\_error ; \}}
+\DoxyCodeLine{00132 }
+\DoxyCodeLine{00133         \textcolor{comment}{/* 获取标注输入、输出、错误输出 */}}
+\DoxyCodeLine{00134         \textcolor{keywordtype}{int} GetSTDIN()\textcolor{keyword}{  const }\{ \textcolor{keywordflow}{return} input\_std\_fd;  \}}
+\DoxyCodeLine{00135         \textcolor{comment}{/* 获取标注输入、输出、错误输出 */}}
+\DoxyCodeLine{00136         \textcolor{keywordtype}{int} GetSTDOUT()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} output\_std\_fd; \}}
+\DoxyCodeLine{00137         \textcolor{comment}{/* 获取标注输入、输出、错误输出 */}}
+\DoxyCodeLine{00138         \textcolor{keywordtype}{int} GetSTDERR()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} error\_std\_fd;  \}}
+\DoxyCodeLine{00139 }
+\DoxyCodeLine{00140         \textcolor{comment}{/* 设置掩码 */}}
+\DoxyCodeLine{00141         \textcolor{keywordtype}{void} SetMask(mode\_t \_mask) \{ umask\_ = \_mask; \}}
+\DoxyCodeLine{00142         \textcolor{comment}{/* 获取掩码 */}}
+\DoxyCodeLine{00143         mode\_t GetMask()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} umask\_; \}}
+\DoxyCodeLine{00144 }
+\DoxyCodeLine{00145         \textcolor{keyword}{friend} \textcolor{keyword}{class }Display;}
+\DoxyCodeLine{00146         \textcolor{keyword}{friend} \textcolor{keyword}{class }Executor;}
+\DoxyCodeLine{00147         \textcolor{keyword}{friend} \textcolor{keyword}{class }ProcessManager;}
+\DoxyCodeLine{00148         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} SignalHandler(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00149 \};}
+\DoxyCodeLine{00150 }
+\DoxyCodeLine{00151 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

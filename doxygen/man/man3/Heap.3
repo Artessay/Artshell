@@ -1,0 +1,155 @@
+.TH "Heap< T >" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Heap< T > \- 抽象堆  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Heap\&.h>\fP
+.PP
+被 \fBBinaryHeap< T >\fP 继承\&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBHeap\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Heap\fP ()"
+.br
+.RI "Destroy the \fBHeap\fP object Heap的析构函数。由于我们的链接库是静态库，因此无法将析构函数定义成纯虚函数。 如果使用动态链接库的话则能够较好的实现多态，这里暂且将其定义为空函数以便链接。 "
+.ti -1c
+.RI "size_t \fBsize\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBbuild\fP (T data[], size_t \fBsize\fP)=0"
+.br
+.ti -1c
+.RI "virtual void \fBinsert\fP (T value)"
+.br
+.ti -1c
+.RI "virtual T \fBtop\fP () const"
+.br
+.ti -1c
+.RI "virtual T \fBextract\fP ()"
+.br
+.in -1c
+.SS "Protected 属性"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBsize_\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+
+.SS "template<class T>
+.br
+class Heap< T >"抽象堆 
+
+
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-08-10 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB28\fP 行定义\&.
+.SH "构造及析构函数说明"
+.PP 
+.SS "template<class T > \fBHeap\fP< T >\fB::Heap\fP ()\fC [inline]\fP"
+
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB31\fP 行定义\&.
+.SS "template<class T > virtual \fBHeap\fP< T >::~\fBHeap\fP ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Destroy the \fBHeap\fP object Heap的析构函数。由于我们的链接库是静态库，因此无法将析构函数定义成纯虚函数。 如果使用动态链接库的话则能够较好的实现多态，这里暂且将其定义为空函数以便链接。 
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-08-10 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB43\fP 行定义\&.
+.SH "成员函数说明"
+.PP 
+.SS "template<class T > virtual void \fBHeap\fP< T >::build (T data[], size_t size)\fC [pure virtual]\fP"
+
+.PP
+在 \fBBinaryHeap< T >\fP 内被实现\&.
+.SS "template<class T > virtual T \fBHeap\fP< T >::extract ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+被 \fBBinaryHeap< T >\fP 重载\&.
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB60\fP 行定义\&.
+.SS "template<class T > virtual void \fBHeap\fP< T >::insert (T value)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+被 \fBBinaryHeap< T >\fP 重载\&.
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB49\fP 行定义\&.
+.SS "template<class T > size_t \fBHeap\fP< T >::size () const\fC [inline]\fP"
+
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB45\fP 行定义\&.
+.SS "template<class T > virtual T \fBHeap\fP< T >::top () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+被 \fBBinaryHeap< T >\fP 重载\&.
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB54\fP 行定义\&.
+.SH "类成员变量说明"
+.PP 
+.SS "template<class T > size_t \fBHeap\fP< T >::size_\fC [protected]\fP"
+
+.PP
+在文件 \fBHeap\&.h\fP 第 \fB67\fP 行定义\&.
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

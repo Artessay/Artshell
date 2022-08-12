@@ -1,0 +1,2289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Shell: Executor类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">My Shell<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">命令行编辑器: 邱日宏 3200105842</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_executor.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-types">Protected 类型</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="class_executor-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Executor类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_executor_8h_source.html">Executor.h</a>&gt;</code></p>
+<div class="dynheader">
+Executor 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor__coll__graph.png" border="0" usemap="#a_executor_coll__map" alt="Collaboration graph"/></div>
+<map name="a_executor_coll__map" id="a_executor_coll__map">
+<area shape="rect" title=" " alt="" coords="41,363,116,389"/>
+<area shape="rect" href="class_console.html" title="控制台 存储必要的环境变量以及渲染用户前端所需要的数据" alt="" coords="44,184,113,211"/>
+<area shape="rect" href="class_display.html" title=" " alt="" coords="139,273,205,300"/>
+<area shape="rect" href="class_process_manager.html" title=" " alt="" coords="19,95,139,121"/>
+<area shape="rect" href="class_heap.html" title=" " alt="" coords="5,5,152,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3216f1a094a2603b9c467ccbecdb68a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7">Executor</a> (<a class="el" href="class_console.html">Console</a> *model, <a class="el" href="class_display.html">Display</a> *view)</td></tr>
+<tr class="separator:a3216f1a094a2603b9c467ccbecdb68a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23108c89c4a25e22c927115191c04b26"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a23108c89c4a25e22c927115191c04b26">~Executor</a> ()</td></tr>
+<tr class="separator:a23108c89c4a25e22c927115191c04b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1efaafe37cc750a5a959283c8fa6072a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a">execute</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a1efaafe37cc750a5a959283c8fa6072a"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行器命令执行函数  <a href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a">更多...</a><br /></td></tr>
+<tr class="separator:a1efaafe37cc750a5a959283c8fa6072a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected 类型</h2></td></tr>
+<tr class="memitem:a714ef257584da7fbf426338cf2e2d645"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>(Executor::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a714ef257584da7fbf426338cf2e2d645">MemFuncPtr</a>) (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a714ef257584da7fbf426338cf2e2d645"><td class="mdescLeft">&#160;</td><td class="mdescRight">从命令到对应函数的映射，采用红黑树的STL实现  <a href="class_executor.html#a714ef257584da7fbf426338cf2e2d645">更多...</a><br /></td></tr>
+<tr class="separator:a714ef257584da7fbf426338cf2e2d645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a6fa1442ada2d0df8fd52f4e430cce31e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e">shell_function</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a6fa1442ada2d0df8fd52f4e430cce31e"><td class="mdescLeft">&#160;</td><td class="mdescRight">选择执行函数并执行  <a href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e">更多...</a><br /></td></tr>
+<tr class="separator:a6fa1442ada2d0df8fd52f4e430cce31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e4cedebd6ec8b46d6afaf319369d5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a83e4cedebd6ec8b46d6afaf319369d5a">execute_cd</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a83e4cedebd6ec8b46d6afaf319369d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">更改目录  <a href="class_executor.html#a83e4cedebd6ec8b46d6afaf319369d5a">更多...</a><br /></td></tr>
+<tr class="separator:a83e4cedebd6ec8b46d6afaf319369d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d52716fbdabdc6ce6c476bcf62e4c66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a5d52716fbdabdc6ce6c476bcf62e4c66">execute_pwd</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a5d52716fbdabdc6ce6c476bcf62e4c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示当前目录  <a href="class_executor.html#a5d52716fbdabdc6ce6c476bcf62e4c66">更多...</a><br /></td></tr>
+<tr class="separator:a5d52716fbdabdc6ce6c476bcf62e4c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff20dc92c156d65b9615605b410bb14e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#aff20dc92c156d65b9615605b410bb14e">execute_time</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:aff20dc92c156d65b9615605b410bb14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示当前日期  <a href="class_executor.html#aff20dc92c156d65b9615605b410bb14e">更多...</a><br /></td></tr>
+<tr class="separator:aff20dc92c156d65b9615605b410bb14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcefd04730f08a13a9c4ac5aeaa17d3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#afcefd04730f08a13a9c4ac5aeaa17d3f">execute_clr</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:afcefd04730f08a13a9c4ac5aeaa17d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">清屏  <a href="class_executor.html#afcefd04730f08a13a9c4ac5aeaa17d3f">更多...</a><br /></td></tr>
+<tr class="separator:afcefd04730f08a13a9c4ac5aeaa17d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d7be8bd7520b960195dfac152eb3b4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a5d7be8bd7520b960195dfac152eb3b4e">execute_dir</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="separator:a5d7be8bd7520b960195dfac152eb3b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409eacdf368808cae938ccd7eb5b1074"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a409eacdf368808cae938ccd7eb5b1074">execute_set</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="separator:a409eacdf368808cae938ccd7eb5b1074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793edb7a57e8702e9a1df8877cf52c4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a793edb7a57e8702e9a1df8877cf52c4a">execute_echo</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="separator:a793edb7a57e8702e9a1df8877cf52c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14c9c8ab1f6d34152167f302b73d253c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a14c9c8ab1f6d34152167f302b73d253c">execute_help</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="separator:a14c9c8ab1f6d34152167f302b73d253c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad488a61e88fc1e3fcea05467f0a33c12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#ad488a61e88fc1e3fcea05467f0a33c12">execute_exit</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:ad488a61e88fc1e3fcea05467f0a33c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">退出shell  <a href="class_executor.html#ad488a61e88fc1e3fcea05467f0a33c12">更多...</a><br /></td></tr>
+<tr class="separator:ad488a61e88fc1e3fcea05467f0a33c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7879b031498f84bc79d4670ddbf5882a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a">execute_date</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a7879b031498f84bc79d4670ddbf5882a"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示当前日期  <a href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a">更多...</a><br /></td></tr>
+<tr class="separator:a7879b031498f84bc79d4670ddbf5882a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea1570ef025f4a9b3d18fb17ec0d6fab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab">execute_clear</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:aea1570ef025f4a9b3d18fb17ec0d6fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">清屏  <a href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab">更多...</a><br /></td></tr>
+<tr class="separator:aea1570ef025f4a9b3d18fb17ec0d6fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42048fc854eb50566a5563d15c65c1e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8">execute_env</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a42048fc854eb50566a5563d15c65c1e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取系统环境变量  <a href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8">更多...</a><br /></td></tr>
+<tr class="separator:a42048fc854eb50566a5563d15c65c1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12adde1212fb00c1f85c839c830da20a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a12adde1212fb00c1f85c839c830da20a">execute_who</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a12adde1212fb00c1f85c839c830da20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前登入用户信息  <a href="class_executor.html#a12adde1212fb00c1f85c839c830da20a">更多...</a><br /></td></tr>
+<tr class="separator:a12adde1212fb00c1f85c839c830da20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14963bfbfaed3a775d0e9726f964fd4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a14963bfbfaed3a775d0e9726f964fd4b">execute_mkdir</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a14963bfbfaed3a775d0e9726f964fd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建新目录  <a href="class_executor.html#a14963bfbfaed3a775d0e9726f964fd4b">更多...</a><br /></td></tr>
+<tr class="separator:a14963bfbfaed3a775d0e9726f964fd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d30e249770b06a9d24a400c971aa959"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a0d30e249770b06a9d24a400c971aa959">execute_rmdir</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a0d30e249770b06a9d24a400c971aa959"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除空目录  <a href="class_executor.html#a0d30e249770b06a9d24a400c971aa959">更多...</a><br /></td></tr>
+<tr class="separator:a0d30e249770b06a9d24a400c971aa959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69fe207735684ba0b5b50f43a8a1e217"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a69fe207735684ba0b5b50f43a8a1e217">execute_bg</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a69fe207735684ba0b5b50f43a8a1e217"><td class="mdescLeft">&#160;</td><td class="mdescRight">将被挂起的作业转到后台  <a href="class_executor.html#a69fe207735684ba0b5b50f43a8a1e217">更多...</a><br /></td></tr>
+<tr class="separator:a69fe207735684ba0b5b50f43a8a1e217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d264497fb5c9de3ca434d9e1107b070"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a3d264497fb5c9de3ca434d9e1107b070">execute_fg</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a3d264497fb5c9de3ca434d9e1107b070"><td class="mdescLeft">&#160;</td><td class="mdescRight">将后台作业转到前台  <a href="class_executor.html#a3d264497fb5c9de3ca434d9e1107b070">更多...</a><br /></td></tr>
+<tr class="separator:a3d264497fb5c9de3ca434d9e1107b070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74908e725aa40a6da16c1a8b383b61b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a74908e725aa40a6da16c1a8b383b61b9">execute_jobs</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a74908e725aa40a6da16c1a8b383b61b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示所有作业  <a href="class_executor.html#a74908e725aa40a6da16c1a8b383b61b9">更多...</a><br /></td></tr>
+<tr class="separator:a74908e725aa40a6da16c1a8b383b61b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08692f19c48b47fa81a503166742052c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a08692f19c48b47fa81a503166742052c">execute_exec</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a08692f19c48b47fa81a503166742052c"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行命令替换当前进程  <a href="class_executor.html#a08692f19c48b47fa81a503166742052c">更多...</a><br /></td></tr>
+<tr class="separator:a08692f19c48b47fa81a503166742052c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb4a30566fe0a9ee1e75c5ac3892c53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53">execute_test</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:acfb4a30566fe0a9ee1e75c5ac3892c53"><td class="mdescLeft">&#160;</td><td class="mdescRight">检测命令执行结构  <a href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53">更多...</a><br /></td></tr>
+<tr class="separator:acfb4a30566fe0a9ee1e75c5ac3892c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68303ae2d1de04414132c7fd339973ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a68303ae2d1de04414132c7fd339973ad">execute_umask</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a68303ae2d1de04414132c7fd339973ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置掩码  <a href="class_executor.html#a68303ae2d1de04414132c7fd339973ad">更多...</a><br /></td></tr>
+<tr class="separator:a68303ae2d1de04414132c7fd339973ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24184035b7a2aaeef6b309d9cfb13704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704">execute_myshell</a> (const int argc, char *const argv[], char *const env[]) const</td></tr>
+<tr class="memdesc:a24184035b7a2aaeef6b309d9cfb13704"><td class="mdescLeft">&#160;</td><td class="mdescRight">myshell  <a href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704">更多...</a><br /></td></tr>
+<tr class="separator:a24184035b7a2aaeef6b309d9cfb13704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:acb69e9dcc912bc5308fd8bb32aa6f135"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135">test_file_state</a> (const int argc, const char *const argv[])</td></tr>
+<tr class="memdesc:acb69e9dcc912bc5308fd8bb32aa6f135"><td class="mdescLeft">&#160;</td><td class="mdescRight">文件测试  <a href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135">更多...</a><br /></td></tr>
+<tr class="separator:acb69e9dcc912bc5308fd8bb32aa6f135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409ee22c9a3324243782f8c7d5cc8af9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a409ee22c9a3324243782f8c7d5cc8af9">test_number_compare</a> (const int argc, const char *const argv[])</td></tr>
+<tr class="memdesc:a409ee22c9a3324243782f8c7d5cc8af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">文件测试  <a href="class_executor.html#a409ee22c9a3324243782f8c7d5cc8af9">更多...</a><br /></td></tr>
+<tr class="separator:a409ee22c9a3324243782f8c7d5cc8af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87065e9bf3e4f57847d7d7612d3ac4dd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a87065e9bf3e4f57847d7d7612d3ac4dd">test_string_compare</a> (const int argc, const char *const argv[])</td></tr>
+<tr class="memdesc:a87065e9bf3e4f57847d7d7612d3ac4dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">文件测试  <a href="class_executor.html#a87065e9bf3e4f57847d7d7612d3ac4dd">更多...</a><br /></td></tr>
+<tr class="separator:a87065e9bf3e4f57847d7d7612d3ac4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a9ff57dbc74b39f2e7d3880aaeb673365"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_executor.html#a714ef257584da7fbf426338cf2e2d645">MemFuncPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#a9ff57dbc74b39f2e7d3880aaeb673365">FunctionArray</a> [<a class="el" href="_executor_8h.html#a58b5fdb52107b8670e19511310af70fe">FunctionNumber</a>]</td></tr>
+<tr class="memdesc:a9ff57dbc74b39f2e7d3880aaeb673365"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建函数指针数组  <a href="class_executor.html#a9ff57dbc74b39f2e7d3880aaeb673365">更多...</a><br /></td></tr>
+<tr class="separator:a9ff57dbc74b39f2e7d3880aaeb673365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ac4e48f119d3ef9826fa6ac1fcc113064"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_console.html">Console</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#ac4e48f119d3ef9826fa6ac1fcc113064">console_</a></td></tr>
+<tr class="separator:ac4e48f119d3ef9826fa6ac1fcc113064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d20cdbf968e0737b62d22af126091e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_display.html">Display</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_executor.html#aa2d20cdbf968e0737b62d22af126091e">display_</a></td></tr>
+<tr class="separator:aa2d20cdbf968e0737b62d22af126091e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_executor_8h_source.html">Executor.h</a> 第 <a class="el" href="_executor_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a714ef257584da7fbf426338cf2e2d645" name="a714ef257584da7fbf426338cf2e2d645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a714ef257584da7fbf426338cf2e2d645">&#9670;&nbsp;</a></span>MemFuncPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a>(Executor::* Executor::MemFuncPtr) (const int argc, char *const argv[], char *const env[]) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>从命令到对应函数的映射，采用红黑树的STL实现 </p>
+<p >定义函数指针类型 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8h_source.html">Executor.h</a> 第 <a class="el" href="_executor_8h_source.html#l00104">104</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a3216f1a094a2603b9c467ccbecdb68a7" name="a3216f1a094a2603b9c467ccbecdb68a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3216f1a094a2603b9c467ccbecdb68a7">&#9670;&nbsp;</a></span>Executor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Executor::Executor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_console.html">Console</a> *&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_display.html">Display</a> *&#160;</td>
+          <td class="paramname"><em>view</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >定义函数指针数组</p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00042">42</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a3216f1a094a2603b9c467ccbecdb68a7_cgraph.png" border="0" usemap="#aclass_executor_a3216f1a094a2603b9c467ccbecdb68a7_cgraph" alt=""/></div>
+<map name="aclass_executor_a3216f1a094a2603b9c467ccbecdb68a7_cgraph" id="aclass_executor_a3216f1a094a2603b9c467ccbecdb68a7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,436,140,463"/>
+<area shape="rect" href="class_executor.html#a69fe207735684ba0b5b50f43a8a1e217" title="将被挂起的作业转到后台" alt="" coords="203,107,353,133"/>
+<area shape="rect" href="class_executor.html#a83e4cedebd6ec8b46d6afaf319369d5a" title="更改目录" alt="" coords="203,765,353,792"/>
+<area shape="rect" href="class_executor.html#afcefd04730f08a13a9c4ac5aeaa17d3f" title="清屏" alt="" coords="203,157,353,184"/>
+<area shape="rect" href="class_executor.html#a5d7be8bd7520b960195dfac152eb3b4e" title=" " alt="" coords="203,208,353,235"/>
+<area shape="rect" href="class_executor.html#a793edb7a57e8702e9a1df8877cf52c4a" title=" " alt="" coords="197,259,359,285"/>
+<area shape="rect" href="class_executor.html#a08692f19c48b47fa81a503166742052c" title="执行命令替换当前进程" alt="" coords="197,816,359,843"/>
+<area shape="rect" href="class_executor.html#ad488a61e88fc1e3fcea05467f0a33c12" title="退出shell" alt="" coords="200,867,356,893"/>
+<area shape="rect" href="class_executor.html#a3d264497fb5c9de3ca434d9e1107b070" title="将后台作业转到前台" alt="" coords="443,5,589,32"/>
+<area shape="rect" href="class_executor.html#a14c9c8ab1f6d34152167f302b73d253c" title=" " alt="" coords="199,309,357,336"/>
+<area shape="rect" href="class_executor.html#a74908e725aa40a6da16c1a8b383b61b9" title="显示所有作业" alt="" coords="199,1092,357,1119"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,613,368,640"/>
+<area shape="rect" href="class_executor.html#a5d52716fbdabdc6ce6c476bcf62e4c66" title="显示当前目录" alt="" coords="199,360,357,387"/>
+<area shape="rect" href="class_executor.html#a409eacdf368808cae938ccd7eb5b1074" title=" " alt="" coords="201,411,355,437"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="199,664,357,691"/>
+<area shape="rect" href="class_executor.html#aff20dc92c156d65b9615605b410bb14e" title="显示当前日期" alt="" coords="198,461,358,488"/>
+<area shape="rect" href="class_executor.html#a68303ae2d1de04414132c7fd339973ad" title="设置掩码" alt="" coords="191,715,365,741"/>
+<area shape="rect" href="class_process_manager.html#a5497e2786bfea99f905ca8951abb36f8" title=" " alt="" coords="416,56,616,83"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="699,335,825,361"/>
+<area shape="rect" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab" title="清屏" alt="" coords="435,157,597,184"/>
+<area shape="rect" href="class_process_manager.html#ac3e1dc05eb4aeb4080b3d16ef5ff36b6" title=" " alt="" coords="908,397,1104,424"/>
+<area shape="rect" href="class_process_manager.html#abb124eed9ed603f5de81438f94c2e342" title="删除进程" alt="" coords="1152,725,1347,752"/>
+<area shape="rect" href="class_heap.html#a412ca53eb7bc9124283e17207da9beb6" title=" " alt="" coords="1395,725,1487,752"/>
+<area shape="rect" href="class_console.html#a66e0a1a68ac24da1ebc1063a6d8146cf" title=" " alt="" coords="433,1267,599,1293"/>
+<area shape="rect" href="class_process_manager.html#aed9ebd7ba0bc7e16c0a5df542900ab45" title=" " alt="" coords="664,1267,860,1293"/>
+<area shape="rect" href="common_8cpp.html#a7b6ca73d8ddfa874f4c518907878a50e" title="命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开" alt="" coords="698,573,826,600"/>
+<area shape="rect" href="class_display.html#affa8b075f9933ab1683b520fdc79dd4a" title="命令行输入控制" alt="" coords="682,877,842,904"/>
+<area shape="rect" href="class_display.html#aab18599c778ffdbc1f9a8e6b8743156a" title="继续输入提示" alt="" coords="459,613,573,640"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="451,816,581,843"/>
+<area shape="rect" href="common_8cpp.html#a8d405369fdbd9d568f19c4a92d27c71f" title="去掉字符串两端空格" alt="" coords="472,563,560,589"/>
+<area shape="rect" href="class_console.html#a9117d1d5dc5a0325a01d7f798d0e67bd" title=" " alt="" coords="665,827,859,853"/>
+<area shape="rect" href="class_display.html#a9b83e81da2877f0ceff73881d4ceb3dc" title="命令行提示符显示模块" alt="" coords="707,624,817,651"/>
+<area shape="rect" href="class_console.html#a77e7161904d95a484f94069fb1bc742a" title=" " alt="" coords="683,675,841,701"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="699,725,825,752"/>
+<area shape="rect" href="lexer_8l.html#a9f781b288aca983c195e3cb10e359247" title=" " alt="" coords="727,776,797,803"/>
+<area shape="rect" href="class_process_manager.html#ade7e167c72e4090133356c01e7c6f19b" title=" " alt="" coords="919,798,1093,839"/>
+<area shape="rect" href="class_console.html#a8d711d0715d762049587db93beb4c2d7" title=" " alt="" coords="935,685,1077,712"/>
+<area shape="rect" href="class_console.html#ab5a0767cb115b8fb8f54636ecf346663" title=" " alt="" coords="935,736,1077,763"/>
+<area shape="rect" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8" title="获取系统环境变量" alt="" coords="439,411,593,437"/>
+<area shape="rect" href="class_console.html#a8ed8ede73662c81257ba9ced6e1b538d" title=" " alt="" coords="423,917,609,944"/>
+<area shape="rect" href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135" title="文件测试" alt="" coords="453,969,579,1010"/>
+<area shape="rect" href="class_executor.html#a409ee22c9a3324243782f8c7d5cc8af9" title="文件测试" alt="" coords="439,1034,593,1075"/>
+<area shape="rect" href="class_executor.html#a87065e9bf3e4f57847d7d7612d3ac4dd" title="文件测试" alt="" coords="445,1099,587,1141"/>
+<area shape="rect" href="config_8h.html#a05c7e55c0f417c2cb510ca9131ee8d45" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="715,1104,809,1131"/>
+<area shape="rect" href="common_8h.html#ac7fd245cd6d45bdfc593d2a7bbf1a0d2" title="timespec时间比较" alt="" coords="689,1029,835,1056"/>
+<area shape="rect" href="common_8h.html#a9f86a453548ebd07eaa30fa19c9e8b3c" title="timespec时间比较" alt="" coords="693,928,831,955"/>
+<area shape="rect" href="_executor_8cpp.html#af06d386f27818725b8dd8903e2289036" title="测试终端联系" alt="" coords="729,979,795,1005"/>
+<area shape="rect" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a" title="显示当前日期" alt="" coords="436,461,596,488"/>
+<area shape="rect" href="common_8h.html#aacaa1550ad815f04b4aa25105dddca1b" title="十六进制转十进制" alt="" coords="431,1165,601,1192"/>
+<area shape="rect" href="common_8h.html#a71b31de6be57956acdd485c4a44517c8" title="八进制转十进制" alt="" coords="453,1216,579,1243"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a23108c89c4a25e22c927115191c04b26" name="a23108c89c4a25e22c927115191c04b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23108c89c4a25e22c927115191c04b26">&#9670;&nbsp;</a></span>~Executor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Executor::~Executor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00072">72</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a1efaafe37cc750a5a959283c8fa6072a" name="a1efaafe37cc750a5a959283c8fa6072a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1efaafe37cc750a5a959283c8fa6072a">&#9670;&nbsp;</a></span>execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>执行器命令执行函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>传入参数个数 </td></tr>
+    <tr><td class="paramname">argv</td><td>传入具体参数 </td></tr>
+    <tr><td class="paramname">env</td><td>环境变量 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>sh_err_t 返回执行情况 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-04 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00076">76</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a1efaafe37cc750a5a959283c8fa6072a_cgraph.png" border="0" usemap="#aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_cgraph" alt=""/></div>
+<map name="aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_cgraph" id="aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_cgraph">
+<area shape="rect" title="执行器命令执行函数" alt="" coords="5,81,133,108"/>
+<area shape="rect" href="class_console.html#a286bde00a8b1e89dadd217ae770b5afd" title=" " alt="" coords="202,31,322,57"/>
+<area shape="rect" href="common_8cpp.html#a7b6ca73d8ddfa874f4c518907878a50e" title="命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开" alt="" coords="417,81,545,108"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="181,233,343,260"/>
+<area shape="rect" href="class_process_manager.html#a165280bdbc9eb678b83f3340fde4c9ca" title="添加进程" alt="" coords="391,31,571,57"/>
+<area shape="rect" href="class_heap.html#a939b7f03924d3901e8bebfdaadfd9513" title=" " alt="" coords="632,5,732,32"/>
+<area shape="rect" href="classjob__unit.html#a78f5ab99ea4816004faf381068851a8f" title=" " alt="" coords="621,56,743,83"/>
+<area shape="rect" href="common_8h.html#aa8f5903617bda350262b21478437498f" title="二分搜索查找，查询范围为[l, r)" alt="" coords="427,132,534,159"/>
+<area shape="rect" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab" title="清屏" alt="" coords="399,183,562,209"/>
+<area shape="rect" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a" title="显示当前日期" alt="" coords="401,233,561,260"/>
+<area shape="rect" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8" title="获取系统环境变量" alt="" coords="403,284,558,311"/>
+<area shape="rect" href="class_executor.html#a14963bfbfaed3a775d0e9726f964fd4b" title="创建新目录" alt="" coords="397,335,564,361"/>
+<area shape="rect" href="class_executor.html#a0d30e249770b06a9d24a400c971aa959" title="移除空目录" alt="" coords="399,385,563,412"/>
+<area shape="rect" href="class_executor.html#a12adde1212fb00c1f85c839c830da20a" title="获取当前登入用户信息" alt="" coords="401,436,560,463"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="619,259,745,285"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a1efaafe37cc750a5a959283c8fa6072a_icgraph.png" border="0" usemap="#aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_icgraph" alt=""/></div>
+<map name="aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_icgraph" id="aclass_executor_a1efaafe37cc750a5a959283c8fa6072a_icgraph">
+<area shape="rect" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a69fe207735684ba0b5b50f43a8a1e217" name="a69fe207735684ba0b5b50f43a8a1e217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69fe207735684ba0b5b50f43a8a1e217">&#9670;&nbsp;</a></span>execute_bg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_bg </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>将被挂起的作业转到后台 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00585">585</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a69fe207735684ba0b5b50f43a8a1e217_cgraph.png" border="0" usemap="#aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_cgraph" alt=""/></div>
+<map name="aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_cgraph" id="aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_cgraph">
+<area shape="rect" title="将被挂起的作业转到后台" alt="" coords="5,31,155,57"/>
+<area shape="rect" href="class_process_manager.html#a5497e2786bfea99f905ca8951abb36f8" title=" " alt="" coords="203,5,403,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="239,56,366,83"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a69fe207735684ba0b5b50f43a8a1e217_icgraph.png" border="0" usemap="#aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_icgraph" alt=""/></div>
+<map name="aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_icgraph" id="aclass_executor_a69fe207735684ba0b5b50f43a8a1e217_icgraph">
+<area shape="rect" title="将被挂起的作业转到后台" alt="" coords="188,5,337,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a83e4cedebd6ec8b46d6afaf319369d5a" name="a83e4cedebd6ec8b46d6afaf319369d5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e4cedebd6ec8b46d6afaf319369d5a">&#9670;&nbsp;</a></span>execute_cd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_cd </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>更改目录 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00251">251</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a83e4cedebd6ec8b46d6afaf319369d5a_icgraph.png" border="0" usemap="#aclass_executor_a83e4cedebd6ec8b46d6afaf319369d5a_icgraph" alt=""/></div>
+<map name="aclass_executor_a83e4cedebd6ec8b46d6afaf319369d5a_icgraph" id="aclass_executor_a83e4cedebd6ec8b46d6afaf319369d5a_icgraph">
+<area shape="rect" title="更改目录" alt="" coords="188,5,337,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aea1570ef025f4a9b3d18fb17ec0d6fab" name="aea1570ef025f4a9b3d18fb17ec0d6fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea1570ef025f4a9b3d18fb17ec0d6fab">&#9670;&nbsp;</a></span>execute_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_clear </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>清屏 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00524">524</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_cgraph.png" border="0" usemap="#aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_cgraph" alt=""/></div>
+<map name="aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_cgraph" id="aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_cgraph">
+<area shape="rect" title="清屏" alt="" coords="5,5,168,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="216,5,343,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_icgraph.png" border="0" usemap="#aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_icgraph" alt=""/></div>
+<map name="aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_icgraph" id="aclass_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_icgraph">
+<area shape="rect" title="清屏" alt="" coords="1371,31,1533,57"/>
+<area shape="rect" href="class_executor.html#afcefd04730f08a13a9c4ac5aeaa17d3f" title="清屏" alt="" coords="964,5,1113,32"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1161,56,1323,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,31,140,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="975,56,1103,83"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,56,916,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,56,720,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,56,545,83"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,56,368,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,107,347,133"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,107,98,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afcefd04730f08a13a9c4ac5aeaa17d3f" name="afcefd04730f08a13a9c4ac5aeaa17d3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcefd04730f08a13a9c4ac5aeaa17d3f">&#9670;&nbsp;</a></span>execute_clr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_clr </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>清屏 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00316">316</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_cgraph.png" border="0" usemap="#aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_cgraph" alt=""/></div>
+<map name="aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_cgraph" id="aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_cgraph">
+<area shape="rect" title="清屏" alt="" coords="5,5,155,32"/>
+<area shape="rect" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab" title="清屏" alt="" coords="203,5,365,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="413,5,540,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_icgraph.png" border="0" usemap="#aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_icgraph" alt=""/></div>
+<map name="aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_icgraph" id="aclass_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_icgraph">
+<area shape="rect" title="清屏" alt="" coords="188,5,337,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7879b031498f84bc79d4670ddbf5882a" name="a7879b031498f84bc79d4670ddbf5882a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7879b031498f84bc79d4670ddbf5882a">&#9670;&nbsp;</a></span>execute_date()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_date </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>显示当前日期 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00499">499</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a7879b031498f84bc79d4670ddbf5882a_cgraph.png" border="0" usemap="#aclass_executor_a7879b031498f84bc79d4670ddbf5882a_cgraph" alt=""/></div>
+<map name="aclass_executor_a7879b031498f84bc79d4670ddbf5882a_cgraph" id="aclass_executor_a7879b031498f84bc79d4670ddbf5882a_cgraph">
+<area shape="rect" title="显示当前日期" alt="" coords="5,5,165,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="213,5,340,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a7879b031498f84bc79d4670ddbf5882a_icgraph.png" border="0" usemap="#aclass_executor_a7879b031498f84bc79d4670ddbf5882a_icgraph" alt=""/></div>
+<map name="aclass_executor_a7879b031498f84bc79d4670ddbf5882a_icgraph" id="aclass_executor_a7879b031498f84bc79d4670ddbf5882a_icgraph">
+<area shape="rect" title="显示当前日期" alt="" coords="1381,31,1541,57"/>
+<area shape="rect" href="class_executor.html#aff20dc92c156d65b9615605b410bb14e" title="显示当前日期" alt="" coords="964,5,1124,32"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1172,56,1333,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,31,140,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="980,56,1108,83"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,56,916,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,56,720,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,56,545,83"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,56,368,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,107,347,133"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,107,98,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5d7be8bd7520b960195dfac152eb3b4e" name="a5d7be8bd7520b960195dfac152eb3b4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d7be8bd7520b960195dfac152eb3b4e">&#9670;&nbsp;</a></span>execute_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_dir </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00324">324</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a5d7be8bd7520b960195dfac152eb3b4e_cgraph.png" border="0" usemap="#aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_cgraph" alt=""/></div>
+<map name="aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_cgraph" id="aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="203,5,329,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a5d7be8bd7520b960195dfac152eb3b4e_icgraph.png" border="0" usemap="#aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_icgraph" alt=""/></div>
+<map name="aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_icgraph" id="aclass_executor_a5d7be8bd7520b960195dfac152eb3b4e_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,337,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a793edb7a57e8702e9a1df8877cf52c4a" name="a793edb7a57e8702e9a1df8877cf52c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a793edb7a57e8702e9a1df8877cf52c4a">&#9670;&nbsp;</a></span>execute_echo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_echo </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00445">445</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a793edb7a57e8702e9a1df8877cf52c4a_cgraph.png" border="0" usemap="#aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_cgraph" alt=""/></div>
+<map name="aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_cgraph" id="aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,168,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="216,5,343,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a793edb7a57e8702e9a1df8877cf52c4a_icgraph.png" border="0" usemap="#aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_icgraph" alt=""/></div>
+<map name="aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_icgraph" id="aclass_executor_a793edb7a57e8702e9a1df8877cf52c4a_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,351,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a42048fc854eb50566a5563d15c65c1e8" name="a42048fc854eb50566a5563d15c65c1e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42048fc854eb50566a5563d15c65c1e8">&#9670;&nbsp;</a></span>execute_env()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_env </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取系统环境变量 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00531">531</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a42048fc854eb50566a5563d15c65c1e8_cgraph.png" border="0" usemap="#aclass_executor_a42048fc854eb50566a5563d15c65c1e8_cgraph" alt=""/></div>
+<map name="aclass_executor_a42048fc854eb50566a5563d15c65c1e8_cgraph" id="aclass_executor_a42048fc854eb50566a5563d15c65c1e8_cgraph">
+<area shape="rect" title="获取系统环境变量" alt="" coords="5,5,160,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="208,5,335,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a42048fc854eb50566a5563d15c65c1e8_icgraph.png" border="0" usemap="#aclass_executor_a42048fc854eb50566a5563d15c65c1e8_icgraph" alt=""/></div>
+<map name="aclass_executor_a42048fc854eb50566a5563d15c65c1e8_icgraph" id="aclass_executor_a42048fc854eb50566a5563d15c65c1e8_icgraph">
+<area shape="rect" title="获取系统环境变量" alt="" coords="1375,31,1529,57"/>
+<area shape="rect" href="class_executor.html#a409eacdf368808cae938ccd7eb5b1074" title=" " alt="" coords="964,5,1117,32"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1165,56,1327,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,31,140,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="977,56,1105,83"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,56,916,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,56,720,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,56,545,83"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,56,368,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,107,347,133"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,107,98,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a08692f19c48b47fa81a503166742052c" name="a08692f19c48b47fa81a503166742052c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08692f19c48b47fa81a503166742052c">&#9670;&nbsp;</a></span>execute_exec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_exec </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行命令替换当前进程 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00639">639</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a08692f19c48b47fa81a503166742052c_icgraph.png" border="0" usemap="#aclass_executor_a08692f19c48b47fa81a503166742052c_icgraph" alt=""/></div>
+<map name="aclass_executor_a08692f19c48b47fa81a503166742052c_icgraph" id="aclass_executor_a08692f19c48b47fa81a503166742052c_icgraph">
+<area shape="rect" title="执行命令替换当前进程" alt="" coords="188,5,351,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad488a61e88fc1e3fcea05467f0a33c12" name="ad488a61e88fc1e3fcea05467f0a33c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad488a61e88fc1e3fcea05467f0a33c12">&#9670;&nbsp;</a></span>execute_exit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_exit </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>退出shell </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00493">493</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_ad488a61e88fc1e3fcea05467f0a33c12_icgraph.png" border="0" usemap="#aclass_executor_ad488a61e88fc1e3fcea05467f0a33c12_icgraph" alt=""/></div>
+<map name="aclass_executor_ad488a61e88fc1e3fcea05467f0a33c12_icgraph" id="aclass_executor_ad488a61e88fc1e3fcea05467f0a33c12_icgraph">
+<area shape="rect" title="退出shell" alt="" coords="188,5,344,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d264497fb5c9de3ca434d9e1107b070" name="a3d264497fb5c9de3ca434d9e1107b070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d264497fb5c9de3ca434d9e1107b070">&#9670;&nbsp;</a></span>execute_fg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_fg </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>将后台作业转到前台 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00611">611</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a3d264497fb5c9de3ca434d9e1107b070_cgraph.png" border="0" usemap="#aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_cgraph" alt=""/></div>
+<map name="aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_cgraph" id="aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_cgraph">
+<area shape="rect" title="将后台作业转到前台" alt="" coords="5,31,151,57"/>
+<area shape="rect" href="class_process_manager.html#ac3e1dc05eb4aeb4080b3d16ef5ff36b6" title=" " alt="" coords="199,5,395,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="233,56,360,83"/>
+<area shape="rect" href="class_process_manager.html#abb124eed9ed603f5de81438f94c2e342" title="删除进程" alt="" coords="443,5,637,32"/>
+<area shape="rect" href="class_heap.html#a412ca53eb7bc9124283e17207da9beb6" title=" " alt="" coords="685,5,777,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a3d264497fb5c9de3ca434d9e1107b070_icgraph.png" border="0" usemap="#aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_icgraph" alt=""/></div>
+<map name="aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_icgraph" id="aclass_executor_a3d264497fb5c9de3ca434d9e1107b070_icgraph">
+<area shape="rect" title="将后台作业转到前台" alt="" coords="188,5,333,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a14c9c8ab1f6d34152167f302b73d253c" name="a14c9c8ab1f6d34152167f302b73d253c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14c9c8ab1f6d34152167f302b73d253c">&#9670;&nbsp;</a></span>execute_help()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_help </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00462">462</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a14c9c8ab1f6d34152167f302b73d253c_cgraph.png" border="0" usemap="#aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_cgraph" alt=""/></div>
+<map name="aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_cgraph" id="aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="212,5,339,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a14c9c8ab1f6d34152167f302b73d253c_icgraph.png" border="0" usemap="#aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_icgraph" alt=""/></div>
+<map name="aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_icgraph" id="aclass_executor_a14c9c8ab1f6d34152167f302b73d253c_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,347,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a74908e725aa40a6da16c1a8b383b61b9" name="a74908e725aa40a6da16c1a8b383b61b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74908e725aa40a6da16c1a8b383b61b9">&#9670;&nbsp;</a></span>execute_jobs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_jobs </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>显示所有作业 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00630">630</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a74908e725aa40a6da16c1a8b383b61b9_cgraph.png" border="0" usemap="#aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_cgraph" alt=""/></div>
+<map name="aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_cgraph" id="aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_cgraph">
+<area shape="rect" title="显示所有作业" alt="" coords="5,5,164,32"/>
+<area shape="rect" href="class_console.html#a66e0a1a68ac24da1ebc1063a6d8146cf" title=" " alt="" coords="212,5,377,32"/>
+<area shape="rect" href="class_process_manager.html#aed9ebd7ba0bc7e16c0a5df542900ab45" title=" " alt="" coords="425,5,621,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a74908e725aa40a6da16c1a8b383b61b9_icgraph.png" border="0" usemap="#aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_icgraph" alt=""/></div>
+<map name="aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_icgraph" id="aclass_executor_a74908e725aa40a6da16c1a8b383b61b9_icgraph">
+<area shape="rect" title="显示所有作业" alt="" coords="188,5,347,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a14963bfbfaed3a775d0e9726f964fd4b" name="a14963bfbfaed3a775d0e9726f964fd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14963bfbfaed3a775d0e9726f964fd4b">&#9670;&nbsp;</a></span>execute_mkdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_mkdir </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建新目录 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00555">555</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a14963bfbfaed3a775d0e9726f964fd4b_icgraph.png" border="0" usemap="#aclass_executor_a14963bfbfaed3a775d0e9726f964fd4b_icgraph" alt=""/></div>
+<map name="aclass_executor_a14963bfbfaed3a775d0e9726f964fd4b_icgraph" id="aclass_executor_a14963bfbfaed3a775d0e9726f964fd4b_icgraph">
+<area shape="rect" title="创建新目录" alt="" coords="1349,31,1516,57"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1140,31,1301,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a24184035b7a2aaeef6b309d9cfb13704" name="a24184035b7a2aaeef6b309d9cfb13704"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24184035b7a2aaeef6b309d9cfb13704">&#9670;&nbsp;</a></span>execute_myshell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_myshell </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>myshell </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00739">739</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a24184035b7a2aaeef6b309d9cfb13704_cgraph.png" border="0" usemap="#aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_cgraph" alt=""/></div>
+<map name="aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_cgraph" id="aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_cgraph">
+<area shape="rect" title="myshell" alt="" coords="5,1363,185,1390"/>
+<area shape="rect" href="common_8cpp.html#a7b6ca73d8ddfa874f4c518907878a50e" title="命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开" alt="" coords="1382,781,1510,807"/>
+<area shape="rect" href="class_display.html#affa8b075f9933ab1683b520fdc79dd4a" title="命令行输入控制" alt="" coords="428,831,588,858"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="1584,247,1711,274"/>
+<area shape="rect" href="class_display.html#aab18599c778ffdbc1f9a8e6b8743156a" title="继续输入提示" alt="" coords="241,1389,355,1415"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="233,1009,363,1035"/>
+<area shape="rect" href="common_8cpp.html#a8d405369fdbd9d568f19c4a92d27c71f" title="去掉字符串两端空格" alt="" coords="254,1490,342,1517"/>
+<area shape="rect" href="class_console.html#a9117d1d5dc5a0325a01d7f798d0e67bd" title=" " alt="" coords="411,983,605,1010"/>
+<area shape="rect" href="class_display.html#a9b83e81da2877f0ceff73881d4ceb3dc" title="命令行提示符显示模块" alt="" coords="453,882,563,909"/>
+<area shape="rect" href="class_console.html#a77e7161904d95a484f94069fb1bc742a" title=" " alt="" coords="429,933,587,959"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="445,1085,571,1111"/>
+<area shape="rect" href="lexer_8l.html#a9f781b288aca983c195e3cb10e359247" title=" " alt="" coords="473,1034,543,1061"/>
+<area shape="rect" href="class_process_manager.html#ade7e167c72e4090133356c01e7c6f19b" title=" " alt="" coords="653,5,828,47"/>
+<area shape="rect" href="class_process_manager.html#abb124eed9ed603f5de81438f94c2e342" title="删除进程" alt="" coords="878,13,1073,39"/>
+<area shape="rect" href="class_heap.html#a412ca53eb7bc9124283e17207da9beb6" title=" " alt="" coords="1169,13,1261,39"/>
+<area shape="rect" href="class_console.html#a8d711d0715d762049587db93beb4c2d7" title=" " alt="" coords="904,1034,1047,1061"/>
+<area shape="rect" href="class_console.html#ab5a0767cb115b8fb8f54636ecf346663" title=" " alt="" coords="904,1085,1047,1111"/>
+<area shape="rect" href="class_console.html#abfdb289fac381526a099a2163c4ae705" title=" " alt="" coords="898,1135,1053,1162"/>
+<area shape="rect" href="class_console.html#a9825197de6cf144832961e9fdc96d968" title=" " alt="" coords="1144,299,1287,326"/>
+<area shape="rect" href="class_console.html#a0e7663c06c2f47bb15262c7853c17ebc" title=" " alt="" coords="1129,1034,1302,1061"/>
+<area shape="rect" href="class_console.html#a24dd8b5bbd30b3eb6346b2902fa1b8a8" title=" " alt="" coords="1139,249,1292,275"/>
+<area shape="rect" href="class_console.html#aa1c7da9978b67c9d27500b9818c30ad8" title=" " alt="" coords="1123,1186,1307,1213"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="667,679,815,706"/>
+<area shape="rect" href="class_display.html#a14242933dd00fc1d50f9ae70d5121d14" title="清空缓冲区" alt="" coords="925,983,1026,1010"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="911,71,1039,98"/>
+<area shape="rect" href="class_console.html#a806d29518222e2f68fbd581c6fb83440" title=" " alt="" coords="1128,603,1303,630"/>
+<area shape="rect" href="class_console.html#aad753325a8a0910265c2e9392c5e531c" title=" " alt="" coords="1128,679,1303,706"/>
+<area shape="rect" href="class_console.html#a8ed8ede73662c81257ba9ced6e1b538d" title=" " alt="" coords="1123,730,1308,757"/>
+<area shape="rect" href="class_console.html#a9df0753e46fdaae71336c41e4ee17fda" title=" " alt="" coords="900,325,1051,351"/>
+<area shape="rect" href="class_console.html#aa331c9a7c66f6aa705f5cab6f6469057" title=" " alt="" coords="908,375,1043,402"/>
+<area shape="rect" href="class_console.html#aabbced230d7ba4b96a58896a4d47cc39" title=" " alt="" coords="901,426,1050,453"/>
+<area shape="rect" href="class_console.html#ae0c51f0fe6cc5cc63c06210b8b18d4e9" title=" " alt="" coords="882,477,1069,503"/>
+<area shape="rect" href="class_console.html#aa7777f44a59723d9c714cdaf7bc957eb" title=" " alt="" coords="882,527,1069,554"/>
+<area shape="rect" href="class_console.html#ad135641adf013088788dee082360474e" title=" " alt="" coords="876,629,1075,655"/>
+<area shape="rect" href="class_console.html#ae599615cb831cef7cc87158c8e288d49" title=" " alt="" coords="1144,933,1287,959"/>
+<area shape="rect" href="_parser_8cpp.html#a932249bb0892f7c0083bf15e27fb4885" title="根据错误类型给出错误信息" alt="" coords="904,831,1047,858"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="906,781,1045,807"/>
+<area shape="rect" href="class_display.html#a457c583c6fc2aa69e0709947a0196ba6" title="将所有打印信息统一显示在终端" alt="" coords="924,882,1027,909"/>
+<area shape="rect" href="class_console.html#a286bde00a8b1e89dadd217ae770b5afd" title=" " alt="" coords="1155,67,1275,94"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1135,147,1296,174"/>
+<area shape="rect" href="class_process_manager.html#a165280bdbc9eb678b83f3340fde4c9ca" title="添加进程" alt="" coords="1356,19,1536,46"/>
+<area shape="rect" href="common_8h.html#aa8f5903617bda350262b21478437498f" title="二分搜索查找，查询范围为[l, r)" alt="" coords="1393,70,1499,97"/>
+<area shape="rect" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab" title="清屏" alt="" coords="1365,171,1527,198"/>
+<area shape="rect" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a" title="显示当前日期" alt="" coords="1366,323,1526,350"/>
+<area shape="rect" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8" title="获取系统环境变量" alt="" coords="1369,121,1523,147"/>
+<area shape="rect" href="class_executor.html#a14963bfbfaed3a775d0e9726f964fd4b" title="创建新目录" alt="" coords="1363,222,1529,249"/>
+<area shape="rect" href="class_executor.html#a0d30e249770b06a9d24a400c971aa959" title="移除空目录" alt="" coords="1364,273,1528,299"/>
+<area shape="rect" href="class_console.html#a51dd35745d691e0777081628fa1db9d0" title=" " alt="" coords="1150,882,1281,909"/>
+<area shape="rect" href="class_console.html#aac7ce6d8e461dd8ed81b5a5022575db1" title=" " alt="" coords="1129,831,1302,858"/>
+<area shape="rect" href="lexer_8l.html#a9a7bd1b3d14701eb97c03f3ef34deff1" title=" " alt="" coords="714,71,767,98"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a24184035b7a2aaeef6b309d9cfb13704_icgraph.png" border="0" usemap="#aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_icgraph" alt=""/></div>
+<map name="aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_icgraph" id="aclass_executor_a24184035b7a2aaeef6b309d9cfb13704_icgraph">
+<area shape="rect" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5d52716fbdabdc6ce6c476bcf62e4c66" name="a5d52716fbdabdc6ce6c476bcf62e4c66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d52716fbdabdc6ce6c476bcf62e4c66">&#9670;&nbsp;</a></span>execute_pwd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_pwd </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>显示当前目录 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00300">300</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_cgraph.png" border="0" usemap="#aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_cgraph" alt=""/></div>
+<map name="aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_cgraph" id="aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_cgraph">
+<area shape="rect" title="显示当前目录" alt="" coords="5,5,164,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="212,5,339,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_icgraph.png" border="0" usemap="#aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_icgraph" alt=""/></div>
+<map name="aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_icgraph" id="aclass_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_icgraph">
+<area shape="rect" title="显示当前目录" alt="" coords="188,5,347,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0d30e249770b06a9d24a400c971aa959" name="a0d30e249770b06a9d24a400c971aa959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d30e249770b06a9d24a400c971aa959">&#9670;&nbsp;</a></span>execute_rmdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_rmdir </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>移除空目录 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00571">571</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a0d30e249770b06a9d24a400c971aa959_icgraph.png" border="0" usemap="#aclass_executor_a0d30e249770b06a9d24a400c971aa959_icgraph" alt=""/></div>
+<map name="aclass_executor_a0d30e249770b06a9d24a400c971aa959_icgraph" id="aclass_executor_a0d30e249770b06a9d24a400c971aa959_icgraph">
+<area shape="rect" title="移除空目录" alt="" coords="1349,31,1513,57"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1140,31,1301,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a409eacdf368808cae938ccd7eb5b1074" name="a409eacdf368808cae938ccd7eb5b1074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409eacdf368808cae938ccd7eb5b1074">&#9670;&nbsp;</a></span>execute_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_set </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00437">437</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a409eacdf368808cae938ccd7eb5b1074_cgraph.png" border="0" usemap="#aclass_executor_a409eacdf368808cae938ccd7eb5b1074_cgraph" alt=""/></div>
+<map name="aclass_executor_a409eacdf368808cae938ccd7eb5b1074_cgraph" id="aclass_executor_a409eacdf368808cae938ccd7eb5b1074_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8" title="获取系统环境变量" alt="" coords="207,5,361,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="409,5,536,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a409eacdf368808cae938ccd7eb5b1074_icgraph.png" border="0" usemap="#aclass_executor_a409eacdf368808cae938ccd7eb5b1074_icgraph" alt=""/></div>
+<map name="aclass_executor_a409eacdf368808cae938ccd7eb5b1074_icgraph" id="aclass_executor_a409eacdf368808cae938ccd7eb5b1074_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,341,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acfb4a30566fe0a9ee1e75c5ac3892c53" name="acfb4a30566fe0a9ee1e75c5ac3892c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb4a30566fe0a9ee1e75c5ac3892c53">&#9670;&nbsp;</a></span>execute_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_test </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>检测命令执行结构 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00657">657</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_cgraph.png" border="0" usemap="#aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_cgraph" alt=""/></div>
+<map name="aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_cgraph" id="aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_cgraph">
+<area shape="rect" title="检测命令执行结构" alt="" coords="5,115,163,141"/>
+<area shape="rect" href="class_console.html#a8ed8ede73662c81257ba9ced6e1b538d" title=" " alt="" coords="211,5,396,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="240,56,367,83"/>
+<area shape="rect" href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135" title="文件测试" alt="" coords="240,238,367,279"/>
+<area shape="rect" href="class_executor.html#a409ee22c9a3324243782f8c7d5cc8af9" title="文件测试" alt="" coords="226,107,381,149"/>
+<area shape="rect" href="class_executor.html#a87065e9bf3e4f57847d7d7612d3ac4dd" title="文件测试" alt="" coords="232,173,375,214"/>
+<area shape="rect" href="config_8h.html#a05c7e55c0f417c2cb510ca9131ee8d45" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="470,161,563,188"/>
+<area shape="rect" href="common_8h.html#ac7fd245cd6d45bdfc593d2a7bbf1a0d2" title="timespec时间比较" alt="" coords="444,212,589,239"/>
+<area shape="rect" href="common_8h.html#a9f86a453548ebd07eaa30fa19c9e8b3c" title="timespec时间比较" alt="" coords="447,263,586,289"/>
+<area shape="rect" href="_executor_8cpp.html#af06d386f27818725b8dd8903e2289036" title="测试终端联系" alt="" coords="483,313,550,340"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_icgraph.png" border="0" usemap="#aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_icgraph" alt=""/></div>
+<map name="aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_icgraph" id="aclass_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_icgraph">
+<area shape="rect" title="检测命令执行结构" alt="" coords="188,5,345,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff20dc92c156d65b9615605b410bb14e" name="aff20dc92c156d65b9615605b410bb14e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff20dc92c156d65b9615605b410bb14e">&#9670;&nbsp;</a></span>execute_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_time </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>显示当前日期 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00308">308</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_aff20dc92c156d65b9615605b410bb14e_cgraph.png" border="0" usemap="#aclass_executor_aff20dc92c156d65b9615605b410bb14e_cgraph" alt=""/></div>
+<map name="aclass_executor_aff20dc92c156d65b9615605b410bb14e_cgraph" id="aclass_executor_aff20dc92c156d65b9615605b410bb14e_cgraph">
+<area shape="rect" title="显示当前日期" alt="" coords="5,5,165,32"/>
+<area shape="rect" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a" title="显示当前日期" alt="" coords="213,5,373,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="421,5,548,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_aff20dc92c156d65b9615605b410bb14e_icgraph.png" border="0" usemap="#aclass_executor_aff20dc92c156d65b9615605b410bb14e_icgraph" alt=""/></div>
+<map name="aclass_executor_aff20dc92c156d65b9615605b410bb14e_icgraph" id="aclass_executor_aff20dc92c156d65b9615605b410bb14e_icgraph">
+<area shape="rect" title="显示当前日期" alt="" coords="188,5,348,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a68303ae2d1de04414132c7fd339973ad" name="a68303ae2d1de04414132c7fd339973ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68303ae2d1de04414132c7fd339973ad">&#9670;&nbsp;</a></span>execute_umask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_umask </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置掩码 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00702">702</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a68303ae2d1de04414132c7fd339973ad_cgraph.png" border="0" usemap="#aclass_executor_a68303ae2d1de04414132c7fd339973ad_cgraph" alt=""/></div>
+<map name="aclass_executor_a68303ae2d1de04414132c7fd339973ad_cgraph" id="aclass_executor_a68303ae2d1de04414132c7fd339973ad_cgraph">
+<area shape="rect" title="设置掩码" alt="" coords="5,56,180,83"/>
+<area shape="rect" href="common_8h.html#aacaa1550ad815f04b4aa25105dddca1b" title="十六进制转十进制" alt="" coords="228,5,397,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="249,56,376,83"/>
+<area shape="rect" href="common_8h.html#a71b31de6be57956acdd485c4a44517c8" title="八进制转十进制" alt="" coords="250,107,375,133"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a68303ae2d1de04414132c7fd339973ad_icgraph.png" border="0" usemap="#aclass_executor_a68303ae2d1de04414132c7fd339973ad_icgraph" alt=""/></div>
+<map name="aclass_executor_a68303ae2d1de04414132c7fd339973ad_icgraph" id="aclass_executor_a68303ae2d1de04414132c7fd339973ad_icgraph">
+<area shape="rect" title="设置掩码" alt="" coords="188,5,363,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a12adde1212fb00c1f85c839c830da20a" name="a12adde1212fb00c1f85c839c830da20a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12adde1212fb00c1f85c839c830da20a">&#9670;&nbsp;</a></span>execute_who()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::execute_who </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取当前登入用户信息 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00547">547</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a12adde1212fb00c1f85c839c830da20a_cgraph.png" border="0" usemap="#aclass_executor_a12adde1212fb00c1f85c839c830da20a_cgraph" alt=""/></div>
+<map name="aclass_executor_a12adde1212fb00c1f85c839c830da20a_cgraph" id="aclass_executor_a12adde1212fb00c1f85c839c830da20a_cgraph">
+<area shape="rect" title="获取当前登入用户信息" alt="" coords="5,5,164,32"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="212,5,339,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a12adde1212fb00c1f85c839c830da20a_icgraph.png" border="0" usemap="#aclass_executor_a12adde1212fb00c1f85c839c830da20a_icgraph" alt=""/></div>
+<map name="aclass_executor_a12adde1212fb00c1f85c839c830da20a_icgraph" id="aclass_executor_a12adde1212fb00c1f85c839c830da20a_icgraph">
+<area shape="rect" title="获取当前登入用户信息" alt="" coords="1349,31,1508,57"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1140,31,1301,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6fa1442ada2d0df8fd52f4e430cce31e" name="a6fa1442ada2d0df8fd52f4e430cce31e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa1442ada2d0df8fd52f4e430cce31e">&#9670;&nbsp;</a></span>shell_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="config_8h.html#ae2add225307a7b3fcb70840ed41543e9">sh_err_t</a> Executor::shell_function </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>env</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>选择执行函数并执行 </p>
+<dl class="section see"><dt>参见</dt><dd>显示器 </dd></dl>
+<p >二分查找匹配内部命令</p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00168">168</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a6fa1442ada2d0df8fd52f4e430cce31e_cgraph.png" border="0" usemap="#aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_cgraph" alt=""/></div>
+<map name="aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_cgraph" id="aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_cgraph">
+<area shape="rect" title="选择执行函数并执行" alt="" coords="5,183,167,209"/>
+<area shape="rect" href="common_8cpp.html#a7b6ca73d8ddfa874f4c518907878a50e" title="命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开" alt="" coords="234,5,362,32"/>
+<area shape="rect" href="common_8h.html#aa8f5903617bda350262b21478437498f" title="二分搜索查找，查询范围为[l, r)" alt="" coords="245,56,351,83"/>
+<area shape="rect" href="class_executor.html#aea1570ef025f4a9b3d18fb17ec0d6fab" title="清屏" alt="" coords="217,107,379,133"/>
+<area shape="rect" href="class_executor.html#a7879b031498f84bc79d4670ddbf5882a" title="显示当前日期" alt="" coords="218,157,378,184"/>
+<area shape="rect" href="class_executor.html#a42048fc854eb50566a5563d15c65c1e8" title="获取系统环境变量" alt="" coords="221,208,375,235"/>
+<area shape="rect" href="class_executor.html#a14963bfbfaed3a775d0e9726f964fd4b" title="创建新目录" alt="" coords="215,259,381,285"/>
+<area shape="rect" href="class_executor.html#a0d30e249770b06a9d24a400c971aa959" title="移除空目录" alt="" coords="216,309,380,336"/>
+<area shape="rect" href="class_executor.html#a12adde1212fb00c1f85c839c830da20a" title="获取当前登入用户信息" alt="" coords="219,360,377,387"/>
+<area shape="rect" href="class_display.html#a3715e72f9beec4db82fd5d9668451b36" title="打印信息msg与显示器" alt="" coords="429,183,556,209"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a6fa1442ada2d0df8fd52f4e430cce31e_icgraph.png" border="0" usemap="#aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_icgraph" alt=""/></div>
+<map name="aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_icgraph" id="aclass_executor_a6fa1442ada2d0df8fd52f4e430cce31e_icgraph">
+<area shape="rect" title="选择执行函数并执行" alt="" coords="1140,31,1301,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb69e9dcc912bc5308fd8bb32aa6f135" name="acb69e9dcc912bc5308fd8bb32aa6f135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb69e9dcc912bc5308fd8bb32aa6f135">&#9670;&nbsp;</a></span>test_file_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Executor::test_file_state </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>文件测试 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00856">856</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_acb69e9dcc912bc5308fd8bb32aa6f135_cgraph.png" border="0" usemap="#aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_cgraph" alt=""/></div>
+<map name="aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_cgraph" id="aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_cgraph">
+<area shape="rect" title="文件测试" alt="" coords="5,98,132,139"/>
+<area shape="rect" href="config_8h.html#a05c7e55c0f417c2cb510ca9131ee8d45" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="206,29,299,56"/>
+<area shape="rect" href="common_8h.html#ac7fd245cd6d45bdfc593d2a7bbf1a0d2" title="timespec时间比较" alt="" coords="180,80,325,107"/>
+<area shape="rect" href="common_8h.html#a9f86a453548ebd07eaa30fa19c9e8b3c" title="timespec时间比较" alt="" coords="183,131,322,157"/>
+<area shape="rect" href="_executor_8cpp.html#af06d386f27818725b8dd8903e2289036" title="测试终端联系" alt="" coords="219,181,286,208"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_acb69e9dcc912bc5308fd8bb32aa6f135_icgraph.png" border="0" usemap="#aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_icgraph" alt=""/></div>
+<map name="aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_icgraph" id="aclass_executor_acb69e9dcc912bc5308fd8bb32aa6f135_icgraph">
+<area shape="rect" title="文件测试" alt="" coords="393,5,520,47"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="188,13,345,39"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a409ee22c9a3324243782f8c7d5cc8af9" name="a409ee22c9a3324243782f8c7d5cc8af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409ee22c9a3324243782f8c7d5cc8af9">&#9670;&nbsp;</a></span>test_number_compare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Executor::test_number_compare </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>文件测试 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l00966">966</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a409ee22c9a3324243782f8c7d5cc8af9_cgraph.png" border="0" usemap="#aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_cgraph" alt=""/></div>
+<map name="aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_cgraph" id="aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_cgraph">
+<area shape="rect" title="文件测试" alt="" coords="5,22,160,63"/>
+<area shape="rect" href="config_8h.html#a05c7e55c0f417c2cb510ca9131ee8d45" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="208,29,301,56"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a409ee22c9a3324243782f8c7d5cc8af9_icgraph.png" border="0" usemap="#aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_icgraph" alt=""/></div>
+<map name="aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_icgraph" id="aclass_executor_a409ee22c9a3324243782f8c7d5cc8af9_icgraph">
+<area shape="rect" title="文件测试" alt="" coords="393,5,548,47"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="188,13,345,39"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a87065e9bf3e4f57847d7d7612d3ac4dd" name="a87065e9bf3e4f57847d7d7612d3ac4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87065e9bf3e4f57847d7d7612d3ac4dd">&#9670;&nbsp;</a></span>test_string_compare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Executor::test_string_compare </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>文件测试 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8cpp_source.html">Executor.cpp</a> 第 <a class="el" href="_executor_8cpp_source.html#l01008">1008</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_cgraph.png" border="0" usemap="#aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_cgraph" alt=""/></div>
+<map name="aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_cgraph" id="aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_cgraph">
+<area shape="rect" title="文件测试" alt="" coords="5,22,148,63"/>
+<area shape="rect" href="config_8h.html#a05c7e55c0f417c2cb510ca9131ee8d45" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="196,29,289,56"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_icgraph.png" border="0" usemap="#aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_icgraph" alt=""/></div>
+<map name="aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_icgraph" id="aclass_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_icgraph">
+<area shape="rect" title="文件测试" alt="" coords="393,5,536,47"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="188,13,345,39"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ac4e48f119d3ef9826fa6ac1fcc113064" name="ac4e48f119d3ef9826fa6ac1fcc113064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4e48f119d3ef9826fa6ac1fcc113064">&#9670;&nbsp;</a></span>console_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_console.html">Console</a>* Executor::console_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_executor_8h_source.html">Executor.h</a> 第 <a class="el" href="_executor_8h_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa2d20cdbf968e0737b62d22af126091e" name="aa2d20cdbf968e0737b62d22af126091e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d20cdbf968e0737b62d22af126091e">&#9670;&nbsp;</a></span>display_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_display.html">Display</a>* Executor::display_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section see"><dt>参见</dt><dd>控制台 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_executor_8h_source.html">Executor.h</a> 第 <a class="el" href="_executor_8h_source.html#l00028">28</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9ff57dbc74b39f2e7d3880aaeb673365" name="a9ff57dbc74b39f2e7d3880aaeb673365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ff57dbc74b39f2e7d3880aaeb673365">&#9670;&nbsp;</a></span>FunctionArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_executor.html#a714ef257584da7fbf426338cf2e2d645">MemFuncPtr</a> Executor::FunctionArray[<a class="el" href="_executor_8h.html#a58b5fdb52107b8670e19511310af70fe">FunctionNumber</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建函数指针数组 </p>
+
+<p class="definition">在文件 <a class="el" href="_executor_8h_source.html">Executor.h</a> 第 <a class="el" href="_executor_8h_source.html#l00106">106</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>inc/<a class="el" href="_executor_8h_source.html">Executor.h</a></li>
+<li>src/<a class="el" href="_executor_8cpp_source.html">Executor.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_executor.html">Executor</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

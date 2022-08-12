@@ -1,0 +1,175 @@
+\doxysection{Binary\+Heap.\+h}
+\label{_binary_heap_8h_source}\index{inc/BinaryHeap.h@{inc/BinaryHeap.h}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#ifndef \_BINARY\_HEAP\_H\_}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#define \_BINARY\_HEAP\_H\_}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "{}Heap.h"{}}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{size\_t} HeapBlockSize = 1024;   \textcolor{comment}{// 默认堆大小}}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021 \textcolor{comment}{// template <class T>}}
+\DoxyCodeLine{00022 \textcolor{comment}{// static constexpr T INF = -\/0x7f7f7f7f;         // 负无穷}}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00033 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{00034 \textcolor{keyword}{class }BinaryHeap : \textcolor{keyword}{public} Heap<T>}
+\DoxyCodeLine{00035 \{}
+\DoxyCodeLine{00036     \textcolor{comment}{// 由于父类是模板类，因此子类在使用时必须使用using引入命名空间，}}
+\DoxyCodeLine{00037     \textcolor{comment}{// 或者用this指针实现多态，这样才能正确构造父类的模板类函数}}
+\DoxyCodeLine{00038     \textcolor{keyword}{using }Heap<T>::size\_;   }
+\DoxyCodeLine{00039 }
+\DoxyCodeLine{00040     \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041         BinaryHeap(\textcolor{keywordtype}{size\_t} heap\_capacity = HeapBlockSize)}
+\DoxyCodeLine{00042         : Heap<T>(), capacity\_(heap\_capacity)}
+\DoxyCodeLine{00043         \{}
+\DoxyCodeLine{00044             assert(heap\_capacity > 0);}
+\DoxyCodeLine{00045 }
+\DoxyCodeLine{00046             node = \textcolor{keyword}{new} T[heap\_capacity+1];  \textcolor{comment}{// 分配内存}}
+\DoxyCodeLine{00047             \textcolor{keywordflow}{if} (node == NULL)               \textcolor{comment}{// 异常处理}}
+\DoxyCodeLine{00048                 \textcolor{keywordflow}{throw} OutOfMemory();}
+\DoxyCodeLine{00049         \}}
+\DoxyCodeLine{00050 }
+\DoxyCodeLine{00051         BinaryHeap(T data[], \textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{size\_t} heap\_capacity = HeapBlockSize)}
+\DoxyCodeLine{00052         : Heap<T>(), capacity\_(heap\_capacity)}
+\DoxyCodeLine{00053         \{}
+\DoxyCodeLine{00054             node = \textcolor{keyword}{new} T[(size>heap\_capacity?size:heap\_capacity) + 1];  \textcolor{comment}{// 分配内存}}
+\DoxyCodeLine{00055             \textcolor{keywordflow}{if} (node == NULL)               \textcolor{comment}{// 异常处理}}
+\DoxyCodeLine{00056                 \textcolor{keywordflow}{throw} OutOfMemory();}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058             size\_ = size;}
+\DoxyCodeLine{00059             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i <= size; ++i) \textcolor{comment}{// 数组拷贝}}
+\DoxyCodeLine{00060                 node[i] = data[i-\/1];}
+\DoxyCodeLine{00061             }
+\DoxyCodeLine{00062             build\_heap();                        \textcolor{comment}{// 建堆}}
+\DoxyCodeLine{00063         \}}
+\DoxyCodeLine{00064 }
+\DoxyCodeLine{00065         \textcolor{keyword}{virtual} \string~BinaryHeap()}
+\DoxyCodeLine{00066         \{}
+\DoxyCodeLine{00067             \textcolor{keyword}{delete} [] node;}
+\DoxyCodeLine{00068         \}}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00070         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} build(T data[], \textcolor{keywordtype}{size\_t} size)}
+\DoxyCodeLine{00071         \{}
+\DoxyCodeLine{00072             \textcolor{keywordflow}{while} (capacity\_ < size)    \textcolor{comment}{// 内存不够则分配空间}}
+\DoxyCodeLine{00073                 AllocMoreSpace();}
+\DoxyCodeLine{00074             size\_ = size;}
+\DoxyCodeLine{00075             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; ++i)   \textcolor{comment}{// 拷贝数组}}
+\DoxyCodeLine{00076                 node[i+1] = data[i];}
+\DoxyCodeLine{00077             }
+\DoxyCodeLine{00078             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = (size\_>>1); i>0; -\/-\/i)    \textcolor{comment}{//从 n/2 开始}}
+\DoxyCodeLine{00079             \{}
+\DoxyCodeLine{00080                 \textcolor{keywordtype}{size\_t} p, child;}
+\DoxyCodeLine{00081                 T X = node[i];}
+\DoxyCodeLine{00082                 \textcolor{keywordflow}{for} (p = i; (p<<1) <= size\_; p = child) \textcolor{comment}{//下滤}}
+\DoxyCodeLine{00083                 \{}
+\DoxyCodeLine{00084                     child=(p<<1);   \textcolor{comment}{//寻找最小的孩子}}
+\DoxyCodeLine{00085                     \textcolor{keywordflow}{if} (child != size\_ \&\& node[child+1] < node[child])}
+\DoxyCodeLine{00086                         ++child;}
+\DoxyCodeLine{00087                     }
+\DoxyCodeLine{00088                     \textcolor{keywordflow}{if} (X > node[child])}
+\DoxyCodeLine{00089                         node[p] = node[child];}
+\DoxyCodeLine{00090                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00091                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00092                 \}}
+\DoxyCodeLine{00093                 node[p] = X;}
+\DoxyCodeLine{00094             \}}
+\DoxyCodeLine{00095         \}}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} insert(T value)}
+\DoxyCodeLine{00098         \{}
+\DoxyCodeLine{00099             \textcolor{keywordflow}{if} (size\_ + 2 >= capacity\_)}
+\DoxyCodeLine{00100             \{}
+\DoxyCodeLine{00101                 AllocMoreSpace();    \textcolor{comment}{// 内存不够则分配空间}}
+\DoxyCodeLine{00102             \}}
+\DoxyCodeLine{00103 }
+\DoxyCodeLine{00104             \textcolor{keywordtype}{int} p;}
+\DoxyCodeLine{00105             \textcolor{keywordflow}{for} (p = ++size\_; node[p>>1] > value \&\& p > 1; p = p>>1)    \textcolor{comment}{//下滤}}
+\DoxyCodeLine{00106                 node[p] = node[p>>1];   \textcolor{comment}{//避免使用swap交换}}
+\DoxyCodeLine{00107             node[p] = value; \textcolor{comment}{//将节点插入在正确的位置上}}
+\DoxyCodeLine{00108         \}}
+\DoxyCodeLine{00109 }
+\DoxyCodeLine{00110         \textcolor{keyword}{virtual} T top()\textcolor{keyword}{ const}}
+\DoxyCodeLine{00111 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{00112             \textcolor{keywordflow}{if} (size\_ == 0)}
+\DoxyCodeLine{00113                 \textcolor{keywordflow}{throw} ExtractEmptyHeap();}
+\DoxyCodeLine{00114             \textcolor{keywordflow}{return} node[1];}
+\DoxyCodeLine{00115         \}}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00117         \textcolor{keyword}{virtual} T extract()}
+\DoxyCodeLine{00118         \{}
+\DoxyCodeLine{00119             \textcolor{keywordflow}{if} (size\_ == 0)   \textcolor{comment}{//如果堆是空的}}
+\DoxyCodeLine{00120                 \textcolor{keywordflow}{throw} ExtractEmptyHeap();    \textcolor{comment}{//那么为异常}}
+\DoxyCodeLine{00121 }
+\DoxyCodeLine{00122             T top, last;}
+\DoxyCodeLine{00123             top = node[1];}
+\DoxyCodeLine{00124             last = node[size\_-\/-\/];}
+\DoxyCodeLine{00125 }
+\DoxyCodeLine{00126             \textcolor{keywordtype}{size\_t} p, child;}
+\DoxyCodeLine{00127             \textcolor{keywordflow}{for} (p = 1; (p<<1) <= size\_; p = child)  \textcolor{comment}{//下滤}}
+\DoxyCodeLine{00128             \{}
+\DoxyCodeLine{00129                 child = (p<<1);   \textcolor{comment}{//寻找最小的孩子}}
+\DoxyCodeLine{00130                 \textcolor{keywordflow}{if} (child != size\_ \&\& node[child+1] < node[child])}
+\DoxyCodeLine{00131                     ++child;}
+\DoxyCodeLine{00132                 }
+\DoxyCodeLine{00133                 \textcolor{keywordflow}{if} (last >node[child])    \textcolor{comment}{// 如果未到合适的位置}}
+\DoxyCodeLine{00134                     node[p]=node[child];  \textcolor{comment}{// 将孩子提上来}}
+\DoxyCodeLine{00135                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00136                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00137             \}}
+\DoxyCodeLine{00138 }
+\DoxyCodeLine{00139             node[p] = last;}
+\DoxyCodeLine{00140             \textcolor{keywordflow}{return} top;}
+\DoxyCodeLine{00141         \}}
+\DoxyCodeLine{00142 }
+\DoxyCodeLine{00143     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00144         \textcolor{keywordtype}{size\_t} capacity\_;  \textcolor{comment}{// 最大容量}}
+\DoxyCodeLine{00145         T *node;           \textcolor{comment}{// 数据}}
+\DoxyCodeLine{00146 }
+\DoxyCodeLine{00147         \textcolor{keyword}{class }ExtractEmptyHeap : \textcolor{keyword}{public} std::exception \{\};}
+\DoxyCodeLine{00148         \textcolor{keyword}{class }OutOfMemory : \textcolor{keyword}{public} std::exception \{\};}
+\DoxyCodeLine{00149 }
+\DoxyCodeLine{00150         \textcolor{keywordtype}{void} AllocMoreSpace()   \textcolor{comment}{// 动态数组分配空间}}
+\DoxyCodeLine{00151         \{}
+\DoxyCodeLine{00152             capacity\_<<=1;      \textcolor{comment}{// 容量翻倍}}
+\DoxyCodeLine{00153             T *newNode = \textcolor{keyword}{new} T[capacity\_];}
+\DoxyCodeLine{00154             \textcolor{keywordflow}{if} (newNode == NULL)}
+\DoxyCodeLine{00155             \{}
+\DoxyCodeLine{00156                 \textcolor{keywordflow}{throw} OutOfMemory();    \textcolor{comment}{// 堆内存不足异常}}
+\DoxyCodeLine{00157             \}}
+\DoxyCodeLine{00158 }
+\DoxyCodeLine{00159             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size\_; ++i)}
+\DoxyCodeLine{00160                 std::swap(node[i], newNode[i]); \textcolor{comment}{// 直接地址交换，提高效率}}
+\DoxyCodeLine{00161             \textcolor{keyword}{delete} [] node;}
+\DoxyCodeLine{00162             node = std::move(newNode);          \textcolor{comment}{// 移动拷贝，效率更佳}}
+\DoxyCodeLine{00163         \}}
+\DoxyCodeLine{00164 }
+\DoxyCodeLine{00165     \textcolor{keyword}{private}:}
+\DoxyCodeLine{00166         \textcolor{keywordtype}{void} build\_heap()}
+\DoxyCodeLine{00167         \{}
+\DoxyCodeLine{00168             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = (size\_>>1); i>0; -\/-\/i)    \textcolor{comment}{//从 n/2 开始}}
+\DoxyCodeLine{00169             \{}
+\DoxyCodeLine{00170                 \textcolor{keywordtype}{size\_t} p, child;}
+\DoxyCodeLine{00171                 T X = node[i];}
+\DoxyCodeLine{00172                 \textcolor{keywordflow}{for} (p = i; (p<<1) <= size\_; p = child) \textcolor{comment}{//percolate down}}
+\DoxyCodeLine{00173                 \{}
+\DoxyCodeLine{00174                     child=(p<<1);   \textcolor{comment}{//寻找最小的孩子}}
+\DoxyCodeLine{00175                     \textcolor{keywordflow}{if} (child != size\_ \&\& node[child+1] < node[child])}
+\DoxyCodeLine{00176                         ++child;}
+\DoxyCodeLine{00177                     }
+\DoxyCodeLine{00178                     \textcolor{keywordflow}{if} (X > node[child])    \textcolor{comment}{// 如果未到合适的位置}}
+\DoxyCodeLine{00179                         node[p] = node[child];  \textcolor{comment}{// 将孩子提上来}}
+\DoxyCodeLine{00180                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00181                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00182                 \}}
+\DoxyCodeLine{00183                 node[p] = X;  \textcolor{comment}{// 找到了合适的位置}}
+\DoxyCodeLine{00184             \}}
+\DoxyCodeLine{00185         \}}
+\DoxyCodeLine{00186 \};}
+\DoxyCodeLine{00187 }
+\DoxyCodeLine{00188 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

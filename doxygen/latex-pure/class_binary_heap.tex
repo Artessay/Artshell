@@ -1,0 +1,307 @@
+\doxysection{Binary\+Heap$<$ T $>$ 模板类 参考}
+\label{class_binary_heap}\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+
+
+二项堆，小根堆  
+
+
+
+
+{\ttfamily \#include $<$Binary\+Heap.\+h$>$}
+
+
+
+类 Binary\+Heap$<$ T $>$ 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_binary_heap__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Binary\+Heap$<$ T $>$ 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_binary_heap__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Extract\+Empty\+Heap}
+\item 
+class \textbf{ Out\+Of\+Memory}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Binary\+Heap} (size\+\_\+t heap\+\_\+capacity=\textbf{ Heap\+Block\+Size})
+\item 
+\textbf{ Binary\+Heap} (T data[$\,$], size\+\_\+t \textbf{ size}, size\+\_\+t heap\+\_\+capacity=\textbf{ Heap\+Block\+Size})
+\item 
+virtual \textbf{ $\sim$\+Binary\+Heap} ()
+\item 
+virtual void \textbf{ build} (T data[$\,$], size\+\_\+t \textbf{ size})
+\item 
+virtual void \textbf{ insert} (T value)
+\item 
+virtual T \textbf{ top} () const
+\item 
+virtual T \textbf{ extract} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Alloc\+More\+Space} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \textbf{ capacity\+\_\+}
+\item 
+T $\ast$ \textbf{ node}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ build\+\_\+heap} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\subsubsection*{template$<$class T$>$\newline
+class Binary\+Heap$<$ T $>$}
+二项堆，小根堆 
+
+
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/20 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 34} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{class_binary_heap_af33c5ce22aedebe28d6f20a305611c91}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!BinaryHeap@{BinaryHeap}}
+\index{BinaryHeap@{BinaryHeap}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{BinaryHeap()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\textbf{ Binary\+Heap}$<$ T $>$\textbf{ \+::\+Binary\+Heap} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{heap\+\_\+capacity = {\ttfamily \textbf{ Heap\+Block\+Size}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 41} 行定义.
+
+\mbox{\label{class_binary_heap_ad28ac023f41645648b89515ec89af3be}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!BinaryHeap@{BinaryHeap}}
+\index{BinaryHeap@{BinaryHeap}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{BinaryHeap()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\textbf{ Binary\+Heap}$<$ T $>$\textbf{ \+::\+Binary\+Heap} (\begin{DoxyParamCaption}\item[{T}]{data[$\,$],  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{heap\+\_\+capacity = {\ttfamily \textbf{ Heap\+Block\+Size}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 51} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_binary_heap_ad28ac023f41645648b89515ec89af3be_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a579e5bebf74e258bacb82e56f22da7e9}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!````~BinaryHeap@{$\sim$BinaryHeap}}
+\index{````~BinaryHeap@{$\sim$BinaryHeap}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{$\sim$BinaryHeap()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual \textbf{ Binary\+Heap}$<$ T $>$\+::$\sim$\textbf{ Binary\+Heap} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 65} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{class_binary_heap_a44dd0230864aef346e07d3aeebb239b5}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!AllocMoreSpace@{AllocMoreSpace}}
+\index{AllocMoreSpace@{AllocMoreSpace}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{AllocMoreSpace()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \textbf{ Binary\+Heap}$<$ T $>$\+::\+Alloc\+More\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 150} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_binary_heap_a44dd0230864aef346e07d3aeebb239b5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a67f61082a46351d3618b4114b5d4f7eb}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!build@{build}}
+\index{build@{build}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{build()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \textbf{ Binary\+Heap}$<$ T $>$\+::build (\begin{DoxyParamCaption}\item[{T}]{data[$\,$],  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+实现了 \textbf{ Heap$<$ T $>$} \doxyref{}{p.}{class_heap_af631d0aa5bbc4bb766114180ba9aab2a}.
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 70} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_binary_heap_a67f61082a46351d3618b4114b5d4f7eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a6c41f51512d453debdb78f97c17cca7b}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!build\_heap@{build\_heap}}
+\index{build\_heap@{build\_heap}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{build\_heap()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \textbf{ Binary\+Heap}$<$ T $>$\+::build\+\_\+heap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 166} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_binary_heap_a6c41f51512d453debdb78f97c17cca7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a07e955abee978e4330d8d4e32ff848dc}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!extract@{extract}}
+\index{extract@{extract}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{extract()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \textbf{ Binary\+Heap}$<$ T $>$\+::extract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+重载 \textbf{ Heap$<$ T $>$} \doxyref{}{p.}{class_heap_a939b7f03924d3901e8bebfdaadfd9513} .
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 117} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{class_binary_heap_a07e955abee978e4330d8d4e32ff848dc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a211cf7da1abc1777c3cd900e97648bc4}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{insert()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \textbf{ Binary\+Heap}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+重载 \textbf{ Heap$<$ T $>$} \doxyref{}{p.}{class_heap_a412ca53eb7bc9124283e17207da9beb6} .
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 97} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_binary_heap_a211cf7da1abc1777c3cd900e97648bc4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_binary_heap_a36619e312276c76287a61a84033bdb83}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!top@{top}}
+\index{top@{top}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{top()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \textbf{ Binary\+Heap}$<$ T $>$\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+重载 \textbf{ Heap$<$ T $>$} \doxyref{}{p.}{class_heap_abf2280ccc33405ea1cd7c2165bcd8667} .
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 110} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{class_binary_heap_a36619e312276c76287a61a84033bdb83_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{class_binary_heap_ace6541c473a7d727a672e91127daf566}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!capacity\_@{capacity\_}}
+\index{capacity\_@{capacity\_}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{capacity\_}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \textbf{ Binary\+Heap}$<$ T $>$\+::capacity\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 144} 行定义.
+
+\mbox{\label{class_binary_heap_a23f8fbd5caa8b12241e6eb67dba46469}} 
+\index{BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}!node@{node}}
+\index{node@{node}!BinaryHeap$<$ T $>$@{BinaryHeap$<$ T $>$}}
+\doxysubsubsection{node}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T$\ast$ \textbf{ Binary\+Heap}$<$ T $>$\+::node\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Binary\+Heap.\+h} 第 \textbf{ 145} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Binary\+Heap.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,548 @@
+.TH "inc/common.h" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+inc/common.h \- 共享函数库  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cmath>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <cassert>\fP
+.br
+\fC#include <sstream>\fP
+.br
+
+.SS "宏定义"
+
+.in +1c
+.ti -1c
+.RI "#define \fBASSERT\fP(expr,  message)   assert((expr) && (message))"
+.br
+.in -1c
+.SS "函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBArgument_Display\fP (const int argc, char *const argv[])"
+.br
+.RI "命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 "
+.ti -1c
+.RI "template<typename T > int \fBBinary_Search\fP (int left, int right, T val, T array[], int cmp(T a, T b))"
+.br
+.RI "二分搜索查找，查询范围为[l, r) "
+.ti -1c
+.RI "std::string & \fBString_Trim\fP (std::string &s)"
+.br
+.RI "去掉字符串两端空格 "
+.ti -1c
+.RI "template<class Type > Type \fBString_to_Number\fP (const std::string &str)"
+.br
+.RI "将字符串转换成任意类型变量 "
+.ti -1c
+.RI "template<typename T > T \fBMin\fP (const T &a, const T &b)"
+.br
+.ti -1c
+.RI "template<typename T > T \fBMax\fP (const T &a, const T &b)"
+.br
+.ti -1c
+.RI "template<typename T > T \fBOctal_to_Decimal\fP (T octalNumber)"
+.br
+.RI "八进制转十进制 "
+.ti -1c
+.RI "template<typename T > T \fBDecimal_to_Octal\fP (T decimalNumber)"
+.br
+.RI "十进制转八进制 "
+.ti -1c
+.RI "template<typename T > T \fBHexadecimal_to_Decimal\fP (T hexadecimalNumber)"
+.br
+.RI "十六进制转十进制 "
+.ti -1c
+.RI "template<typename T > T \fBDecimal_to_Hexadecimal\fP (T decimalNumber)"
+.br
+.RI "十进制转十六进制 "
+.ti -1c
+.RI "bool \fBtest_timespec_newer\fP (struct timespec &time1, struct timespec &time2)"
+.br
+.RI "timespec时间比较 "
+.ti -1c
+.RI "bool \fBtest_timespec_older\fP (struct timespec &time1, struct timespec &time2)"
+.br
+.RI "timespec时间比较 "
+.in -1c
+.SH "详细描述"
+.PP 
+共享函数库 
+
+
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-15
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 中定义\&.
+.SH "宏定义说明"
+.PP 
+.SS "#define ASSERT(expr, message)   assert((expr) && (message))"
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB21\fP 行定义\&.
+.SH "函数说明"
+.PP 
+.SS "void Argument_Display (const int argc, char *const argv[])"
+
+.PP
+命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 
+.PP
+\fB参数\fP
+.RS 4
+\fIargc\fP 参数个数 
+.br
+\fIargv\fP 参数列表 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-15 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.cpp\fP 第 \fB16\fP 行定义\&.
+.SS "template<typename T > int Binary_Search (int left, int right, T val, T array[], int  cmpT a, T b)"
+
+.PP
+二分搜索查找，查询范围为[l, r) 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.br
+\fITp\fP 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIlelt\fP 查找左区间，包含 
+.br
+\fIright\fP 查找右区间，不包含 
+.br
+\fIval\fP 查找变量 
+.br
+\fIarray\fP 搜索数组 
+.br
+\fIcmp\fP 比较方法 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+int 返回对应元素下标，若没有找到则返回-1 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-17 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB54\fP 行定义\&.
+.SS "template<typename T > T Decimal_to_Hexadecimal (T decimalNumber)"
+
+.PP
+十进制转十六进制 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIdecimalNumber\fP 十进制数 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+T 十六进制数 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB204\fP 行定义\&.
+.SS "template<typename T > T Decimal_to_Octal (T decimalNumber)"
+
+.PP
+十进制转八进制 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIdecimalNumber\fP 十进制数 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+T 八进制数 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB154\fP 行定义\&.
+.SS "template<typename T > T Hexadecimal_to_Decimal (T hexadecimalNumber)"
+
+.PP
+十六进制转十进制 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIhexadecimalNumber\fP 十六进制数 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+T 十进制数 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB179\fP 行定义\&.
+.SS "template<typename T > T Max (const T & a, const T & b)\fC [inline]\fP"
+比较取大 
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB112\fP 行定义\&.
+.SS "template<typename T > T Min (const T & a, const T & b)\fC [inline]\fP"
+比较取小 
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB105\fP 行定义\&.
+.SS "template<typename T > T Octal_to_Decimal (T octalNumber)"
+
+.PP
+八进制转十进制 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIoctalNumber\fP 八进制数 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+T 十进制数 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB129\fP 行定义\&.
+.SS "template<class Type > Type String_to_Number (const std::string & str)"
+
+.PP
+将字符串转换成任意类型变量 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIType\fP 返回类型 
+.RE
+.PP
+\fB参数\fP
+.RS 4
+\fIstr\fP 提取的字符串 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+Type 转化后的类型变量 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-18 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB95\fP 行定义\&.
+.SS "std::string & String_Trim (std::string & s)"
+
+.PP
+去掉字符串两端空格 
+.PP
+\fB参数\fP
+.RS 4
+\fIs\fP 需要去除空格的字符串 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+std::string& 去除完空格的字符串 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-17 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.cpp\fP 第 \fB27\fP 行定义\&.
+.SS "bool test_timespec_newer (struct timespec & time1, struct timespec & time2)\fC [inline]\fP"
+
+.PP
+timespec时间比较 
+.PP
+\fB参数\fP
+.RS 4
+\fItime1\fP 时间1 
+.br
+\fItime2\fP 时间2 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+true 如果time1的时间晚于time2的时间 
+.PP
+false 如果time1的时间不晚于time2的时间 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-20 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB229\fP 行定义\&.
+.SS "bool test_timespec_older (struct timespec & time1, struct timespec & time2)\fC [inline]\fP"
+
+.PP
+timespec时间比较 
+.PP
+\fB参数\fP
+.RS 4
+\fItime1\fP 时间1 
+.br
+\fItime2\fP 时间2 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+true 如果time1的时间早于time2的时间 
+.PP
+false 如果time1的时间不早于time2的时间 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-20 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.h\fP 第 \fB251\fP 行定义\&.
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

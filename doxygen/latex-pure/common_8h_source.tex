@@ -1,0 +1,138 @@
+\doxysection{common.\+h}
+\label{common_8h_source}\index{inc/common.h@{inc/common.h}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#ifndef \_COMMON\_H\_}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#define \_COMMON\_H\_}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{00019 }
+\DoxyCodeLine{00020 \textcolor{comment}{// 错误判断与信息提示}}
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#define ASSERT(expr, message) assert((expr) \&\& (message))}}
+\DoxyCodeLine{00022 }
+\DoxyCodeLine{00035 \textcolor{keywordtype}{void} Argument\_Display(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* \textcolor{keyword}{const} argv[]);}
+\DoxyCodeLine{00036 }
+\DoxyCodeLine{00053 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00054 \textcolor{keywordtype}{int} Binary\_Search(\textcolor{keywordtype}{int} left, \textcolor{keywordtype}{int} right, T val, T array[], \textcolor{keywordtype}{int} cmp(T a, T b))}
+\DoxyCodeLine{00055 \{}
+\DoxyCodeLine{00056     \textcolor{keywordflow}{while} (left < right)}
+\DoxyCodeLine{00057     \{}
+\DoxyCodeLine{00058         \textcolor{keywordtype}{int} mid = (left + right) >> 1;}
+\DoxyCodeLine{00059         \textcolor{keywordtype}{int} compare\_result = cmp(val, array[mid]);}
+\DoxyCodeLine{00060         \textcolor{keywordflow}{if} (compare\_result == 0)}
+\DoxyCodeLine{00061             \textcolor{keywordflow}{return} mid;}
+\DoxyCodeLine{00062         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (compare\_result > 0)}
+\DoxyCodeLine{00063             left = mid + 1;}
+\DoxyCodeLine{00064         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00065             right = mid;}
+\DoxyCodeLine{00066     \}}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{00069 \}}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00081 std::string\& String\_Trim(std::string \&s);}
+\DoxyCodeLine{00082 }
+\DoxyCodeLine{00094 \textcolor{keyword}{template} <\textcolor{keyword}{class} Type>}
+\DoxyCodeLine{00095 Type String\_to\_Number(\textcolor{keyword}{const} std::string\& str)}
+\DoxyCodeLine{00096 \{}
+\DoxyCodeLine{00097     std::istringstream iss(str);}
+\DoxyCodeLine{00098     Type num;}
+\DoxyCodeLine{00099     iss >> num;}
+\DoxyCodeLine{00100     \textcolor{keywordflow}{return} num;    }
+\DoxyCodeLine{00101 \}}
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00104 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00105 \textcolor{keyword}{inline} T Min(\textcolor{keyword}{const} T\& a, \textcolor{keyword}{const} T\& b)}
+\DoxyCodeLine{00106 \{}
+\DoxyCodeLine{00107     \textcolor{keywordflow}{return} a < b ? a : b;}
+\DoxyCodeLine{00108 \}}
+\DoxyCodeLine{00109 }
+\DoxyCodeLine{00111 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00112 \textcolor{keyword}{inline} T Max(\textcolor{keyword}{const} T\& a, \textcolor{keyword}{const} T\& b)}
+\DoxyCodeLine{00113 \{}
+\DoxyCodeLine{00114     \textcolor{keywordflow}{return} a > b ? a : b;}
+\DoxyCodeLine{00115 \}}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00128 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00129 T Octal\_to\_Decimal(T octalNumber)}
+\DoxyCodeLine{00130 \{}
+\DoxyCodeLine{00131     T decimalNumber = 0, i = 0, remainderNumber;}
+\DoxyCodeLine{00132     \textcolor{keywordflow}{while} (octalNumber != 0)}
+\DoxyCodeLine{00133     \{}
+\DoxyCodeLine{00134         remainderNumber = octalNumber \% 10; \textcolor{comment}{// 余数}}
+\DoxyCodeLine{00135         octalNumber /= 10;                  \textcolor{comment}{// 退位}}
+\DoxyCodeLine{00136         decimalNumber += remainderNumber * pow(8, i);   \textcolor{comment}{// 幂乘}}
+\DoxyCodeLine{00137         ++i;}
+\DoxyCodeLine{00138     \}}
+\DoxyCodeLine{00139     \textcolor{keywordflow}{return} decimalNumber;}
+\DoxyCodeLine{00140 \}}
+\DoxyCodeLine{00141 }
+\DoxyCodeLine{00153 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00154 T Decimal\_to\_Octal(T decimalNumber)}
+\DoxyCodeLine{00155 \{}
+\DoxyCodeLine{00156     T remainderNumber, i = 1, octalNumber = 0;}
+\DoxyCodeLine{00157     \textcolor{keywordflow}{while} (decimalNumber != 0)}
+\DoxyCodeLine{00158     \{}
+\DoxyCodeLine{00159         remainderNumber = decimalNumber \% 8; \textcolor{comment}{// 余数}}
+\DoxyCodeLine{00160         decimalNumber /= 8;                  \textcolor{comment}{// 退位}}
+\DoxyCodeLine{00161         octalNumber += remainderNumber * i;  \textcolor{comment}{// 幂乘}}
+\DoxyCodeLine{00162         i *= 10;}
+\DoxyCodeLine{00163     \}}
+\DoxyCodeLine{00164     \textcolor{keywordflow}{return} octalNumber;}
+\DoxyCodeLine{00165 \} }
+\DoxyCodeLine{00166 }
+\DoxyCodeLine{00178 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00179 T Hexadecimal\_to\_Decimal(T hexadecimalNumber)}
+\DoxyCodeLine{00180 \{}
+\DoxyCodeLine{00181     T decimalNumber = 0, i = 0, remainderNumber;}
+\DoxyCodeLine{00182     \textcolor{keywordflow}{while} (hexadecimalNumber != 0)}
+\DoxyCodeLine{00183     \{}
+\DoxyCodeLine{00184         remainderNumber = hexadecimalNumber \% 10; \textcolor{comment}{// 余数}}
+\DoxyCodeLine{00185         hexadecimalNumber /= 10;                  \textcolor{comment}{// 退位}}
+\DoxyCodeLine{00186         decimalNumber += remainderNumber * pow(16, i);  \textcolor{comment}{// 幂乘}}
+\DoxyCodeLine{00187         ++i;}
+\DoxyCodeLine{00188     \}}
+\DoxyCodeLine{00189     \textcolor{keywordflow}{return} decimalNumber;}
+\DoxyCodeLine{00190 \}}
+\DoxyCodeLine{00191 }
+\DoxyCodeLine{00203 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{00204 T Decimal\_to\_Hexadecimal(T decimalNumber)}
+\DoxyCodeLine{00205 \{}
+\DoxyCodeLine{00206     T remainderNumber, i = 1, hexadecimalNumber = 0;}
+\DoxyCodeLine{00207     \textcolor{keywordflow}{while} (decimalNumber != 0)}
+\DoxyCodeLine{00208     \{}
+\DoxyCodeLine{00209         remainderNumber = decimalNumber \% 16; \textcolor{comment}{// 余数}}
+\DoxyCodeLine{00210         decimalNumber /= 16;                  \textcolor{comment}{// 退位}}
+\DoxyCodeLine{00211         hexadecimalNumber += remainderNumber * i;  \textcolor{comment}{// 幂乘}}
+\DoxyCodeLine{00212         i *= 10;}
+\DoxyCodeLine{00213     \}}
+\DoxyCodeLine{00214     \textcolor{keywordflow}{return} hexadecimalNumber;}
+\DoxyCodeLine{00215 \} }
+\DoxyCodeLine{00216 }
+\DoxyCodeLine{00229 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} test\_timespec\_newer(\textcolor{keyword}{struct} timespec\& time1, \textcolor{keyword}{struct} timespec\& time2)}
+\DoxyCodeLine{00230 \{}
+\DoxyCodeLine{00231     \textcolor{keywordflow}{if} (time1.tv\_sec > time2.tv\_sec)    \textcolor{comment}{// 先比较秒}}
+\DoxyCodeLine{00232         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00233     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time1.tv\_sec < time2.tv\_sec)}
+\DoxyCodeLine{00234         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00235     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00236         \textcolor{keywordflow}{return} time1.tv\_nsec > time2.tv\_nsec;   \textcolor{comment}{// 再比较纳秒}}
+\DoxyCodeLine{00237 \}}
+\DoxyCodeLine{00238 }
+\DoxyCodeLine{00251 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} test\_timespec\_older(\textcolor{keyword}{struct} timespec\& time1, \textcolor{keyword}{struct} timespec\& time2)}
+\DoxyCodeLine{00252 \{}
+\DoxyCodeLine{00253     \textcolor{keywordflow}{if} (time1.tv\_sec < time2.tv\_sec)    \textcolor{comment}{// 先比较秒}}
+\DoxyCodeLine{00254         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00255     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (time1.tv\_sec > time2.tv\_sec)}
+\DoxyCodeLine{00256         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00257     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00258         \textcolor{keywordflow}{return} time1.tv\_nsec < time2.tv\_nsec;   \textcolor{comment}{// 再比较纳秒}}
+\DoxyCodeLine{00259 \}}
+\DoxyCodeLine{00260 }
+\DoxyCodeLine{00261 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

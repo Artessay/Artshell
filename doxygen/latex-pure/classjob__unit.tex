@@ -1,0 +1,198 @@
+\doxysection{job\+\_\+unit类 参考}
+\label{classjob__unit}\index{job\_unit@{job\_unit}}
+
+
+{\ttfamily \#include $<$Process\+Manager.\+h$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ job\+\_\+unit} (unsigned int \+\_\+id, int \+\_\+pid, \textbf{ job\+\_\+state} \+\_\+state, int \+\_\+argc, char $\ast$\+\_\+argv[$\,$])
+\item 
+void \textbf{ Print\+Job} (int output\+\_\+fd=STDOUT\+\_\+\+FILENO)
+\item 
+bool \textbf{ operator==} (const \textbf{ job\+\_\+unit} \&rhs) const
+\item 
+bool \textbf{ operator!=} (const \textbf{ job\+\_\+unit} \&rhs) const
+\item 
+bool \textbf{ operator$<$} (const \textbf{ job\+\_\+unit} \&rhs) const
+\item 
+bool \textbf{ operator$>$} (const \textbf{ job\+\_\+unit} \&rhs) const
+\item 
+bool \textbf{ operator$<$=} (const \textbf{ job\+\_\+unit} \&rhs) const
+\item 
+bool \textbf{ operator$>$=} (const \textbf{ job\+\_\+unit} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \textbf{ id}
+\item 
+pid\+\_\+t \textbf{ pid}
+\item 
+\textbf{ job\+\_\+state} \textbf{ state}
+\item 
+int \textbf{ argc}
+\item 
+char \textbf{ argv} [\textbf{ MAX\+\_\+\+ARGUMENT\+\_\+\+NUMBER}][\textbf{ BUFFER\+\_\+\+SIZE}]
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 30} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{classjob__unit_aacc38b1925b21776d7af72be9998499a}} 
+\index{job\_unit@{job\_unit}!job\_unit@{job\_unit}}
+\index{job\_unit@{job\_unit}!job\_unit@{job\_unit}}
+\doxysubsubsection{job\_unit()}
+{\footnotesize\ttfamily job\+\_\+unit\+::job\+\_\+unit (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+id,  }\item[{int}]{\+\_\+pid,  }\item[{\textbf{ job\+\_\+state}}]{\+\_\+state,  }\item[{int}]{\+\_\+argc,  }\item[{char $\ast$}]{\+\_\+argv[$\,$] }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 12} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}} 
+\index{job\_unit@{job\_unit}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator"!=()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator!= (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 45} 行定义.
+
+\mbox{\label{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}} 
+\index{job\_unit@{job\_unit}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator$<$()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 50} 行定义.
+
+\mbox{\label{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}} 
+\index{job\_unit@{job\_unit}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator$<$=()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 60} 行定义.
+
+\mbox{\label{classjob__unit_ad83956585b6200870cb5c0ce054866f6}} 
+\index{job\_unit@{job\_unit}!operator==@{operator==}}
+\index{operator==@{operator==}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator==()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator== (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 40} 行定义.
+
+\mbox{\label{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}} 
+\index{job\_unit@{job\_unit}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator$>$()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 55} 行定义.
+
+\mbox{\label{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}} 
+\index{job\_unit@{job\_unit}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!job\_unit@{job\_unit}}
+\doxysubsubsection{operator$>$=()}
+{\footnotesize\ttfamily bool job\+\_\+unit\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \textbf{ job\+\_\+unit} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 65} 行定义.
+
+\mbox{\label{classjob__unit_a78f5ab99ea4816004faf381068851a8f}} 
+\index{job\_unit@{job\_unit}!PrintJob@{PrintJob}}
+\index{PrintJob@{PrintJob}!job\_unit@{job\_unit}}
+\doxysubsubsection{PrintJob()}
+{\footnotesize\ttfamily void job\+\_\+unit\+::\+Print\+Job (\begin{DoxyParamCaption}\item[{int}]{output\+\_\+fd = {\ttfamily STDOUT\+\_\+FILENO} }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 21} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classjob__unit_a78f5ab99ea4816004faf381068851a8f_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}} 
+\index{job\_unit@{job\_unit}!argc@{argc}}
+\index{argc@{argc}!job\_unit@{job\_unit}}
+\doxysubsubsection{argc}
+{\footnotesize\ttfamily int job\+\_\+unit\+::argc}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 74} 行定义.
+
+\mbox{\label{classjob__unit_ac0479d1e80912a0997948b98a6047704}} 
+\index{job\_unit@{job\_unit}!argv@{argv}}
+\index{argv@{argv}!job\_unit@{job\_unit}}
+\doxysubsubsection{argv}
+{\footnotesize\ttfamily char job\+\_\+unit\+::argv[\textbf{ MAX\+\_\+\+ARGUMENT\+\_\+\+NUMBER}][\textbf{ BUFFER\+\_\+\+SIZE}]}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 75} 行定义.
+
+\mbox{\label{classjob__unit_a376668024dff325871b84fe74d0240ee}} 
+\index{job\_unit@{job\_unit}!id@{id}}
+\index{id@{id}!job\_unit@{job\_unit}}
+\doxysubsubsection{id}
+{\footnotesize\ttfamily unsigned int job\+\_\+unit\+::id}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 71} 行定义.
+
+\mbox{\label{classjob__unit_aa3a4d672630617c695943d24fa36c296}} 
+\index{job\_unit@{job\_unit}!pid@{pid}}
+\index{pid@{pid}!job\_unit@{job\_unit}}
+\doxysubsubsection{pid}
+{\footnotesize\ttfamily pid\+\_\+t job\+\_\+unit\+::pid}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 72} 行定义.
+
+\mbox{\label{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}} 
+\index{job\_unit@{job\_unit}!state@{state}}
+\index{state@{state}!job\_unit@{job\_unit}}
+\doxysubsubsection{state}
+{\footnotesize\ttfamily \textbf{ job\+\_\+state} job\+\_\+unit\+::state}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 73} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Process\+Manager.\+h}\item 
+src/\textbf{ Process\+Manager.\+cpp}\end{DoxyCompactItemize}

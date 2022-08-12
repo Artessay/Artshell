@@ -1,0 +1,133 @@
+.TH "src/common.cpp" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/common.cpp \- 共享函数库  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'common\&.h'\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+
+.SS "函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBArgument_Display\fP (const int argc, char *const argv[])"
+.br
+.RI "命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 "
+.ti -1c
+.RI "std::string & \fBString_Trim\fP (std::string &s)"
+.br
+.RI "去掉字符串两端空格 "
+.in -1c
+.SH "详细描述"
+.PP 
+共享函数库 
+
+
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-15
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.cpp\fP 中定义\&.
+.SH "函数说明"
+.PP 
+.SS "void Argument_Display (const int argc, char *const argv[])"
+
+.PP
+命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 
+.PP
+\fB参数\fP
+.RS 4
+\fIargc\fP 参数个数 
+.br
+\fIargv\fP 参数列表 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-15 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.cpp\fP 第 \fB16\fP 行定义\&.
+.SS "std::string & String_Trim (std::string & s)"
+
+.PP
+去掉字符串两端空格 
+.PP
+\fB参数\fP
+.RS 4
+\fIs\fP 需要去除空格的字符串 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+std::string& 去除完空格的字符串 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-17 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBcommon\&.cpp\fP 第 \fB27\fP 行定义\&.
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

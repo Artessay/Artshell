@@ -1,0 +1,254 @@
+\doxysection{Display类 参考}
+\label{class_display}\index{Display@{Display}}
+
+
+{\ttfamily \#include $<$Display.\+h$>$}
+
+
+
+Display 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_display__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Display} (\textbf{ Console} $\ast$console)
+\item 
+virtual \textbf{ $\sim$\+Display} ()
+\item 
+int \textbf{ Input\+Command} (char $\ast$input, const int len)
+\begin{DoxyCompactList}\small\item\em 命令行输入控制 \end{DoxyCompactList}\item 
+void \textbf{ render} ()
+\begin{DoxyCompactList}\small\item\em 命令行提示符显示模块 \end{DoxyCompactList}\item 
+void \textbf{ prompt} () const
+\begin{DoxyCompactList}\small\item\em 继续输入提示 \end{DoxyCompactList}\item 
+void \textbf{ message} (const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em 打印信息msg与显示器 \end{DoxyCompactList}\item 
+void \textbf{ show} () const
+\begin{DoxyCompactList}\small\item\em 将所有打印信息统一显示在终端 \end{DoxyCompactList}\item 
+void \textbf{ clear} ()
+\begin{DoxyCompactList}\small\item\em 清空缓冲区 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \textbf{ buffer\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Console} $\ast$ \textbf{ console\+\_\+}
+\item 
+bool \textbf{ perform}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \textbf{ Display.\+h} 第 \textbf{ 19} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{class_display_a99d198456454399e6162119be3397b58}} 
+\index{Display@{Display}!Display@{Display}}
+\index{Display@{Display}!Display@{Display}}
+\doxysubsubsection{Display()}
+{\footnotesize\ttfamily Display\+::\+Display (\begin{DoxyParamCaption}\item[{\textbf{ Console} $\ast$}]{console }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 20} 行定义.
+
+\mbox{\label{class_display_ac2607a6bb236c55547a4223d40d85d1f}} 
+\index{Display@{Display}!````~Display@{$\sim$Display}}
+\index{````~Display@{$\sim$Display}!Display@{Display}}
+\doxysubsubsection{$\sim$Display()}
+{\footnotesize\ttfamily Display\+::$\sim$\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 25} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{class_display_a14242933dd00fc1d50f9ae70d5121d14}} 
+\index{Display@{Display}!clear@{clear}}
+\index{clear@{clear}!Display@{Display}}
+\doxysubsubsection{clear()}
+{\footnotesize\ttfamily void Display\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+清空缓冲区 
+
+
+
+在文件 \textbf{ Display.\+h} 第 \textbf{ 55} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a14242933dd00fc1d50f9ae70d5121d14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_display_affa8b075f9933ab1683b520fdc79dd4a}} 
+\index{Display@{Display}!InputCommand@{InputCommand}}
+\index{InputCommand@{InputCommand}!Display@{Display}}
+\doxysubsubsection{InputCommand()}
+{\footnotesize\ttfamily int Display\+::\+Input\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{const int}]{len }\end{DoxyParamCaption})}
+
+
+
+命令行输入控制 
+
+\begin{DoxyReturn}{返回}
+正数表示正常退出，返回读入的字符数； 返回0表示读到\+EOF，返回负数表示出现错误 
+\end{DoxyReturn}
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 29} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_affa8b075f9933ab1683b520fdc79dd4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_display_a3715e72f9beec4db82fd5d9668451b36}} 
+\index{Display@{Display}!message@{message}}
+\index{message@{message}!Display@{Display}}
+\doxysubsubsection{message()}
+{\footnotesize\ttfamily void Display\+::message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+打印信息msg与显示器 
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 147} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a3715e72f9beec4db82fd5d9668451b36_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_display_aab18599c778ffdbc1f9a8e6b8743156a}} 
+\index{Display@{Display}!prompt@{prompt}}
+\index{prompt@{prompt}!Display@{Display}}
+\doxysubsubsection{prompt()}
+{\footnotesize\ttfamily void Display\+::prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+继续输入提示 
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 139} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_aab18599c778ffdbc1f9a8e6b8743156a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_display_a9b83e81da2877f0ceff73881d4ceb3dc}} 
+\index{Display@{Display}!render@{render}}
+\index{render@{render}!Display@{Display}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Display\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+命令行提示符显示模块 
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 88} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a9b83e81da2877f0ceff73881d4ceb3dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_display_a457c583c6fc2aa69e0709947a0196ba6}} 
+\index{Display@{Display}!show@{show}}
+\index{show@{show}!Display@{Display}}
+\doxysubsubsection{show()}
+{\footnotesize\ttfamily void Display\+::show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+将所有打印信息统一显示在终端 
+
+
+
+在文件 \textbf{ Display.\+cpp} 第 \textbf{ 152} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a457c583c6fc2aa69e0709947a0196ba6_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{class_display_a825b7b0db8e731caa13386ba5fc93eea}} 
+\index{Display@{Display}!buffer\_@{buffer\_}}
+\index{buffer\_@{buffer\_}!Display@{Display}}
+\doxysubsubsection{buffer\_}
+{\footnotesize\ttfamily std\+::string Display\+::buffer\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Display.\+h} 第 \textbf{ 28} 行定义.
+
+\mbox{\label{class_display_a221481e2fb886cee3994030cd227c5c9}} 
+\index{Display@{Display}!console\_@{console\_}}
+\index{console\_@{console\_}!Display@{Display}}
+\doxysubsubsection{console\_}
+{\footnotesize\ttfamily \textbf{ Console}$\ast$ Display\+::console\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Display.\+h} 第 \textbf{ 23} 行定义.
+
+\mbox{\label{class_display_a723ca560953ada15738ab8e238464b03}} 
+\index{Display@{Display}!perform@{perform}}
+\index{perform@{perform}!Display@{Display}}
+\doxysubsubsection{perform}
+{\footnotesize\ttfamily bool Display\+::perform\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Display.\+h} 第 \textbf{ 25} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Display.\+h}\item 
+src/\textbf{ Display.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="Console" name="Console">
+<area shape="rect" id="node1" title="控制台 存储必要的环境变量以及渲染用户前端所需要的数据" alt="" coords="44,184,113,211"/>
+<area shape="rect" id="node2" href="$class_process_manager.html" title=" " alt="" coords="19,95,139,121"/>
+<area shape="rect" id="node3" href="$class_heap.html" title=" " alt="" coords="5,5,152,32"/>
+</map>

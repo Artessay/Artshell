@@ -1,0 +1,226 @@
+\hypertarget{class_parser}{}\doxysection{Parser类 参考}
+\label{class_parser}\index{Parser@{Parser}}
+
+
+{\ttfamily \#include $<$Parser.\+h$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_parser_a12234f6cd36b61af4b50c94a179422c1}{Parser}} ()
+\item 
+virtual \mbox{\hyperlink{class_parser_a8d64cefa73ca190d6942927b67b06b75}{$\sim$\+Parser}} ()=0
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_parser}{Parser}} object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_parser_afa0bf2c3038fa7d7e114cbe603e16dfc}{shell\+\_\+pipe}} (\mbox{\hyperlink{class_console}{Console}} $\ast$model, \mbox{\hyperlink{class_display}{Display}} $\ast$view, \mbox{\hyperlink{class_executor}{Executor}} $\ast$controller, int \&argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$env\mbox{[}$\,$\mbox{]})
+\item 
+static int \mbox{\hyperlink{class_parser_adf72be2d9687a7f44808fe14f0a824b6}{shell\+\_\+parser}} (\mbox{\hyperlink{class_console}{Console}} $\ast$model, \mbox{\hyperlink{class_display}{Display}} $\ast$view, \mbox{\hyperlink{class_executor}{Executor}} $\ast$controller, int \&argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$env\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 类型}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_parser_a85cef37c80dd81d2609b8b60b07636cbae56cc2538d4223ac5c15c8a233c01f41}{SUCCESS}} = 0
+, \mbox{\hyperlink{class_parser_a85cef37c80dd81d2609b8b60b07636cba9ff2db0e0e6c0b9c1f884fcd09cd93a8}{EXIT}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Private 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_parser_a0e9979aa186316e115791fd4c72cbd63}{shell\+\_\+execute}} (\mbox{\hyperlink{class_console}{Console}} $\ast$model, \mbox{\hyperlink{class_display}{Display}} $\ast$view, \mbox{\hyperlink{class_executor}{Executor}} $\ast$controller, int \&argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$env\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em 执行shell \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \mbox{\hyperlink{_parser_8h_source}{Parser.\+h}} 第 \mbox{\hyperlink{_parser_8h_source_l00019}{19}} 行定义.
+
+
+
+\doxysubsection{成员枚举类型说明}
+\mbox{\Hypertarget{class_parser_a85cef37c80dd81d2609b8b60b07636cb}\label{class_parser_a85cef37c80dd81d2609b8b60b07636cb}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUCCESS@{SUCCESS}!Parser@{Parser}}\index{Parser@{Parser}!SUCCESS@{SUCCESS}}}\mbox{\Hypertarget{class_parser_a85cef37c80dd81d2609b8b60b07636cbae56cc2538d4223ac5c15c8a233c01f41}\label{class_parser_a85cef37c80dd81d2609b8b60b07636cbae56cc2538d4223ac5c15c8a233c01f41}} 
+SUCCESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!Parser@{Parser}}\index{Parser@{Parser}!EXIT@{EXIT}}}\mbox{\Hypertarget{class_parser_a85cef37c80dd81d2609b8b60b07636cba9ff2db0e0e6c0b9c1f884fcd09cd93a8}\label{class_parser_a85cef37c80dd81d2609b8b60b07636cba9ff2db0e0e6c0b9c1f884fcd09cd93a8}} 
+EXIT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+在文件 \mbox{\hyperlink{_parser_8h_source}{Parser.\+h}} 第 \mbox{\hyperlink{_parser_8h_source_l00022}{22}} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{class_parser_a12234f6cd36b61af4b50c94a179422c1}\label{class_parser_a12234f6cd36b61af4b50c94a179422c1}} 
+\index{Parser@{Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily Parser\+::\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \mbox{\hyperlink{_parser_8h_source}{Parser.\+h}} 第 \mbox{\hyperlink{_parser_8h_source_l00043}{43}} 行定义.
+
+\mbox{\Hypertarget{class_parser_a8d64cefa73ca190d6942927b67b06b75}\label{class_parser_a8d64cefa73ca190d6942927b67b06b75}} 
+\index{Parser@{Parser}!````~Parser@{$\sim$Parser}}
+\index{````~Parser@{$\sim$Parser}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{$\sim$Parser()}{~Parser()}}
+{\footnotesize\ttfamily virtual Parser\+::$\sim$\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{class_parser}{Parser}} object 
+
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 (\href{mailto:3200105842@zju.edu.cn}{\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/19 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{class_parser_a0e9979aa186316e115791fd4c72cbd63}\label{class_parser_a0e9979aa186316e115791fd4c72cbd63}} 
+\index{Parser@{Parser}!shell\_execute@{shell\_execute}}
+\index{shell\_execute@{shell\_execute}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{shell\_execute()}{shell\_execute()}}
+{\footnotesize\ttfamily bool Parser\+::shell\+\_\+execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_console}{Console}} $\ast$}]{model,  }\item[{\mbox{\hyperlink{class_display}{Display}} $\ast$}]{view,  }\item[{\mbox{\hyperlink{class_executor}{Executor}} $\ast$}]{controller,  }\item[{int \&}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{env\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+执行shell 
+
+
+\begin{DoxyParams}{参数}
+{\em model} & \\
+\hline
+{\em view} & \\
+\hline
+{\em controller} & \\
+\hline
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+{\em env} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true 
+
+false 
+\end{DoxyReturn}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 (\href{mailto:3200105842@zju.edu.cn}{\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/19 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \mbox{\hyperlink{_parser_8cpp_source}{Parser.\+cpp}} 第 \mbox{\hyperlink{_parser_8cpp_source_l00268}{268}} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_a0e9979aa186316e115791fd4c72cbd63_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_a0e9979aa186316e115791fd4c72cbd63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_adf72be2d9687a7f44808fe14f0a824b6}\label{class_parser_adf72be2d9687a7f44808fe14f0a824b6}} 
+\index{Parser@{Parser}!shell\_parser@{shell\_parser}}
+\index{shell\_parser@{shell\_parser}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{shell\_parser()}{shell\_parser()}}
+{\footnotesize\ttfamily int Parser\+::shell\+\_\+parser (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_console}{Console}} $\ast$}]{model,  }\item[{\mbox{\hyperlink{class_display}{Display}} $\ast$}]{view,  }\item[{\mbox{\hyperlink{class_executor}{Executor}} $\ast$}]{controller,  }\item[{int \&}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{env\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+重定向处理
+
+标准输入重定向
+
+标准输出重定向
+
+标准错误输出重定向
+
+追加
+
+在文件 \mbox{\hyperlink{_parser_8cpp_source}{Parser.\+cpp}} 第 \mbox{\hyperlink{_parser_8cpp_source_l00132}{132}} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_adf72be2d9687a7f44808fe14f0a824b6_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_adf72be2d9687a7f44808fe14f0a824b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_parser_afa0bf2c3038fa7d7e114cbe603e16dfc}\label{class_parser_afa0bf2c3038fa7d7e114cbe603e16dfc}} 
+\index{Parser@{Parser}!shell\_pipe@{shell\_pipe}}
+\index{shell\_pipe@{shell\_pipe}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{shell\_pipe()}{shell\_pipe()}}
+{\footnotesize\ttfamily bool Parser\+::shell\+\_\+pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_console}{Console}} $\ast$}]{model,  }\item[{\mbox{\hyperlink{class_display}{Display}} $\ast$}]{view,  }\item[{\mbox{\hyperlink{class_executor}{Executor}} $\ast$}]{controller,  }\item[{int \&}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{env\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+在文件 \mbox{\hyperlink{_parser_8cpp_source}{Parser.\+cpp}} 第 \mbox{\hyperlink{_parser_8cpp_source_l00027}{27}} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_afa0bf2c3038fa7d7e114cbe603e16dfc_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_parser_afa0bf2c3038fa7d7e114cbe603e16dfc_icgraph}
+\end{center}
+\end{figure}
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_parser_8h}{Parser.\+h}}\item 
+src/\mbox{\hyperlink{_parser_8cpp}{Parser.\+cpp}}\end{DoxyCompactItemize}

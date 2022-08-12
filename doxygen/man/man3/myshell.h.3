@@ -1,0 +1,63 @@
+.TH "inc/myshell.h" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+inc/myshell.h \- myshell头文件 包含了myshell\&.cpp中所需要引用的所有自定义类  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'config\&.h'\fP
+.br
+
+.SS "命名空间"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBSHELL\fP"
+.br
+.in -1c
+.SS "函数"
+
+.in +1c
+.ti -1c
+.RI "int \fBSHELL::shell_setup\fP (int argc, char *argv[], char *env[])"
+.br
+.RI "启动shell "
+.ti -1c
+.RI "int \fBSHELL::shell_loop\fP (\fBConsole\fP *model, \fBDisplay\fP *view, \fBExecutor\fP *controller, char *env[])"
+.br
+.RI "进入shell循环 "
+.in -1c
+.SH "详细描述"
+.PP 
+myshell头文件 包含了myshell\&.cpp中所需要引用的所有自定义类 
+
+
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn)
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-02
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBmyshell\&.h\fP 中定义\&.
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

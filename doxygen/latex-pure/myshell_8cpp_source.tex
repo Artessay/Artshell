@@ -1,0 +1,136 @@
+\doxysection{myshell.\+cpp}
+\label{myshell_8cpp_source}\index{src/myshell.cpp@{src/myshell.cpp}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{comment}{// 程序：命令行编辑器}}
+\DoxyCodeLine{00002 \textcolor{comment}{// 作者：邱日宏 3200105842}}
+\DoxyCodeLine{00003 }
+\DoxyCodeLine{00015 \textcolor{comment}{// \#define \_DEBUG\_}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} }
+\DoxyCodeLine{00018 \{}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{    \#include "{}lexer.h"{}}}
+\DoxyCodeLine{00020     \textcolor{keywordtype}{int} yy\_lexer(\textcolor{keywordtype}{int} *argc, \textcolor{keywordtype}{char} ***argv);}
+\DoxyCodeLine{00021 \}}
+\DoxyCodeLine{00022 }
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#include "{}myshell.h"{}}}
+\DoxyCodeLine{00024 \textcolor{preprocessor}{\#include "{}common.h"{}}}
+\DoxyCodeLine{00025 \textcolor{preprocessor}{\#include "{}Parser.h"{}}}
+\DoxyCodeLine{00026 \textcolor{preprocessor}{\#include "{}Console.h"{}}}
+\DoxyCodeLine{00027 \textcolor{preprocessor}{\#include "{}Display.h"{}}}
+\DoxyCodeLine{00028 \textcolor{preprocessor}{\#include "{}Executor.h"{}}}
+\DoxyCodeLine{00029 }
+\DoxyCodeLine{00030 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 }
+\DoxyCodeLine{00033 \textcolor{keyword}{namespace }SHELL}
+\DoxyCodeLine{00034 \{}
+\DoxyCodeLine{00035     \textcolor{keywordtype}{int} shell\_setup(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[])}
+\DoxyCodeLine{00036     \{}
+\DoxyCodeLine{00037         \textcolor{comment}{// 创建模型}}
+\DoxyCodeLine{00038         Console *model = \textcolor{keyword}{new} Console;}
+\DoxyCodeLine{00039         \textcolor{keywordflow}{if} (model == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00040         \{}
+\DoxyCodeLine{00041             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), \textcolor{stringliteral}{"{}Out of Space for Console model"{}});}
+\DoxyCodeLine{00042             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00043         \}}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00045         \textcolor{comment}{// 创建视图}}
+\DoxyCodeLine{00046         Display *view = \textcolor{keyword}{new} Display(model);}
+\DoxyCodeLine{00047         \textcolor{keywordflow}{if} (view == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00048         \{}
+\DoxyCodeLine{00049             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), \textcolor{stringliteral}{"{}Out of Space for Display view"{}});}
+\DoxyCodeLine{00050             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00051         \}}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053         \textcolor{comment}{// 创建控制}}
+\DoxyCodeLine{00054         Executor *controller = \textcolor{keyword}{new} Executor(model, view);}
+\DoxyCodeLine{00055         \textcolor{keywordflow}{if} (controller == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00056         \{}
+\DoxyCodeLine{00057             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), \textcolor{stringliteral}{"{}Out of Space for Executor controller"{}});}
+\DoxyCodeLine{00058             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00059         \}}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061         SHELL::shell\_loop(model, view, controller, env);}
+\DoxyCodeLine{00062         }
+\DoxyCodeLine{00063         \textcolor{comment}{// 回收内存，MVC模型}}
+\DoxyCodeLine{00064         \textcolor{keyword}{delete} model;}
+\DoxyCodeLine{00065         \textcolor{keyword}{delete} view;}
+\DoxyCodeLine{00066         \textcolor{keyword}{delete} controller;}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00069     \}}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071     \textcolor{keywordtype}{int} shell\_loop(Console* model, Display* view, Executor* controller, \textcolor{keywordtype}{char} *env[])}
+\DoxyCodeLine{00072     \{}
+\DoxyCodeLine{00073         \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00074         \{}
+\DoxyCodeLine{00075             \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{00076             \{}
+\DoxyCodeLine{00077                 \textcolor{comment}{// 显示提示符}}
+\DoxyCodeLine{00078                 view-\/>render();}
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080                 \textcolor{comment}{// 从输入读入命令}}
+\DoxyCodeLine{00081                 \textcolor{keywordtype}{char} input[BUFFER\_SIZE];}
+\DoxyCodeLine{00082                 \textcolor{keywordtype}{int} input\_len = view-\/>InputCommand(input, BUFFER\_SIZE);}
+\DoxyCodeLine{00083                 }
+\DoxyCodeLine{00084                 \textcolor{keywordflow}{if} (input\_len == 0)   \textcolor{comment}{// 输入完毕}}
+\DoxyCodeLine{00085                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00086                 \textcolor{keywordflow}{if} (input\_len < 0)   \textcolor{comment}{// 输入异常}}
+\DoxyCodeLine{00087                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089                 \textcolor{comment}{// 从输入中创建buffer}}
+\DoxyCodeLine{00090                 YY\_BUFFER\_STATE bp = yy\_scan\_string(input);}
+\DoxyCodeLine{00091                 \textcolor{keywordflow}{if} (bp == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00092                 \{}
+\DoxyCodeLine{00093                     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Failed to create yy buffer state."{}};}
+\DoxyCodeLine{00094                 \}}
+\DoxyCodeLine{00095 }
+\DoxyCodeLine{00096                 yy\_switch\_to\_buffer(bp);}
+\DoxyCodeLine{00097 }
+\DoxyCodeLine{00098                 \textcolor{comment}{// 进行分词解析处理}}
+\DoxyCodeLine{00099                 \textcolor{keywordtype}{int} argument\_counter = 0;}
+\DoxyCodeLine{00100                 \textcolor{keywordtype}{char} **argument\_vector = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00101                 yy\_lexer(\&argument\_counter, \&argument\_vector);}
+\DoxyCodeLine{00102                 }
+\DoxyCodeLine{00103 \textcolor{preprocessor}{                \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00104                 Argument\_Display(argument\_counter, argument\_vector);}
+\DoxyCodeLine{00105 \textcolor{preprocessor}{                \#endif}}
+\DoxyCodeLine{00106 }
+\DoxyCodeLine{00107                 model-\/>ResetChildPid();}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109                 \textcolor{comment}{/* 输出完成的进程，即使是空指令也应如此。 */}}
+\DoxyCodeLine{00110                 model-\/>ConsoleJobListDone();}
+\DoxyCodeLine{00111 }
+\DoxyCodeLine{00112                 \textcolor{keywordflow}{if} (argument\_counter == 0)}
+\DoxyCodeLine{00113                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00114                 }
+\DoxyCodeLine{00115                 \textcolor{keywordtype}{bool} exit\_state = Parser::shell\_pipe(model, view, controller, argument\_counter, argument\_vector, env);}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00117                 \textcolor{comment}{// view-\/>show();   // 显示输出信息}}
+\DoxyCodeLine{00118 }
+\DoxyCodeLine{00119                 yylex\_destroy();    \textcolor{comment}{// 释放词法分析器占用的空间，防止内存泄露}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121                 \textcolor{keywordflow}{if} (exit\_state == \textcolor{keyword}{true})}
+\DoxyCodeLine{00122                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00123             \}}
+\DoxyCodeLine{00124         \}}
+\DoxyCodeLine{00125         \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * message)}
+\DoxyCodeLine{00126         \{}
+\DoxyCodeLine{00127             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), message);}
+\DoxyCodeLine{00128         \}}
+\DoxyCodeLine{00129         \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{00130         \{}
+\DoxyCodeLine{00131             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), e.what());}
+\DoxyCodeLine{00132         \}}
+\DoxyCodeLine{00133         \textcolor{keywordflow}{catch}(...)}
+\DoxyCodeLine{00134         \{}
+\DoxyCodeLine{00135             fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s\(\backslash\)n"{}}, strerror(errno));}
+\DoxyCodeLine{00136         \}}
+\DoxyCodeLine{00137 }
+\DoxyCodeLine{00138         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00139     \}}
+\DoxyCodeLine{00140 }
+\DoxyCodeLine{00141 \}}
+
+\end{DoxyCode}

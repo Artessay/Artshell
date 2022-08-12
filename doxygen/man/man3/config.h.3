@@ -1,0 +1,171 @@
+.TH "inc/config.h" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+inc/config.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "枚举"
+
+.in +1c
+.ti -1c
+.RI "enum \fBsh_err_t\fP { \fBSH_SUCCESS\fP = 0, \fBSH_FAILED\fP, \fBSH_UNDEFINED\fP, \fBSH_ARGS\fP, \fBSH_EXIT\fP }"
+.br
+.ti -1c
+.RI "enum \fBjob_state\fP { \fBRunning\fP, \fBStopped\fP, \fBDone\fP, \fBTerminated\fP }"
+.br
+.in -1c
+.SS "函数"
+
+.in +1c
+.ti -1c
+.RI "unsigned int constexpr \fBString_Hash\fP (char const *input, unsigned int prime=\fBhash_prime\fP, unsigned int basis=\fBhash_basis\fP)"
+.br
+.RI "字符串散列，用于将字符串转为正整数，在编译时进行 "
+.in -1c
+.SS "变量"
+
+.in +1c
+.ti -1c
+.RI "static constexpr int \fBBUFFER_SIZE\fP = 1024"
+.br
+.ti -1c
+.RI "static constexpr int \fBMAX_PROCESS_NUMBER\fP = 1024"
+.br
+.ti -1c
+.RI "static constexpr int \fBMAX_ARGUMENT_NUMBER\fP = 128"
+.br
+.ti -1c
+.RI "constexpr unsigned int \fBhash_prime\fP = 33u"
+.br
+.ti -1c
+.RI "constexpr unsigned int \fBhash_basis\fP = 5381u"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-03
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBconfig\&.h\fP 中定义\&.
+.SH "枚举类型说明"
+.PP 
+.SS "enum \fBjob_state\fP"
+
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\fB\fIRunning \fP\fP
+.TP
+\fB\fIStopped \fP\fP
+.TP
+\fB\fIDone \fP\fP
+.TP
+\fB\fITerminated \fP\fP
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB28\fP 行定义\&.
+.SS "enum \fBsh_err_t\fP"
+
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\fB\fISH_SUCCESS \fP\fP
+.TP
+\fB\fISH_FAILED \fP\fP
+.TP
+\fB\fISH_UNDEFINED \fP\fP
+.TP
+\fB\fISH_ARGS \fP\fP
+.TP
+\fB\fISH_EXIT \fP\fP
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB19\fP 行定义\&.
+.SH "函数说明"
+.PP 
+.SS "unsigned int constexpr String_Hash (char const * input, unsigned int prime = \fC\fBhash_prime\fP\fP, unsigned int basis = \fC\fBhash_basis\fP\fP)\fC [constexpr]\fP"
+
+.PP
+字符串散列，用于将字符串转为正整数，在编译时进行 
+.PP
+\fB参数\fP
+.RS 4
+\fIinput\fP 需要转换的字符串 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+unsigned constexpr 散列后的哈希值 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB49\fP 行定义\&.
+.SH "变量说明"
+.PP 
+.SS "constexpr int BUFFER_SIZE = 1024\fC [static]\fP, \fC [constexpr]\fP"
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB15\fP 行定义\&.
+.SS "constexpr unsigned int hash_basis = 5381u\fC [constexpr]\fP"
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB37\fP 行定义\&.
+.SS "constexpr unsigned int hash_prime = 33u\fC [constexpr]\fP"
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB36\fP 行定义\&.
+.SS "constexpr int MAX_ARGUMENT_NUMBER = 128\fC [static]\fP, \fC [constexpr]\fP"
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB17\fP 行定义\&.
+.SS "constexpr int MAX_PROCESS_NUMBER = 1024\fC [static]\fP, \fC [constexpr]\fP"
+
+.PP
+在文件 \fBconfig\&.h\fP 第 \fB16\fP 行定义\&.
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

@@ -1,0 +1,44 @@
+\hypertarget{_display_8h_source}{}\doxysection{Display.\+h}
+\label{_display_8h_source}\index{inc/Display.h@{inc/Display.h}}
+\mbox{\hyperlink{_display_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef \_DISPLAY\_H\_}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00013}00013 \textcolor{preprocessor}{\#define \_DISPLAY\_H\_}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00015}00015 \textcolor{keyword}{class }\mbox{\hyperlink{class_console}{Console}};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00017}00017 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00019}\mbox{\hyperlink{class_display}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_display}{Display}}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00021}00021     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00023}\mbox{\hyperlink{class_display_a221481e2fb886cee3994030cd227c5c9}{00023}}         \mbox{\hyperlink{class_console}{Console}}* \mbox{\hyperlink{class_display_a221481e2fb886cee3994030cd227c5c9}{console\_}};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00025}\mbox{\hyperlink{class_display_a723ca560953ada15738ab8e238464b03}{00025}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_display_a723ca560953ada15738ab8e238464b03}{perform}};   \textcolor{comment}{// 是否显示提示符的标志}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00027}00027     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00028}\mbox{\hyperlink{class_display_a825b7b0db8e731caa13386ba5fc93eea}{00028}}         std::string \mbox{\hyperlink{class_display_a825b7b0db8e731caa13386ba5fc93eea}{buffer\_}};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00030}00030     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00031}00031         \mbox{\hyperlink{class_display_a99d198456454399e6162119be3397b58}{Display}}(\mbox{\hyperlink{class_console}{Console}}* console);}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00032}00032         }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00033}00033         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_display_ac2607a6bb236c55547a4223d40d85d1f}{\string~Display}}();}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00040}00040         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_display_affa8b075f9933ab1683b520fdc79dd4a}{InputCommand}}(\textcolor{keywordtype}{char} *input, \textcolor{keyword}{const} \textcolor{keywordtype}{int} len);}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00041}00041         }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00043}00043         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_display_a9b83e81da2877f0ceff73881d4ceb3dc}{render}}();}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00046}00046         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_display_aab18599c778ffdbc1f9a8e6b8743156a}{prompt}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00049}00049         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_display_a3715e72f9beec4db82fd5d9668451b36}{message}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * msg);}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00052}00052         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_display_a457c583c6fc2aa69e0709947a0196ba6}{show}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00055}\mbox{\hyperlink{class_display_a14242933dd00fc1d50f9ae70d5121d14}{00055}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_display_a14242933dd00fc1d50f9ae70d5121d14}{clear}}() \{ \mbox{\hyperlink{class_display_a825b7b0db8e731caa13386ba5fc93eea}{buffer\_}} = \textcolor{stringliteral}{"{}"{}}; \}}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_display_8h_source_l00058}00058 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

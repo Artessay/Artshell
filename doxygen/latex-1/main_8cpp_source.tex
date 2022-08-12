@@ -1,0 +1,25 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\mbox{\hyperlink{main_8cpp}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{comment}{// 程序：命令行编辑器}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 \textcolor{comment}{// 作者：邱日宏 3200105842}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{myshell_8h}{myshell.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}\mbox{\hyperlink{main_8cpp_a1aabce0760eec882190c6639111cdddb}{00019}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a1aabce0760eec882190c6639111cdddb}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} **env)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021     \textcolor{comment}{// 开头输出判断程序是否正常开始，仅在调试时使用}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022     \textcolor{comment}{// puts("{}Welcome to MyShell ! \(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024     \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespace_s_h_e_l_l_ab1906b6b08632cea09530f141a5b4208}{SHELL::shell\_setup}}(argc, argv, env) != 0)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025         puts(\textcolor{stringliteral}{"{}shell setup failed."{}}); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     \textcolor{comment}{// 末尾输出判断程序是否正常结束，仅在调试时使用}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028     \textcolor{comment}{// puts("{}Bye\string~"{});}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031 \}}
+
+\end{DoxyCode}

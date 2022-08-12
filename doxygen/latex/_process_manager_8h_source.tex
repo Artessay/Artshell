@@ -1,0 +1,98 @@
+\hypertarget{_process_manager_8h_source}{}\doxysection{Process\+Manager.\+h}
+\label{_process_manager_8h_source}\index{inc/ProcessManager.h@{inc/ProcessManager.h}}
+\mbox{\hyperlink{_process_manager_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef \_PROCESS\_MANAGER\_H\_}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00013}00013 \textcolor{preprocessor}{\#define \_PROCESS\_MANAGER\_H\_}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_heap_8h}{Heap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00018}00018 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00019}00019 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00021}00021 \textcolor{comment}{// 置于config.h头文件中，加快编译速度}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00022}00022 \textcolor{comment}{// enum job\_state                                  // 进程状态}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00023}00023 \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00024}00024 \textcolor{comment}{//     Running,                                    // 正在运行}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00025}00025 \textcolor{comment}{//     Stopped,                                    // 停止运行}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00026}00026 \textcolor{comment}{//     Done,                                       // 完成运行}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00027}00027 \textcolor{comment}{//     Terminated                                  // 终止运行}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00028}00028 \textcolor{comment}{// \};}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00030}\mbox{\hyperlink{classjob__unit}{00030}} \textcolor{keyword}{class }\mbox{\hyperlink{classjob__unit}{job\_unit}}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00032}00032     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00033}00033         \mbox{\hyperlink{classjob__unit_aacc38b1925b21776d7af72be9998499a}{job\_unit}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{int} \_pid, \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\_state}} \_state, \textcolor{keywordtype}{int} \_argc, \textcolor{keywordtype}{char} * \_argv[]);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00035}00035         \textcolor{comment}{// \string~job\_unit();}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00037}00037         \textcolor{keywordtype}{void} \mbox{\hyperlink{classjob__unit_a78f5ab99ea4816004faf381068851a8f}{PrintJob}}(\textcolor{keywordtype}{int} output\_fd = STDOUT\_FILENO);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00038}00038         }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00039}00039         \textcolor{comment}{/* 为了使用集合，我们需要重载job unit的大小比较运算符 */}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00040}\mbox{\hyperlink{classjob__unit_ad83956585b6200870cb5c0ce054866f6}{00040}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_ad83956585b6200870cb5c0ce054866f6}{operator== }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00041}00041 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00042}00042             \textcolor{keywordflow}{return} \textcolor{keywordtype}{id} == rhs.\mbox{\hyperlink{classjob__unit_a376668024dff325871b84fe74d0240ee}{id}};}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00043}00043         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00045}\mbox{\hyperlink{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}{00045}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_a2abfb80245b084d14e2d11d0c2d2acae}{operator!= }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00046}00046 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00047}00047             \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == rhs);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00048}00048         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00050}\mbox{\hyperlink{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}{00050}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_ad0a7b5fdb484117a104875653ace91c2}{operator< }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00051}00051 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00052}00052             \textcolor{keywordflow}{return} \textcolor{keywordtype}{id} < rhs.\mbox{\hyperlink{classjob__unit_a376668024dff325871b84fe74d0240ee}{id}};}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00053}00053         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00055}\mbox{\hyperlink{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}{00055}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_abaa36c53ec38d294d9e9af5431b5cbd7}{operator> }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00056}00056 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00057}00057             \textcolor{keywordflow}{return} rhs < *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00058}00058         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00060}\mbox{\hyperlink{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}{00060}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_aecdd0de75525bfb575098490e5acb7b9}{operator<= }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00061}00061 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00062}00062             \textcolor{keywordflow}{return} !(rhs < *\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00065}\mbox{\hyperlink{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}{00065}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classjob__unit_a0afc5d7386856af5feec36e03fabbd90}{operator>= }}( \textcolor{keyword}{const} \mbox{\hyperlink{classjob__unit}{job\_unit}}\& rhs )\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00066}00066 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00067}00067             \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} < rhs);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00068}00068         \}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00070}00070     \textcolor{comment}{// private:}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00071}\mbox{\hyperlink{classjob__unit_a376668024dff325871b84fe74d0240ee}{00071}}         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{classjob__unit_a376668024dff325871b84fe74d0240ee}{id}};                            \textcolor{comment}{// 进程列表id}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00072}\mbox{\hyperlink{classjob__unit_aa3a4d672630617c695943d24fa36c296}{00072}}         pid\_t \mbox{\hyperlink{classjob__unit_aa3a4d672630617c695943d24fa36c296}{pid}};                                  \textcolor{comment}{// 进程列表pid}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00073}\mbox{\hyperlink{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}{00073}}         \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\_state}} \mbox{\hyperlink{classjob__unit_a5f5711cec4b003ddad03bd47d73db92e}{state}};                            \textcolor{comment}{// 进程列表状态}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00074}\mbox{\hyperlink{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}{00074}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classjob__unit_a6acc693f8b4fbd2d277b26a364132684}{argc}};                                   \textcolor{comment}{// 进程列表参数}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00075}\mbox{\hyperlink{classjob__unit_ac0479d1e80912a0997948b98a6047704}{00075}}         \textcolor{keywordtype}{char} \mbox{\hyperlink{classjob__unit_ac0479d1e80912a0997948b98a6047704}{argv}}[\mbox{\hyperlink{lexer_8l_a499bb30c08bb531d8f38308696a110c1}{MAX\_ARGUMENT\_NUMBER}}][\mbox{\hyperlink{config_8h_adf261954779e694ad997533c5da9ad5a}{BUFFER\_SIZE}}];\textcolor{comment}{// 进程列表参数}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00076}00076 \};}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00078}\mbox{\hyperlink{class_process_manager}{00078}} \textcolor{keyword}{class }\mbox{\hyperlink{class_process_manager}{ProcessManager}}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00079}00079 \{}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00080}00080     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00081}00081         \textcolor{comment}{// 进程控制}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00082}\mbox{\hyperlink{class_process_manager_a36a9c5285474e8be29078f3f7512c50f}{00082}}         \mbox{\hyperlink{class_heap}{Heap<unsigned int>}} *\mbox{\hyperlink{class_process_manager_a36a9c5285474e8be29078f3f7512c50f}{job\_heap}};                   \textcolor{comment}{// 工作id分配堆}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00083}\mbox{\hyperlink{class_process_manager_a47c6f4814d62cb824924a5f819a0fb67}{00083}}         std::set<class job\_unit> \mbox{\hyperlink{class_process_manager_a47c6f4814d62cb824924a5f819a0fb67}{jobs}};                 \textcolor{comment}{// 进程列表，采用STL红黑树实现}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00085}00085     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00086}00086         \mbox{\hyperlink{class_process_manager_a41b83a8ef0a801ca3aee9a3d82568ac1}{ProcessManager}}(\textcolor{comment}{/* args */});}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00087}00087         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_process_manager_aed3cd2ca11d92395228b758d39030b5f}{\string~ProcessManager}}();}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00089}00089         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_manager_aed9ebd7ba0bc7e16c0a5df542900ab45}{PrintJobList}}(\textcolor{keywordtype}{int} output\_fd = STDOUT\_FILENO) \textcolor{keyword}{const}; \textcolor{comment}{// 打印进程列表}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00091}00091         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_manager_ade7e167c72e4090133356c01e7c6f19b}{PrintJobListDone}}(\textcolor{keywordtype}{int} output\_fd = STDOUT\_FILENO); \textcolor{comment}{// 打印已完成的进程列表}}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00106}00106         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_manager_a165280bdbc9eb678b83f3340fde4c9ca}{JobInsert}}(\textcolor{keywordtype}{int} pid, \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\_state}} state, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00117}00117         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_manager_abb124eed9ed603f5de81438f94c2e342}{JobRemove}}(\mbox{\hyperlink{classjob__unit}{job\_unit}} * job);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00118}00118         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_process_manager_abb124eed9ed603f5de81438f94c2e342}{JobRemove}}(std::set<job\_unit>::iterator\& job);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00120}00120         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_manager_ac3e1dc05eb4aeb4080b3d16ef5ff36b6}{ForeGround}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jobid);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00121}00121         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_process_manager_a5497e2786bfea99f905ca8951abb36f8}{BackGround}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jobid);}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00122}00122 \};}
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_process_manager_8h_source_l00124}00124 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

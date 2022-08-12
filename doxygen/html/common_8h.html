@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Shell: inc/common.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">My Shell<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">命令行编辑器: 邱日宏 3200105842</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('common_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">common.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>共享函数库  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+common.h 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h__incl.png" border="0" usemap="#ainc_2common_8h" alt=""/></div>
+<map name="ainc_2common_8h" id="ainc_2common_8h">
+<area shape="rect" title="共享函数库" alt="" coords="105,5,209,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,64,107"/>
+<area shape="rect" title=" " alt="" coords="89,80,143,107"/>
+<area shape="rect" title=" " alt="" coords="167,80,233,107"/>
+<area shape="rect" title=" " alt="" coords="257,80,327,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h__dep__incl.png" border="0" usemap="#ainc_2common_8hdep" alt=""/></div>
+<map name="ainc_2common_8hdep" id="ainc_2common_8hdep">
+<area shape="rect" title="共享函数库" alt="" coords="221,5,325,32"/>
+<area shape="rect" href="_executor_8cpp.html" title=" " alt="" coords="5,80,127,107"/>
+<area shape="rect" href="_parser_8cpp.html" title="语法分析" alt="" coords="151,80,258,107"/>
+<area shape="rect" href="common_8cpp.html" title="共享函数库" alt="" coords="283,80,401,107"/>
+<area shape="rect" href="myshell_8cpp.html" title="myshell程序的main函数，负责调用各个接口并实现myshell功能" alt="" coords="426,80,541,107"/>
+</map>
+</div>
+</div>
+<p><a href="common_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ad5eb1a9f19971b6e492a33d6ed717b1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html#ad5eb1a9f19971b6e492a33d6ed717b1a">ASSERT</a>(expr,  message)&#160;&#160;&#160;assert((expr) &amp;&amp; (message))</td></tr>
+<tr class="separator:ad5eb1a9f19971b6e492a33d6ed717b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a7b6ca73d8ddfa874f4c518907878a50e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html#a7b6ca73d8ddfa874f4c518907878a50e">Argument_Display</a> (const int argc, char *const argv[])</td></tr>
+<tr class="memdesc:a7b6ca73d8ddfa874f4c518907878a50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开  <a href="common_8h.html#a7b6ca73d8ddfa874f4c518907878a50e">更多...</a><br /></td></tr>
+<tr class="separator:a7b6ca73d8ddfa874f4c518907878a50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f5903617bda350262b21478437498f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa8f5903617bda350262b21478437498f"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#aa8f5903617bda350262b21478437498f">Binary_Search</a> (int left, int right, T val, T array[], int cmp(T a, T b))</td></tr>
+<tr class="memdesc:aa8f5903617bda350262b21478437498f"><td class="mdescLeft">&#160;</td><td class="mdescRight">二分搜索查找，查询范围为[l, r)  <a href="common_8h.html#aa8f5903617bda350262b21478437498f">更多...</a><br /></td></tr>
+<tr class="separator:aa8f5903617bda350262b21478437498f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d405369fdbd9d568f19c4a92d27c71f"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html#a8d405369fdbd9d568f19c4a92d27c71f">String_Trim</a> (std::string &amp;s)</td></tr>
+<tr class="memdesc:a8d405369fdbd9d568f19c4a92d27c71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">去掉字符串两端空格  <a href="common_8h.html#a8d405369fdbd9d568f19c4a92d27c71f">更多...</a><br /></td></tr>
+<tr class="separator:a8d405369fdbd9d568f19c4a92d27c71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34905214f59c9ba6ca7f580acd7754f9"><td class="memTemplParams" colspan="2">template&lt;class Type &gt; </td></tr>
+<tr class="memitem:a34905214f59c9ba6ca7f580acd7754f9"><td class="memTemplItemLeft" align="right" valign="top">Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#a34905214f59c9ba6ca7f580acd7754f9">String_to_Number</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a34905214f59c9ba6ca7f580acd7754f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">将字符串转换成任意类型变量  <a href="common_8h.html#a34905214f59c9ba6ca7f580acd7754f9">更多...</a><br /></td></tr>
+<tr class="separator:a34905214f59c9ba6ca7f580acd7754f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b25a097211d2fae3cf21bfce788f38"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a09b25a097211d2fae3cf21bfce788f38"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#a09b25a097211d2fae3cf21bfce788f38">Min</a> (const T &amp;a, const T &amp;b)</td></tr>
+<tr class="memdesc:a09b25a097211d2fae3cf21bfce788f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">比较取小  <a href="common_8h.html#a09b25a097211d2fae3cf21bfce788f38">更多...</a><br /></td></tr>
+<tr class="separator:a09b25a097211d2fae3cf21bfce788f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bece03fea8bb0927a5263cc31a90302"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7bece03fea8bb0927a5263cc31a90302"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#a7bece03fea8bb0927a5263cc31a90302">Max</a> (const T &amp;a, const T &amp;b)</td></tr>
+<tr class="memdesc:a7bece03fea8bb0927a5263cc31a90302"><td class="mdescLeft">&#160;</td><td class="mdescRight">比较取大  <a href="common_8h.html#a7bece03fea8bb0927a5263cc31a90302">更多...</a><br /></td></tr>
+<tr class="separator:a7bece03fea8bb0927a5263cc31a90302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b31de6be57956acdd485c4a44517c8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a71b31de6be57956acdd485c4a44517c8"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#a71b31de6be57956acdd485c4a44517c8">Octal_to_Decimal</a> (T octalNumber)</td></tr>
+<tr class="memdesc:a71b31de6be57956acdd485c4a44517c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">八进制转十进制  <a href="common_8h.html#a71b31de6be57956acdd485c4a44517c8">更多...</a><br /></td></tr>
+<tr class="separator:a71b31de6be57956acdd485c4a44517c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aaa07c87540e115af4efed89d6427c0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5aaa07c87540e115af4efed89d6427c0"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#a5aaa07c87540e115af4efed89d6427c0">Decimal_to_Octal</a> (T decimalNumber)</td></tr>
+<tr class="memdesc:a5aaa07c87540e115af4efed89d6427c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">十进制转八进制  <a href="common_8h.html#a5aaa07c87540e115af4efed89d6427c0">更多...</a><br /></td></tr>
+<tr class="separator:a5aaa07c87540e115af4efed89d6427c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacaa1550ad815f04b4aa25105dddca1b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aacaa1550ad815f04b4aa25105dddca1b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#aacaa1550ad815f04b4aa25105dddca1b">Hexadecimal_to_Decimal</a> (T hexadecimalNumber)</td></tr>
+<tr class="memdesc:aacaa1550ad815f04b4aa25105dddca1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">十六进制转十进制  <a href="common_8h.html#aacaa1550ad815f04b4aa25105dddca1b">更多...</a><br /></td></tr>
+<tr class="separator:aacaa1550ad815f04b4aa25105dddca1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd22f8b0255ecd28073f0368d6786712"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:acd22f8b0255ecd28073f0368d6786712"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="common_8h.html#acd22f8b0255ecd28073f0368d6786712">Decimal_to_Hexadecimal</a> (T decimalNumber)</td></tr>
+<tr class="memdesc:acd22f8b0255ecd28073f0368d6786712"><td class="mdescLeft">&#160;</td><td class="mdescRight">十进制转十六进制  <a href="common_8h.html#acd22f8b0255ecd28073f0368d6786712">更多...</a><br /></td></tr>
+<tr class="separator:acd22f8b0255ecd28073f0368d6786712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7fd245cd6d45bdfc593d2a7bbf1a0d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html#ac7fd245cd6d45bdfc593d2a7bbf1a0d2">test_timespec_newer</a> (struct timespec &amp;time1, struct timespec &amp;time2)</td></tr>
+<tr class="memdesc:ac7fd245cd6d45bdfc593d2a7bbf1a0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">timespec时间比较  <a href="common_8h.html#ac7fd245cd6d45bdfc593d2a7bbf1a0d2">更多...</a><br /></td></tr>
+<tr class="separator:ac7fd245cd6d45bdfc593d2a7bbf1a0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f86a453548ebd07eaa30fa19c9e8b3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common_8h.html#a9f86a453548ebd07eaa30fa19c9e8b3c">test_timespec_older</a> (struct timespec &amp;time1, struct timespec &amp;time2)</td></tr>
+<tr class="memdesc:a9f86a453548ebd07eaa30fa19c9e8b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">timespec时间比较  <a href="common_8h.html#a9f86a453548ebd07eaa30fa19c9e8b3c">更多...</a><br /></td></tr>
+<tr class="separator:a9f86a453548ebd07eaa30fa19c9e8b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >共享函数库 </p>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-15</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="ad5eb1a9f19971b6e492a33d6ed717b1a" name="ad5eb1a9f19971b6e492a33d6ed717b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5eb1a9f19971b6e492a33d6ed717b1a">&#9670;&nbsp;</a></span>ASSERT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ASSERT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;assert((expr) &amp;&amp; (message))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a7b6ca73d8ddfa874f4c518907878a50e" name="a7b6ca73d8ddfa874f4c518907878a50e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b6ca73d8ddfa874f4c518907878a50e">&#9670;&nbsp;</a></span>Argument_Display()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Argument_Display </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>参数个数 </td></tr>
+    <tr><td class="paramname">argv</td><td>参数列表 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-15 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8cpp_source.html">common.cpp</a> 第 <a class="el" href="common_8cpp_source.html#l00016">16</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_a7b6ca73d8ddfa874f4c518907878a50e_icgraph.png" border="0" usemap="#acommon_8h_a7b6ca73d8ddfa874f4c518907878a50e_icgraph" alt=""/></div>
+<map name="acommon_8h_a7b6ca73d8ddfa874f4c518907878a50e_icgraph" id="acommon_8h_a7b6ca73d8ddfa874f4c518907878a50e_icgraph">
+<area shape="rect" title="命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开" alt="" coords="1360,107,1488,133"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="969,56,1097,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,157,545,184"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,208,368,235"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1151,5,1312,32"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,107,1103,133"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,107,916,133"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,107,720,133"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,157,347,184"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,208,140,235"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,157,98,184"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa8f5903617bda350262b21478437498f" name="aa8f5903617bda350262b21478437498f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f5903617bda350262b21478437498f">&#9670;&nbsp;</a></span>Binary_Search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int Binary_Search </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>array</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &#160;</td>
+          <td class="paramname"><em>cmp</em>T a, T b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>二分搜索查找，查询范围为[l, r) </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+    <tr><td class="paramname">Tp</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lelt</td><td>查找左区间，包含 </td></tr>
+    <tr><td class="paramname">right</td><td>查找右区间，不包含 </td></tr>
+    <tr><td class="paramname">val</td><td>查找变量 </td></tr>
+    <tr><td class="paramname">array</td><td>搜索数组 </td></tr>
+    <tr><td class="paramname">cmp</td><td>比较方法 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>int 返回对应元素下标，若没有找到则返回-1 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-17 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00054">54</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_aa8f5903617bda350262b21478437498f_icgraph.png" border="0" usemap="#acommon_8h_aa8f5903617bda350262b21478437498f_icgraph" alt=""/></div>
+<map name="acommon_8h_aa8f5903617bda350262b21478437498f_icgraph" id="acommon_8h_aa8f5903617bda350262b21478437498f_icgraph">
+<area shape="rect" title="二分搜索查找，查询范围为[l, r)" alt="" coords="1349,31,1456,57"/>
+<area shape="rect" href="class_executor.html#a6fa1442ada2d0df8fd52f4e430cce31e" title="选择执行函数并执行" alt="" coords="1140,31,1301,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acd22f8b0255ecd28073f0368d6786712" name="acd22f8b0255ecd28073f0368d6786712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd22f8b0255ecd28073f0368d6786712">&#9670;&nbsp;</a></span>Decimal_to_Hexadecimal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Decimal_to_Hexadecimal </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>decimalNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>十进制转十六进制 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decimalNumber</td><td>十进制数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>T 十六进制数 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-19 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00204">204</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5aaa07c87540e115af4efed89d6427c0" name="a5aaa07c87540e115af4efed89d6427c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aaa07c87540e115af4efed89d6427c0">&#9670;&nbsp;</a></span>Decimal_to_Octal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Decimal_to_Octal </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>decimalNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>十进制转八进制 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decimalNumber</td><td>十进制数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>T 八进制数 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-19 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00154">154</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aacaa1550ad815f04b4aa25105dddca1b" name="aacaa1550ad815f04b4aa25105dddca1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacaa1550ad815f04b4aa25105dddca1b">&#9670;&nbsp;</a></span>Hexadecimal_to_Decimal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Hexadecimal_to_Decimal </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>hexadecimalNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>十六进制转十进制 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hexadecimalNumber</td><td>十六进制数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>T 十进制数 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-19 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00179">179</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_aacaa1550ad815f04b4aa25105dddca1b_icgraph.png" border="0" usemap="#acommon_8h_aacaa1550ad815f04b4aa25105dddca1b_icgraph" alt=""/></div>
+<map name="acommon_8h_aacaa1550ad815f04b4aa25105dddca1b_icgraph" id="acommon_8h_aacaa1550ad815f04b4aa25105dddca1b_icgraph">
+<area shape="rect" title="十六进制转十进制" alt="" coords="411,5,580,32"/>
+<area shape="rect" href="class_executor.html#a68303ae2d1de04414132c7fd339973ad" title="设置掩码" alt="" coords="188,5,363,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7bece03fea8bb0927a5263cc31a90302" name="a7bece03fea8bb0927a5263cc31a90302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bece03fea8bb0927a5263cc31a90302">&#9670;&nbsp;</a></span>Max()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T Max </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比较取大 </p>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00112">112</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09b25a097211d2fae3cf21bfce788f38" name="a09b25a097211d2fae3cf21bfce788f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09b25a097211d2fae3cf21bfce788f38">&#9670;&nbsp;</a></span>Min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T Min </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比较取小 </p>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00105">105</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a71b31de6be57956acdd485c4a44517c8" name="a71b31de6be57956acdd485c4a44517c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71b31de6be57956acdd485c4a44517c8">&#9670;&nbsp;</a></span>Octal_to_Decimal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Octal_to_Decimal </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>octalNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>八进制转十进制 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">octalNumber</td><td>八进制数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>T 十进制数 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-19 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00129">129</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_a71b31de6be57956acdd485c4a44517c8_icgraph.png" border="0" usemap="#acommon_8h_a71b31de6be57956acdd485c4a44517c8_icgraph" alt=""/></div>
+<map name="acommon_8h_a71b31de6be57956acdd485c4a44517c8_icgraph" id="acommon_8h_a71b31de6be57956acdd485c4a44517c8_icgraph">
+<area shape="rect" title="八进制转十进制" alt="" coords="411,5,536,32"/>
+<area shape="rect" href="class_executor.html#a68303ae2d1de04414132c7fd339973ad" title="设置掩码" alt="" coords="188,5,363,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a34905214f59c9ba6ca7f580acd7754f9" name="a34905214f59c9ba6ca7f580acd7754f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34905214f59c9ba6ca7f580acd7754f9">&#9670;&nbsp;</a></span>String_to_Number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Type String_to_Number </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将字符串转换成任意类型变量 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>返回类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>提取的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Type 转化后的类型变量 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-18 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00095">95</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8d405369fdbd9d568f19c4a92d27c71f" name="a8d405369fdbd9d568f19c4a92d27c71f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d405369fdbd9d568f19c4a92d27c71f">&#9670;&nbsp;</a></span>String_Trim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string &amp; String_Trim </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>去掉字符串两端空格 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>需要去除空格的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>std::string&amp; 去除完空格的字符串 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-17 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8cpp_source.html">common.cpp</a> 第 <a class="el" href="common_8cpp_source.html#l00027">27</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_a8d405369fdbd9d568f19c4a92d27c71f_icgraph.png" border="0" usemap="#acommon_8h_a8d405369fdbd9d568f19c4a92d27c71f_icgraph" alt=""/></div>
+<map name="acommon_8h_a8d405369fdbd9d568f19c4a92d27c71f_icgraph" id="acommon_8h_a8d405369fdbd9d568f19c4a92d27c71f_icgraph">
+<area shape="rect" title="去掉字符串两端空格" alt="" coords="416,5,504,32"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac7fd245cd6d45bdfc593d2a7bbf1a0d2" name="ac7fd245cd6d45bdfc593d2a7bbf1a0d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7fd245cd6d45bdfc593d2a7bbf1a0d2">&#9670;&nbsp;</a></span>test_timespec_newer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool test_timespec_newer </td>
+          <td>(</td>
+          <td class="paramtype">struct timespec &amp;&#160;</td>
+          <td class="paramname"><em>time1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct timespec &amp;&#160;</td>
+          <td class="paramname"><em>time2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>timespec时间比较 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time1</td><td>时间1 </td></tr>
+    <tr><td class="paramname">time2</td><td>时间2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true 如果time1的时间晚于time2的时间 </dd>
+<dd>
+false 如果time1的时间不晚于time2的时间 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-20 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00229">229</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_ac7fd245cd6d45bdfc593d2a7bbf1a0d2_icgraph.png" border="0" usemap="#acommon_8h_ac7fd245cd6d45bdfc593d2a7bbf1a0d2_icgraph" alt=""/></div>
+<map name="acommon_8h_ac7fd245cd6d45bdfc593d2a7bbf1a0d2_icgraph" id="acommon_8h_ac7fd245cd6d45bdfc593d2a7bbf1a0d2_icgraph">
+<area shape="rect" title="timespec时间比较" alt="" coords="568,13,713,39"/>
+<area shape="rect" href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135" title="文件测试" alt="" coords="393,5,520,47"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="188,13,345,39"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9f86a453548ebd07eaa30fa19c9e8b3c" name="a9f86a453548ebd07eaa30fa19c9e8b3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f86a453548ebd07eaa30fa19c9e8b3c">&#9670;&nbsp;</a></span>test_timespec_older()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool test_timespec_older </td>
+          <td>(</td>
+          <td class="paramtype">struct timespec &amp;&#160;</td>
+          <td class="paramname"><em>time1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct timespec &amp;&#160;</td>
+          <td class="paramname"><em>time2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>timespec时间比较 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time1</td><td>时间1 </td></tr>
+    <tr><td class="paramname">time2</td><td>时间2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true 如果time1的时间早于time2的时间 </dd>
+<dd>
+false 如果time1的时间不早于time2的时间 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-20 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="common_8h_source.html">common.h</a> 第 <a class="el" href="common_8h_source.html#l00251">251</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="common_8h_a9f86a453548ebd07eaa30fa19c9e8b3c_icgraph.png" border="0" usemap="#acommon_8h_a9f86a453548ebd07eaa30fa19c9e8b3c_icgraph" alt=""/></div>
+<map name="acommon_8h_a9f86a453548ebd07eaa30fa19c9e8b3c_icgraph" id="acommon_8h_a9f86a453548ebd07eaa30fa19c9e8b3c_icgraph">
+<area shape="rect" title="timespec时间比较" alt="" coords="568,13,707,39"/>
+<area shape="rect" href="class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135" title="文件测试" alt="" coords="393,5,520,47"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="188,13,345,39"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="common_8h.html">common.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

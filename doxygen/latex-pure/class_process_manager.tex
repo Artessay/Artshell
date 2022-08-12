@@ -1,0 +1,323 @@
+\doxysection{Process\+Manager类 参考}
+\label{class_process_manager}\index{ProcessManager@{ProcessManager}}
+
+
+{\ttfamily \#include $<$Process\+Manager.\+h$>$}
+
+
+
+Process\+Manager 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_process_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Process\+Manager} ()
+\item 
+virtual \textbf{ $\sim$\+Process\+Manager} ()
+\item 
+void \textbf{ Print\+Job\+List} (int output\+\_\+fd=STDOUT\+\_\+\+FILENO) const
+\item 
+void \textbf{ Print\+Job\+List\+Done} (int output\+\_\+fd=STDOUT\+\_\+\+FILENO)
+\item 
+unsigned int \textbf{ Job\+Insert} (int pid, \textbf{ job\+\_\+state} state, int argc, char $\ast$argv[$\,$])
+\begin{DoxyCompactList}\small\item\em 添加进程 \end{DoxyCompactList}\item 
+void \textbf{ Job\+Remove} (\textbf{ job\+\_\+unit} $\ast$job)
+\begin{DoxyCompactList}\small\item\em 删除进程 \end{DoxyCompactList}\item 
+void \textbf{ Job\+Remove} (std\+::set$<$ \textbf{ job\+\_\+unit} $>$\+::iterator \&job)
+\item 
+int \textbf{ Fore\+Ground} (unsigned int jobid)
+\item 
+int \textbf{ Back\+Ground} (unsigned int jobid)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Heap}$<$ unsigned int $>$ $\ast$ \textbf{ job\+\_\+heap}
+\item 
+std\+::set$<$ class \textbf{ job\+\_\+unit} $>$ \textbf{ jobs}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 78} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{class_process_manager_a41b83a8ef0a801ca3aee9a3d82568ac1}} 
+\index{ProcessManager@{ProcessManager}!ProcessManager@{ProcessManager}}
+\index{ProcessManager@{ProcessManager}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{ProcessManager()}
+{\footnotesize\ttfamily Process\+Manager\+::\+Process\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 77} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_a41b83a8ef0a801ca3aee9a3d82568ac1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_aed3cd2ca11d92395228b758d39030b5f}} 
+\index{ProcessManager@{ProcessManager}!````~ProcessManager@{$\sim$ProcessManager}}
+\index{````~ProcessManager@{$\sim$ProcessManager}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{$\sim$ProcessManager()}
+{\footnotesize\ttfamily Process\+Manager\+::$\sim$\+Process\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 90} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{class_process_manager_a5497e2786bfea99f905ca8951abb36f8}} 
+\index{ProcessManager@{ProcessManager}!BackGround@{BackGround}}
+\index{BackGround@{BackGround}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{BackGround()}
+{\footnotesize\ttfamily int Process\+Manager\+::\+Back\+Ground (\begin{DoxyParamCaption}\item[{unsigned int}]{jobid }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 205} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_a5497e2786bfea99f905ca8951abb36f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_ac3e1dc05eb4aeb4080b3d16ef5ff36b6}} 
+\index{ProcessManager@{ProcessManager}!ForeGround@{ForeGround}}
+\index{ForeGround@{ForeGround}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{ForeGround()}
+{\footnotesize\ttfamily int Process\+Manager\+::\+Fore\+Ground (\begin{DoxyParamCaption}\item[{unsigned int}]{jobid }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 176} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_ac3e1dc05eb4aeb4080b3d16ef5ff36b6_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_ac3e1dc05eb4aeb4080b3d16ef5ff36b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_a165280bdbc9eb678b83f3340fde4c9ca}} 
+\index{ProcessManager@{ProcessManager}!JobInsert@{JobInsert}}
+\index{JobInsert@{JobInsert}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{JobInsert()}
+{\footnotesize\ttfamily unsigned int Process\+Manager\+::\+Job\+Insert (\begin{DoxyParamCaption}\item[{int}]{pid,  }\item[{\textbf{ job\+\_\+state}}]{state,  }\item[{int}]{argc,  }\item[{char $\ast$}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+
+
+添加进程 
+
+
+\begin{DoxyParams}{参数}
+{\em pid} & 进程号 \\
+\hline
+{\em state} & 状态 \\
+\hline
+{\em argc} & 参数个数 \\
+\hline
+{\em argv} & 参数列表 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+unsigned int 进程作业号，0表示添加失败 
+\end{DoxyReturn}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/20 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 140} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{class_process_manager_a165280bdbc9eb678b83f3340fde4c9ca_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_a165280bdbc9eb678b83f3340fde4c9ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_abb124eed9ed603f5de81438f94c2e342}} 
+\index{ProcessManager@{ProcessManager}!JobRemove@{JobRemove}}
+\index{JobRemove@{JobRemove}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{JobRemove()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Process\+Manager\+::\+Job\+Remove (\begin{DoxyParamCaption}\item[{\textbf{ job\+\_\+unit} $\ast$}]{job }\end{DoxyParamCaption})}
+
+
+
+删除进程 
+
+
+\begin{DoxyParams}{参数}
+{\em job} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/21 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 159} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{class_process_manager_abb124eed9ed603f5de81438f94c2e342_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_abb124eed9ed603f5de81438f94c2e342_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_aff12fe01667b1eb668d90092afba170d}} 
+\index{ProcessManager@{ProcessManager}!JobRemove@{JobRemove}}
+\index{JobRemove@{JobRemove}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{JobRemove()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Process\+Manager\+::\+Job\+Remove (\begin{DoxyParamCaption}\item[{std\+::set$<$ \textbf{ job\+\_\+unit} $>$\+::iterator \&}]{job }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 168} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{class_process_manager_aff12fe01667b1eb668d90092afba170d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_aed9ebd7ba0bc7e16c0a5df542900ab45}} 
+\index{ProcessManager@{ProcessManager}!PrintJobList@{PrintJobList}}
+\index{PrintJobList@{PrintJobList}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{PrintJobList()}
+{\footnotesize\ttfamily void Process\+Manager\+::\+Print\+Job\+List (\begin{DoxyParamCaption}\item[{int}]{output\+\_\+fd = {\ttfamily STDOUT\+\_\+FILENO} }\end{DoxyParamCaption}) const}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 95} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_aed9ebd7ba0bc7e16c0a5df542900ab45_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_process_manager_ade7e167c72e4090133356c01e7c6f19b}} 
+\index{ProcessManager@{ProcessManager}!PrintJobListDone@{PrintJobListDone}}
+\index{PrintJobListDone@{PrintJobListDone}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{PrintJobListDone()}
+{\footnotesize\ttfamily void Process\+Manager\+::\+Print\+Job\+List\+Done (\begin{DoxyParamCaption}\item[{int}]{output\+\_\+fd = {\ttfamily STDOUT\+\_\+FILENO} }\end{DoxyParamCaption})}
+
+
+
+在文件 \textbf{ Process\+Manager.\+cpp} 第 \textbf{ 103} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_ade7e167c72e4090133356c01e7c6f19b_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_process_manager_ade7e167c72e4090133356c01e7c6f19b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{class_process_manager_a36a9c5285474e8be29078f3f7512c50f}} 
+\index{ProcessManager@{ProcessManager}!job\_heap@{job\_heap}}
+\index{job\_heap@{job\_heap}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{job\_heap}
+{\footnotesize\ttfamily \textbf{ Heap}$<$unsigned int$>$$\ast$ Process\+Manager\+::job\+\_\+heap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 82} 行定义.
+
+\mbox{\label{class_process_manager_a47c6f4814d62cb824924a5f819a0fb67}} 
+\index{ProcessManager@{ProcessManager}!jobs@{jobs}}
+\index{jobs@{jobs}!ProcessManager@{ProcessManager}}
+\doxysubsubsection{jobs}
+{\footnotesize\ttfamily std\+::set$<$class \textbf{ job\+\_\+unit}$>$ Process\+Manager\+::jobs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Process\+Manager.\+h} 第 \textbf{ 83} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Process\+Manager.\+h}\item 
+src/\textbf{ Process\+Manager.\+cpp}\end{DoxyCompactItemize}

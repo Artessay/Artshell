@@ -1,0 +1,355 @@
+\doxysection{Parser.\+cpp}
+\label{_parser_8cpp_source}\index{src/Parser.cpp@{src/Parser.cpp}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#include "{}common.h"{}}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#include "{}Parser.h"{}}}
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "{}Console.h"{}}}
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "{}Display.h"{}}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include "{}Executor.h"{}}}
+\DoxyCodeLine{00017 }
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <fcntl.h>}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{00020 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{00022 \textcolor{preprocessor}{\#include <sys/wait.h>}}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00025 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * shell\_error\_message(sh\_err\_t err);}
+\DoxyCodeLine{00026 }
+\DoxyCodeLine{00027 \textcolor{keywordtype}{bool} Parser::shell\_pipe(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[])}
+\DoxyCodeLine{00028 \{}
+\DoxyCodeLine{00029     \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{00030     \textcolor{keywordtype}{char} *args[MAX\_ARGUMENT\_NUMBER];}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032     \textcolor{keywordtype}{int} input\_fd = model-\/>GetInputFD();     \textcolor{comment}{// 记录下原始输入}}
+\DoxyCodeLine{00033     \textcolor{keywordtype}{int} output\_fd = model-\/>GetOutputFD();   \textcolor{comment}{// 记录下原始输出}}
+\DoxyCodeLine{00034 }
+\DoxyCodeLine{00035     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{00036     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{00037     \{}
+\DoxyCodeLine{00038         \textcolor{keywordflow}{if} (strcmp(argv[i], \textcolor{stringliteral}{"{}|"{}}) != 0)   \textcolor{comment}{// 不是管道符}}
+\DoxyCodeLine{00039         \{}
+\DoxyCodeLine{00040             args[count] = argv[i];}
+\DoxyCodeLine{00041             count++;}
+\DoxyCodeLine{00042         \}}
+\DoxyCodeLine{00043         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00044         \{}
+\DoxyCodeLine{00045             args[count] = NULL; \textcolor{comment}{// 命令结束}}
+\DoxyCodeLine{00046 }
+\DoxyCodeLine{00047             \textcolor{keywordtype}{int} channel[2]; }
+\DoxyCodeLine{00048             \textcolor{comment}{// channel[0] : read}}
+\DoxyCodeLine{00049             \textcolor{comment}{// channel[1] : write}}
+\DoxyCodeLine{00050             \textcolor{keywordflow}{if} (pipe(channel) == -\/1)}
+\DoxyCodeLine{00051                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Pipe Error, 错误终止"{}};}
+\DoxyCodeLine{00052             }
+\DoxyCodeLine{00053 \textcolor{preprocessor}{            \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00054             printf(\textcolor{stringliteral}{"{}channel: read \%d write \%d\(\backslash\)n"{}}, channel[0], channel[1]);}
+\DoxyCodeLine{00055 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{00056 }
+\DoxyCodeLine{00057             pid\_t pid = fork(); \textcolor{comment}{// 分裂进程，fork返回的是子进程的pid}}
+\DoxyCodeLine{00058             \textcolor{keywordflow}{if} (pid < 0)}
+\DoxyCodeLine{00059             \{ }
+\DoxyCodeLine{00060                 \textcolor{comment}{/* 错误处理 */}}
+\DoxyCodeLine{00061                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Fork Error, 错误终止"{}};}
+\DoxyCodeLine{00062             \}}
+\DoxyCodeLine{00063             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pid == 0)}
+\DoxyCodeLine{00064             \{}
+\DoxyCodeLine{00065                 \textcolor{comment}{/* 子进程 */}  }
+\DoxyCodeLine{00066                 setenv(\textcolor{stringliteral}{"{}parent"{}}, getenv(\textcolor{stringliteral}{"{}shell"{}}), 1);  \textcolor{comment}{// 设置调用子进程的父进程}}
+\DoxyCodeLine{00067                 close(channel[0]);  \textcolor{comment}{// 关闭读进程}}
+\DoxyCodeLine{00068                 \textcolor{keywordtype}{int} fd = channel[1];}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00070                 model-\/>SetOutputFD(fd);}
+\DoxyCodeLine{00071                 model-\/>SetOutputRedirect();}
+\DoxyCodeLine{00072 }
+\DoxyCodeLine{00073                 dup2(fd, STDOUT\_FILENO); \textcolor{comment}{// 重定向标准输出至channel[1]}}
+\DoxyCodeLine{00074 }
+\DoxyCodeLine{00075                 shell\_execute(model, view, controller, count, args, env);}
+\DoxyCodeLine{00076                 }
+\DoxyCodeLine{00077                 \textcolor{comment}{/* 在shell execute里包含了重定向后文件的关闭等操作，此处可以不必再次关闭 */}}
+\DoxyCodeLine{00078 }
+\DoxyCodeLine{00079                 \textcolor{keywordflow}{return} EXIT;}
+\DoxyCodeLine{00080             \}}
+\DoxyCodeLine{00081             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00082             \{}
+\DoxyCodeLine{00083                 \textcolor{comment}{/* 父进程 */}}
+\DoxyCodeLine{00084                 wait(NULL); \textcolor{comment}{// 为保持逻辑，需要等子进程输出之后再继续}}
+\DoxyCodeLine{00085                 }
+\DoxyCodeLine{00086                 close(channel[1]);}
+\DoxyCodeLine{00087                 \textcolor{keywordtype}{int} fd = channel[0];}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089                 model-\/>SetInputFD(fd);}
+\DoxyCodeLine{00090                 model-\/>SetInputRedirect();}
+\DoxyCodeLine{00091 }
+\DoxyCodeLine{00092                 dup2(fd, STDIN\_FILENO); \textcolor{comment}{// 重定向标准输入至fd}}
+\DoxyCodeLine{00093 }
+\DoxyCodeLine{00094                 count = 0;}
+\DoxyCodeLine{00095             \}}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097         \}}
+\DoxyCodeLine{00098 }
+\DoxyCodeLine{00099         ++i;}
+\DoxyCodeLine{00100     \} \textcolor{keywordflow}{while} (i < argc);}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102 \textcolor{preprocessor}{    \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00103     printf(\textcolor{stringliteral}{"{}Parent Process\(\backslash\)n"{}});}
+\DoxyCodeLine{00104 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{00105     \textcolor{comment}{/* 最后一条命令也要执行 */}}
+\DoxyCodeLine{00106     args[count] = NULL; \textcolor{comment}{// 命令结束}}
+\DoxyCodeLine{00107     \textcolor{keywordtype}{bool} exit\_state = shell\_execute(model, view, controller, count, args, env);}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109 \textcolor{preprocessor}{    \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00110     printf(\textcolor{stringliteral}{"{}pipe: Input \%d Output \%d Error \%d\(\backslash\)n"{}}, model-\/>GetInputFD(), model-\/>GetOutputFD(), model-\/>GetErrorFD());}
+\DoxyCodeLine{00111 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{00112 }
+\DoxyCodeLine{00113     \textcolor{comment}{/* 无论重定向如何发生，最后将其还原为本来的状态}}
+\DoxyCodeLine{00114 \textcolor{comment}{       可能执行时已关闭文件，但未正确设置原始状态 */}}
+\DoxyCodeLine{00115     \textcolor{keywordflow}{if} (model-\/>GetInputFD() != input\_fd)    \textcolor{comment}{// 如果发生了输入重定向且未关闭}}
+\DoxyCodeLine{00116     \{}
+\DoxyCodeLine{00117         \textcolor{comment}{// dup2(model-\/>GetSTDIN(), STDIN\_FILENO);}}
+\DoxyCodeLine{00118         model-\/>SetInputFD(input\_fd);  \textcolor{comment}{// 恢复输入}}
+\DoxyCodeLine{00119         \textcolor{comment}{// model-\/>ResetInputRedirect();    // 恢复状态}}
+\DoxyCodeLine{00120     \}}
+\DoxyCodeLine{00121 }
+\DoxyCodeLine{00122     \textcolor{keywordflow}{if} (model-\/>GetOutputFD() != output\_fd)    \textcolor{comment}{// 如果发生了输出重定向}}
+\DoxyCodeLine{00123     \{}
+\DoxyCodeLine{00124         \textcolor{comment}{// dup2(model-\/>GetSTDOUT(), STDOUT\_FILENO);}}
+\DoxyCodeLine{00125         model-\/>SetOutputFD(output\_fd);  \textcolor{comment}{// 恢复输出}}
+\DoxyCodeLine{00126         \textcolor{comment}{// model-\/>ResetOutputRedirect();    // 恢复状态}}
+\DoxyCodeLine{00127     \}}
+\DoxyCodeLine{00128 }
+\DoxyCodeLine{00129     \textcolor{keywordflow}{return} exit\_state;}
+\DoxyCodeLine{00130 \}}
+\DoxyCodeLine{00131 }
+\DoxyCodeLine{00132 \textcolor{keywordtype}{int} Parser::shell\_parser(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[])}
+\DoxyCodeLine{00133 \{}
+\DoxyCodeLine{00134     \textcolor{keywordflow}{if} (argc == 0)}
+\DoxyCodeLine{00135         \textcolor{keywordflow}{return} 0;   \textcolor{comment}{// 无参，不需处理}}
+\DoxyCodeLine{00136     }
+\DoxyCodeLine{00137     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} index = argc-\/1; index > 0; -\/-\/index)    \textcolor{comment}{// 从末尾开始往前扫描，第一个不必扫}}
+\DoxyCodeLine{00138     \{}
+\DoxyCodeLine{00139         std::string arg(argv[index]);    \textcolor{comment}{// 使用string类处理}}
+\DoxyCodeLine{00140         }
+\DoxyCodeLine{00144         \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}<"{}} || arg == \textcolor{stringliteral}{"{}0<"{}})}
+\DoxyCodeLine{00145         \{}
+\DoxyCodeLine{00146             \textcolor{keywordflow}{if} (index + 1 == argc)  \textcolor{comment}{// 重定向符号是最后一个输入}}
+\DoxyCodeLine{00147             \{}
+\DoxyCodeLine{00148                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}语法解析错误"{}};}
+\DoxyCodeLine{00149             \}}
+\DoxyCodeLine{00150 }
+\DoxyCodeLine{00151             \textcolor{keywordflow}{if} (model-\/>GetInputRedirect())      \textcolor{comment}{// 如果已经设置了重定向状态了}}
+\DoxyCodeLine{00152             \{}
+\DoxyCodeLine{00153                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}多重重定向错误"{}};}
+\DoxyCodeLine{00154             \}}
+\DoxyCodeLine{00155 }
+\DoxyCodeLine{00156             \textcolor{keyword}{const} \textcolor{keywordtype}{char} * input\_file = argv[index + 1];}
+\DoxyCodeLine{00157             \textcolor{keywordtype}{int} fd = open(input\_file, O\_RDONLY);}
+\DoxyCodeLine{00158             \textcolor{keywordflow}{if} (fd < 0)}
+\DoxyCodeLine{00159                 \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00160                             }
+\DoxyCodeLine{00161             model-\/>SetInputFD(fd);}
+\DoxyCodeLine{00162             model-\/>SetInputRedirect();}
+\DoxyCodeLine{00163 }
+\DoxyCodeLine{00164             dup2(fd, STDIN\_FILENO); \textcolor{comment}{// 重定向标准输入至fd}}
+\DoxyCodeLine{00165 }
+\DoxyCodeLine{00166             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jump = index + 2; jump < argc; ++jump)}
+\DoxyCodeLine{00167                 argv[jump-\/2] = argv[jump];}
+\DoxyCodeLine{00168             argc = argc -\/ 2;}
+\DoxyCodeLine{00169             argv[argc] = NULL;}
+\DoxyCodeLine{00170         \}}
+\DoxyCodeLine{00171 }
+\DoxyCodeLine{00173         \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}>"{}} || arg == \textcolor{stringliteral}{"{}1>"{}})}
+\DoxyCodeLine{00174         \{}
+\DoxyCodeLine{00175             \textcolor{keywordflow}{if} (index + 1 == argc)  \textcolor{comment}{// 重定向符号是最后一个输入}}
+\DoxyCodeLine{00176             \{}
+\DoxyCodeLine{00177                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}语法解析错误"{}};}
+\DoxyCodeLine{00178             \}}
+\DoxyCodeLine{00179 }
+\DoxyCodeLine{00180             \textcolor{keywordflow}{if} (model-\/>GetOutputRedirect())      \textcolor{comment}{// 如果已经设置了重定向状态了}}
+\DoxyCodeLine{00181             \{}
+\DoxyCodeLine{00182                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}多重重定向错误"{}};}
+\DoxyCodeLine{00183             \}}
+\DoxyCodeLine{00184 }
+\DoxyCodeLine{00185             \textcolor{keyword}{const} \textcolor{keywordtype}{char} * output\_file = argv[index + 1];}
+\DoxyCodeLine{00186             \textcolor{keywordtype}{int} fd = open(output\_file, O\_WRONLY | O\_TRUNC | O\_CREAT, 0777\&(\string~model-\/>GetMask()));}
+\DoxyCodeLine{00187             \textcolor{keywordflow}{if} (fd < 0)}
+\DoxyCodeLine{00188                 \textcolor{keywordflow}{throw} std::exception();                }
+\DoxyCodeLine{00189             }
+\DoxyCodeLine{00190             model-\/>SetOutputFD(fd);}
+\DoxyCodeLine{00191             model-\/>SetOutputRedirect();}
+\DoxyCodeLine{00192 }
+\DoxyCodeLine{00193             dup2(fd, STDOUT\_FILENO); \textcolor{comment}{// 重定向标准输出至fd}}
+\DoxyCodeLine{00194                 }
+\DoxyCodeLine{00195             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jump = index + 2; jump < argc; ++jump)}
+\DoxyCodeLine{00196                 argv[jump-\/2] = argv[jump];}
+\DoxyCodeLine{00197             argc = argc -\/ 2;}
+\DoxyCodeLine{00198             argv[argc] = NULL;}
+\DoxyCodeLine{00199         \}}
+\DoxyCodeLine{00200 }
+\DoxyCodeLine{00202         \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}2>"{}})}
+\DoxyCodeLine{00203         \{}
+\DoxyCodeLine{00204             \textcolor{keywordflow}{if} (index + 1 == argc)  \textcolor{comment}{// 重定向符号是最后一个输入}}
+\DoxyCodeLine{00205             \{}
+\DoxyCodeLine{00206                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}语法解析错误"{}};}
+\DoxyCodeLine{00207             \}}
+\DoxyCodeLine{00208 }
+\DoxyCodeLine{00209             \textcolor{keywordflow}{if} (model-\/>GetErrorRedirect())      \textcolor{comment}{// 如果已经设置了重定向状态了}}
+\DoxyCodeLine{00210             \{}
+\DoxyCodeLine{00211                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}多重重定向错误"{}};}
+\DoxyCodeLine{00212             \}}
+\DoxyCodeLine{00213 }
+\DoxyCodeLine{00214             \textcolor{keyword}{const} \textcolor{keywordtype}{char} * output\_file = argv[index + 1];}
+\DoxyCodeLine{00215             \textcolor{keywordtype}{int} fd = open(output\_file, O\_WRONLY | O\_TRUNC | O\_CREAT, 0777\&(\string~model-\/>GetMask()));}
+\DoxyCodeLine{00216             \textcolor{keywordflow}{if} (fd < 0)}
+\DoxyCodeLine{00217                 \textcolor{keywordflow}{throw} std::exception();                }
+\DoxyCodeLine{00218             }
+\DoxyCodeLine{00219             model-\/>SetErrorFD(fd);}
+\DoxyCodeLine{00220             model-\/>SetErrorRedirect();}
+\DoxyCodeLine{00221 }
+\DoxyCodeLine{00222             dup2(fd, STDERR\_FILENO); \textcolor{comment}{// 重定向标准错误输出至fd}}
+\DoxyCodeLine{00223 }
+\DoxyCodeLine{00224             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jump = index + 2; jump < argc; ++jump)}
+\DoxyCodeLine{00225                 argv[jump-\/2] = argv[jump];}
+\DoxyCodeLine{00226             argc = argc -\/ 2;}
+\DoxyCodeLine{00227             argv[argc] = NULL;}
+\DoxyCodeLine{00228         \}}
+\DoxyCodeLine{00229 }
+\DoxyCodeLine{00231         \textcolor{keywordflow}{if} (arg == \textcolor{stringliteral}{"{}>>"{}} || arg == \textcolor{stringliteral}{"{}1>>"{}})}
+\DoxyCodeLine{00232         \{}
+\DoxyCodeLine{00233             \textcolor{comment}{/* 词法解析时应该识别<和>符号的闭包 */}}
+\DoxyCodeLine{00234 \textcolor{preprocessor}{            \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00235             Argument\_Display(argc, argv);}
+\DoxyCodeLine{00236 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{00237             }
+\DoxyCodeLine{00238             \textcolor{keywordflow}{if} (index + 1 == argc)  \textcolor{comment}{// 重定向符号是最后一个输入}}
+\DoxyCodeLine{00239             \{}
+\DoxyCodeLine{00240                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}语法解析错误"{}};}
+\DoxyCodeLine{00241             \}}
+\DoxyCodeLine{00242 }
+\DoxyCodeLine{00243             \textcolor{keywordflow}{if} (model-\/>GetOutputRedirect())      \textcolor{comment}{// 如果已经设置了重定向状态了}}
+\DoxyCodeLine{00244             \{}
+\DoxyCodeLine{00245                 \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}多重重定向错误"{}};}
+\DoxyCodeLine{00246             \}}
+\DoxyCodeLine{00247 }
+\DoxyCodeLine{00248             \textcolor{keyword}{const} \textcolor{keywordtype}{char} * output\_file = argv[index + 1];}
+\DoxyCodeLine{00249             \textcolor{keywordtype}{int} fd = open(output\_file, O\_WRONLY | O\_APPEND | O\_CREAT, 0777\&(\string~model-\/>GetMask()));}
+\DoxyCodeLine{00250             \textcolor{keywordflow}{if} (fd < 0)}
+\DoxyCodeLine{00251                 \textcolor{keywordflow}{throw} std::exception();                }
+\DoxyCodeLine{00252             }
+\DoxyCodeLine{00253             model-\/>SetOutputFD(fd);}
+\DoxyCodeLine{00254             model-\/>SetOutputRedirect();}
+\DoxyCodeLine{00255 }
+\DoxyCodeLine{00256             dup2(fd, STDOUT\_FILENO); \textcolor{comment}{// 重定向标准输出至fd}}
+\DoxyCodeLine{00257 }
+\DoxyCodeLine{00258             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jump = index + 2; jump < argc; ++jump)}
+\DoxyCodeLine{00259                 argv[jump-\/2] = argv[jump];}
+\DoxyCodeLine{00260             argc = argc -\/ 2;}
+\DoxyCodeLine{00261             argv[argc] = NULL;}
+\DoxyCodeLine{00262         \}}
+\DoxyCodeLine{00263     \}}
+\DoxyCodeLine{00264 }
+\DoxyCodeLine{00265     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00266 \}}
+\DoxyCodeLine{00267 }
+\DoxyCodeLine{00268 \textcolor{keywordtype}{bool} Parser::shell\_execute(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[])}
+\DoxyCodeLine{00269 \{}
+\DoxyCodeLine{00270     \textcolor{comment}{// Argument\_Display(argc, argv);}}
+\DoxyCodeLine{00271 }
+\DoxyCodeLine{00272     \textcolor{keywordtype}{int} input\_fd = model-\/>GetInputFD();     \textcolor{comment}{// 记录下原始输入}}
+\DoxyCodeLine{00273     \textcolor{keywordtype}{int} output\_fd = model-\/>GetOutputFD();   \textcolor{comment}{// 记录下原始输出}}
+\DoxyCodeLine{00274     \textcolor{keywordtype}{int} error\_fd = model-\/>GetErrorFD();     \textcolor{comment}{// 记录下原始错误输出}}
+\DoxyCodeLine{00275 }
+\DoxyCodeLine{00276     \textcolor{comment}{// 执行命令}}
+\DoxyCodeLine{00277     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00278     \{}
+\DoxyCodeLine{00279         \textcolor{comment}{// Parser 语法分析}}
+\DoxyCodeLine{00280         Parser::shell\_parser(model, view, controller, argc, argv, env);}
+\DoxyCodeLine{00281 }
+\DoxyCodeLine{00282         \textcolor{comment}{// 执行命令}}
+\DoxyCodeLine{00283         sh\_err\_t err = controller-\/>execute(argc, argv, env);}
+\DoxyCodeLine{00284         }
+\DoxyCodeLine{00285         \textcolor{comment}{// 根据返回状态判断}}
+\DoxyCodeLine{00286         \textcolor{keywordflow}{if} (err == SH\_EXIT)}
+\DoxyCodeLine{00287         \{}
+\DoxyCodeLine{00288             view-\/>show(); \textcolor{comment}{// 将退出信息显示}}
+\DoxyCodeLine{00289             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00290         \}}
+\DoxyCodeLine{00291         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (err != SH\_SUCCESS)}
+\DoxyCodeLine{00292         \{}
+\DoxyCodeLine{00293             \textcolor{keywordflow}{throw} err;}
+\DoxyCodeLine{00294         \}}
+\DoxyCodeLine{00295 }
+\DoxyCodeLine{00296         view-\/>show();      \textcolor{comment}{// 显示输出信息}}
+\DoxyCodeLine{00297         view-\/>clear();     \textcolor{comment}{// 清空结果}}
+\DoxyCodeLine{00298     \}}
+\DoxyCodeLine{00299     \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{00300     \{}
+\DoxyCodeLine{00301         fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), e.what());}
+\DoxyCodeLine{00302     \}}
+\DoxyCodeLine{00303     \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} sh\_err\_t e)}
+\DoxyCodeLine{00304     \{}
+\DoxyCodeLine{00305         fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m MyShell: \%s\(\backslash\)n"{}}, shell\_error\_message(e));}
+\DoxyCodeLine{00306     \}}
+\DoxyCodeLine{00307     \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * message)}
+\DoxyCodeLine{00308     \{}
+\DoxyCodeLine{00309         fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s: \%s\(\backslash\)n"{}}, strerror(errno), message);}
+\DoxyCodeLine{00310     \}}
+\DoxyCodeLine{00311     \textcolor{keywordflow}{catch}(...)}
+\DoxyCodeLine{00312     \{}
+\DoxyCodeLine{00313         fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)e[1;31m[ERROR]\(\backslash\)e[0m \%s\(\backslash\)n"{}}, strerror(errno));}
+\DoxyCodeLine{00314     \}}
+\DoxyCodeLine{00315 }
+\DoxyCodeLine{00316     \textcolor{keywordflow}{if} (model-\/>GetInputRedirect())    \textcolor{comment}{// 如果发生了输入重定向}}
+\DoxyCodeLine{00317     \{}
+\DoxyCodeLine{00318         \textcolor{keywordtype}{int} state\_code = close(model-\/>GetInputFD()); \textcolor{comment}{// 关闭文件}}
+\DoxyCodeLine{00319         \textcolor{keywordflow}{if} (state\_code != 0)                         \textcolor{comment}{// 关闭错误处理}}
+\DoxyCodeLine{00320             \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00321 }
+\DoxyCodeLine{00322         dup2(model-\/>GetSTDIN(), STDIN\_FILENO);}
+\DoxyCodeLine{00323         model-\/>SetInputFD(input\_fd);  \textcolor{comment}{// 恢复输入}}
+\DoxyCodeLine{00324         model-\/>ResetInputRedirect();    \textcolor{comment}{// 恢复状态}}
+\DoxyCodeLine{00325     \}}
+\DoxyCodeLine{00326 }
+\DoxyCodeLine{00327     \textcolor{keywordflow}{if} (model-\/>GetOutputRedirect())    \textcolor{comment}{// 如果发生了输出重定向}}
+\DoxyCodeLine{00328     \{}
+\DoxyCodeLine{00329         \textcolor{keywordtype}{int} state\_code = close(model-\/>GetOutputFD()); \textcolor{comment}{// 关闭文件}}
+\DoxyCodeLine{00330         \textcolor{keywordflow}{if} (state\_code != 0)                          \textcolor{comment}{// 关闭错误处理}}
+\DoxyCodeLine{00331             \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00332 }
+\DoxyCodeLine{00333         dup2(model-\/>GetSTDOUT(), STDOUT\_FILENO);}
+\DoxyCodeLine{00334         model-\/>SetOutputFD(output\_fd);  \textcolor{comment}{// 恢复输出}}
+\DoxyCodeLine{00335         model-\/>ResetOutputRedirect();    \textcolor{comment}{// 恢复状态}}
+\DoxyCodeLine{00336     \}}
+\DoxyCodeLine{00337 }
+\DoxyCodeLine{00338     \textcolor{keywordflow}{if} (model-\/>GetErrorRedirect())    \textcolor{comment}{// 如果发生了错误输出重定向}}
+\DoxyCodeLine{00339     \{}
+\DoxyCodeLine{00340         \textcolor{keywordtype}{int} state\_code = close(model-\/>GetErrorFD()); \textcolor{comment}{// 关闭文件}}
+\DoxyCodeLine{00341         \textcolor{keywordflow}{if} (state\_code != 0)                          \textcolor{comment}{// 关闭错误处理}}
+\DoxyCodeLine{00342             \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00343 }
+\DoxyCodeLine{00344         dup2(model-\/>GetSTDERR(), STDERR\_FILENO);}
+\DoxyCodeLine{00345         model-\/>SetErrorFD(error\_fd);  \textcolor{comment}{// 恢复错误输出}}
+\DoxyCodeLine{00346         model-\/>ResetErrorRedirect();    \textcolor{comment}{// 恢复状态}}
+\DoxyCodeLine{00347     \}}
+\DoxyCodeLine{00348 }
+\DoxyCodeLine{00349     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00350 \}}
+\DoxyCodeLine{00351 }
+\DoxyCodeLine{00353 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * shell\_error\_message(sh\_err\_t err)}
+\DoxyCodeLine{00354 \{}
+\DoxyCodeLine{00355     \textcolor{keywordflow}{switch} (err)}
+\DoxyCodeLine{00356     \{}
+\DoxyCodeLine{00357         \textcolor{keywordflow}{case} SH\_FAILED:}
+\DoxyCodeLine{00358             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Shell Failed. 错误"{}};}
+\DoxyCodeLine{00359         \textcolor{keywordflow}{case} SH\_UNDEFINED:}
+\DoxyCodeLine{00360             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Undifined command. 未定义的命令"{}};}
+\DoxyCodeLine{00361         \textcolor{keywordflow}{case} SH\_ARGS:}
+\DoxyCodeLine{00362             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Argument error. 参数错误"{}};}
+\DoxyCodeLine{00363         }
+\DoxyCodeLine{00364         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00365             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}Unknown error. 未知错误"{}};}
+\DoxyCodeLine{00366     \}}
+\DoxyCodeLine{00367 \}}
+
+\end{DoxyCode}

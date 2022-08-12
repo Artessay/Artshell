@@ -1,0 +1,889 @@
+\doxysection{Executor类 参考}
+\label{class_executor}\index{Executor@{Executor}}
+
+
+{\ttfamily \#include $<$Executor.\+h$>$}
+
+
+
+Executor 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_executor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Executor} (\textbf{ Console} $\ast$model, \textbf{ Display} $\ast$view)
+\item 
+virtual \textbf{ $\sim$\+Executor} ()
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\begin{DoxyCompactList}\small\item\em 执行器命令执行函数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 类型}
+\begin{DoxyCompactItemize}
+\item 
+typedef \textbf{ sh\+\_\+err\+\_\+t}(Executor\+::$\ast$ \textbf{ Mem\+Func\+Ptr}) (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ shell\+\_\+function} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+cd} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+pwd} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+time} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+clr} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+dir} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+set} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+echo} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+help} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+exit} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+date} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+clear} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+env} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+who} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+mkdir} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+rmdir} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+bg} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+fg} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+jobs} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+exec} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+test} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+umask} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\item 
+\textbf{ sh\+\_\+err\+\_\+t} \textbf{ execute\+\_\+myshell} (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static bool \textbf{ test\+\_\+file\+\_\+state} (const int argc, const char $\ast$const argv[$\,$])
+\item 
+static bool \textbf{ test\+\_\+number\+\_\+compare} (const int argc, const char $\ast$const argv[$\,$])
+\item 
+static bool \textbf{ test\+\_\+string\+\_\+compare} (const int argc, const char $\ast$const argv[$\,$])
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Mem\+Func\+Ptr} \textbf{ Function\+Array} [\textbf{ Function\+Number}]
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Console} $\ast$ \textbf{ console\+\_\+}
+\item 
+\textbf{ Display} $\ast$ \textbf{ display\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \textbf{ Executor.\+h} 第 \textbf{ 22} 行定义.
+
+
+
+\doxysubsection{成员类型定义说明}
+\mbox{\label{class_executor_a714ef257584da7fbf426338cf2e2d645}} 
+\index{Executor@{Executor}!MemFuncPtr@{MemFuncPtr}}
+\index{MemFuncPtr@{MemFuncPtr}!Executor@{Executor}}
+\doxysubsubsection{MemFuncPtr}
+{\footnotesize\ttfamily typedef \textbf{ sh\+\_\+err\+\_\+t}(Executor\+::$\ast$ Executor\+::\+Mem\+Func\+Ptr) (const int argc, char $\ast$const argv[$\,$], char $\ast$const env[$\,$]) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+从命令到对应函数的映射，采用红黑树的\+STL实现 定义函数指针类型 
+
+在文件 \textbf{ Executor.\+h} 第 \textbf{ 104} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{class_executor_a3216f1a094a2603b9c467ccbecdb68a7}} 
+\index{Executor@{Executor}!Executor@{Executor}}
+\index{Executor@{Executor}!Executor@{Executor}}
+\doxysubsubsection{Executor()}
+{\footnotesize\ttfamily Executor\+::\+Executor (\begin{DoxyParamCaption}\item[{\textbf{ Console} $\ast$}]{model,  }\item[{\textbf{ Display} $\ast$}]{view }\end{DoxyParamCaption})}
+
+定义函数指针数组
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 42} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a3216f1a094a2603b9c467ccbecdb68a7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a23108c89c4a25e22c927115191c04b26}} 
+\index{Executor@{Executor}!````~Executor@{$\sim$Executor}}
+\index{````~Executor@{$\sim$Executor}!Executor@{Executor}}
+\doxysubsubsection{$\sim$Executor()}
+{\footnotesize\ttfamily Executor\+::$\sim$\+Executor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 72} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{class_executor_a1efaafe37cc750a5a959283c8fa6072a}} 
+\index{Executor@{Executor}!execute@{execute}}
+\index{execute@{execute}!Executor@{Executor}}
+\doxysubsubsection{execute()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const}
+
+
+
+执行器命令执行函数 
+
+
+\begin{DoxyParams}{参数}
+{\em argc} & 传入参数个数 \\
+\hline
+{\em argv} & 传入具体参数 \\
+\hline
+{\em env} & 环境变量 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+sh\+\_\+err\+\_\+t 返回执行情况 
+\end{DoxyReturn}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/04 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 76} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a1efaafe37cc750a5a959283c8fa6072a_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a1efaafe37cc750a5a959283c8fa6072a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a69fe207735684ba0b5b50f43a8a1e217}} 
+\index{Executor@{Executor}!execute\_bg@{execute\_bg}}
+\index{execute\_bg@{execute\_bg}!Executor@{Executor}}
+\doxysubsubsection{execute\_bg()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+bg (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+将被挂起的作业转到后台 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 585} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a69fe207735684ba0b5b50f43a8a1e217_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_executor_a69fe207735684ba0b5b50f43a8a1e217_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a83e4cedebd6ec8b46d6afaf319369d5a}} 
+\index{Executor@{Executor}!execute\_cd@{execute\_cd}}
+\index{execute\_cd@{execute\_cd}!Executor@{Executor}}
+\doxysubsubsection{execute\_cd()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+cd (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+更改目录 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 251} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_executor_a83e4cedebd6ec8b46d6afaf319369d5a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_aea1570ef025f4a9b3d18fb17ec0d6fab}} 
+\index{Executor@{Executor}!execute\_clear@{execute\_clear}}
+\index{execute\_clear@{execute\_clear}!Executor@{Executor}}
+\doxysubsubsection{execute\_clear()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+clear (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+清屏 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 524} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_aea1570ef025f4a9b3d18fb17ec0d6fab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_afcefd04730f08a13a9c4ac5aeaa17d3f}} 
+\index{Executor@{Executor}!execute\_clr@{execute\_clr}}
+\index{execute\_clr@{execute\_clr}!Executor@{Executor}}
+\doxysubsubsection{execute\_clr()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+clr (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+清屏 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 316} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_executor_afcefd04730f08a13a9c4ac5aeaa17d3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a7879b031498f84bc79d4670ddbf5882a}} 
+\index{Executor@{Executor}!execute\_date@{execute\_date}}
+\index{execute\_date@{execute\_date}!Executor@{Executor}}
+\doxysubsubsection{execute\_date()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+date (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+显示当前日期 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 499} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{class_executor_a7879b031498f84bc79d4670ddbf5882a_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a7879b031498f84bc79d4670ddbf5882a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a5d7be8bd7520b960195dfac152eb3b4e}} 
+\index{Executor@{Executor}!execute\_dir@{execute\_dir}}
+\index{execute\_dir@{execute\_dir}!Executor@{Executor}}
+\doxysubsubsection{execute\_dir()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+dir (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 324} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{class_executor_a5d7be8bd7520b960195dfac152eb3b4e_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{class_executor_a5d7be8bd7520b960195dfac152eb3b4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a793edb7a57e8702e9a1df8877cf52c4a}} 
+\index{Executor@{Executor}!execute\_echo@{execute\_echo}}
+\index{execute\_echo@{execute\_echo}!Executor@{Executor}}
+\doxysubsubsection{execute\_echo()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+echo (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 445} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_executor_a793edb7a57e8702e9a1df8877cf52c4a_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_executor_a793edb7a57e8702e9a1df8877cf52c4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a42048fc854eb50566a5563d15c65c1e8}} 
+\index{Executor@{Executor}!execute\_env@{execute\_env}}
+\index{execute\_env@{execute\_env}!Executor@{Executor}}
+\doxysubsubsection{execute\_env()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+env (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+获取系统环境变量 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 531} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_executor_a42048fc854eb50566a5563d15c65c1e8_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a42048fc854eb50566a5563d15c65c1e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a08692f19c48b47fa81a503166742052c}} 
+\index{Executor@{Executor}!execute\_exec@{execute\_exec}}
+\index{execute\_exec@{execute\_exec}!Executor@{Executor}}
+\doxysubsubsection{execute\_exec()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+exec (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+执行命令替换当前进程 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 639} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_executor_a08692f19c48b47fa81a503166742052c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_ad488a61e88fc1e3fcea05467f0a33c12}} 
+\index{Executor@{Executor}!execute\_exit@{execute\_exit}}
+\index{execute\_exit@{execute\_exit}!Executor@{Executor}}
+\doxysubsubsection{execute\_exit()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+exit (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+退出shell 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 493} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_executor_ad488a61e88fc1e3fcea05467f0a33c12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a3d264497fb5c9de3ca434d9e1107b070}} 
+\index{Executor@{Executor}!execute\_fg@{execute\_fg}}
+\index{execute\_fg@{execute\_fg}!Executor@{Executor}}
+\doxysubsubsection{execute\_fg()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+fg (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+将后台作业转到前台 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 611} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a3d264497fb5c9de3ca434d9e1107b070_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_executor_a3d264497fb5c9de3ca434d9e1107b070_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a14c9c8ab1f6d34152167f302b73d253c}} 
+\index{Executor@{Executor}!execute\_help@{execute\_help}}
+\index{execute\_help@{execute\_help}!Executor@{Executor}}
+\doxysubsubsection{execute\_help()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+help (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 462} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_executor_a14c9c8ab1f6d34152167f302b73d253c_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_executor_a14c9c8ab1f6d34152167f302b73d253c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a74908e725aa40a6da16c1a8b383b61b9}} 
+\index{Executor@{Executor}!execute\_jobs@{execute\_jobs}}
+\index{execute\_jobs@{execute\_jobs}!Executor@{Executor}}
+\doxysubsubsection{execute\_jobs()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+jobs (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+显示所有作业 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 630} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a74908e725aa40a6da16c1a8b383b61b9_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_executor_a74908e725aa40a6da16c1a8b383b61b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a14963bfbfaed3a775d0e9726f964fd4b}} 
+\index{Executor@{Executor}!execute\_mkdir@{execute\_mkdir}}
+\index{execute\_mkdir@{execute\_mkdir}!Executor@{Executor}}
+\doxysubsubsection{execute\_mkdir()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+mkdir (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+创建新目录 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 555} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a14963bfbfaed3a775d0e9726f964fd4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a24184035b7a2aaeef6b309d9cfb13704}} 
+\index{Executor@{Executor}!execute\_myshell@{execute\_myshell}}
+\index{execute\_myshell@{execute\_myshell}!Executor@{Executor}}
+\doxysubsubsection{execute\_myshell()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+myshell (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+myshell 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 739} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a24184035b7a2aaeef6b309d9cfb13704_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a24184035b7a2aaeef6b309d9cfb13704_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a5d52716fbdabdc6ce6c476bcf62e4c66}} 
+\index{Executor@{Executor}!execute\_pwd@{execute\_pwd}}
+\index{execute\_pwd@{execute\_pwd}!Executor@{Executor}}
+\doxysubsubsection{execute\_pwd()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+pwd (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+显示当前目录 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 300} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_executor_a5d52716fbdabdc6ce6c476bcf62e4c66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a0d30e249770b06a9d24a400c971aa959}} 
+\index{Executor@{Executor}!execute\_rmdir@{execute\_rmdir}}
+\index{execute\_rmdir@{execute\_rmdir}!Executor@{Executor}}
+\doxysubsubsection{execute\_rmdir()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+rmdir (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+移除空目录 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 571} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a0d30e249770b06a9d24a400c971aa959_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a409eacdf368808cae938ccd7eb5b1074}} 
+\index{Executor@{Executor}!execute\_set@{execute\_set}}
+\index{execute\_set@{execute\_set}!Executor@{Executor}}
+\doxysubsubsection{execute\_set()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+set (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 437} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a409eacdf368808cae938ccd7eb5b1074_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_executor_a409eacdf368808cae938ccd7eb5b1074_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_acfb4a30566fe0a9ee1e75c5ac3892c53}} 
+\index{Executor@{Executor}!execute\_test@{execute\_test}}
+\index{execute\_test@{execute\_test}!Executor@{Executor}}
+\doxysubsubsection{execute\_test()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+test (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+检测命令执行结构 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 657} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_executor_acfb4a30566fe0a9ee1e75c5ac3892c53_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_aff20dc92c156d65b9615605b410bb14e}} 
+\index{Executor@{Executor}!execute\_time@{execute\_time}}
+\index{execute\_time@{execute\_time}!Executor@{Executor}}
+\doxysubsubsection{execute\_time()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+time (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+显示当前日期 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 308} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_aff20dc92c156d65b9615605b410bb14e_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_executor_aff20dc92c156d65b9615605b410bb14e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a68303ae2d1de04414132c7fd339973ad}} 
+\index{Executor@{Executor}!execute\_umask@{execute\_umask}}
+\index{execute\_umask@{execute\_umask}!Executor@{Executor}}
+\doxysubsubsection{execute\_umask()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+umask (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+设置掩码 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 702} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a68303ae2d1de04414132c7fd339973ad_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_executor_a68303ae2d1de04414132c7fd339973ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a12adde1212fb00c1f85c839c830da20a}} 
+\index{Executor@{Executor}!execute\_who@{execute\_who}}
+\index{execute\_who@{execute\_who}!Executor@{Executor}}
+\doxysubsubsection{execute\_who()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::execute\+\_\+who (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+获取当前登入用户信息 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 547} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_executor_a12adde1212fb00c1f85c839c830da20a_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a12adde1212fb00c1f85c839c830da20a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a6fa1442ada2d0df8fd52f4e430cce31e}} 
+\index{Executor@{Executor}!shell\_function@{shell\_function}}
+\index{shell\_function@{shell\_function}!Executor@{Executor}}
+\doxysubsubsection{shell\_function()}
+{\footnotesize\ttfamily \textbf{ sh\+\_\+err\+\_\+t} Executor\+::shell\+\_\+function (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$],  }\item[{char $\ast$const}]{env[$\,$] }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxySeeAlso}{参见}
+显示器 选择执行函数并执行 
+\end{DoxySeeAlso}
+二分查找匹配内部命令
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 168} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a6fa1442ada2d0df8fd52f4e430cce31e_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a6fa1442ada2d0df8fd52f4e430cce31e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_acb69e9dcc912bc5308fd8bb32aa6f135}} 
+\index{Executor@{Executor}!test\_file\_state@{test\_file\_state}}
+\index{test\_file\_state@{test\_file\_state}!Executor@{Executor}}
+\doxysubsubsection{test\_file\_state()}
+{\footnotesize\ttfamily bool Executor\+::test\+\_\+file\+\_\+state (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{const char $\ast$const}]{argv[$\,$] }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+文件测试 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 856} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_executor_acb69e9dcc912bc5308fd8bb32aa6f135_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_acb69e9dcc912bc5308fd8bb32aa6f135_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a409ee22c9a3324243782f8c7d5cc8af9}} 
+\index{Executor@{Executor}!test\_number\_compare@{test\_number\_compare}}
+\index{test\_number\_compare@{test\_number\_compare}!Executor@{Executor}}
+\doxysubsubsection{test\_number\_compare()}
+{\footnotesize\ttfamily bool Executor\+::test\+\_\+number\+\_\+compare (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{const char $\ast$const}]{argv[$\,$] }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+文件测试 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 966} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{class_executor_a409ee22c9a3324243782f8c7d5cc8af9_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a409ee22c9a3324243782f8c7d5cc8af9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_executor_a87065e9bf3e4f57847d7d7612d3ac4dd}} 
+\index{Executor@{Executor}!test\_string\_compare@{test\_string\_compare}}
+\index{test\_string\_compare@{test\_string\_compare}!Executor@{Executor}}
+\doxysubsubsection{test\_string\_compare()}
+{\footnotesize\ttfamily bool Executor\+::test\+\_\+string\+\_\+compare (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{const char $\ast$const}]{argv[$\,$] }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+文件测试 
+
+在文件 \textbf{ Executor.\+cpp} 第 \textbf{ 1008} 行定义.
+
+函数调用图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{class_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_cgraph}
+\end{center}
+\end{figure}
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_executor_a87065e9bf3e4f57847d7d7612d3ac4dd_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{class_executor_ac4e48f119d3ef9826fa6ac1fcc113064}} 
+\index{Executor@{Executor}!console\_@{console\_}}
+\index{console\_@{console\_}!Executor@{Executor}}
+\doxysubsubsection{console\_}
+{\footnotesize\ttfamily \textbf{ Console}$\ast$ Executor\+::console\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \textbf{ Executor.\+h} 第 \textbf{ 26} 行定义.
+
+\mbox{\label{class_executor_aa2d20cdbf968e0737b62d22af126091e}} 
+\index{Executor@{Executor}!display\_@{display\_}}
+\index{display\_@{display\_}!Executor@{Executor}}
+\doxysubsubsection{display\_}
+{\footnotesize\ttfamily \textbf{ Display}$\ast$ Executor\+::display\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxySeeAlso}{参见}
+控制台 
+\end{DoxySeeAlso}
+
+
+在文件 \textbf{ Executor.\+h} 第 \textbf{ 28} 行定义.
+
+\mbox{\label{class_executor_a9ff57dbc74b39f2e7d3880aaeb673365}} 
+\index{Executor@{Executor}!FunctionArray@{FunctionArray}}
+\index{FunctionArray@{FunctionArray}!Executor@{Executor}}
+\doxysubsubsection{FunctionArray}
+{\footnotesize\ttfamily \textbf{ Mem\+Func\+Ptr} Executor\+::\+Function\+Array[\textbf{ Function\+Number}]\hspace{0.3cm}{\ttfamily [protected]}}
+
+创建函数指针数组 
+
+在文件 \textbf{ Executor.\+h} 第 \textbf{ 106} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Executor.\+h}\item 
+src/\textbf{ Executor.\+cpp}\end{DoxyCompactItemize}

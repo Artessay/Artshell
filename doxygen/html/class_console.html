@@ -1,0 +1,1962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Shell: Console类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">My Shell<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">命令行编辑器: 邱日宏 3200105842</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_console.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="class_console-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">Console类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>控制台 存储必要的环境变量以及渲染用户前端所需要的数据  
+ <a href="class_console.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_console_8h_source.html">Console.h</a>&gt;</code></p>
+<div class="dynheader">
+Console 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console__coll__graph.png" border="0" usemap="#a_console_coll__map" alt="Collaboration graph"/></div>
+<map name="a_console_coll__map" id="a_console_coll__map">
+<area shape="rect" title="控制台 存储必要的环境变量以及渲染用户前端所需要的数据" alt="" coords="44,184,113,211"/>
+<area shape="rect" href="class_process_manager.html" title=" " alt="" coords="19,95,139,121"/>
+<area shape="rect" href="class_heap.html" title=" " alt="" coords="5,5,152,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aba16cfd9f0894eb1312b1bc1155b6646"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aba16cfd9f0894eb1312b1bc1155b6646">Console</a> ()</td></tr>
+<tr class="separator:aba16cfd9f0894eb1312b1bc1155b6646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e8c79c8579b1b076e53848c540d4e7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a32e8c79c8579b1b076e53848c540d4e7">~Console</a> ()</td></tr>
+<tr class="separator:a32e8c79c8579b1b076e53848c540d4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c8237ecc9ba1c860e59d9632fd654f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a1c8237ecc9ba1c860e59d9632fd654f7">init</a> ()</td></tr>
+<tr class="separator:a1c8237ecc9ba1c860e59d9632fd654f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e0a1a68ac24da1ebc1063a6d8146cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a66e0a1a68ac24da1ebc1063a6d8146cf">ConsoleJobList</a> () const</td></tr>
+<tr class="separator:a66e0a1a68ac24da1ebc1063a6d8146cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9117d1d5dc5a0325a01d7f798d0e67bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9117d1d5dc5a0325a01d7f798d0e67bd">ConsoleJobListDone</a> ()</td></tr>
+<tr class="separator:a9117d1d5dc5a0325a01d7f798d0e67bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286bde00a8b1e89dadd217ae770b5afd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a286bde00a8b1e89dadd217ae770b5afd">AddJob</a> (int pid, <a class="el" href="config_8h.html#a97622948346be03d21f97b3c562b9592">job_state</a> state, int <a class="el" href="class_console.html#ae50c806f374e7efd5c07a4fde96219be">argc</a>, char *<a class="el" href="class_console.html#a76b35baffe8bec4f240f9de8a449723f">argv</a>[])</td></tr>
+<tr class="separator:a286bde00a8b1e89dadd217ae770b5afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77e7161904d95a484f94069fb1bc742a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a77e7161904d95a484f94069fb1bc742a">ResetChildPid</a> ()</td></tr>
+<tr class="separator:a77e7161904d95a484f94069fb1bc742a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9825197de6cf144832961e9fdc96d968"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9825197de6cf144832961e9fdc96d968">SetInputFD</a> (int _fd)</td></tr>
+<tr class="separator:a9825197de6cf144832961e9fdc96d968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24dd8b5bbd30b3eb6346b2902fa1b8a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a24dd8b5bbd30b3eb6346b2902fa1b8a8">SetOutputFD</a> (int _fd)</td></tr>
+<tr class="separator:a24dd8b5bbd30b3eb6346b2902fa1b8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae599615cb831cef7cc87158c8e288d49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ae599615cb831cef7cc87158c8e288d49">SetErrorFD</a> (int _fd)</td></tr>
+<tr class="separator:ae599615cb831cef7cc87158c8e288d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a0767cb115b8fb8f54636ecf346663"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ab5a0767cb115b8fb8f54636ecf346663">GetInputFD</a> () const</td></tr>
+<tr class="separator:ab5a0767cb115b8fb8f54636ecf346663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdb289fac381526a099a2163c4ae705"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#abfdb289fac381526a099a2163c4ae705">GetOutputFD</a> () const</td></tr>
+<tr class="separator:abfdb289fac381526a099a2163c4ae705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d711d0715d762049587db93beb4c2d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a8d711d0715d762049587db93beb4c2d7">GetErrorFD</a> () const</td></tr>
+<tr class="separator:a8d711d0715d762049587db93beb4c2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e7663c06c2f47bb15262c7853c17ebc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a0e7663c06c2f47bb15262c7853c17ebc">SetInputRedirect</a> ()</td></tr>
+<tr class="separator:a0e7663c06c2f47bb15262c7853c17ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c7da9978b67c9d27500b9818c30ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aa1c7da9978b67c9d27500b9818c30ad8">SetOutputRedirect</a> ()</td></tr>
+<tr class="separator:aa1c7da9978b67c9d27500b9818c30ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7ce6d8e461dd8ed81b5a5022575db1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aac7ce6d8e461dd8ed81b5a5022575db1">SetErrorRedirect</a> ()</td></tr>
+<tr class="separator:aac7ce6d8e461dd8ed81b5a5022575db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7777f44a59723d9c714cdaf7bc957eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aa7777f44a59723d9c714cdaf7bc957eb">ResetInputRedirect</a> ()</td></tr>
+<tr class="separator:aa7777f44a59723d9c714cdaf7bc957eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad135641adf013088788dee082360474e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ad135641adf013088788dee082360474e">ResetOutputRedirect</a> ()</td></tr>
+<tr class="separator:ad135641adf013088788dee082360474e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c51f0fe6cc5cc63c06210b8b18d4e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ae0c51f0fe6cc5cc63c06210b8b18d4e9">ResetErrorRedirect</a> ()</td></tr>
+<tr class="separator:ae0c51f0fe6cc5cc63c06210b8b18d4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad753325a8a0910265c2e9392c5e531c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aad753325a8a0910265c2e9392c5e531c">GetInputRedirect</a> () const</td></tr>
+<tr class="separator:aad753325a8a0910265c2e9392c5e531c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed8ede73662c81257ba9ced6e1b538d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a8ed8ede73662c81257ba9ced6e1b538d">GetOutputRedirect</a> () const</td></tr>
+<tr class="separator:a8ed8ede73662c81257ba9ced6e1b538d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a806d29518222e2f68fbd581c6fb83440"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a806d29518222e2f68fbd581c6fb83440">GetErrorRedirect</a> () const</td></tr>
+<tr class="separator:a806d29518222e2f68fbd581c6fb83440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa331c9a7c66f6aa705f5cab6f6469057"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aa331c9a7c66f6aa705f5cab6f6469057">GetSTDIN</a> () const</td></tr>
+<tr class="separator:aa331c9a7c66f6aa705f5cab6f6469057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabbced230d7ba4b96a58896a4d47cc39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aabbced230d7ba4b96a58896a4d47cc39">GetSTDOUT</a> () const</td></tr>
+<tr class="separator:aabbced230d7ba4b96a58896a4d47cc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9df0753e46fdaae71336c41e4ee17fda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9df0753e46fdaae71336c41e4ee17fda">GetSTDERR</a> () const</td></tr>
+<tr class="separator:a9df0753e46fdaae71336c41e4ee17fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8d2b0b5309b15980b7869003d9dbeba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ab8d2b0b5309b15980b7869003d9dbeba">SetMask</a> (mode_t _mask)</td></tr>
+<tr class="separator:ab8d2b0b5309b15980b7869003d9dbeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51dd35745d691e0777081628fa1db9d0"><td class="memItemLeft" align="right" valign="top">mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a51dd35745d691e0777081628fa1db9d0">GetMask</a> () const</td></tr>
+<tr class="separator:a51dd35745d691e0777081628fa1db9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a9f2e2ac722b12e235135eca30bcb69f4"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9f2e2ac722b12e235135eca30bcb69f4">user_name</a> [<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a9f2e2ac722b12e235135eca30bcb69f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a300a53ab96ae38729c85c8b3156e544a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a300a53ab96ae38729c85c8b3156e544a">host_name</a> [<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a300a53ab96ae38729c85c8b3156e544a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a376387e3e60d0960d98fe4d9f1620972"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a376387e3e60d0960d98fe4d9f1620972">current_working_dictionary</a> [<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a376387e3e60d0960d98fe4d9f1620972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa2a346d48cf558e06a4967cc0659963"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#afa2a346d48cf558e06a4967cc0659963">home</a> [<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:afa2a346d48cf558e06a4967cc0659963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d3d6db7e933271754ac734aae6d1b8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a44d3d6db7e933271754ac734aae6d1b8">shell_path_env</a> [<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a44d3d6db7e933271754ac734aae6d1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f5edd838f08b20dc97b13ca60f3ada3"><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9f5edd838f08b20dc97b13ca60f3ada3">process_id</a></td></tr>
+<tr class="separator:a9f5edd838f08b20dc97b13ca60f3ada3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6e3081b145c3f2a6f57f94dbc31a52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_process_manager.html">ProcessManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a0f6e3081b145c3f2a6f57f94dbc31a52">process_manager</a></td></tr>
+<tr class="separator:a0f6e3081b145c3f2a6f57f94dbc31a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a9b57d60f3f285bb0be99fa98e3b0be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a2a9b57d60f3f285bb0be99fa98e3b0be">input_file_descriptor</a></td></tr>
+<tr class="separator:a2a9b57d60f3f285bb0be99fa98e3b0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec0c754a5d8fb358e0993b2a94c911a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#aec0c754a5d8fb358e0993b2a94c911a0">output_file_descriptor</a></td></tr>
+<tr class="separator:aec0c754a5d8fb358e0993b2a94c911a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f145ad464b2945a50b7a8eccdb66fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a38f145ad464b2945a50b7a8eccdb66fe">error_file_descriptor</a></td></tr>
+<tr class="separator:a38f145ad464b2945a50b7a8eccdb66fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b5aa3d7185eeab987ac40702139fc4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ac1b5aa3d7185eeab987ac40702139fc4">redirect_input</a></td></tr>
+<tr class="separator:ac1b5aa3d7185eeab987ac40702139fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867bed8db46c2ed8a4f217363fda21d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a867bed8db46c2ed8a4f217363fda21d4">redirect_output</a></td></tr>
+<tr class="separator:a867bed8db46c2ed8a4f217363fda21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1dde656368cbefcab433ec9cef2e71a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ae1dde656368cbefcab433ec9cef2e71a">redirect_error</a></td></tr>
+<tr class="separator:ae1dde656368cbefcab433ec9cef2e71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9f382bb45d03e90e109912484c949e4"><td class="memItemLeft" align="right" valign="top">mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ac9f382bb45d03e90e109912484c949e4">umask_</a></td></tr>
+<tr class="separator:ac9f382bb45d03e90e109912484c949e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae50c806f374e7efd5c07a4fde96219be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ae50c806f374e7efd5c07a4fde96219be">argc</a></td></tr>
+<tr class="separator:ae50c806f374e7efd5c07a4fde96219be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b35baffe8bec4f240f9de8a449723f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a76b35baffe8bec4f240f9de8a449723f">argv</a> [<a class="el" href="config_8h.html#a60fb43b57d214cc1d4aea17d0871a46f">MAX_ARGUMENT_NUMBER</a>][<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:a76b35baffe8bec4f240f9de8a449723f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a3c25c3e25d382763b01052cf292f6621"><td class="memItemLeft" align="right" valign="top">static pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a3c25c3e25d382763b01052cf292f6621">child_process_id</a> = -1</td></tr>
+<tr class="separator:a3c25c3e25d382763b01052cf292f6621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00de5d394f94998358ae56ae40d5e11"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ab00de5d394f94998358ae56ae40d5e11">input_std_fd</a></td></tr>
+<tr class="separator:ab00de5d394f94998358ae56ae40d5e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a01e737989fe42bf6a9b265d7c68d0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#af4a01e737989fe42bf6a9b265d7c68d0">output_std_fd</a></td></tr>
+<tr class="separator:af4a01e737989fe42bf6a9b265d7c68d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bda30d738657e3de0487fc8143ed18d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a9bda30d738657e3de0487fc8143ed18d">error_std_fd</a></td></tr>
+<tr class="separator:a9bda30d738657e3de0487fc8143ed18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a97af53b9a9ff09603a3dbcbe7074ad11"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a97af53b9a9ff09603a3dbcbe7074ad11">Display</a></td></tr>
+<tr class="separator:a97af53b9a9ff09603a3dbcbe7074ad11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a763b2f90bc53f92d680a635fe28e858e"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a763b2f90bc53f92d680a635fe28e858e">Executor</a></td></tr>
+<tr class="separator:a763b2f90bc53f92d680a635fe28e858e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1701c7594fe2cf1c96b951a52eb0396"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#ae1701c7594fe2cf1c96b951a52eb0396">ProcessManager</a></td></tr>
+<tr class="separator:ae1701c7594fe2cf1c96b951a52eb0396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7972e8125628180f0e4d04a8f805ced6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console.html#a7972e8125628180f0e4d04a8f805ced6">SignalHandler</a> (int)</td></tr>
+<tr class="memdesc:a7972e8125628180f0e4d04a8f805ced6"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号控制与处理  <a href="class_console.html#a7972e8125628180f0e4d04a8f805ced6">更多...</a><br /></td></tr>
+<tr class="separator:a7972e8125628180f0e4d04a8f805ced6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p >控制台 存储必要的环境变量以及渲染用户前端所需要的数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00038">38</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aba16cfd9f0894eb1312b1bc1155b6646" name="aba16cfd9f0894eb1312b1bc1155b6646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba16cfd9f0894eb1312b1bc1155b6646">&#9670;&nbsp;</a></span>Console()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Console::Console </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00032">32</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aba16cfd9f0894eb1312b1bc1155b6646_cgraph.png" border="0" usemap="#aclass_console_aba16cfd9f0894eb1312b1bc1155b6646_cgraph" alt=""/></div>
+<map name="aclass_console_aba16cfd9f0894eb1312b1bc1155b6646_cgraph" id="aclass_console_aba16cfd9f0894eb1312b1bc1155b6646_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,129,32"/>
+<area shape="rect" href="class_console.html#a1c8237ecc9ba1c860e59d9632fd654f7" title=" " alt="" coords="177,5,272,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a32e8c79c8579b1b076e53848c540d4e7" name="a32e8c79c8579b1b076e53848c540d4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e8c79c8579b1b076e53848c540d4e7">&#9670;&nbsp;</a></span>~Console()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Console::~Console </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a286bde00a8b1e89dadd217ae770b5afd" name="a286bde00a8b1e89dadd217ae770b5afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a286bde00a8b1e89dadd217ae770b5afd">&#9670;&nbsp;</a></span>AddJob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Console::AddJob </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="config_8h.html#a97622948346be03d21f97b3c562b9592">job_state</a>&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00213">213</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a286bde00a8b1e89dadd217ae770b5afd_cgraph.png" border="0" usemap="#aclass_console_a286bde00a8b1e89dadd217ae770b5afd_cgraph" alt=""/></div>
+<map name="aclass_console_a286bde00a8b1e89dadd217ae770b5afd_cgraph" id="aclass_console_a286bde00a8b1e89dadd217ae770b5afd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,125,57"/>
+<area shape="rect" href="class_process_manager.html#a165280bdbc9eb678b83f3340fde4c9ca" title="添加进程" alt="" coords="173,31,353,57"/>
+<area shape="rect" href="class_heap.html#a939b7f03924d3901e8bebfdaadfd9513" title=" " alt="" coords="413,5,513,32"/>
+<area shape="rect" href="classjob__unit.html#a78f5ab99ea4816004faf381068851a8f" title=" " alt="" coords="401,56,524,83"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a286bde00a8b1e89dadd217ae770b5afd_icgraph.png" border="0" usemap="#aclass_console_a286bde00a8b1e89dadd217ae770b5afd_icgraph" alt=""/></div>
+<map name="aclass_console_a286bde00a8b1e89dadd217ae770b5afd_icgraph" id="aclass_console_a286bde00a8b1e89dadd217ae770b5afd_icgraph">
+<area shape="rect" title=" " alt="" coords="1140,31,1260,57"/>
+<area shape="rect" href="class_executor.html#a1efaafe37cc750a5a959283c8fa6072a" title="执行器命令执行函数" alt="" coords="964,31,1092,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a66e0a1a68ac24da1ebc1063a6d8146cf" name="a66e0a1a68ac24da1ebc1063a6d8146cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66e0a1a68ac24da1ebc1063a6d8146cf">&#9670;&nbsp;</a></span>ConsoleJobList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ConsoleJobList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00201">201</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a66e0a1a68ac24da1ebc1063a6d8146cf_cgraph.png" border="0" usemap="#aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_cgraph" alt=""/></div>
+<map name="aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_cgraph" id="aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,171,32"/>
+<area shape="rect" href="class_process_manager.html#aed9ebd7ba0bc7e16c0a5df542900ab45" title=" " alt="" coords="219,5,415,32"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a66e0a1a68ac24da1ebc1063a6d8146cf_icgraph.png" border="0" usemap="#aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_icgraph" alt=""/></div>
+<map name="aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_icgraph" id="aclass_console_a66e0a1a68ac24da1ebc1063a6d8146cf_icgraph">
+<area shape="rect" title=" " alt="" coords="395,5,560,32"/>
+<area shape="rect" href="class_executor.html#a74908e725aa40a6da16c1a8b383b61b9" title="显示所有作业" alt="" coords="188,5,347,32"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9117d1d5dc5a0325a01d7f798d0e67bd" name="a9117d1d5dc5a0325a01d7f798d0e67bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9117d1d5dc5a0325a01d7f798d0e67bd">&#9670;&nbsp;</a></span>ConsoleJobListDone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ConsoleJobListDone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00207">207</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a9117d1d5dc5a0325a01d7f798d0e67bd_cgraph.png" border="0" usemap="#aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_cgraph" alt=""/></div>
+<map name="aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_cgraph" id="aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,200,39"/>
+<area shape="rect" href="class_process_manager.html#ade7e167c72e4090133356c01e7c6f19b" title=" " alt="" coords="248,5,423,47"/>
+<area shape="rect" href="class_process_manager.html#abb124eed9ed603f5de81438f94c2e342" title="删除进程" alt="" coords="471,13,665,39"/>
+<area shape="rect" href="class_heap.html#a412ca53eb7bc9124283e17207da9beb6" title=" " alt="" coords="713,13,805,39"/>
+</map>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a9117d1d5dc5a0325a01d7f798d0e67bd_icgraph.png" border="0" usemap="#aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_icgraph" alt=""/></div>
+<map name="aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_icgraph" id="aclass_console_a9117d1d5dc5a0325a01d7f798d0e67bd_icgraph">
+<area shape="rect" title=" " alt="" coords="593,31,788,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8d711d0715d762049587db93beb4c2d7" name="a8d711d0715d762049587db93beb4c2d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d711d0715d762049587db93beb4c2d7">&#9670;&nbsp;</a></span>GetErrorFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetErrorFD </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00110">110</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a8d711d0715d762049587db93beb4c2d7_icgraph.png" border="0" usemap="#aclass_console_a8d711d0715d762049587db93beb4c2d7_icgraph" alt=""/></div>
+<map name="aclass_console_a8d711d0715d762049587db93beb4c2d7_icgraph" id="aclass_console_a8d711d0715d762049587db93beb4c2d7_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1107,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,5,916,32"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a806d29518222e2f68fbd581c6fb83440" name="a806d29518222e2f68fbd581c6fb83440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a806d29518222e2f68fbd581c6fb83440">&#9670;&nbsp;</a></span>GetErrorRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::GetErrorRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00131">131</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a806d29518222e2f68fbd581c6fb83440_icgraph.png" border="0" usemap="#aclass_console_a806d29518222e2f68fbd581c6fb83440_icgraph" alt=""/></div>
+<map name="aclass_console_a806d29518222e2f68fbd581c6fb83440_icgraph" id="aclass_console_a806d29518222e2f68fbd581c6fb83440_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1325,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,56,1103,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab5a0767cb115b8fb8f54636ecf346663" name="ab5a0767cb115b8fb8f54636ecf346663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5a0767cb115b8fb8f54636ecf346663">&#9670;&nbsp;</a></span>GetInputFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetInputFD </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00106">106</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_ab5a0767cb115b8fb8f54636ecf346663_icgraph.png" border="0" usemap="#aclass_console_ab5a0767cb115b8fb8f54636ecf346663_icgraph" alt=""/></div>
+<map name="aclass_console_ab5a0767cb115b8fb8f54636ecf346663_icgraph" id="aclass_console_ab5a0767cb115b8fb8f54636ecf346663_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1107,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,5,916,32"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aad753325a8a0910265c2e9392c5e531c" name="aad753325a8a0910265c2e9392c5e531c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad753325a8a0910265c2e9392c5e531c">&#9670;&nbsp;</a></span>GetInputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::GetInputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00127">127</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aad753325a8a0910265c2e9392c5e531c_icgraph.png" border="0" usemap="#aclass_console_aad753325a8a0910265c2e9392c5e531c_icgraph" alt=""/></div>
+<map name="aclass_console_aad753325a8a0910265c2e9392c5e531c_icgraph" id="aclass_console_aad753325a8a0910265c2e9392c5e531c_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1325,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,56,1103,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a51dd35745d691e0777081628fa1db9d0" name="a51dd35745d691e0777081628fa1db9d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51dd35745d691e0777081628fa1db9d0">&#9670;&nbsp;</a></span>GetMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mode_t Console::GetMask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00143">143</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a51dd35745d691e0777081628fa1db9d0_icgraph.png" border="0" usemap="#aclass_console_a51dd35745d691e0777081628fa1db9d0_icgraph" alt=""/></div>
+<map name="aclass_console_a51dd35745d691e0777081628fa1db9d0_icgraph" id="aclass_console_a51dd35745d691e0777081628fa1db9d0_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1281,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,31,1103,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abfdb289fac381526a099a2163c4ae705" name="abfdb289fac381526a099a2163c4ae705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfdb289fac381526a099a2163c4ae705">&#9670;&nbsp;</a></span>GetOutputFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetOutputFD </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00108">108</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_abfdb289fac381526a099a2163c4ae705_icgraph.png" border="0" usemap="#aclass_console_abfdb289fac381526a099a2163c4ae705_icgraph" alt=""/></div>
+<map name="aclass_console_abfdb289fac381526a099a2163c4ae705_icgraph" id="aclass_console_abfdb289fac381526a099a2163c4ae705_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1119,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,5,916,32"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ed8ede73662c81257ba9ced6e1b538d" name="a8ed8ede73662c81257ba9ced6e1b538d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed8ede73662c81257ba9ced6e1b538d">&#9670;&nbsp;</a></span>GetOutputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::GetOutputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00129">129</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a8ed8ede73662c81257ba9ced6e1b538d_icgraph.png" border="0" usemap="#aclass_console_a8ed8ede73662c81257ba9ced6e1b538d_icgraph" alt=""/></div>
+<map name="aclass_console_a8ed8ede73662c81257ba9ced6e1b538d_icgraph" id="aclass_console_a8ed8ede73662c81257ba9ced6e1b538d_icgraph">
+<area shape="rect" title=" " alt="" coords="1160,56,1345,83"/>
+<area shape="rect" href="class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title="检测命令执行结构" alt="" coords="768,5,925,32"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="773,81,921,108"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="973,107,1112,133"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,31,140,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,81,720,108"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,81,545,108"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,56,368,83"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,107,347,133"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,107,98,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9df0753e46fdaae71336c41e4ee17fda" name="a9df0753e46fdaae71336c41e4ee17fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9df0753e46fdaae71336c41e4ee17fda">&#9670;&nbsp;</a></span>GetSTDERR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetSTDERR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00138">138</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a9df0753e46fdaae71336c41e4ee17fda_icgraph.png" border="0" usemap="#aclass_console_a9df0753e46fdaae71336c41e4ee17fda_icgraph" alt=""/></div>
+<map name="aclass_console_a9df0753e46fdaae71336c41e4ee17fda_icgraph" id="aclass_console_a9df0753e46fdaae71336c41e4ee17fda_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1115,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa331c9a7c66f6aa705f5cab6f6469057" name="aa331c9a7c66f6aa705f5cab6f6469057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa331c9a7c66f6aa705f5cab6f6469057">&#9670;&nbsp;</a></span>GetSTDIN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetSTDIN </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00134">134</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aa331c9a7c66f6aa705f5cab6f6469057_icgraph.png" border="0" usemap="#aclass_console_aa331c9a7c66f6aa705f5cab6f6469057_icgraph" alt=""/></div>
+<map name="aclass_console_aa331c9a7c66f6aa705f5cab6f6469057_icgraph" id="aclass_console_aa331c9a7c66f6aa705f5cab6f6469057_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1099,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aabbced230d7ba4b96a58896a4d47cc39" name="aabbced230d7ba4b96a58896a4d47cc39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabbced230d7ba4b96a58896a4d47cc39">&#9670;&nbsp;</a></span>GetSTDOUT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::GetSTDOUT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00136">136</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aabbced230d7ba4b96a58896a4d47cc39_icgraph.png" border="0" usemap="#aclass_console_aabbced230d7ba4b96a58896a4d47cc39_icgraph" alt=""/></div>
+<map name="aclass_console_aabbced230d7ba4b96a58896a4d47cc39_icgraph" id="aclass_console_aabbced230d7ba4b96a58896a4d47cc39_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1113,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1c8237ecc9ba1c860e59d9632fd654f7" name="a1c8237ecc9ba1c860e59d9632fd654f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c8237ecc9ba1c860e59d9632fd654f7">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00123">123</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a1c8237ecc9ba1c860e59d9632fd654f7_icgraph.png" border="0" usemap="#aclass_console_a1c8237ecc9ba1c860e59d9632fd654f7_icgraph" alt=""/></div>
+<map name="aclass_console_a1c8237ecc9ba1c860e59d9632fd654f7_icgraph" id="aclass_console_a1c8237ecc9ba1c860e59d9632fd654f7_icgraph">
+<area shape="rect" title=" " alt="" coords="177,5,272,32"/>
+<area shape="rect" href="class_console.html#aba16cfd9f0894eb1312b1bc1155b6646" title=" " alt="" coords="5,5,129,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a77e7161904d95a484f94069fb1bc742a" name="a77e7161904d95a484f94069fb1bc742a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77e7161904d95a484f94069fb1bc742a">&#9670;&nbsp;</a></span>ResetChildPid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ResetChildPid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00096">96</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a77e7161904d95a484f94069fb1bc742a_icgraph.png" border="0" usemap="#aclass_console_a77e7161904d95a484f94069fb1bc742a_icgraph" alt=""/></div>
+<map name="aclass_console_a77e7161904d95a484f94069fb1bc742a_icgraph" id="aclass_console_a77e7161904d95a484f94069fb1bc742a_icgraph">
+<area shape="rect" title=" " alt="" coords="593,31,752,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0c51f0fe6cc5cc63c06210b8b18d4e9" name="ae0c51f0fe6cc5cc63c06210b8b18d4e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c51f0fe6cc5cc63c06210b8b18d4e9">&#9670;&nbsp;</a></span>ResetErrorRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ResetErrorRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00124">124</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_ae0c51f0fe6cc5cc63c06210b8b18d4e9_icgraph.png" border="0" usemap="#aclass_console_ae0c51f0fe6cc5cc63c06210b8b18d4e9_icgraph" alt=""/></div>
+<map name="aclass_console_ae0c51f0fe6cc5cc63c06210b8b18d4e9_icgraph" id="aclass_console_ae0c51f0fe6cc5cc63c06210b8b18d4e9_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1151,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa7777f44a59723d9c714cdaf7bc957eb" name="aa7777f44a59723d9c714cdaf7bc957eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7777f44a59723d9c714cdaf7bc957eb">&#9670;&nbsp;</a></span>ResetInputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ResetInputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00120">120</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aa7777f44a59723d9c714cdaf7bc957eb_icgraph.png" border="0" usemap="#aclass_console_aa7777f44a59723d9c714cdaf7bc957eb_icgraph" alt=""/></div>
+<map name="aclass_console_aa7777f44a59723d9c714cdaf7bc957eb_icgraph" id="aclass_console_aa7777f44a59723d9c714cdaf7bc957eb_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1151,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad135641adf013088788dee082360474e" name="ad135641adf013088788dee082360474e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad135641adf013088788dee082360474e">&#9670;&nbsp;</a></span>ResetOutputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::ResetOutputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00122">122</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_ad135641adf013088788dee082360474e_icgraph.png" border="0" usemap="#aclass_console_ad135641adf013088788dee082360474e_icgraph" alt=""/></div>
+<map name="aclass_console_ad135641adf013088788dee082360474e_icgraph" id="aclass_console_ad135641adf013088788dee082360474e_icgraph">
+<area shape="rect" title=" " alt="" coords="964,31,1163,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae599615cb831cef7cc87158c8e288d49" name="ae599615cb831cef7cc87158c8e288d49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae599615cb831cef7cc87158c8e288d49">&#9670;&nbsp;</a></span>SetErrorFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetErrorFD </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00103">103</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_ae599615cb831cef7cc87158c8e288d49_icgraph.png" border="0" usemap="#aclass_console_ae599615cb831cef7cc87158c8e288d49_icgraph" alt=""/></div>
+<map name="aclass_console_ae599615cb831cef7cc87158c8e288d49_icgraph" id="aclass_console_ae599615cb831cef7cc87158c8e288d49_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1293,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,56,1103,83"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aac7ce6d8e461dd8ed81b5a5022575db1" name="aac7ce6d8e461dd8ed81b5a5022575db1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7ce6d8e461dd8ed81b5a5022575db1">&#9670;&nbsp;</a></span>SetErrorRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetErrorRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00117">117</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aac7ce6d8e461dd8ed81b5a5022575db1_icgraph.png" border="0" usemap="#aclass_console_aac7ce6d8e461dd8ed81b5a5022575db1_icgraph" alt=""/></div>
+<map name="aclass_console_aac7ce6d8e461dd8ed81b5a5022575db1_icgraph" id="aclass_console_aac7ce6d8e461dd8ed81b5a5022575db1_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1324,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,31,1103,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,31,916,57"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9825197de6cf144832961e9fdc96d968" name="a9825197de6cf144832961e9fdc96d968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9825197de6cf144832961e9fdc96d968">&#9670;&nbsp;</a></span>SetInputFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetInputFD </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00099">99</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a9825197de6cf144832961e9fdc96d968_icgraph.png" border="0" usemap="#aclass_console_a9825197de6cf144832961e9fdc96d968_icgraph" alt=""/></div>
+<map name="aclass_console_a9825197de6cf144832961e9fdc96d968_icgraph" id="aclass_console_a9825197de6cf144832961e9fdc96d968_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,22,1293,49"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,22,916,49"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,48,720,74"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,22,1103,49"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,48,545,74"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,22,368,49"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,73,347,100"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,22,140,49"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,73,98,100"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0e7663c06c2f47bb15262c7853c17ebc" name="a0e7663c06c2f47bb15262c7853c17ebc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e7663c06c2f47bb15262c7853c17ebc">&#9670;&nbsp;</a></span>SetInputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetInputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00113">113</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a0e7663c06c2f47bb15262c7853c17ebc_icgraph.png" border="0" usemap="#aclass_console_a0e7663c06c2f47bb15262c7853c17ebc_icgraph" alt=""/></div>
+<map name="aclass_console_a0e7663c06c2f47bb15262c7853c17ebc_icgraph" id="aclass_console_a0e7663c06c2f47bb15262c7853c17ebc_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1324,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,5,1103,32"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,5,916,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab8d2b0b5309b15980b7869003d9dbeba" name="ab8d2b0b5309b15980b7869003d9dbeba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8d2b0b5309b15980b7869003d9dbeba">&#9670;&nbsp;</a></span>SetMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetMask </td>
+          <td>(</td>
+          <td class="paramtype">mode_t&#160;</td>
+          <td class="paramname"><em>_mask</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00141">141</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a24dd8b5bbd30b3eb6346b2902fa1b8a8" name="a24dd8b5bbd30b3eb6346b2902fa1b8a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24dd8b5bbd30b3eb6346b2902fa1b8a8">&#9670;&nbsp;</a></span>SetOutputFD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetOutputFD </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00101">101</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_a24dd8b5bbd30b3eb6346b2902fa1b8a8_icgraph.png" border="0" usemap="#aclass_console_a24dd8b5bbd30b3eb6346b2902fa1b8a8_icgraph" alt=""/></div>
+<map name="aclass_console_a24dd8b5bbd30b3eb6346b2902fa1b8a8_icgraph" id="aclass_console_a24dd8b5bbd30b3eb6346b2902fa1b8a8_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,22,1304,49"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,22,916,49"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,47,720,74"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,22,1103,49"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,47,545,74"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,22,368,49"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,73,347,99"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,22,140,49"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,73,98,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa1c7da9978b67c9d27500b9818c30ad8" name="aa1c7da9978b67c9d27500b9818c30ad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1c7da9978b67c9d27500b9818c30ad8">&#9670;&nbsp;</a></span>SetOutputRedirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Console::SetOutputRedirect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00115">115</a> 行定义.</p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_console_aa1c7da9978b67c9d27500b9818c30ad8_icgraph.png" border="0" usemap="#aclass_console_aa1c7da9978b67c9d27500b9818c30ad8_icgraph" alt=""/></div>
+<map name="aclass_console_aa1c7da9978b67c9d27500b9818c30ad8_icgraph" id="aclass_console_aa1c7da9978b67c9d27500b9818c30ad8_icgraph">
+<area shape="rect" title=" " alt="" coords="1151,31,1335,57"/>
+<area shape="rect" href="class_parser.html#adf72be2d9687a7f44808fe14f0a824b6" title=" " alt="" coords="964,5,1103,32"/>
+<area shape="rect" href="class_parser.html#afa0bf2c3038fa7d7e114cbe603e16dfc" title=" " alt="" coords="593,31,720,57"/>
+<area shape="rect" href="class_parser.html#a0e9979aa186316e115791fd4c72cbd63" title="执行shell" alt="" coords="768,5,916,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#a347c8439e17672e8339a6590ad1ecb41" title="进入shell循环" alt="" coords="416,31,545,57"/>
+<area shape="rect" href="class_executor.html#a24184035b7a2aaeef6b309d9cfb13704" title="myshell" alt="" coords="188,5,368,32"/>
+<area shape="rect" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208" title="启动shell" alt="" coords="209,56,347,83"/>
+<area shape="rect" href="class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb" title=" " alt="" coords="47,56,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">友元及相关函数文档</h2>
+<a id="a97af53b9a9ff09603a3dbcbe7074ad11" name="a97af53b9a9ff09603a3dbcbe7074ad11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97af53b9a9ff09603a3dbcbe7074ad11">&#9670;&nbsp;</a></span>Display</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_display.html">Display</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00145">145</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a763b2f90bc53f92d680a635fe28e858e" name="a763b2f90bc53f92d680a635fe28e858e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a763b2f90bc53f92d680a635fe28e858e">&#9670;&nbsp;</a></span>Executor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_executor.html">Executor</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00146">146</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae1701c7594fe2cf1c96b951a52eb0396" name="ae1701c7594fe2cf1c96b951a52eb0396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1701c7594fe2cf1c96b951a52eb0396">&#9670;&nbsp;</a></span>ProcessManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_process_manager.html">ProcessManager</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00147">147</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7972e8125628180f0e4d04a8f805ced6" name="a7972e8125628180f0e4d04a8f805ced6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7972e8125628180f0e4d04a8f805ced6">&#9670;&nbsp;</a></span>SignalHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SignalHandler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signal_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>信号控制与处理 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>邱日宏 (<a href="#" onclick="location.href='mai'+'lto:'+'320'+'01'+'058'+'42'+'@zj'+'u.'+'edu'+'.c'+'n'; return false;">32001<span class="obfuscator">.nosp@m.</span>0584<span class="obfuscator">.nosp@m.</span>2@zju<span class="obfuscator">.nosp@m.</span>.edu<span class="obfuscator">.nosp@m.</span>.cn</a>) </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-07-21 </dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_console_8cpp_source.html">Console.cpp</a> 第 <a class="el" href="_console_8cpp_source.html#l00049">49</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae50c806f374e7efd5c07a4fde96219be" name="ae50c806f374e7efd5c07a4fde96219be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae50c806f374e7efd5c07a4fde96219be">&#9670;&nbsp;</a></span>argc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::argc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00074">74</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a76b35baffe8bec4f240f9de8a449723f" name="a76b35baffe8bec4f240f9de8a449723f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76b35baffe8bec4f240f9de8a449723f">&#9670;&nbsp;</a></span>argv</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::argv[<a class="el" href="config_8h.html#a60fb43b57d214cc1d4aea17d0871a46f">MAX_ARGUMENT_NUMBER</a>][<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00075">75</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3c25c3e25d382763b01052cf292f6621" name="a3c25c3e25d382763b01052cf292f6621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c25c3e25d382763b01052cf292f6621">&#9670;&nbsp;</a></span>child_process_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pid_t Console::child_process_id = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a376387e3e60d0960d98fe4d9f1620972" name="a376387e3e60d0960d98fe4d9f1620972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a376387e3e60d0960d98fe4d9f1620972">&#9670;&nbsp;</a></span>current_working_dictionary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::current_working_dictionary[<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a38f145ad464b2945a50b7a8eccdb66fe" name="a38f145ad464b2945a50b7a8eccdb66fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f145ad464b2945a50b7a8eccdb66fe">&#9670;&nbsp;</a></span>error_file_descriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::error_file_descriptor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00059">59</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9bda30d738657e3de0487fc8143ed18d" name="a9bda30d738657e3de0487fc8143ed18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bda30d738657e3de0487fc8143ed18d">&#9670;&nbsp;</a></span>error_std_fd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::error_std_fd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afa2a346d48cf558e06a4967cc0659963" name="afa2a346d48cf558e06a4967cc0659963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa2a346d48cf558e06a4967cc0659963">&#9670;&nbsp;</a></span>home</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::home[<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a300a53ab96ae38729c85c8b3156e544a" name="a300a53ab96ae38729c85c8b3156e544a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300a53ab96ae38729c85c8b3156e544a">&#9670;&nbsp;</a></span>host_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::host_name[<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2a9b57d60f3f285bb0be99fa98e3b0be" name="a2a9b57d60f3f285bb0be99fa98e3b0be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a9b57d60f3f285bb0be99fa98e3b0be">&#9670;&nbsp;</a></span>input_file_descriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::input_file_descriptor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00057">57</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab00de5d394f94998358ae56ae40d5e11" name="ab00de5d394f94998358ae56ae40d5e11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00de5d394f94998358ae56ae40d5e11">&#9670;&nbsp;</a></span>input_std_fd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::input_std_fd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00062">62</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aec0c754a5d8fb358e0993b2a94c911a0" name="aec0c754a5d8fb358e0993b2a94c911a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0c754a5d8fb358e0993b2a94c911a0">&#9670;&nbsp;</a></span>output_file_descriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::output_file_descriptor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00058">58</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af4a01e737989fe42bf6a9b265d7c68d0" name="af4a01e737989fe42bf6a9b265d7c68d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4a01e737989fe42bf6a9b265d7c68d0">&#9670;&nbsp;</a></span>output_std_fd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Console::output_std_fd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9f5edd838f08b20dc97b13ca60f3ada3" name="a9f5edd838f08b20dc97b13ca60f3ada3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f5edd838f08b20dc97b13ca60f3ada3">&#9670;&nbsp;</a></span>process_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pid_t Console::process_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00052">52</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0f6e3081b145c3f2a6f57f94dbc31a52" name="a0f6e3081b145c3f2a6f57f94dbc31a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6e3081b145c3f2a6f57f94dbc31a52">&#9670;&nbsp;</a></span>process_manager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_process_manager.html">ProcessManager</a>* Console::process_manager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae1dde656368cbefcab433ec9cef2e71a" name="ae1dde656368cbefcab433ec9cef2e71a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1dde656368cbefcab433ec9cef2e71a">&#9670;&nbsp;</a></span>redirect_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::redirect_error</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00069">69</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac1b5aa3d7185eeab987ac40702139fc4" name="ac1b5aa3d7185eeab987ac40702139fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b5aa3d7185eeab987ac40702139fc4">&#9670;&nbsp;</a></span>redirect_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::redirect_input</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a867bed8db46c2ed8a4f217363fda21d4" name="a867bed8db46c2ed8a4f217363fda21d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867bed8db46c2ed8a4f217363fda21d4">&#9670;&nbsp;</a></span>redirect_output</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Console::redirect_output</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00068">68</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a44d3d6db7e933271754ac734aae6d1b8" name="a44d3d6db7e933271754ac734aae6d1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d3d6db7e933271754ac734aae6d1b8">&#9670;&nbsp;</a></span>shell_path_env</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::shell_path_env[<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00049">49</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac9f382bb45d03e90e109912484c949e4" name="ac9f382bb45d03e90e109912484c949e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9f382bb45d03e90e109912484c949e4">&#9670;&nbsp;</a></span>umask_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mode_t Console::umask_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00072">72</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9f2e2ac722b12e235135eca30bcb69f4" name="a9f2e2ac722b12e235135eca30bcb69f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2e2ac722b12e235135eca30bcb69f4">&#9670;&nbsp;</a></span>user_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Console::user_name[<a class="el" href="config_8h.html#adf261954779e694ad997533c5da9ad5a">BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_console_8h_source.html">Console.h</a> 第 <a class="el" href="_console_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>inc/<a class="el" href="_console_8h_source.html">Console.h</a></li>
+<li>src/<a class="el" href="_console_8cpp_source.html">Console.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_console.html">Console</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

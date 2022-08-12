@@ -1,0 +1,92 @@
+\doxysection{Executor.\+h}
+\label{_executor_8h_source}\index{inc/Executor.h@{inc/Executor.h}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#ifndef \_EXECUTOR\_H\_}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#define \_EXECUTOR\_H\_}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include "{}config.h"{}}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017 \textcolor{keyword}{class }Console;}
+\DoxyCodeLine{00018 \textcolor{keyword}{class }Display;}
+\DoxyCodeLine{00019 }
+\DoxyCodeLine{00020 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} FunctionNumber = 16;}
+\DoxyCodeLine{00021 }
+\DoxyCodeLine{00022 \textcolor{keyword}{class }Executor}
+\DoxyCodeLine{00023 \{}
+\DoxyCodeLine{00024     \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026         Console *console\_;  }
+\DoxyCodeLine{00028         Display *display\_;  }
+\DoxyCodeLine{00030     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00031         }
+\DoxyCodeLine{00033         sh\_err\_t shell\_function(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00034         }
+\DoxyCodeLine{00036         sh\_err\_t execute\_cd(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00037 }
+\DoxyCodeLine{00039         sh\_err\_t execute\_pwd(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00040 }
+\DoxyCodeLine{00042         sh\_err\_t execute\_time(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00043 }
+\DoxyCodeLine{00045         sh\_err\_t execute\_clr(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00046 }
+\DoxyCodeLine{00047         \textcolor{comment}{/* 列出目录内容 */}}
+\DoxyCodeLine{00048         sh\_err\_t execute\_dir(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050         \textcolor{comment}{/* 列出所有环境变量 */}}
+\DoxyCodeLine{00051         sh\_err\_t execute\_set(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053         \textcolor{comment}{/* 回声 */}}
+\DoxyCodeLine{00054         sh\_err\_t execute\_echo(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056         \textcolor{comment}{/* 显示帮助手册 */}}
+\DoxyCodeLine{00057         sh\_err\_t execute\_help(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00060         sh\_err\_t execute\_exit(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00063         sh\_err\_t execute\_date(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00064 }
+\DoxyCodeLine{00066         sh\_err\_t execute\_clear(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00069         sh\_err\_t execute\_env(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00072         sh\_err\_t execute\_who(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00073 }
+\DoxyCodeLine{00075         sh\_err\_t execute\_mkdir(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00076 }
+\DoxyCodeLine{00078         sh\_err\_t execute\_rmdir(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00081         sh\_err\_t execute\_bg(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00082 }
+\DoxyCodeLine{00084         sh\_err\_t execute\_fg(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00085 }
+\DoxyCodeLine{00087         sh\_err\_t execute\_jobs(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00090         sh\_err\_t execute\_exec(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00091     }
+\DoxyCodeLine{00093         sh\_err\_t execute\_test(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00094 }
+\DoxyCodeLine{00096         sh\_err\_t execute\_umask(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00097 }
+\DoxyCodeLine{00099         sh\_err\_t execute\_myshell(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00100         }
+\DoxyCodeLine{00104         \textcolor{keyword}{typedef} sh\_err\_t (Executor::*MemFuncPtr)(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00106         MemFuncPtr FunctionArray[FunctionNumber];}
+\DoxyCodeLine{00107 }
+\DoxyCodeLine{00109         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} test\_file\_state(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[]);}
+\DoxyCodeLine{00111         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} test\_number\_compare(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[]);}
+\DoxyCodeLine{00113         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} test\_string\_compare(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[]);}
+\DoxyCodeLine{00114 }
+\DoxyCodeLine{00115     \textcolor{keyword}{public}:}
+\DoxyCodeLine{00116         Executor(Console *model, Display *view);}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118         \textcolor{keyword}{virtual} \string~Executor();}
+\DoxyCodeLine{00119 }
+\DoxyCodeLine{00132         sh\_err\_t execute(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} * \textcolor{keyword}{const} argv[], \textcolor{keywordtype}{char} * \textcolor{keyword}{const} env[]) \textcolor{keyword}{const};}
+\DoxyCodeLine{00133 \};}
+\DoxyCodeLine{00134 }
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

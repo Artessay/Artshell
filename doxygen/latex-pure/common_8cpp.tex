@@ -1,0 +1,131 @@
+\doxysection{src/common.cpp 文件参考}
+\label{common_8cpp}\index{src/common.cpp@{src/common.cpp}}
+
+
+共享函数库  
+
+
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+common.\+cpp 的引用(Include)关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{common_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Argument\+\_\+\+Display} (const int argc, char $\ast$const argv[$\,$])
+\begin{DoxyCompactList}\small\item\em 命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 \end{DoxyCompactList}\item 
+std\+::string \& \textbf{ String\+\_\+\+Trim} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em 去掉字符串两端空格 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+共享函数库 
+
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2022-\/07-\/15
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ common.\+cpp} 中定义.
+
+
+
+\doxysubsection{函数说明}
+\mbox{\label{common_8cpp_a7b6ca73d8ddfa874f4c518907878a50e}} 
+\index{common.cpp@{common.cpp}!Argument\_Display@{Argument\_Display}}
+\index{Argument\_Display@{Argument\_Display}!common.cpp@{common.cpp}}
+\doxysubsubsection{Argument\_Display()}
+{\footnotesize\ttfamily void Argument\+\_\+\+Display (\begin{DoxyParamCaption}\item[{const int}]{argc,  }\item[{char $\ast$const}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+
+
+命令参数打印 首行显示传入参数个数 接下来一行一次显示命令行中的各个参数，以空格分开 
+
+
+\begin{DoxyParams}{参数}
+{\em argc} & 参数个数 \\
+\hline
+{\em argv} & 参数列表 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/15 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ common.\+cpp} 第 \textbf{ 16} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common_8cpp_a7b6ca73d8ddfa874f4c518907878a50e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{common_8cpp_a8d405369fdbd9d568f19c4a92d27c71f}} 
+\index{common.cpp@{common.cpp}!String\_Trim@{String\_Trim}}
+\index{String\_Trim@{String\_Trim}!common.cpp@{common.cpp}}
+\doxysubsubsection{String\_Trim()}
+{\footnotesize\ttfamily std\+::string \& String\+\_\+\+Trim (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+去掉字符串两端空格 
+
+
+\begin{DoxyParams}{参数}
+{\em s} & 需要去除空格的字符串 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+std\+::string\& 去除完空格的字符串 
+\end{DoxyReturn}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/07-\/17 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ common.\+cpp} 第 \textbf{ 27} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common_8cpp_a8d405369fdbd9d568f19c4a92d27c71f_icgraph}
+\end{center}
+\end{figure}

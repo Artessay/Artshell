@@ -1,0 +1,225 @@
+\doxysection{Heap$<$ T $>$ 模板类 参考}
+\label{class_heap}\index{Heap$<$ T $>$@{Heap$<$ T $>$}}
+
+
+抽象堆  
+
+
+
+
+{\ttfamily \#include $<$Heap.\+h$>$}
+
+
+
+类 Heap$<$ T $>$ 继承关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_heap__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Heap} ()
+\item 
+virtual \textbf{ $\sim$\+Heap} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxyref{Heap}{p.}{class_heap} object Heap的析构函数。由于我们的链接库是静态库，因此无法将析构函数定义成纯虚函数。 如果使用动态链接库的话则能够较好的实现多态，这里暂且将其定义为空函数以便链接。 \end{DoxyCompactList}\item 
+size\+\_\+t \textbf{ size} () const
+\item 
+virtual void \textbf{ build} (T data[$\,$], size\+\_\+t \textbf{ size})=0
+\item 
+virtual void \textbf{ insert} (T value)
+\item 
+virtual T \textbf{ top} () const
+\item 
+virtual T \textbf{ extract} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \textbf{ size\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+\subsubsection*{template$<$class T$>$\newline
+class Heap$<$ T $>$}
+抽象堆 
+
+
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/08-\/10 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 28} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\label{class_heap_ae58ddd11cd62c7c9843558c7cf21590b}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!Heap@{Heap}}
+\index{Heap@{Heap}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{Heap()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\textbf{ Heap}$<$ T $>$\textbf{ \+::\+Heap} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 31} 行定义.
+
+\mbox{\label{class_heap_a670b08eef347e5d2e726d820c97d5716}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!````~Heap@{$\sim$Heap}}
+\index{````~Heap@{$\sim$Heap}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{$\sim$Heap()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual \textbf{ Heap}$<$ T $>$\+::$\sim$\textbf{ Heap} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destroy the \doxyref{Heap}{p.}{class_heap} object Heap的析构函数。由于我们的链接库是静态库，因此无法将析构函数定义成纯虚函数。 如果使用动态链接库的话则能够较好的实现多态，这里暂且将其定义为空函数以便链接。 
+
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{作者}
+邱日宏 ({\texttt{ 3200105842@zju.\+edu.\+cn}}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{日期}
+2022-\/08-\/10 
+\end{DoxyDate}
+\begin{DoxyCopyright}{版权所有}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 43} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\label{class_heap_af631d0aa5bbc4bb766114180ba9aab2a}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!build@{build}}
+\index{build@{build}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{build()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \textbf{ Heap}$<$ T $>$\+::build (\begin{DoxyParamCaption}\item[{T}]{data[$\,$],  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+在 \textbf{ Binary\+Heap$<$ T $>$} \doxyref{}{p.}{class_binary_heap_a67f61082a46351d3618b4114b5d4f7eb} 内被实现.
+
+\mbox{\label{class_heap_a939b7f03924d3901e8bebfdaadfd9513}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!extract@{extract}}
+\index{extract@{extract}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{extract()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \textbf{ Heap}$<$ T $>$\+::extract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+被 \textbf{ Binary\+Heap$<$ T $>$} \doxyref{}{p.}{class_binary_heap_a07e955abee978e4330d8d4e32ff848dc} 重载.
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 60} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_heap_a939b7f03924d3901e8bebfdaadfd9513_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_heap_a412ca53eb7bc9124283e17207da9beb6}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{insert()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \textbf{ Heap}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+被 \textbf{ Binary\+Heap$<$ T $>$} \doxyref{}{p.}{class_binary_heap_a211cf7da1abc1777c3cd900e97648bc4} 重载.
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 49} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_heap_a412ca53eb7bc9124283e17207da9beb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_heap_a86d5e0f109c5da10a1f0f18ec644a3d8}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!size@{size}}
+\index{size@{size}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{size()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \textbf{ Heap}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 45} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{class_heap_a86d5e0f109c5da10a1f0f18ec644a3d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_heap_abf2280ccc33405ea1cd7c2165bcd8667}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!top@{top}}
+\index{top@{top}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{top()}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \textbf{ Heap}$<$ T $>$\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+被 \textbf{ Binary\+Heap$<$ T $>$} \doxyref{}{p.}{class_binary_heap_a36619e312276c76287a61a84033bdb83} 重载.
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 54} 行定义.
+
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\label{class_heap_a9c25a9342f5afb0ba003ae2051f161b5}} 
+\index{Heap$<$ T $>$@{Heap$<$ T $>$}!size\_@{size\_}}
+\index{size\_@{size\_}!Heap$<$ T $>$@{Heap$<$ T $>$}}
+\doxysubsubsection{size\_}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \textbf{ Heap}$<$ T $>$\+::size\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \textbf{ Heap.\+h} 第 \textbf{ 67} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\textbf{ Heap.\+h}\end{DoxyCompactItemize}

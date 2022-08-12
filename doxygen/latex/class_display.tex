@@ -1,0 +1,254 @@
+\hypertarget{class_display}{}\doxysection{Display类 参考}
+\label{class_display}\index{Display@{Display}}
+
+
+{\ttfamily \#include $<$Display.\+h$>$}
+
+
+
+Display 的协作图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_display__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_display_a99d198456454399e6162119be3397b58}{Display}} (\mbox{\hyperlink{class_console}{Console}} $\ast$console)
+\item 
+virtual \mbox{\hyperlink{class_display_ac2607a6bb236c55547a4223d40d85d1f}{$\sim$\+Display}} ()
+\item 
+int \mbox{\hyperlink{class_display_affa8b075f9933ab1683b520fdc79dd4a}{Input\+Command}} (char $\ast$input, const int len)
+\begin{DoxyCompactList}\small\item\em 命令行输入控制 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_a9b83e81da2877f0ceff73881d4ceb3dc}{render}} ()
+\begin{DoxyCompactList}\small\item\em 命令行提示符显示模块 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_aab18599c778ffdbc1f9a8e6b8743156a}{prompt}} () const
+\begin{DoxyCompactList}\small\item\em 继续输入提示 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_a3715e72f9beec4db82fd5d9668451b36}{message}} (const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em 打印信息msg与显示器 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_a457c583c6fc2aa69e0709947a0196ba6}{show}} () const
+\begin{DoxyCompactList}\small\item\em 将所有打印信息统一显示在终端 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_display_a14242933dd00fc1d50f9ae70d5121d14}{clear}} ()
+\begin{DoxyCompactList}\small\item\em 清空缓冲区 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_display_a825b7b0db8e731caa13386ba5fc93eea}{buffer\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_console}{Console}} $\ast$ \mbox{\hyperlink{class_display_a221481e2fb886cee3994030cd227c5c9}{console\+\_\+}}
+\item 
+bool \mbox{\hyperlink{class_display_a723ca560953ada15738ab8e238464b03}{perform}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+
+
+在文件 \mbox{\hyperlink{_display_8h_source}{Display.\+h}} 第 \mbox{\hyperlink{_display_8h_source_l00019}{19}} 行定义.
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{class_display_a99d198456454399e6162119be3397b58}\label{class_display_a99d198456454399e6162119be3397b58}} 
+\index{Display@{Display}!Display@{Display}}
+\index{Display@{Display}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{Display()}{Display()}}
+{\footnotesize\ttfamily Display\+::\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_console}{Console}} $\ast$}]{console }\end{DoxyParamCaption})}
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00020}{20}} 行定义.
+
+\mbox{\Hypertarget{class_display_ac2607a6bb236c55547a4223d40d85d1f}\label{class_display_ac2607a6bb236c55547a4223d40d85d1f}} 
+\index{Display@{Display}!````~Display@{$\sim$Display}}
+\index{````~Display@{$\sim$Display}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{$\sim$Display()}{~Display()}}
+{\footnotesize\ttfamily Display\+::$\sim$\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00025}{25}} 行定义.
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{class_display_a14242933dd00fc1d50f9ae70d5121d14}\label{class_display_a14242933dd00fc1d50f9ae70d5121d14}} 
+\index{Display@{Display}!clear@{clear}}
+\index{clear@{clear}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Display\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+清空缓冲区 
+
+
+
+在文件 \mbox{\hyperlink{_display_8h_source}{Display.\+h}} 第 \mbox{\hyperlink{_display_8h_source_l00055}{55}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a14242933dd00fc1d50f9ae70d5121d14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_display_affa8b075f9933ab1683b520fdc79dd4a}\label{class_display_affa8b075f9933ab1683b520fdc79dd4a}} 
+\index{Display@{Display}!InputCommand@{InputCommand}}
+\index{InputCommand@{InputCommand}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{InputCommand()}{InputCommand()}}
+{\footnotesize\ttfamily int Display\+::\+Input\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{const int}]{len }\end{DoxyParamCaption})}
+
+
+
+命令行输入控制 
+
+\begin{DoxyReturn}{返回}
+正数表示正常退出，返回读入的字符数； 返回0表示读到\+EOF，返回负数表示出现错误 
+\end{DoxyReturn}
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00029}{29}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_affa8b075f9933ab1683b520fdc79dd4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_display_a3715e72f9beec4db82fd5d9668451b36}\label{class_display_a3715e72f9beec4db82fd5d9668451b36}} 
+\index{Display@{Display}!message@{message}}
+\index{message@{message}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{message()}{message()}}
+{\footnotesize\ttfamily void Display\+::message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+打印信息msg与显示器 
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00147}{147}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a3715e72f9beec4db82fd5d9668451b36_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_display_aab18599c778ffdbc1f9a8e6b8743156a}\label{class_display_aab18599c778ffdbc1f9a8e6b8743156a}} 
+\index{Display@{Display}!prompt@{prompt}}
+\index{prompt@{prompt}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{prompt()}{prompt()}}
+{\footnotesize\ttfamily void Display\+::prompt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+继续输入提示 
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00139}{139}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_aab18599c778ffdbc1f9a8e6b8743156a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_display_a9b83e81da2877f0ceff73881d4ceb3dc}\label{class_display_a9b83e81da2877f0ceff73881d4ceb3dc}} 
+\index{Display@{Display}!render@{render}}
+\index{render@{render}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Display\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+命令行提示符显示模块 
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00088}{88}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a9b83e81da2877f0ceff73881d4ceb3dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_display_a457c583c6fc2aa69e0709947a0196ba6}\label{class_display_a457c583c6fc2aa69e0709947a0196ba6}} 
+\index{Display@{Display}!show@{show}}
+\index{show@{show}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void Display\+::show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+将所有打印信息统一显示在终端 
+
+
+
+在文件 \mbox{\hyperlink{_display_8cpp_source}{Display.\+cpp}} 第 \mbox{\hyperlink{_display_8cpp_source_l00152}{152}} 行定义.
+
+这是这个函数的调用关系图\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_display_a457c583c6fc2aa69e0709947a0196ba6_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{class_display_a825b7b0db8e731caa13386ba5fc93eea}\label{class_display_a825b7b0db8e731caa13386ba5fc93eea}} 
+\index{Display@{Display}!buffer\_@{buffer\_}}
+\index{buffer\_@{buffer\_}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{buffer\_}{buffer\_}}
+{\footnotesize\ttfamily std\+::string Display\+::buffer\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+在文件 \mbox{\hyperlink{_display_8h_source}{Display.\+h}} 第 \mbox{\hyperlink{_display_8h_source_l00028}{28}} 行定义.
+
+\mbox{\Hypertarget{class_display_a221481e2fb886cee3994030cd227c5c9}\label{class_display_a221481e2fb886cee3994030cd227c5c9}} 
+\index{Display@{Display}!console\_@{console\_}}
+\index{console\_@{console\_}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{console\_}{console\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_console}{Console}}$\ast$ Display\+::console\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \mbox{\hyperlink{_display_8h_source}{Display.\+h}} 第 \mbox{\hyperlink{_display_8h_source_l00023}{23}} 行定义.
+
+\mbox{\Hypertarget{class_display_a723ca560953ada15738ab8e238464b03}\label{class_display_a723ca560953ada15738ab8e238464b03}} 
+\index{Display@{Display}!perform@{perform}}
+\index{perform@{perform}!Display@{Display}}
+\doxysubsubsection{\texorpdfstring{perform}{perform}}
+{\footnotesize\ttfamily bool Display\+::perform\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 \mbox{\hyperlink{_display_8h_source}{Display.\+h}} 第 \mbox{\hyperlink{_display_8h_source_l00025}{25}} 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+inc/\mbox{\hyperlink{_display_8h}{Display.\+h}}\item 
+src/\mbox{\hyperlink{_display_8cpp}{Display.\+cpp}}\end{DoxyCompactItemize}

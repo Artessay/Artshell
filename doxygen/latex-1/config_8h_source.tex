@@ -1,0 +1,42 @@
+\hypertarget{config_8h_source}{}\doxysection{config.\+h}
+\label{config_8h_source}\index{inc/config.h@{inc/config.h}}
+\mbox{\hyperlink{config_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef \_CONFIG\_H\_}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00013}00013 \textcolor{preprocessor}{\#define \_CONFIG\_H\_}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00015}\mbox{\hyperlink{config_8h_adf261954779e694ad997533c5da9ad5a}{00015}} \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_adf261954779e694ad997533c5da9ad5a}{BUFFER\_SIZE}} = 1024;        \textcolor{comment}{// 缓冲区大小}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00016}\mbox{\hyperlink{config_8h_af25022a50eb39b13884d848c102c0b5b}{00016}} \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_af25022a50eb39b13884d848c102c0b5b}{MAX\_PROCESS\_NUMBER}} = 1024; \textcolor{comment}{// 最大进程数量}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00017}\mbox{\hyperlink{config_8h_a60fb43b57d214cc1d4aea17d0871a46f}{00017}} \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a60fb43b57d214cc1d4aea17d0871a46f}{MAX\_ARGUMENT\_NUMBER}} = 128; \textcolor{comment}{// 最大参数数量}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00019}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9}{00019}} \textcolor{keyword}{enum} \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9}{sh\_err\_t}}   \textcolor{comment}{//  shell错误类型}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00021}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a4e67625edd976827f6cccad8c53e08fd}{00021}}     \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a4e67625edd976827f6cccad8c53e08fd}{SH\_SUCCESS}} = 0, \textcolor{comment}{// 正常}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00022}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9acdcc3776b68847da0ae82c6a18f32c07}{00022}}     \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9acdcc3776b68847da0ae82c6a18f32c07}{SH\_FAILED}},      \textcolor{comment}{// 失败}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00023}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a2372bc224e2441db50910b42b7295fdd}{00023}}     \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a2372bc224e2441db50910b42b7295fdd}{SH\_UNDEFINED}},   \textcolor{comment}{// 未定义}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00024}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a18c382c378c1c8dcd09bade4832c0a9a}{00024}}     \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9a18c382c378c1c8dcd09bade4832c0a9a}{SH\_ARGS}},        \textcolor{comment}{// 参数错误}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00025}\mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9acb3f320a6a724457d1574b153dac706f}{00025}}     \mbox{\hyperlink{config_8h_ae2add225307a7b3fcb70840ed41543e9acb3f320a6a724457d1574b153dac706f}{SH\_EXIT}},        \textcolor{comment}{// 退出}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00026}00026 \};}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00028}\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{00028}} \textcolor{keyword}{enum} \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592}{job\_state}}                                  \textcolor{comment}{// 进程状态}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00030}\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a2f5f2c4a8c4f4f0519d503dcdfbf55cb}{00030}}     \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a2f5f2c4a8c4f4f0519d503dcdfbf55cb}{Running}},                                    \textcolor{comment}{// 正在运行}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00031}\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a4d049c6d45e08a294523df186ad77a75}{00031}}     \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a4d049c6d45e08a294523df186ad77a75}{Stopped}},                                    \textcolor{comment}{// 停止运行}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00032}\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592aa7929b884d7db9093d6ed453feedf2a2}{00032}}     \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592aa7929b884d7db9093d6ed453feedf2a2}{Done}},                                       \textcolor{comment}{// 完成运行}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00033}00033     \mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a0bd9962868a464e4730ffcf8d3fa798d}{Terminated}}                                  \textcolor{comment}{// 终止运行}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00034}\mbox{\hyperlink{config_8h_a97622948346be03d21f97b3c562b9592a0bd9962868a464e4730ffcf8d3fa798d}{00034}} \};}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00036}\mbox{\hyperlink{config_8h_a8a5a70d2a4da454dbc4de9389d01f907}{00036}} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a8a5a70d2a4da454dbc4de9389d01f907}{hash\_prime}} = 33u;   \textcolor{comment}{// 相乘质数}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00037}\mbox{\hyperlink{config_8h_a7839a2cb80e0fc28c09c9f2f585b34c2}{00037}} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a7839a2cb80e0fc28c09c9f2f585b34c2}{hash\_basis}} = 5381u; \textcolor{comment}{// 偏移}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00049}\mbox{\hyperlink{config_8h_a05c7e55c0f417c2cb510ca9131ee8d45}{00049}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \textcolor{keyword}{constexpr} \mbox{\hyperlink{config_8h_a05c7e55c0f417c2cb510ca9131ee8d45}{String\_Hash}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const} *input, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} prime = \mbox{\hyperlink{config_8h_a8a5a70d2a4da454dbc4de9389d01f907}{hash\_prime}}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} basis = \mbox{\hyperlink{config_8h_a7839a2cb80e0fc28c09c9f2f585b34c2}{hash\_basis}}) }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00050}00050 \{}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00051}00051     \textcolor{keywordflow}{return} *input ?                                                          \textcolor{comment}{// 是否达到字符串的结尾}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00052}00052         \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\textcolor{keyword}{>}(*input) + prime * \mbox{\hyperlink{config_8h_a05c7e55c0f417c2cb510ca9131ee8d45}{String\_Hash}}(input + 1) : \textcolor{comment}{// 还未达到，递归求和继续}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00053}00053         basis;                                                               \textcolor{comment}{// 到达末尾，返回一个质数哈希}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00054}00054 \}}
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{config_8h_source_l00056}00056 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

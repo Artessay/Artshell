@@ -1,0 +1,32 @@
+\doxysection{Parser.\+h}
+\label{_parser_8h_source}\index{inc/Parser.h@{inc/Parser.h}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#ifndef \_PARSER\_H\_}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#define \_PARSER\_H\_}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{keyword}{class }Console;}
+\DoxyCodeLine{00016 \textcolor{keyword}{class }Display;}
+\DoxyCodeLine{00017 \textcolor{keyword}{class }Executor;}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{keyword}{class }Parser}
+\DoxyCodeLine{00020 \{}
+\DoxyCodeLine{00021     \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022         \textcolor{keyword}{enum} \{SUCCESS = 0, EXIT = 1\};}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00040         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} shell\_execute(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[]);}
+\DoxyCodeLine{00041 }
+\DoxyCodeLine{00042     \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043         Parser(\textcolor{comment}{/* args */}) \{\};}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00053         \textcolor{keyword}{virtual} \string~Parser() = 0;  \textcolor{comment}{// 抽象类，纯虚函数}}
+\DoxyCodeLine{00054 }
+\DoxyCodeLine{00055         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} shell\_pipe(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[]);}
+\DoxyCodeLine{00056 }
+\DoxyCodeLine{00057         \textcolor{keyword}{static} \textcolor{keywordtype}{int} shell\_parser(Console *model, Display* view, Executor* controller, \textcolor{keywordtype}{int}\& argc, \textcolor{keywordtype}{char} *argv[], \textcolor{keywordtype}{char} *env[]);}
+\DoxyCodeLine{00058 \};}
+\DoxyCodeLine{00059 }
+\DoxyCodeLine{00060 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

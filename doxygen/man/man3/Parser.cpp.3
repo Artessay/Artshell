@@ -1,0 +1,78 @@
+.TH "src/Parser.cpp" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/Parser.cpp \- 语法分析  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'common\&.h'\fP
+.br
+\fC#include 'Parser\&.h'\fP
+.br
+\fC#include 'Console\&.h'\fP
+.br
+\fC#include 'Display\&.h'\fP
+.br
+\fC#include 'Executor\&.h'\fP
+.br
+\fC#include <fcntl\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <exception>\fP
+.br
+\fC#include <sys/wait\&.h>\fP
+.br
+
+.SS "函数"
+
+.in +1c
+.ti -1c
+.RI "static const char * \fBshell_error_message\fP (\fBsh_err_t\fP err)"
+.br
+.RI "根据错误类型给出错误信息 "
+.in -1c
+.SH "详细描述"
+.PP 
+语法分析 
+
+
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-19
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBParser\&.cpp\fP 中定义\&.
+.SH "函数说明"
+.PP 
+.SS "static const char * shell_error_message (\fBsh_err_t\fP err)\fC [static]\fP"
+
+.PP
+根据错误类型给出错误信息 
+.PP
+在文件 \fBParser\&.cpp\fP 第 \fB353\fP 行定义\&.
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.

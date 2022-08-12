@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Shell: main.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Art.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">My Shell<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">命令行编辑器: 邱日宏 3200105842</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// 程序：命令行编辑器</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// 作者：邱日宏 3200105842</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="myshell_8h.html">myshell.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[], <span class="keywordtype">char</span> **env)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// 开头输出判断程序是否正常开始，仅在调试时使用</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// puts(&quot;Welcome to MyShell ! \n&quot;);</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208">SHELL::shell_setup</a>(argc, argv, env) != 0)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        puts(<span class="stringliteral">&quot;shell setup failed.&quot;</span>); </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// 末尾输出判断程序是否正常结束，仅在调试时使用</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// puts(&quot;Bye~&quot;);</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="ttc" id="amain_8cpp_html_a1aabce0760eec882190c6639111cdddb"><div class="ttname"><a href="main_8cpp.html#a1aabce0760eec882190c6639111cdddb">main</a></div><div class="ttdeci">int main(int argc, char *argv[], char **env)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00019">main.cpp:19</a></div></div>
+<div class="ttc" id="amyshell_8h_html"><div class="ttname"><a href="myshell_8h.html">myshell.h</a></div><div class="ttdoc">myshell头文件 包含了myshell.cpp中所需要引用的所有自定义类</div></div>
+<div class="ttc" id="anamespace_s_h_e_l_l_html_ab1906b6b08632cea09530f141a5b4208"><div class="ttname"><a href="namespace_s_h_e_l_l.html#ab1906b6b08632cea09530f141a5b4208">SHELL::shell_setup</a></div><div class="ttdeci">int shell_setup(int argc, char *argv[], char *env[])</div><div class="ttdoc">启动shell</div><div class="ttdef"><b>Definition:</b> <a href="myshell_8cpp_source.html#l00035">myshell.cpp:35</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

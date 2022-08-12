@@ -1,0 +1,48 @@
+\hypertarget{_heap_8h_source}{}\doxysection{Heap.\+h}
+\label{_heap_8h_source}\index{inc/Heap.h@{inc/Heap.h}}
+\mbox{\hyperlink{_heap_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef \_HEAP\_H\_}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00013}00013 \textcolor{preprocessor}{\#define \_HEAP\_H\_}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00016}00016 \textcolor{preprocessor}{\#include <stddef.h>}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00027}00027 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00028}\mbox{\hyperlink{class_heap}{00028}} \textcolor{keyword}{class }\mbox{\hyperlink{class_heap}{Heap}}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00030}00030     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00031}\mbox{\hyperlink{class_heap_ae58ddd11cd62c7c9843558c7cf21590b}{00031}}         \mbox{\hyperlink{class_heap_ae58ddd11cd62c7c9843558c7cf21590b}{Heap}}() : \mbox{\hyperlink{class_heap_a9c25a9342f5afb0ba003ae2051f161b5}{size\_}}(0) \{\};}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00043}\mbox{\hyperlink{class_heap_a670b08eef347e5d2e726d820c97d5716}{00043}}         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_heap_a670b08eef347e5d2e726d820c97d5716}{\string~Heap}}() \{\};}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00044}00044         }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00045}\mbox{\hyperlink{class_heap_a86d5e0f109c5da10a1f0f18ec644a3d8}{00045}}         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_heap_a86d5e0f109c5da10a1f0f18ec644a3d8}{size}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_heap_a9c25a9342f5afb0ba003ae2051f161b5}{size\_}}; \}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00047}\mbox{\hyperlink{class_heap_af631d0aa5bbc4bb766114180ba9aab2a}{00047}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_heap_af631d0aa5bbc4bb766114180ba9aab2a}{build}}(T data[], \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_heap_a86d5e0f109c5da10a1f0f18ec644a3d8}{size}}) = 0;}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00049}\mbox{\hyperlink{class_heap_a412ca53eb7bc9124283e17207da9beb6}{00049}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_heap_a412ca53eb7bc9124283e17207da9beb6}{insert}}(T value)}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00050}00050         \{}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00051}00051             assert(\textcolor{keyword}{false} \&\& \textcolor{stringliteral}{"{}insert not implemented."{}});}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00052}00052         \}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00054}\mbox{\hyperlink{class_heap_abf2280ccc33405ea1cd7c2165bcd8667}{00054}}         \textcolor{keyword}{virtual} T \mbox{\hyperlink{class_heap_abf2280ccc33405ea1cd7c2165bcd8667}{top}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00055}00055 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00056}00056             assert(\textcolor{keyword}{false} \&\& \textcolor{stringliteral}{"{}top not implemented."{}});}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00057}00057             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00058}00058         \}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00059}00059         }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00060}\mbox{\hyperlink{class_heap_a939b7f03924d3901e8bebfdaadfd9513}{00060}}         \textcolor{keyword}{virtual} T \mbox{\hyperlink{class_heap_a939b7f03924d3901e8bebfdaadfd9513}{extract}}()}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00061}00061         \{}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00062}00062             assert(\textcolor{keyword}{false} \&\& \textcolor{stringliteral}{"{}extract not implemented."{}});}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00063}00063             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00064}00064         \}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00065}00065     }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00066}00066     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00067}\mbox{\hyperlink{class_heap_a9c25a9342f5afb0ba003ae2051f161b5}{00067}}         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_heap_a9c25a9342f5afb0ba003ae2051f161b5}{size\_}};      \textcolor{comment}{// 当前容量}}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00068}00068 \};}
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_heap_8h_source_l00071}00071 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,212 @@
+\doxysection{Console.\+cpp}
+\label{_console_8cpp_source}\index{src/Console.cpp@{src/Console.cpp}}
+\textbf{ 浏览该文件的文档.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#include "{}Console.h"{}}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#include "{}BinaryHeap.h"{}}}
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "{}ProcessManager.h"{}}}
+\DoxyCodeLine{00015 }
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#include <pwd.h>}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <wait.h>}}
+\DoxyCodeLine{00018 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <signal.h>}}
+\DoxyCodeLine{00020 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{00022 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{00023 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{00024 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026 \textcolor{keywordtype}{int} Console::input\_std\_fd;}
+\DoxyCodeLine{00027 \textcolor{keywordtype}{int} Console::output\_std\_fd;}
+\DoxyCodeLine{00028 \textcolor{keywordtype}{int} Console::error\_std\_fd;}
+\DoxyCodeLine{00029 pid\_t Console::child\_process\_id = -\/1;}
+\DoxyCodeLine{00030 \textcolor{keyword}{static} Console* cp = \textcolor{keyword}{nullptr};   \textcolor{comment}{// 为了能够在友元函数中引用控制台，在此处设置本地变量以利于信号处理}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 Console::Console(\textcolor{comment}{/* args */})}
+\DoxyCodeLine{00033 \{}
+\DoxyCodeLine{00034     [[maybe\_unused]] \textcolor{keywordtype}{int} ret;}
+\DoxyCodeLine{00035     ret = init();       \textcolor{comment}{// 初始化}}
+\DoxyCodeLine{00036     assert(ret == 0);   \textcolor{comment}{// 判断初始化是否成功}}
+\DoxyCodeLine{00037 }
+\DoxyCodeLine{00038     process\_manager = \textcolor{keyword}{new} ProcessManager();}
+\DoxyCodeLine{00039     cp = \textcolor{keyword}{this};}
+\DoxyCodeLine{00040 }
+\DoxyCodeLine{00041     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00042 \}}
+\DoxyCodeLine{00043 }
+\DoxyCodeLine{00044 Console::\string~Console()}
+\DoxyCodeLine{00045 \{}
+\DoxyCodeLine{00046     \textcolor{keyword}{delete} process\_manager;}
+\DoxyCodeLine{00047 \}}
+\DoxyCodeLine{00048 }
+\DoxyCodeLine{00049 \textcolor{keywordtype}{void} SignalHandler(\textcolor{keywordtype}{int} signal\_)}
+\DoxyCodeLine{00050 \{}
+\DoxyCodeLine{00051     \textcolor{keywordflow}{switch} (signal\_)}
+\DoxyCodeLine{00052     \{}
+\DoxyCodeLine{00053         \textcolor{keywordflow}{case} SIGINT:    \textcolor{comment}{// Ctrl C 交互注意信号}}
+\DoxyCodeLine{00054 \textcolor{preprocessor}{            \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00055             printf(\textcolor{stringliteral}{"{}Ctrl + C\(\backslash\)n"{}});}
+\DoxyCodeLine{00056 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{00057             \textcolor{keywordflow}{if} (write(STDOUT\_FILENO, \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, 1) < 0)}
+\DoxyCodeLine{00058                 \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00059             \textcolor{comment}{// 当kill的pid < 0时  取|pid|发给对应进程组。}}
+\DoxyCodeLine{00060             \textcolor{comment}{// kill(-\/getpid(), SIGINT);}}
+\DoxyCodeLine{00061             }
+\DoxyCodeLine{00062             \textcolor{comment}{// 子进程的CTRL C重置了，由子进程处理中断}}
+\DoxyCodeLine{00063             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00064         }
+\DoxyCodeLine{00065         \textcolor{keywordflow}{case} SIGTSTP:    \textcolor{comment}{// Ctrl Z 键盘中断}}
+\DoxyCodeLine{00066 \textcolor{preprocessor}{            \#ifdef \_DEBUG\_}}
+\DoxyCodeLine{00067             printf(\textcolor{stringliteral}{"{}Ctrl + Z\(\backslash\)n"{}});}
+\DoxyCodeLine{00068 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{00069             \textcolor{keywordflow}{if} (write(STDOUT\_FILENO, \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, 1) < 0)}
+\DoxyCodeLine{00070                 \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00071             }
+\DoxyCodeLine{00072             \textcolor{keywordflow}{if} (Console::child\_process\_id >= 0)}
+\DoxyCodeLine{00073             \{}
+\DoxyCodeLine{00074                 setpgid(Console::child\_process\_id, 0);}
+\DoxyCodeLine{00075                 kill(-\/Console::child\_process\_id, SIGTSTP);}
+\DoxyCodeLine{00076             }
+\DoxyCodeLine{00077                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jobid = cp-\/>AddJob(Console::child\_process\_id, Stopped, cp-\/>argc, (\textcolor{keywordtype}{char} **)cp-\/>argv);}
+\DoxyCodeLine{00078                 }
+\DoxyCodeLine{00079                 \textcolor{comment}{// 打印当前进程}}
+\DoxyCodeLine{00080                 \textcolor{keywordtype}{char} buffer[BUFFER\_SIZE];}
+\DoxyCodeLine{00081                 snprintf(buffer, BUFFER\_SIZE-\/1, \textcolor{stringliteral}{"{}[\%u] \%d\(\backslash\)n"{}}, jobid, Console::child\_process\_id);}
+\DoxyCodeLine{00082                 \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, buffer, strlen(buffer)) == -\/1)}
+\DoxyCodeLine{00083                     \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00084             }
+\DoxyCodeLine{00085                 snprintf(buffer, BUFFER\_SIZE-\/1, \textcolor{stringliteral}{"{}[\%u]\%c\(\backslash\)tStopped\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t"{}}, jobid, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{00086                 \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, buffer, strlen(buffer)) == -\/1)}
+\DoxyCodeLine{00087                     \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089                 \textcolor{comment}{// 参数打印}}
+\DoxyCodeLine{00090                 \textcolor{keywordflow}{if} (cp-\/>argc > 0)}
+\DoxyCodeLine{00091                 \{}
+\DoxyCodeLine{00092                     \textcolor{comment}{// 确保行末无多余的空格}}
+\DoxyCodeLine{00093                     \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, cp-\/>argv[0], strlen(cp-\/>argv[0])) == -\/1)}
+\DoxyCodeLine{00094                         \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00095                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < cp-\/>argc; ++i)}
+\DoxyCodeLine{00096                     \{}
+\DoxyCodeLine{00097                         \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, \textcolor{stringliteral}{"{} "{}}, 1) == -\/1)    \textcolor{comment}{// 打印空格}}
+\DoxyCodeLine{00098                             \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00099 }
+\DoxyCodeLine{00100                         \textcolor{comment}{// 打印参数}}
+\DoxyCodeLine{00101                         \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, cp-\/>argv[i], strlen(cp-\/>argv[i])) == -\/1)}
+\DoxyCodeLine{00102                             \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00103                     \}}
+\DoxyCodeLine{00104                 \}}
+\DoxyCodeLine{00105                 \textcolor{keywordflow}{if} (write(cp-\/>output\_std\_fd, \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, 1) == -\/1)}
+\DoxyCodeLine{00106                     \textcolor{keywordflow}{throw} std::exception();}
+\DoxyCodeLine{00107 }
+\DoxyCodeLine{00108                 Console::child\_process\_id = -\/1;}
+\DoxyCodeLine{00109             \}}
+\DoxyCodeLine{00110             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00111         }
+\DoxyCodeLine{00112         \textcolor{keywordflow}{case} SIGCHLD:   \textcolor{comment}{// 子进程结束}}
+\DoxyCodeLine{00113             \textcolor{comment}{// 父进程收到子进程退出命令后，回收子进程}}
+\DoxyCodeLine{00114             \textcolor{comment}{// waitpid(-\/1, NULL, WNOHANG);}}
+\DoxyCodeLine{00115             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00117         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00118             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00119     \}}
+\DoxyCodeLine{00120     }
+\DoxyCodeLine{00121 \}}
+\DoxyCodeLine{00122 }
+\DoxyCodeLine{00123 \textcolor{keywordtype}{int} Console::init()}
+\DoxyCodeLine{00124 \{}
+\DoxyCodeLine{00125     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00126     \{}
+\DoxyCodeLine{00127         \textcolor{comment}{// 获取用户名称}}
+\DoxyCodeLine{00128         \textcolor{keyword}{struct }passwd *pw = getpwuid(getuid());}
+\DoxyCodeLine{00129         \textcolor{keywordflow}{if} (pw == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00130         \{}
+\DoxyCodeLine{00131             \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}get user database entry error"{}};}
+\DoxyCodeLine{00132         \}}
+\DoxyCodeLine{00133         memset(user\_name, 0, BUFFER\_SIZE);}
+\DoxyCodeLine{00134         strncpy(user\_name, pw-\/>pw\_name, BUFFER\_SIZE-\/1);}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136         \textcolor{comment}{// 获取主机名称}}
+\DoxyCodeLine{00137         \textcolor{keywordtype}{int} ret;}
+\DoxyCodeLine{00138         ret = gethostname(host\_name, BUFFER\_SIZE-\/1);}
+\DoxyCodeLine{00139         \textcolor{keywordflow}{if} (ret != 0)}
+\DoxyCodeLine{00140         \{}
+\DoxyCodeLine{00141             \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Error when getting host name"{}};}
+\DoxyCodeLine{00142         \}}
+\DoxyCodeLine{00143         }
+\DoxyCodeLine{00144         \textcolor{comment}{// 获取当前工作目录}}
+\DoxyCodeLine{00145         \textcolor{keywordtype}{char} *result;}
+\DoxyCodeLine{00146         result = getcwd(current\_working\_dictionary, BUFFER\_SIZE);}
+\DoxyCodeLine{00147         \textcolor{keywordflow}{if} (result == NULL)}
+\DoxyCodeLine{00148         \{}
+\DoxyCodeLine{00149             \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Error when getting current working dictionary"{}};}
+\DoxyCodeLine{00150         \}}
+\DoxyCodeLine{00151 }
+\DoxyCodeLine{00152         \textcolor{comment}{// 获取主目录}}
+\DoxyCodeLine{00153         memset(home, 0, BUFFER\_SIZE);}
+\DoxyCodeLine{00154         strncpy(home, getenv(\textcolor{stringliteral}{"{}HOME"{}}), BUFFER\_SIZE-\/1);}
+\DoxyCodeLine{00155 }
+\DoxyCodeLine{00156         \textcolor{comment}{// 设置shell环境变量}}
+\DoxyCodeLine{00157         strncpy(shell\_path\_env, current\_working\_dictionary, BUFFER\_SIZE);}
+\DoxyCodeLine{00158         strncat(shell\_path\_env, \textcolor{stringliteral}{"{}/myshell"{}}, BUFFER\_SIZE);}
+\DoxyCodeLine{00159         setenv(\textcolor{stringliteral}{"{}shell"{}}, shell\_path\_env, 1);}
+\DoxyCodeLine{00160 }
+\DoxyCodeLine{00161         \textcolor{comment}{// 设置掩码}}
+\DoxyCodeLine{00162         umask\_ = umask(022);  \textcolor{comment}{// 获取默认掩码}}
+\DoxyCodeLine{00163         umask(umask\_); \textcolor{comment}{// 改回原来掩码}}
+\DoxyCodeLine{00164         }
+\DoxyCodeLine{00165         \textcolor{comment}{// 设置默认文件描述符}}
+\DoxyCodeLine{00166         input\_file\_descriptor = STDIN\_FILENO;}
+\DoxyCodeLine{00167         output\_file\_descriptor = STDOUT\_FILENO;}
+\DoxyCodeLine{00168         error\_file\_descriptor = STDERR\_FILENO;}
+\DoxyCodeLine{00169 }
+\DoxyCodeLine{00170         \textcolor{comment}{// 设置重定向状态}}
+\DoxyCodeLine{00171         redirect\_input = \textcolor{keyword}{false};}
+\DoxyCodeLine{00172         redirect\_output = \textcolor{keyword}{false};}
+\DoxyCodeLine{00173         redirect\_error = \textcolor{keyword}{false};}
+\DoxyCodeLine{00174 }
+\DoxyCodeLine{00175         \textcolor{comment}{// 备份STD IO}}
+\DoxyCodeLine{00176         input\_std\_fd = dup(STDIN\_FILENO);}
+\DoxyCodeLine{00177         output\_std\_fd = dup(STDOUT\_FILENO);}
+\DoxyCodeLine{00178         error\_std\_fd = dup(STDERR\_FILENO);}
+\DoxyCodeLine{00179 }
+\DoxyCodeLine{00180         \textcolor{comment}{// 获取进程}}
+\DoxyCodeLine{00181         process\_id = getpid();}
+\DoxyCodeLine{00182         child\_process\_id = -\/1;  \textcolor{comment}{// 暂无子进程}}
+\DoxyCodeLine{00183 }
+\DoxyCodeLine{00184         \textcolor{comment}{// signal(SIGINT, SignalHandler);  // Ctrl + C}}
+\DoxyCodeLine{00185         signal(SIGTSTP, SignalHandler); \textcolor{comment}{// Ctrl + Z}}
+\DoxyCodeLine{00186         signal(SIGCHLD, SignalHandler); \textcolor{comment}{// 子进程结束时发送给父进程的信号}}
+\DoxyCodeLine{00187 }
+\DoxyCodeLine{00188         \textcolor{comment}{// 屏幕shell从后台调用tcsetpcgrp时收到的信号}}
+\DoxyCodeLine{00189         signal(SIGTTIN, SIG\_IGN);   \textcolor{comment}{// 屏蔽SIGTTIN信号 }}
+\DoxyCodeLine{00190         signal(SIGTTOU, SIG\_IGN);   \textcolor{comment}{// 屏蔽SIGTTOU信号 }}
+\DoxyCodeLine{00191     \}}
+\DoxyCodeLine{00192     \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{00193     \{}
+\DoxyCodeLine{00194         std::cerr << e.what() << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00195         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00196     \}}
+\DoxyCodeLine{00197     }
+\DoxyCodeLine{00198     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00199 \}}
+\DoxyCodeLine{00200 }
+\DoxyCodeLine{00201 \textcolor{keywordtype}{void} Console::ConsoleJobList()\textcolor{keyword}{ const}}
+\DoxyCodeLine{00202 \textcolor{keyword}{}\{}
+\DoxyCodeLine{00203     \textcolor{comment}{/* 显示工作列表，以打印与重定向处。 */}}
+\DoxyCodeLine{00204     process\_manager-\/>PrintJobList(STDOUT\_FILENO);}
+\DoxyCodeLine{00205 \}}
+\DoxyCodeLine{00206 }
+\DoxyCodeLine{00207 \textcolor{keywordtype}{void} Console::ConsoleJobListDone()}
+\DoxyCodeLine{00208 \{}
+\DoxyCodeLine{00209     \textcolor{comment}{/* 输出应显示在屏幕上，无论如何重定向。 */}}
+\DoxyCodeLine{00210     process\_manager-\/>PrintJobListDone(output\_std\_fd);}
+\DoxyCodeLine{00211 \}}
+\DoxyCodeLine{00212 }
+\DoxyCodeLine{00213 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} Console::AddJob(\textcolor{keywordtype}{int} pid, job\_state state, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[])}
+\DoxyCodeLine{00214 \{}
+\DoxyCodeLine{00215     \textcolor{keywordflow}{return} process\_manager-\/>JobInsert(pid, state, argc, argv);}
+\DoxyCodeLine{00216 \}}
+
+\end{DoxyCode}

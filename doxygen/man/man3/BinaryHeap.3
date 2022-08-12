@@ -1,0 +1,171 @@
+.TH "BinaryHeap< T >" 3 "2022年 八月 13日 星期六" "Version 1.0.0" "My Shell" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BinaryHeap< T > \- 二项堆，小根堆  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <BinaryHeap\&.h>\fP
+.PP
+继承自 \fBHeap< T >\fP \&.
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "class \fBExtractEmptyHeap\fP"
+.br
+.ti -1c
+.RI "class \fBOutOfMemory\fP"
+.br
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBBinaryHeap\fP (size_t heap_capacity=\fBHeapBlockSize\fP)"
+.br
+.ti -1c
+.RI "\fBBinaryHeap\fP (T data[], size_t \fBsize\fP, size_t heap_capacity=\fBHeapBlockSize\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~BinaryHeap\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBbuild\fP (T data[], size_t \fBsize\fP)"
+.br
+.ti -1c
+.RI "virtual void \fBinsert\fP (T value)"
+.br
+.ti -1c
+.RI "virtual T \fBtop\fP () const"
+.br
+.ti -1c
+.RI "virtual T \fBextract\fP ()"
+.br
+.in -1c
+.SS "Protected 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBAllocMoreSpace\fP ()"
+.br
+.in -1c
+.SS "Protected 属性"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBcapacity_\fP"
+.br
+.ti -1c
+.RI "T * \fBnode\fP"
+.br
+.in -1c
+.SS "Private 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBbuild_heap\fP ()"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+
+.SS "template<class T>
+.br
+class BinaryHeap< T >"二项堆，小根堆 
+
+
+.PP
+\fB模板参数\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fB版本\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+邱日宏 (3200105842@zju.edu.cn) 
+.RE
+.PP
+\fB日期\fP
+.RS 4
+2022-07-20 
+.RE
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB34\fP 行定义\&.
+.SH "构造及析构函数说明"
+.PP 
+.SS "template<class T > \fBBinaryHeap\fP< T >\fB::BinaryHeap\fP (size_t heap_capacity = \fC\fBHeapBlockSize\fP\fP)\fC [inline]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB41\fP 行定义\&.
+.SS "template<class T > \fBBinaryHeap\fP< T >\fB::BinaryHeap\fP (T data[], size_t size, size_t heap_capacity = \fC\fBHeapBlockSize\fP\fP)\fC [inline]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB51\fP 行定义\&.
+.SS "template<class T > virtual \fBBinaryHeap\fP< T >::~\fBBinaryHeap\fP ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB65\fP 行定义\&.
+.SH "成员函数说明"
+.PP 
+.SS "template<class T > void \fBBinaryHeap\fP< T >::AllocMoreSpace ()\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB150\fP 行定义\&.
+.SS "template<class T > virtual void \fBBinaryHeap\fP< T >::build (T data[], size_t size)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+实现了 \fBHeap< T >\fP\&.
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB70\fP 行定义\&.
+.SS "template<class T > void \fBBinaryHeap\fP< T >::build_heap ()\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB166\fP 行定义\&.
+.SS "template<class T > virtual T \fBBinaryHeap\fP< T >::extract ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+重载 \fBHeap< T >\fP \&.
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB117\fP 行定义\&.
+.SS "template<class T > virtual void \fBBinaryHeap\fP< T >::insert (T value)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+重载 \fBHeap< T >\fP \&.
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB97\fP 行定义\&.
+.SS "template<class T > virtual T \fBBinaryHeap\fP< T >::top () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+重载 \fBHeap< T >\fP \&.
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB110\fP 行定义\&.
+.SH "类成员变量说明"
+.PP 
+.SS "template<class T > size_t \fBBinaryHeap\fP< T >::capacity_\fC [protected]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB144\fP 行定义\&.
+.SS "template<class T > T* \fBBinaryHeap\fP< T >::node\fC [protected]\fP"
+
+.PP
+在文件 \fBBinaryHeap\&.h\fP 第 \fB145\fP 行定义\&.
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 My Shell 的 源代码自动生成\&.
