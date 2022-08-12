@@ -72,7 +72,7 @@ void SignalHandler(int signal_)
             if (Console::child_process_id >= 0)
             {
                 setpgid(Console::child_process_id, 0);
-                kill(-Console::child_process_id, SIGTSTP);
+                kill(Console::child_process_id, SIGTSTP);
             
                 unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, (char **)cp->argv);
                 
@@ -112,6 +112,7 @@ void SignalHandler(int signal_)
         case SIGCHLD:   // 子进程结束
             // 父进程收到子进程退出命令后，回收子进程
             // waitpid(-1, NULL, WNOHANG);
+            cp->ResetChildPid();
             break;
 
         default:
