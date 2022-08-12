@@ -69,19 +69,19 @@ class BinaryHeap : public Heap<T>
 
         virtual void build(T data[], size_t size)
         {
-            while (capacity_ < size)
+            while (capacity_ < size)    // 内存不够则分配空间
                 AllocMoreSpace();
             size_ = size;
-            for (size_t i = 0; i < size; ++i)
+            for (size_t i = 0; i < size; ++i)   // 拷贝数组
                 node[i+1] = data[i];
             
             for (size_t i = (size_>>1); i>0; --i)    //从 n/2 开始
             {
                 size_t p, child;
                 T X = node[i];
-                for (p = i; (p<<1) <= size_; p = child) //percolate down
+                for (p = i; (p<<1) <= size_; p = child) //下滤
                 {
-                    child=(p<<1);   //find the smaller child
+                    child=(p<<1);   //寻找最小的孩子
                     if (child != size_ && node[child+1] < node[child])
                         ++child;
                     
@@ -98,13 +98,13 @@ class BinaryHeap : public Heap<T>
         {
             if (size_ + 2 >= capacity_)
             {
-                AllocMoreSpace();
+                AllocMoreSpace();    // 内存不够则分配空间
             }
 
             int p;
-            for (p = ++size_; node[p>>1] > value && p > 1; p = p>>1)    //percolate up
-                node[p] = node[p>>1];   //avoid the use of swap
-            node[p] = value; //insert the node in right place
+            for (p = ++size_; node[p>>1] > value && p > 1; p = p>>1)    //下滤
+                node[p] = node[p>>1];   //避免使用swap交换
+            node[p] = value; //将节点插入在正确的位置上
         }
 
         virtual T top() const
@@ -116,22 +116,22 @@ class BinaryHeap : public Heap<T>
 
         virtual T extract()
         {
-            if (size_ == 0)   //if the heap is null
-                throw ExtractEmptyHeap();    //then return -1
+            if (size_ == 0)   //如果堆是空的
+                throw ExtractEmptyHeap();    //那么为异常
 
             T top, last;
             top = node[1];
             last = node[size_--];
 
             size_t p, child;
-            for (p = 1; (p<<1) <= size_; p = child) //percolate down
+            for (p = 1; (p<<1) <= size_; p = child)  //下滤
             {
-                child = (p<<1);   //find the smaller child
+                child = (p<<1);   //寻找最小的孩子
                 if (child != size_ && node[child+1] < node[child])
                     ++child;
                 
-                if (last >node[child])
-                    node[p]=node[child];
+                if (last >node[child])    // 如果未到合适的位置
+                    node[p]=node[child];  // 将孩子提上来
                 else
                     break;
             }
@@ -147,19 +147,19 @@ class BinaryHeap : public Heap<T>
         class ExtractEmptyHeap : public std::exception {};
         class OutOfMemory : public std::exception {};
 
-        void AllocMoreSpace()
+        void AllocMoreSpace()   // 动态数组分配空间
         {
-            capacity_<<=1;
+            capacity_<<=1;      // 容量翻倍
             T *newNode = new T[capacity_];
             if (newNode == NULL)
             {
-                throw OutOfMemory();
+                throw OutOfMemory();    // 堆内存不足异常
             }
 
             for (size_t i = 0; i < size_; ++i)
-                std::swap(node[i], newNode[i]);
+                std::swap(node[i], newNode[i]); // 直接地址交换，提高效率
             delete [] node;
-            node = std::move(newNode);
+            node = std::move(newNode);          // 移动拷贝，效率更佳
         }
 
     private:
@@ -171,16 +171,16 @@ class BinaryHeap : public Heap<T>
                 T X = node[i];
                 for (p = i; (p<<1) <= size_; p = child) //percolate down
                 {
-                    child=(p<<1);   //find the smaller child
+                    child=(p<<1);   //寻找最小的孩子
                     if (child != size_ && node[child+1] < node[child])
                         ++child;
                     
-                    if (X > node[child])
-                        node[p] = node[child];
+                    if (X > node[child])    // 如果未到合适的位置
+                        node[p] = node[child];  // 将孩子提上来
                     else
                         break;
                 }
-                node[p] = X;
+                node[p] = X;  // 找到了合适的位置
             }
         }
 };
