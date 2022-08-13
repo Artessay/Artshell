@@ -1,8 +1,8 @@
 # ArtShell
 
-ArtShell, version 1.0.0-release (x86_64-pc-linux-gnu)
+MyShell, version 1.0.0-release (x86_64-pc-linux-gnu)
 
-ArtShell内部指令列表：
+MyShell内部指令列表：
 
 1)	bg <job> ——将被挂起的作业<job>转到后台。如果没有<job>参数，则默认将当前进程放到后台运行。
 
