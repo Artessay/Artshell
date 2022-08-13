@@ -1,8 +1,0 @@
-<map id="String_Hash" name="String_Hash">
-<area shape="rect" id="node1" title="字符串散列，用于将字符串转为正整数，在编译时进行" alt="" coords="596,78,689,105"/>
-<area shape="rect" id="node2" href="$class_executor.html#acb69e9dcc912bc5308fd8bb32aa6f135" title=" " alt="" coords="407,5,534,47"/>
-<area shape="rect" id="node5" href="$class_executor.html#a409ee22c9a3324243782f8c7d5cc8af9" title=" " alt="" coords="393,71,548,112"/>
-<area shape="rect" id="node6" href="$class_executor.html#a87065e9bf3e4f57847d7d7612d3ac4dd" title=" " alt="" coords="399,136,542,177"/>
-<area shape="rect" id="node3" href="$class_executor.html#acfb4a30566fe0a9ee1e75c5ac3892c53" title=" " alt="" coords="188,78,345,105"/>
-<area shape="rect" id="node4" href="$class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,78,140,105"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="ProcessManager::BackGround" name="ProcessManager::BackGround">
-<area shape="rect" id="node1" title=" " alt="" coords="385,5,585,32"/>
-<area shape="rect" id="node2" href="$class_executor.html#a69fe207735684ba0b5b50f43a8a1e217" title="将被挂起的作业转到后台" alt="" coords="188,5,337,32"/>
-<area shape="rect" id="node3" href="$class_executor.html#a3216f1a094a2603b9c467ccbecdb68a7" title=" " alt="" coords="5,5,140,32"/>
-</map>

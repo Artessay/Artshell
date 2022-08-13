@@ -1,6 +1,0 @@
-<map id="Console::ConsoleJobListDone" name="Console::ConsoleJobListDone">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,200,39"/>
-<area shape="rect" id="node2" href="$class_process_manager.html#ade7e167c72e4090133356c01e7c6f19b" title=" " alt="" coords="248,5,423,47"/>
-<area shape="rect" id="node3" href="$class_process_manager.html#abb124eed9ed603f5de81438f94c2e342" title="删除进程" alt="" coords="471,13,665,39"/>
-<area shape="rect" id="node4" href="$class_heap.html#a412ca53eb7bc9124283e17207da9beb6" title=" " alt="" coords="713,13,805,39"/>
-</map>

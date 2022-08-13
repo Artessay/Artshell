@@ -1,7 +1,0 @@
-<map id="inc/common.h" name="inc/common.h">
-<area shape="rect" id="node1" title="共享函数库" alt="" coords="221,5,325,32"/>
-<area shape="rect" id="node2" href="$_executor_8cpp.html" title=" " alt="" coords="5,80,127,107"/>
-<area shape="rect" id="node3" href="$_parser_8cpp.html" title="语法分析" alt="" coords="151,80,258,107"/>
-<area shape="rect" id="node4" href="$common_8cpp.html" title="共享函数库" alt="" coords="283,80,401,107"/>
-<area shape="rect" id="node5" href="$myshell_8cpp.html" title="myshell程序的main函数，负责调用各个接口并实现myshell功能" alt="" coords="426,80,541,107"/>
-</map>

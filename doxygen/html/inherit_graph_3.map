@@ -1,4 +1,0 @@
-<map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$class_heap.html" title="抽象堆" alt="" coords="5,5,88,32"/>
-<area shape="rect" id="node2" href="$class_binary_heap.html" title="二项堆，小根堆" alt="" coords="136,5,256,32"/>
-</map>
