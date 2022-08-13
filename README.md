@@ -1,8 +1,8 @@
 # ArtShell
 
-MyShell, version 1.0.0-release (x86_64-pc-linux-gnu)
+ArtShell, version 1.0.0-release (x86_64-pc-linux-gnu)
 
-MyShell内部指令列表：
+ArtShell内部指令列表：
 
 1)	bg <job> ——将被挂起的作业<job>转到后台。如果没有<job>参数，则默认将当前进程放到后台运行。
 
@@ -34,4 +34,4 @@ MyShell内部指令列表：
 
 15)	umask <mask> ——设定新创建文件或目录的访问特权。如果没有<mask>参数，则显示当前设置的掩码。
 
-更多详细信息请参见[用户手册](./doc/用户手册.md)
+更多详细信息请参见用户手册
