@@ -1,3 +1,14 @@
+/**
+ * @file ProcessManager.cpp
+ * @author your name (you@domain.com)
+ * @brief 进程管理器
+ * @version 0.1
+ * @date 2022-08-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "config.h"
 #include "Console.h"
 #include "BinaryHeap.h"

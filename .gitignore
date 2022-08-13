@@ -3,6 +3,7 @@
 
 # Software Test
 ref
+doxygen
 *.sh
 *.txt
 
