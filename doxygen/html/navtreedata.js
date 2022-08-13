@@ -25,9 +25,9 @@
 var NAVTREE =
 [
   [ "My Shell", "index.html", [
-    [ "技术文档", "md_doc__xE6_x8A_x80_xE6_x9C_xAF_xE6_x96_x87_xE6_xA1_xA3.html", null ],
-    [ "用户手册", "md_doc__xE7_x94_xA8_xE6_x88_xB7_xE6_x89_x8B_xE5_x86_x8C.html", null ],
-    [ "Artshell", "md__r_e_a_d_m_e.html", null ],
+    [ "技术文档", "md__e___artshell_doc__xE6_x8A_x80_xE6_x9C_xAF_xE6_x96_x87_xE6_xA1_xA3.html", null ],
+    [ "用户手册", "md__e___artshell_doc__xE7_x94_xA8_xE6_x88_xB7_xE6_x89_x8B_xE5_x86_x8C.html", null ],
+    [ "Artshell", "md__e___artshell__r_e_a_d_m_e.html", null ],
     [ "命名空间", "namespaces.html", [
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ],
       [ "命名空间成员", "namespacemembers.html", [
