@@ -4,16 +4,17 @@
     int _argcounter = 0;					// 参数个数
 %}
 
-WORD	[a-zA-Z0-9\/\.\-~]+
+WORD	 [a-zA-Z0-9\/\.\-~]+
 STRINGLITERAL \"(\\.|[^\\"])*\"
-REDIRCT [0-9><]+
-SPECIAL	[()|&*!]
+REDIRCT  [0-9><]+
+OPERATOR [<>=!]=
+SPECIAL	 [()|&*!]
 
 %%
 	_argcounter = 0; 
 	_argvector[0] = NULL; 
 
-{WORD}|{SPECIAL}|{REDIRCT}|{STRINGLITERAL} {
+{WORD}|{SPECIAL}|{REDIRCT}|{OPERATOR}|{STRINGLITERAL} {
 	if(_argcounter < MAX_ARGUMENT_NUMBER-1) 
 	{
 	    _argvector[_argcounter++] = (char *)strdup(yytext);

@@ -896,7 +896,7 @@ bool Executor::test_file_state(const int argc, const char * const argv[])
                 return S_ISSOCK(file_stat.st_mode);
             
             /* 文件权限判断 */
-            case String_Hash("-r"):  // 只读文件
+            case String_Hash("-r"):  // 可读文件
                 return access(argv[1], R_OK);
             
             case String_Hash("-w"):  // 可写文件
@@ -970,7 +970,7 @@ bool Executor::test_number_compare(const int argc, const char * const argv[])
 
     
     int number1 = String_to_Number<int>(argv[1]);
-    int number2 = String_to_Number<int>(argv[2]);
+    int number2 = String_to_Number<int>(argv[3]);
 
     // 对整数测试参数进行判断
     switch (String_Hash(argv[2]))   // 为了形式上的优雅，使用switch语句

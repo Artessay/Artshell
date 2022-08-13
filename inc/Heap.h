@@ -21,7 +21,7 @@
  * @tparam T 
  * @version 0.1
  * @author 邱日宏 (3200105842@zju.edu.cn)
- * @date 2022-08-10
+ * @date 2022-07-20
  * @copyright Copyright (c) 2022
  */
 template <class T>
@@ -37,7 +37,7 @@ class Heap
          * 
          * @version 0.1
          * @author 邱日宏 (3200105842@zju.edu.cn)
-         * @date 2022-08-10
+         * @date 2022-07-20
          * @copyright Copyright (c) 2022
          */
         virtual ~Heap() {};
