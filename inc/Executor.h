@@ -2,7 +2,7 @@
  * @file Executor.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 解释器
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-04
  * 
  * @copyright Copyright (c) 2022
@@ -124,7 +124,7 @@ class Executor
          * @param argv 传入具体参数
          * @param env  环境变量
          * @return sh_err_t 返回执行情况
-         * @version 0.1
+         * @version 1.0
          * @author 邱日宏 (3200105842@zju.edu.cn)
          * @date 2022-07-04
          * @copyright Copyright (c) 2022

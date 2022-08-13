@@ -5,7 +5,7 @@
  * @file myshell.cpp
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief myshell程序的main函数，负责调用各个接口并实现myshell功能
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-02
  * 
  * @copyright Copyright (c) 2022

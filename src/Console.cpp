@@ -2,7 +2,7 @@
  * @file Console.cpp
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 控制台
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022

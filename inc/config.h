@@ -5,7 +5,7 @@
  * @file config.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 配置文件
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
@@ -44,7 +44,7 @@ constexpr unsigned int hash_basis = 5381u; // 偏移
  * 
  * @param input 需要转换的字符串
  * @return unsigned constexpr 散列后的哈希值
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-19
  * @copyright Copyright (c) 2022

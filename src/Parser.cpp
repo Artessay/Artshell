@@ -2,7 +2,7 @@
  * @file Parser.cpp
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 语法分析
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-19
  * 
  * @copyright Copyright (c) 2022

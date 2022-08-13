@@ -2,7 +2,7 @@
  * @file ProcessManager.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 进程管理
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-20
  * 
  * @copyright Copyright (c) 2022
@@ -98,7 +98,7 @@ class ProcessManager
          * @param argc 参数个数
          * @param argv 参数列表
          * @return unsigned int 进程作业号，0表示添加失败
-         * @version 0.1
+         * @version 1.0
          * @author 邱日宏 (3200105842@zju.edu.cn)
          * @date 2022-07-20
          * @copyright Copyright (c) 2022
@@ -109,7 +109,7 @@ class ProcessManager
          * @brief 删除进程
          * 
          * @param job 
-         * @version 0.1
+         * @version 1.0
          * @author 邱日宏 (3200105842@zju.edu.cn)
          * @date 2022-07-21
          * @copyright Copyright (c) 2022

@@ -2,7 +2,7 @@
  * @file ProcessManager.cpp
  * @author your name (you@domain.com)
  * @brief 进程管理器
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-23
  * 
  * @copyright Copyright (c) 2022

@@ -5,7 +5,7 @@
  * @file common.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 共享函数库
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-15
  * 
  * @copyright Copyright (c) 2022
@@ -30,7 +30,7 @@
  * 
  * @param argc 参数个数
  * @param argv 参数列表
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-15
  * @copyright Copyright (c) 2022
@@ -48,7 +48,7 @@ void Argument_Display(const int argc, char* const argv[]);
  * @param array 搜索数组
  * @param cmp 比较方法
  * @return int 返回对应元素下标，若没有找到则返回-1
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-17
  * @copyright Copyright (c) 2022
@@ -76,7 +76,7 @@ int Binary_Search(int left, int right, T val, T array[], int cmp(T a, T b))
  * 
  * @param s 需要去除空格的字符串
  * @return std::string& 去除完空格的字符串
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-17
  * @copyright Copyright (c) 2022
@@ -89,7 +89,7 @@ std::string& String_Trim(std::string &s);
  * @tparam Type 返回类型
  * @param str 提取的字符串
  * @return Type 转化后的类型变量
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-18
  * @copyright Copyright (c) 2022
@@ -123,7 +123,7 @@ inline T Max(const T& a, const T& b)
  * @tparam T 
  * @param octalNumber 八进制数
  * @return T 十进制数
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-19
  * @copyright Copyright (c) 2022
@@ -148,7 +148,7 @@ T Octal_to_Decimal(T octalNumber)
  * @tparam T 
  * @param decimalNumber 十进制数
  * @return T 八进制数
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-19
  * @copyright Copyright (c) 2022
@@ -173,7 +173,7 @@ T Decimal_to_Octal(T decimalNumber)
  * @tparam T 
  * @param hexadecimalNumber 十六进制数
  * @return T 十进制数
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-19
  * @copyright Copyright (c) 2022
@@ -198,7 +198,7 @@ T Hexadecimal_to_Decimal(T hexadecimalNumber)
  * @tparam T 
  * @param decimalNumber 十进制数
  * @return T 十六进制数
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-19
  * @copyright Copyright (c) 2022
@@ -224,7 +224,7 @@ T Decimal_to_Hexadecimal(T decimalNumber)
  * @param time2 时间2
  * @return true 如果time1的时间晚于time2的时间
  * @return false 如果time1的时间不晚于time2的时间
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-20
  * @copyright Copyright (c) 2022
@@ -246,7 +246,7 @@ inline bool test_timespec_newer(struct timespec& time1, struct timespec& time2)
  * @param time2 时间2
  * @return true 如果time1的时间早于time2的时间
  * @return false 如果time1的时间不早于time2的时间
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-20
  * @copyright Copyright (c) 2022

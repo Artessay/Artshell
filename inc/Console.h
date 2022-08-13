@@ -2,7 +2,7 @@
  * @file Console.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 控制台
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-03
  * 
  * @copyright Copyright (c) 2022
@@ -23,7 +23,7 @@ class ProcessManager;   // 为了加快编译速度，这里不引用头文件�
  * @brief 信号控制与处理
  * 
  * @param signal_ 
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-21
  * @copyright Copyright (c) 2022

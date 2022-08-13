@@ -2,7 +2,7 @@
  * @file BinaryHeap.h
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @brief 二叉堆
- * @version 0.1
+ * @version 1.0
  * @date 2022-07-20
  * 
  * @copyright Copyright (c) 2022
@@ -25,7 +25,7 @@ static constexpr size_t HeapBlockSize = 1024;   // 默认堆大小
  * @brief 二项堆，小根堆
  * 
  * @tparam T 
- * @version 0.1
+ * @version 1.0
  * @author 邱日宏 (3200105842@zju.edu.cn)
  * @date 2022-07-20
  * @copyright Copyright (c) 2022
