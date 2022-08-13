@@ -1,10 +1,13 @@
 # Visual Studio Code
 .vscode
 
-# Software Test
+# document
 *.pdf
-doc
-img
+SourceCode.md
+*.pptx
+*.xlsx
+
+# Software Test
 ref
 doxygen
 *.sh
