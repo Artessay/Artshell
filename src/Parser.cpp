@@ -131,8 +131,8 @@ bool Parser::shell_pipe(Console *model, Display* view, Executor* controller, int
 
 int Parser::shell_parser(Console *model, Display* view, Executor* controller, int& argc, char *argv[], char *env[])
 {
-    if (argc == 0)
-        return 0;   // 无参，不需处理
+    if (argc == 0 || strcmp(argv[0], "test") == 0)
+        return 0;   // 无参，或者为需要比较的命令，不需处理重定向
     
     for (int index = argc-1; index > 0; --index)    // 从末尾开始往前扫描，第一个不必扫
     {
