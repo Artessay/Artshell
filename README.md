@@ -1,4 +1,4 @@
-# Artshell
+# ArtShell
 
 MyShell, version 1.0.0-release (x86_64-pc-linux-gnu)
 
