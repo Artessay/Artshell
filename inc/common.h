@@ -60,15 +60,15 @@ int Binary_Search(int left, int right, T val, T array[], int cmp(T a, T b))
     {
         int mid = (left + right) >> 1;
         int compare_result = cmp(val, array[mid]);
-        if (compare_result == 0)
+        if (compare_result == 0)    // 找到了
             return mid;
-        else if (compare_result > 0)
+        else if (compare_result > 0)    // 查找结果在右半区间
             left = mid + 1;
-        else
+        else                            // 查找结果在左半区间
             right = mid;
     }
 
-    return -1;
+    return -1;                      // 没找到
 }
 
 /**

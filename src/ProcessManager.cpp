@@ -197,19 +197,20 @@ int ProcessManager::ForeGround(unsigned int jobid)
             tcsetpgrp(STDIN_FILENO, job.pid);
             tcsetpgrp(STDOUT_FILENO, job.pid);
             tcsetpgrp(STDERR_FILENO, job.pid);
-            job.state = Running;
 
-            kill(job.pid, SIGCONT);
+            job.state = Running;    // 继续运行
+
+            kill(job.pid, SIGCONT); // 向子进程发送SIGCONT信号
             while(waitpid(Console::child_process_id, NULL, WNOHANG) == 0 && Console::child_process_id >= 0);
-            Console::child_process_id = -1;
-
+            
+            Console::child_process_id = -1; // 等待子进程结束，并且将子进程状态清除
             JobRemove(&job);
 
             return jobid;
         }
     }
 
-    return -1;
+    return -1;  // 未找到该子进程
 }
 
 
@@ -222,13 +223,13 @@ int ProcessManager::BackGround(unsigned int jobid)
             if (job.state == Running)
                 return 0;
             
-            job.state = Running;
+            job.state = Running;    // 修改子进程状态
 
-            kill(job.pid, SIGCONT);
+            kill(job.pid, SIGCONT); // 发送继续执行信号SIGCONT
             
             return jobid;
         }
     }
 
-    return -1;
+    return -1;  // 未找到该子进程
 }
