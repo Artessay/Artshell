@@ -226,6 +226,10 @@ sh_err_t Executor::shell_function(const int argc, char * const argv[], char * co
     else if (pid == 0)
     {
         /* 子进程 */  
+        // setpgid(0, 0);
+        signal(SIGINT, SIG_DFL);    // 恢复Ctrl C信号
+        signal(SIGTSTP, SIG_DFL);   // 恢复Ctrl Z信号
+
         setenv("parent", console_->shell_path_env, 1);  // 设置调用子进程的父进程
         int status_code = execvp(argv[0], argv);        // 在子进程之中执行
 
@@ -240,8 +244,10 @@ sh_err_t Executor::shell_function(const int argc, char * const argv[], char * co
     {
         /* 父进程 */
         console_->child_process_id = pid;   // 设置子进程pid，用于Ctrl+Z信号处理
+        printf("A parent process: pid %d child_pid %d\n", getpid(), pid);
         wait(NULL); // 等待子进程结束后再继续执行，保证执行顺序不混乱
         console_->child_process_id = -1;
+        printf("B parent process: pid %d child_pid %d\n", getpid(), pid);
         return SH_SUCCESS;
     }
 

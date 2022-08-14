@@ -69,18 +69,24 @@ void SignalHandler(int signal_)
             if (write(STDOUT_FILENO, "\n", 1) < 0)
                 throw std::exception();
             
+            printf("Z pid: %d child pid: %d\n", getpid(), Console::child_process_id);
+
             if (Console::child_process_id >= 0)
             {
                 setpgid(Console::child_process_id, 0);
                 kill(Console::child_process_id, SIGTSTP);
             
+                printf("kill success\n");
                 unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, (char **)cp->argv);
+                printf("Add job success\n");
                 
                 // 打印当前进程
                 char buffer[BUFFER_SIZE];
                 snprintf(buffer, BUFFER_SIZE-1, "[%u] %d\n", jobid, Console::child_process_id);
+                puts("before write");
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
                     throw std::exception();
+                puts("after write");
             
                 snprintf(buffer, BUFFER_SIZE-1, "[%u]%c\tStopped\t\t\t\t\t", jobid, ' ');
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
