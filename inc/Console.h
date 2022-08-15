@@ -72,7 +72,7 @@ class Console
         mode_t umask_;                                   // 文件掩码
 
         int argc;                                        // 当前命令参数个数
-        char argv[MAX_ARGUMENT_NUMBER][BUFFER_SIZE];     // 当前命令参数列表
+        char *argv[MAX_ARGUMENT_NUMBER];                 // 当前命令参数列表
 
     public:
         Console(/* args */);

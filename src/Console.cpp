@@ -36,6 +36,8 @@ Console::Console(/* args */)
     assert(ret == 0);   // 判断初始化是否成功
 
     process_manager = new ProcessManager();
+    for (int i = 0; i < MAX_ARGUMENT_NUMBER; ++i)
+        argv[i] = new char [BUFFER_SIZE];
     cp = this;
 
     return;
@@ -44,6 +46,8 @@ Console::Console(/* args */)
 Console::~Console()
 {
     delete process_manager;
+    for (int i = 0; i < MAX_ARGUMENT_NUMBER; ++i)
+        delete [] argv[i];
 }
 
 void SignalHandler(int signal_)
@@ -77,7 +81,7 @@ void SignalHandler(int signal_)
                 kill(Console::child_process_id, SIGTSTP);
             
                 printf("kill success\n");
-                unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, (char **)cp->argv);
+                unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, cp->argv);
                 printf("Add job success\n");
                 
                 // 打印当前进程

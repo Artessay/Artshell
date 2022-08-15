@@ -20,13 +20,21 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
+#ifdef _DEBUG_
+#include "common.h"
+#endif
+
 job_unit::job_unit(unsigned int _id, int _pid, job_state _state, int _argc, char * _argv[])
             : id(_id), pid(_pid), state(_state), argc(_argc)
 {
     // argv 必须进行深拷贝，否则释放argv后将不再有，还会造成段错误
     assert(argc < MAX_ARGUMENT_NUMBER);
+    #ifdef _DEBUG_
+    Argument_Display(_argc, _argv);
+    #endif
     for (int i = 0; i < argc; ++i)
         strncpy(argv[i], _argv[i], BUFFER_SIZE);
+    //Argument_Display(argc, argv);
 }
 
 void job_unit::PrintJob(int output_fd)
