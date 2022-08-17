@@ -80,17 +80,17 @@ void SignalHandler(int signal_)
                 setpgid(Console::child_process_id, 0);
                 kill(Console::child_process_id, SIGTSTP);
             
+                #ifdef _DEBUG_
                 printf("kill success\n");
+                #endif
                 unsigned int jobid = cp->AddJob(Console::child_process_id, Stopped, cp->argc, cp->argv);
                 printf("Add job success\n");
                 
                 // 打印当前进程
                 char buffer[BUFFER_SIZE];
                 snprintf(buffer, BUFFER_SIZE-1, "[%u] %d\n", jobid, Console::child_process_id);
-                puts("before write");
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)
                     throw std::exception();
-                puts("after write");
             
                 snprintf(buffer, BUFFER_SIZE-1, "[%u]%c\tStopped\t\t\t\t\t", jobid, ' ');
                 if (write(cp->output_std_fd, buffer, strlen(buffer)) == -1)

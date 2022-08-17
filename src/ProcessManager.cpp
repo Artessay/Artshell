@@ -161,9 +161,11 @@ unsigned int ProcessManager::JobInsert(int pid, job_state state, int argc, char 
     try
     {
         unsigned int id = job_heap->extract();  // 从id池取出最小的id
+        #ifdef _DEBUG_
         printf("job id: %d\n", id);
+        #endif
         job_unit* newJob = new job_unit(id, pid, state, argc, argv);
-        puts("new job unit");
+        
         #ifdef _DEBUG_
         newJob->PrintJob();
         #endif
